@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "OopFactory.X12.Hipaa.Claims.Diagnosis.FormattedCode() doesn't correctly format ICD-10 codes.",
+    "LastUpdatedDate": "2015-11-04T19:03:52.007-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-07-31T11:00:51.907-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "FormattedCode() doesn't work correctly for ICD-10",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 2716
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

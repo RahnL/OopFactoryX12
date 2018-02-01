@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1497529",
+    "ThreadId": "663493",
+    "Html": "Are there any existing resources for finding XSLTs for converting between X12 and CSVs (or other formats), or do I need to resign myself to figuring out how to create my own?\r<br />\n<br />\nSpecifically, I need to convert data to and from 810, 850, 855, and 856 files.\r<br />\n<br />\nWhile I am using the provided 835 example to help me puzzle out what I need, for converting from X12 to CSV, it is slow going for a X12-noob like me.\r<br />\n<br />\nAre there any other examples or resources I can use?<br />\n",
+    "PostedDate": "2017-07-27T07:38:50.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "809820",
+    "ThreadId": "348469",
+    "Html": "\r\n<p>Greetings. First of all, a big thanks to your entire team for producing such a fantastic piece of software that is so simple to use and best of all - is extensible.&nbsp;</p>\r\n<p>The XML that is currently generated from an 837 claim contains various &lt;Loop&gt; elements. For instance:</p>\r\n<p>&lt;Loop LoopId=&quot;2010BA&quot; Name=&quot;SUBSCRIBER NAME&quot;&gt;</p>\r\n<p>Is it possible to change either the source code / xsl / configuration files in the OOP X12 project (source) that would help generate something as follows:</p>\r\n<p>&lt;Loop201BA LoopId=&quot;2010BA&quot; Name=&quot;SUBSCRIBER NAME&quot;&gt;</p>\r\n<p>The intention is to generate unique Loop elements that are perhaps identified by the loopId.</p>\r\n<p>I would greatly appreciate any help in this matter.</p>\r\n<p>Thank you very much, in advance, for your help.</p>\r\n<p>Kind Regards.</p>\r\n",
+    "PostedDate": "2012-03-13T12:55:19.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "809858",
+    "ThreadId": "348469",
+    "Html": "<p>You can do this by having a post processing xslt to convert to whatever format you want.</p>\n<div>I've thought about doing this for some of the standard xml formats you can download off the x12 site, but it's a lot of work and I didn't want to do it without a need.</div>\n<div>I didn't do this because the Professional and Institutional have mismatches in their loopIDs where a particular LoopId in one meant something different in the other. The Entity Type identifiers are more trustworthy if you need code that would work with  both these formats.</div>\n<div><br /> <br />\n<div></div>\n</div>",
+    "PostedDate": "2012-03-13T14:00:24.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "809906",
+    "ThreadId": "348469",
+    "Html": "<p>Dear Sir, thank you so much for your prompt response.</p>\r\n<p>The post processing XSLT will works for me. Thank you.</p>\r\n<p>Is it also possible to accomplish this in the code itself? Or one of the existing XSLTs used by your product? The reason I ask is to minimize the post processing if possible. Also based on your feedback, instead of using the loopId, I think I will now use a different unique qualifier, for instance \"SubsciberName\" (no space) because our data contains both 837 I &amp; P files.</p>\r\n<p>Thanks again for all your help.</p>",
+    "PostedDate": "2012-03-13T15:18:43.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "809918",
+    "ThreadId": "348469",
+    "Html": "<p>I started work to do this and produce the xml seen here: <a href=\"http://x12parser.codeplex.com/SourceControl/changeset/view/15073#156668\"> http://x12parser.codeplex.com/SourceControl/changeset/view/15073#156668</a></p>\n<div></div>\n<div>The xslt for this can be found here:</div>\n<div><a href=\"http://x12parser.codeplex.com/SourceControl/changeset/view/15073#154136\">http://x12parser.codeplex.com/SourceControl/changeset/view/15073#154136</a></div>\n<div></div>\n<div>This is not complete, but you can use it as a starting place.</div>\n<div></div>\n<div>It deserializes into C# objects in that same assembly.<br /> <br />\n<div></div>\n</div>",
+    "PostedDate": "2012-03-13T15:43:04.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "809921",
+    "ThreadId": "348469",
+    "Html": "<p>Dear&nbsp;dstrubhar, I don't have words to thank you for your prompt response and willingness to help. This means a lot! The OOP X12 project is a motivation &amp; blessing to us struggling developers working with health care claims.&nbsp;KUDOS to you and your team.</p>\r\n<p>The first link you sent doesn't work. Perhaps a different change set number compared to 156668?</p>\r\n<p>I am wondering if I need the C# code as well as the XSLT you posted on&nbsp;<a href=\"http://x12parser.codeplex.com/SourceControl/changeset/view/15073#154136\">154136</a>? Am I required to simply replace the existing corresponding files in the CSProject I have downloaded from your site? And simply rebuild the solution to produce a new X12Parser.exe using VS2010?</p>\r\n<p>Awaiting your kind response.</p>\r\n<p>Thanks again.</p>\r\n<p>Regards.</p>",
+    "PostedDate": "2012-03-13T15:56:12.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "809922",
+    "ThreadId": "348469",
+    "Html": "<p>Sorry, the link works now.</p>\r\n<p>Also, I almost forgot to mention that I am working with HIPAA X12 4010 837 data for now. The changes you have made should be compatible with both 4010 and 5010 formats, right?</p>\r\n<p>Thanks again.&nbsp;</p>",
+    "PostedDate": "2012-03-13T15:59:16.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "809929",
+    "ThreadId": "348469",
+    "Html": "<p>If you are going to transform into your own schema I would not suggest that you do it in-place with the OopFactory code so that if I release updates you can always upgrade without overriding your custom xslt.</p>\n<div>There is a sample discussion with simple instructions on how to create a project with an XSLT here: <a href=\"http://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform\"> http://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform</a></div>\n<div></div>\n<div>This example creates a flat file, but you would just create xml instead of a flat file with whatever xslt you build.</div>\n<div></div>\n<div>The parser will be able to tell whether to use the 4010 or 5010 specification, and the xslt I pointed you to should work for both.</div>\n<div></div>\n<div>Have fun. I actually enjoy working with EDI now that I don't have to be depending on huge infrastructure to parse a text file.</div>\n<div><br />\n<div></div>\n</div>",
+    "PostedDate": "2012-03-13T16:27:54.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "810352",
+    "ThreadId": "348469",
+    "Html": "<p>Dear Sir,</p>\r\n<p>Once again, many thanks for your help last night with the Custom XSLT. It works like a charm. However, there are a few issues that I am running into. Although, someone with a good knowledge of XSLT might be able to resolve these, I would still really appreciate your feedback.</p>\r\n<p>a. In the original XML document produced by X12OOP parser, the patient information (Loop2000C) is either missing for most claims, or, appears to be as a child of the \"Subscriber Hierarchical Loop 200B\". As such, the custom XML that is now produced by the XSLT you helped with last night doesn't always contain the patient information. I really need the Patient Name, DOB, ID, etc and not sure how do I go about getting these in.</p>\r\n<p>b. The Diagnosis Codes are particularly important. Your XSLT is correctly importing them in as &lt;Diagnosis&gt; elements. However, is it possible to change the element name to be unique? The XSD (schema document) that I generate from the Custom Claim XML only contains a single &lt;Diagnosis&gt; reference, which prevents me from accessing all but the first diagnosis code.</p>\r\n<p>c. You made a note in the XSLT:</p>\r\n<p>&nbsp;&lt;!-- XXX This is incomplete, but good enough for CMS-1500 --&gt; &nbsp; &nbsp;&nbsp;<br />&lt;!-- Other subscriber information loop --&gt;&nbsp; &nbsp; &nbsp; <br />&lt;xsl:if test=\"./Loop[@LoopId='2320']\"&gt;&nbsp;</p>\r\n<p>This other payer information is also important for us and I am unable to retrieve using the custom XSLT. Do you have any suggestions on how I can get this in?</p>\r\n<p>I apologize for so many questions and also understand that someone with a good knowledge of XSLT can modify the file to parse this information. But, any help would be greatly appreciated.</p>\r\n<p>Thank you again for all your timely help.</p>\r\n<p>Kind Regards.</p>",
+    "PostedDate": "2012-03-14T10:13:26.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "810434",
+    "ThreadId": "348469",
+    "Html": "<p>The way the 837 hiearchical loops work is that the patient loop only needs to be designated if the patient is different than the subscriber. When the patient is the same that loop is not included and you should be able to get the demographic information from  the subscriber loop.</p>\n<div></div>\n<div>You will either need to modify this xslt or do a second transformation so that each Diagnosis is it's own unique name. If you want to be able to used updated versions of this xslt that will probably have more elements included, than I suggest doing a 2nd  transformation.</div>\n<div>This is not a trivial task and you might need to be committed to learning xslt to continue with this method.</div>\n<div>Alternatively you can load it into the claim object and transform to your final destination using these objects.</div>\n<div>I may be able to add the other payer information next week so that the objects will be complete for the UB-04.</div>\n<div><br />\n<div><br />\n<div></div>\n</div>\n</div>",
+    "PostedDate": "2012-03-14T12:44:04.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "810458",
+    "ThreadId": "348469",
+    "Html": "<p>Here is what a possible 2nd transformation might look like for your Diagnosis remapping.</p>\n<div>You would need to remove the xmlns=\"<a href=\"http://www.oopfactory.com/2011/XSL/Hipaa\">http://www.oopfactory.com/2011/XSL/Hipaa</a>\" from the first transformation because it will complicate things, then you could pass the output of the first transformation  to this xslt:<br />\n<div></div>\n<div>\n<div>&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;</div>\n<div>&lt;xsl:stylesheet version=\"1.0\" xmlns:xsl=\"<a href=\"http://www.w3.org/1999/XSL/Transform\">http://www.w3.org/1999/XSL/Transform</a>\"</div>\n<div>xmlns:msxsl=\"urn:schemas-microsoft-com:xslt\" exclude-result-prefixes=\"msxsl\"</div>\n<div>&gt;</div>\n<div>&lt;xsl:template match=\"@*|node()\"&gt;</div>\n<div>&lt;xsl:copy&gt;</div>\n<div>&lt;xsl:apply-templates select=\"@*|node()\"/&gt;</div>\n<div>&lt;/xsl:copy&gt;</div>\n<div>&lt;/xsl:template&gt;</div>\n<div>&lt;xsl:template match=\"Diagnosis[@Qualifier='BK']\"&gt;</div>\n<div>&lt;DiagnosisPrimary&gt;</div>\n<div>&lt;xsl:value-of select=\"@Code\"/&gt;</div>\n<div>&lt;/DiagnosisPrimary&gt;</div>\n<div>&lt;/xsl:template&gt;</div>\n<div></div>\n<div>&lt;xsl:template match=\"Diagnosis[@Qualifier='BF']\"&gt;</div>\n<div>&lt;xsl:variable name=\"sequence\" select=\"count(preceding-sibling::*[local-name()='Diagnosis' and @Qualifier='BF'])\"/&gt;</div>\n<div>&lt;xsl:choose&gt;</div>\n<div>&lt;xsl:when test=\"$sequence = 0\"&gt;</div>\n<div>&lt;DiagnosisOtherA&gt;</div>\n<div>&lt;xsl:value-of select=\"@Code\"/&gt;</div>\n<div>&lt;/DiagnosisOtherA&gt;</div>\n<div>&lt;/xsl:when&gt;</div>\n<div>&lt;xsl:when test=\"$sequence = 1\"&gt;</div>\n<div>&lt;DiagnosisOtherB&gt;</div>\n<div>&lt;xsl:value-of select=\"@Code\"/&gt;</div>\n<div>&lt;/DiagnosisOtherB&gt;</div>\n<div>&lt;/xsl:when&gt;</div>\n<div>&lt;xsl:when test=\"$sequence = 2\"&gt;</div>\n<div>&lt;DiagnosisOtherC&gt;</div>\n<div>&lt;xsl:value-of select=\"@Code\"/&gt;</div>\n<div>&lt;/DiagnosisOtherC&gt;</div>\n<div>&lt;/xsl:when&gt;</div>\n<div>&lt;/xsl:choose&gt;</div>\n<div>&lt;/xsl:template&gt;</div>\n<div></div>\n<div>&lt;/xsl:stylesheet&gt;</div>\n<br />\n<div></div>\n</div>\n</div>",
+    "PostedDate": "2012-03-14T13:28:24.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "814737",
+    "ThreadId": "348469",
+    "Html": "<p>Dear Sir,</p>\r\n<p>My sincere apologies. I just saw your post. Thank you so much for helping me out with the diagnosis codes. I spent the last few days customizing the XSLT further to parse more information and create unique nodes. Glad to report, I was successful in generating unique xml elements for a number of items in addition to the diagnosis codes. Once again, the X12 parser is simply amazing! I am now generating the XML by invoking your API from our C# application, and using the custom XSLT you provided (with further customizations) to generate the Custom Claim XML document, which gets written to the file system. I am not writing the initial XML to the file system because it is a lot more bigger in size.</p>\r\n<p>fyi - you mentioned in one of the earlier posts that patient information appears if it is different from the subscriber. But that is not the case in a lot of the data we are working with, unfortunately. This remains an open issue for us :-(</p>\r\n<p>Also, I have a huge concern with some big 837 files. Some of our 837 data is ~30Mb and contains ~15,000 claims / 100,000 claim details.</p>\r\n<p>I tried the X12parser + Custom XSLT and after ~3 hours with 100%CPU and ~190MB memory, the XML was still not generated. When I stopped my application, a 50MB file got written to disk, which as incomplete.&nbsp;</p>\r\n<p>I am not sure if I need to use UnbundleX12? It will generate ~15000 files in a single directory and Windows can have trouble sometimes handling so many files. Do you have any alternate suggestions? Have you had to work with data this size? I would really appreciate your help/suggestions.</p>\r\n<p>Thank you again.</p>\r\n<p>Kind Regards.</p>",
+    "PostedDate": "2012-03-23T09:42:24.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "814749",
+    "ThreadId": "348469",
+    "Html": "<p>You will need to use some form of unbundling. &nbsp;You don't need to unbundle at the claim level if that creates too many files. &nbsp;You may try unbundling at a higher level such as the billing provider hierarchical loops.</p>\r\n<p>I will probably need to add some functionality to unbundle at the ISA, GS or ST level, but I have not gotten to that yet.</p>",
+    "PostedDate": "2012-03-23T10:02:44.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

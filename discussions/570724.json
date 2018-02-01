@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1317005",
+    "ThreadId": "570724",
+    "Html": "Hi,\r<br />\n<br />\nI am trying to create a batch using x12 270 formatted file.  I have download latest version of X12 parser.  I was wondering if there is a step by step guide on how to generate the x12 270 batch file using just a list of IDs.\r<br />\n<br />\nThanks in advance,<br />\n",
+    "PostedDate": "2014-10-28T05:47:05.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

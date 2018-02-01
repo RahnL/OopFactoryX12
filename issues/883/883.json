@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "OopFactory.X12",
+      "DisplayName": "OopFactory.X12"
+    },
+    "ClosedComment": "Closing this item because it was a problem with the data and user who has submitted has not followed up with any other requests.",
+    "ClosedDate": "2011-11-20T19:07:46.78-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm trying to use X12Parser.exe (v 2.2.1) to parse the two sample files found on this page: http://www.edidev.com/edidev_hipaa_support.htm#HIPAA 5010.\n \nSpecifically, the files are:\nhttp://www.edidev.com/samples/hipaa/837_005010X222A1.zip\nhttp://www.edidev.com/samples/hipaa/837_005010X223A2.zip\n \nBoth files produce the same error:\nC:\\>X12Parser.exe 837_005010X223A2.X12\n \nUnhandled Exception: System.ArgumentException: An item with the same key has already been added.\n   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)\n   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)\n   at OopFactory.X12.Parsing.Model.HierarchicalLoopContainer.AddHLoop(String segmentString)\n   at OopFactory.X12.Parsing.X12Parser.Parse(Stream stream)\n   at OopFactory.X12.X12Parser.Program.Main(String[] args)\nSignal 67\n \n \nBoth files validate successfully using EDI Notepad 7.0 (from http://liaison.com/products/integrate/edi/edi-notepad).\n \nAny ideas?\n \nThanks,\nDan",
+    "LastUpdatedDate": "2013-05-16T04:34:04.053-07:00",
+    "PlannedForRelease": "X12 Parser 2.3.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-10-25T11:09:51.49-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "837i/p 5010 parsing errors",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 883
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is a problem with the file.  Notice the following lines:\r\nLine 08:  HL*A1B2C3D4E5**20*1~\r\nLine 24:  HL*A1B2C3D4E5**20*1~\r\nLine 40:  HL*A1B2C3D4E5*A1B2C3D4E5*22*0~\r\n\r\nThis sample is a scrubbed X12 file.  In the process of de-identifying this file they have replaced all PII with A1B2C3D4E5.  This means the original file had unique Hierarchical Loop Identifiers, but was replaced with all A1B2C3D4E5.  The parser is failing because it expects all of these values to be unique.  Line 40 has the 2nd identifier pointing to the parent identifier which can be confused by pointing to itself.\r\n\r\nThe X12Parser expects for the transaction number to be unique and the Hierarchical Loop IDs to be unique, this is required so that it can properly identify the parent loops that each child loop belongs to.",
+      "PostedDate": "2011-10-25T12:18:27.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I will make changes in the next release so the error message describes this constraint more concisely.",
+      "PostedDate": "2011-10-25T12:21:33.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-20T19:07:46.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:02.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:04.053-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

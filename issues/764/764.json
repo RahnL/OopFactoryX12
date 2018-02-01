@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "X12Parser.exe",
+      "DisplayName": "X12Parser.exe"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'd like to see exception handling tightened up on the console apps.  Right now, most issues with the input file just cause an unhandled exception. It would be more useful to have the app close with an exit code of 1 (or whatever) when a problem occurred.  That way, when integrating them into a larger process, exit code = 0 means all is well, and exit code != 0 means trouble.  I'd take a crack at adding this, but not sure how.\n \nThanks!",
+    "LastUpdatedDate": "2017-11-27T18:20:56.37-08:00",
+    "PlannedForRelease": "X12 Parser 2.3.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-07-19T15:17:24.113-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception handling for console apps",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 764
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Cool, I'll plan this for the next release.  I am going to do some work to make creating X12 files easier and I will fix these issues as part of the 2.2 release.",
+      "PostedDate": "2011-07-19T19:59:27.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-30T16:31:48.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-05T15:09:51.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-02T05:52:25.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-20T15:07:38.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-20T18:23:35.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:05.047-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:20:56.37-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

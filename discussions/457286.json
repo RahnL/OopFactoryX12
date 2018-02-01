@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1093975",
+    "ThreadId": "457286",
+    "Html": "Hello,\r<br />\n<br />\nDoes anyone have some sample c# code to share on importing an 837 into a DB (SQL) using the X12 Import?<br />\n",
+    "PostedDate": "2013-09-18T05:25:11.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1425347",
+    "ThreadId": "457286",
+    "Html": "Hi ,\r<br />\n<br />\nVery good morning,\r<br />\n<br />\nI have seen your description is that you can able to convert/upoad the X12 file to sql database, please help me to share if you have code for convert/upoad the X12 file to sql database.. please help me, i am a beginner i need a code for assignment...\r<br />\n<br />\nthanks &amp; regards,\r<br />\nkarthikc<br />\n",
+    "PostedDate": "2015-05-14T00:29:31.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

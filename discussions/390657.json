@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "896762",
+    "ThreadId": "390657",
+    "Html": "\r\n<p>Hello All,</p>\r\n<p>As a second job, I contract for a small medical billing company. &nbsp;I wrote and maintain their medical billing software. &nbsp;The software is written in Borland C&#43;&#43; and tracks claims and can produce UB92s and UB04s. &nbsp;Currently they have more work\r\n for me than I can handle.</p>\r\n<p>I now need to get 5010 837Is into our system and I want to use this X12 Parser. &nbsp;So far using this tool, I have been able to parse apart some sample 837s into a flat file* that I can load into my DB but I don't know how to go about being able to produce\r\n a 999. &nbsp;If there is anybody that would like to do some contract programming and write me a program that can do that, or has a program that can read an 837 and produce a 999 using this parser that they would like to sell please contact me. &nbsp;To be\r\n clear, I am asking for the source code.</p>\r\n<p>If you are a decent C&#43;&#43; programmer please contact me as well.</p>\r\n<p>Thanks, Doug</p>\r\n<p>avoidingwork@gmail.com</p>\r\n<p>*I used a separate flat file because I ran into naming problems. &nbsp;My DB has a table named Claim and when I hooked up my program using the parser and an ODBC driver to talk to my Paradox tables I kept getting a naming conflict on the Claim object. &nbsp;The\r\n flat file was the quickest solution I could think of.</p>\r\n",
+    "PostedDate": "2012-08-07T21:30:58.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "896933",
+    "ThreadId": "390657",
+    "Html": "<p>Does the source code need to be in C++?&nbsp; What if it's an xslt?</p>\r\n<p>Do you have implementation specific validation or do you just need it to validation against the rules in the 837I specification?</p>",
+    "PostedDate": "2012-08-08T06:46:13.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "896961",
+    "ThreadId": "390657",
+    "Html": "Good Morning dstrubhar,\r\n<div>Sorry for not being clear. The source code for the response tool should be in C#. The C&#43;&#43; experience is for the billing software.</div>\r\n<div><br>\r\n</div>\r\n<div>This is not implementation specific and should just validate against the 837I spec. I would like the source so if and when it does need to be implementation specific I, or somebody else, would be able to make the modifications.</div>\r\n<div><br>\r\n</div>\r\n<div>Thanks, Doug<br>\r\n<br>\r\n<div>On Wed, Aug 8, 2012 at 7:46 AM, dstrubhar <span dir=\"ltr\">&lt;<a href=\"mailto:notifications@codeplex.com\" target=\"_blank\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"margin:0 0 0 .8ex; border-left:1px #ccc solid; padding-left:1ex\">\r\n<div>\r\n<p>From: dstrubhar</p>\r\n<div>\r\n<p>Does the source code need to be in C&#43;&#43;? What if it's an xslt?</p>\r\n<p>Do you have implementation specific validation or do you just need it to validation against the rules in the 837I specification?</p>\r\n</div>\r\n<div>\r\n<p>Read the <a href=\"http://x12parser.codeplex.com/discussions/390657#post896933\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:x12parser@discussions.codeplex.com?subject=[x12parser:390657]\" target=\"_blank\">x12parser@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:x12parser@discussions.codeplex.com\" target=\"_blank\">\r\nx12parser@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://x12parser.codeplex.com/subscriptions/thread/project/edit\" target=\"_blank\">\r\nunsubscribe or change your settings</a> on codePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at\r\n<a href=\"http://codeplex.com\" target=\"_blank\">codeplex.com</a></p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n</div>\r\n",
+    "PostedDate": "2012-08-08T07:15:49.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "897343",
+    "ThreadId": "390657",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>dstrubhar wrote:</strong><br>\r\n<p>Does the source code need to be in C&#43;&#43;?&nbsp; What if it's an xslt?</p>\r\n<p>Do you have implementation specific validation or do you just need it to validation against the rules in the 837I specification?</p>\r\n</blockquote>\r\n<p>Hi dstrubhar,</p>\r\n<p>How would using an XSLT be different than using your x12 parser? &nbsp;I've used C# and C&#43;&#43; but not XSLT. &nbsp;Is it a language in itself or is it used in&nbsp;conjunction with another tool set?</p>\r\n<p>As a side note, even if I end up paying for it I don't think it would be a problem to add this tool to your oopfactory X12 Parser project. &nbsp;It would be a good addition to the tool set to have a program that can create a response file based on the config\r\n files that have been created.</p>\r\n<p>Doug</p>\r\n",
+    "PostedDate": "2012-08-08T21:05:48.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "897584",
+    "ThreadId": "390657",
+    "Html": "<p>I don't think I would use the XSLT.&nbsp; It would be useful if you were doing something simple like just sending acknowledgement that you received the files, but it is not ideal for looking for errors and adding the error segments.</p>\r\n<p>I have been asked before for this feature and I've been thinking about the implementation.&nbsp; I have recently added a X12StreamReader that will parse out one transaction at a time regardless of if the x12parser class was able to parse it or not.&nbsp; This will be helpful in reporting errors in invalid transactions.</p>\r\n<p>I wouldn't mind adding it as a separate assembly to the project, but I don't know how long it will take to finish.&nbsp; I could at the least create an extendable class so that if you don't choose an OTS solution, you have a starting place.&nbsp; I've been thinking I wanted to add another documentation page with a different use case of the parser, so this would be a perfect for that.</p>",
+    "PostedDate": "2012-08-09T07:35:13.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "899098",
+    "ThreadId": "390657",
+    "Html": "<p>I have added an assembly called OopFactory.X12.Validation with an X12AcknowledgmentService.</p>\r\n<p>To see it's usage look at the OopFactory.X12.AcknowledgeX12 console application. This is provided for demonstrations purposes.&nbsp; Since this is an acknowledgment you will want to make sure that the decision on each transaction is integrated with your intake process.</p>\r\n<p>The service will return Accepted (A), Accepted with Errors (E)&nbsp;or Cannot Analyze Content (X).&nbsp; You may choose to change some the \"E\" to Rejected \"R\".&nbsp; This should be done after you actually verify that you have imported the transaction into your system and will be able to process them.&nbsp; This can be done before the serialization to X12.</p>\r\n<p>I still need to add some unit test and some minor validation.&nbsp; I will get that checked in over the next couple of weeks.</p>\r\n<p>You will be able to override the&nbsp; ValidateSegmentAgainstSpec and ValidateContainerAgainstSpec to add your own custom validations or inject your own SpecificationFinder.&nbsp; I'll do a write-up of how to do all this in the next couple of weeks also.</p>",
+    "PostedDate": "2012-08-14T05:49:14.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

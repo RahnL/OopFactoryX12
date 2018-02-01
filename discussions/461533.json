@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1105067",
+    "ThreadId": "461533",
+    "Html": "I have found this project to be an extremely useful tool for facilitating EDI in my company. The 850 and 856 document types have been knocked out. Now I'm on to creating an outbound 852 Product Activity Data document for testing.<br />\n<br />\nThe two loops I seem to be having trouble getting to be seen as valid are the ZA loop and CTP segment. I am including these using the AddLoop() and AddSegment() methods after creating the initial LIN loop. Are these types defined in this project? I am pretty familiar with syntax and usage, as I have developed my solutions for 850 and 856 document types using the X12 Parser.<br />\n<br />\nPlease let me know when time permits. Thanks again and great work on all of this!<br />\n",
+    "PostedDate": "2013-10-08T09:58:42.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1105104",
+    "ThreadId": "461533",
+    "Html": "Specifically, here's a code snippet where the _<strong>852trans</strong> object represents the 852 transaction I'm building. My code makes it as far as the LIN loop. When I add the ZA loop, the first element throws a runtime exception that the object reference is not set to an instance of an object. When I commented out the ZA loop then the CTP segment that follows it throws the same runtime exception when it hits the first segment in that particular loop.<br />\n<pre><code>            // Define the stock item type being reported on.\n            seg = _852trans.AddLoop(&quot;LIN&quot;);                                                    \n            seg.SetElement(2, &quot;UP&quot;);                                                           \n            seg.SetElement(3, &quot;123456&quot;);                                                       \n\n            // Define the activity reporting type and product specifics.\n            seg = _852trans.AddLoop(&quot;ZA&quot;);                                                      \n            seg.SetElement(1, &quot;QA&quot;);                                                            \n            seg.SetElement(2, &quot;1&quot;);                                                             \n            seg.SetElement(3, &quot;EA&quot;);                                                            \n            seg.SetElement(4, &quot;007&quot;);                                                           \n            seg.SetElement(5, currentDate.ToString(&quot;yyyyMMdd&quot;));                                \n            seg.SetElement(6, &quot;ST&quot;);                                                            \n            seg.SetElement(7, &quot;001&quot;);                                                           \n            \n            // Define the pricing information.\n            seg = _852trans.AddSegment(&quot;CTP&quot;);\n            seg.SetElement(1, &quot;RS&quot;);                                                            \n            seg.SetElement(2, &quot;WHL&quot;);                                                           \n            seg.SetElement(3, &quot;100.00&quot;);                                                        </code></pre>\n\n",
+    "PostedDate": "2013-10-08T11:10:46.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1106677",
+    "ThreadId": "461533",
+    "Html": "You are attempting to add ZA at the transaction level.  You need to add it as a child loop of the LIN loop.\r<br />\n<br />\nSee spec here: <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/ts/852.htm\" rel=\"nofollow\">https://www.disa.org/apps/workbook/X12_October_2012/ts/852.htm</a><br />\n",
+    "PostedDate": "2013-10-12T05:21:03.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1107147",
+    "ThreadId": "461533",
+    "Html": "Thanks so much! This was the first instance of my having to create a nested EDI loop and I neglected to create the parent/child loop mechanism. Now it's working fine. Appreciate your help and am so pleased with this project!<br />\n",
+    "PostedDate": "2013-10-14T06:14:20.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

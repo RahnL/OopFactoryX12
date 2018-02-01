@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1352222",
+    "ThreadId": "580682",
+    "Html": "When I split an 835 file with the following command line<br />\n<br />\nUnbundleX12.exe c:\\Input*.* 1000B c:\\output<br />\n<br />\nThe output file looks great EXCEPT there is a missing SE.  I have the latest source version.  If anyone could assist with me I would most appreciate it.<br />\n<br />\nI have attached a screenshot to illustrate what i am saying.  Due to HIPPA I have blurred PI information<br />\n<br />\nThanks in advanced for any assistance!<br />\n<br />\n<img src=\"http://1drv.ms/1zRRK8b\" alt=\"Image\" /><br />\n",
+    "PostedDate": "2015-02-13T07:22:00.843-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1042035",
+    "ThreadId": "443286",
+    "Html": "This project looks great!  Thanks for all the work on this, and making it available.\r<br />\n<br />\nI downloaded the source code, and I only see 3 xsd files in the source files (one is for claims).\r<br />\n<br />\nI am starting with the 834 in terms of using this library, and am wondering if there is an xsd defining the structure for the 834 transaction?<br />\n",
+    "PostedDate": "2013-05-10T12:24:22.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

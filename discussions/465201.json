@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1116882",
+    "ThreadId": "465201",
+    "Html": "Does anyone know how I can go about bundling a number of claims into a single x12 file? This would be like the reverse of the unbundle.<br />\n",
+    "PostedDate": "2013-11-02T18:15:40.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1117147",
+    "ThreadId": "465201",
+    "Html": "You can look at this post to get a start on how the code should look: <a href=\"https://x12parser.codeplex.com/discussions/355921\" rel=\"nofollow\">https://x12parser.codeplex.com/discussions/355921</a><br />\n",
+    "PostedDate": "2013-11-04T04:59:06.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1117468",
+    "ThreadId": "465201",
+    "Html": "Thanks, this looks like it will work fine.<br />\n",
+    "PostedDate": "2013-11-04T17:51:11.82-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

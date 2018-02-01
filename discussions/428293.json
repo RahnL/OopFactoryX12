@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "982429",
+    "ThreadId": "428293",
+    "Html": "\r\n<p>Currently it is being serialized as follows&nbsp;</p>\r\n<p>&nbsp;&lt;CUR&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CUR01&gt;SE&lt;/CUR01&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CUR02&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CUR0201&gt;USD&lt;/CUR0201&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CUR0202 /&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/CUR02&gt;<br>\r\n&nbsp; &lt;/CUR&gt;</p>\r\n<p>Is there any reason why it is not serialized like this (below)?</p>\r\n<p>&lt;CUR&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CUR01&gt;SE&lt;/CUR01&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CUR02&gt;USD&lt;/CUR02&gt;<br>\r\n&lt;/CUR&gt;</p>\r\n",
+    "PostedDate": "2013-01-02T12:43:26.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002472",
+    "ThreadId": "428293",
+    "Html": "Your content contains a sub-element delimiter in it that is causing the 2nd element to be broken down.\r<br />\n<br />\nThe sub-element delimiter is specified in character 105 of the ISA segment.\r<br />\nSometimes this happens because the sender is unaware that they have used a delimiter as content in their actual message.<br />\n",
+    "PostedDate": "2013-02-17T11:47:23.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

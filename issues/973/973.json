@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This is released in 2.2.4, please let me know if any further missing mappings.",
+    "ClosedDate": "2012-04-28T20:08:46.18-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\nI'm using the Claim object and the UB04Claim object inside the InstitutionalClaimToUB03ClaimFormTransformation object.  There are a few fields in the UB04Claim that are filled in with '???'s because there is not a corresponding field in the Claim object.  And while your efforts are a lot like magic, (Point the parser at the 837 file and poof! you have claim object) it looks like some additions need to be added.  So far I can see that; AdmissionHour, DischargeHour, DischargeStatus, AccidentState, NationalProviderIdentifier, OtherProviderIdA, B, and C, and PPSCode need to be added.  \nCan you tell me where/how I can do that.  I was also wondering if the you think the discharge hour should be datatime or a timespan since it is only a time.  The admissionHour is associated with the admission date in the 837 so I can see where it can be all kept in the same datetime inside the object but the admissionHour property would be the same type as the dischargeHour.\nThanks in advance, Doug",
+    "LastUpdatedDate": "2013-05-16T04:34:02.753-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-01-02T15:57:47.097-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Missing items in the Claim object.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 973
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "THe claim object still needs some work.\r\nThere are two stages to the transformation.  First it transforms to a non-form specific Claim object and then it transforms to the UB04Claim.  I will try and finish up the transformations this week, if you can help me test that it is complete.  I'll start with the fields you have already mentioned and try and get something checked-in in the next couple of days.  The code is separated into two transformations implemented as C# methods so that if someone wanted to override with their own business logic they didn't necessarily have to copy the whole method with the two concerns intermingled.",
+      "PostedDate": "2012-01-02T18:51:55.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks.  I have a few 837s that I am testing with so I can help out there. \r\nAlso, can you point me in the right direction to find where the parser is reading the XML and the 837 and putting it in the claim object.  I'd like to understand how the XML file is used to parse the data.\r\nThanks, Doug",
+      "PostedDate": "2012-01-02T22:37:00.163-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I found a few more missing fields.  On the UB04.  Fields FL50 Payer Name (A,B, C), FL51 Health Plan ID (A, B, C), FL52 Release of Information Certification Indicator (A, B, C), FL53 Assignment of Benefits Certification Indicator (A, B, C).  are not defined.  I think they are in the Claim as Claim.Payer, Claim.PayToPlan, and Claim.PayToProvider but I'm not sure as there is not enough information in those objects to cover FL50-FL53.  Can you confirm that for me.\r\nThe UB04 is also missing FL54 A-C Prior Payments and FL55 A-C Estimated Amount Due and also don't see them on the claim object.\r\nThanks.",
+      "PostedDate": "2012-01-03T22:34:16.94-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That sounds right, I will try to add a unit test with an example that has all the fields present.  As per your previous question, there are three phases to the transformation:\r\n1.  The core X12Parser class here: http://x12parser.codeplex.com/SourceControl/changeset/view/13003#32184,  will load the X12 message and look for a specification (in this case the 837-5010 found here: http://x12parser.codeplex.com/SourceControl/changeset/view/13003#137234) to use to parse into a generic xml.  It will look like the first xml block from this documentation page:  http://x12parser.codeplex.com/wikipage?title=Parsing%20an%20837%20Transaction&referringTitle=Documentation.\r\n2.  This is not in the core assembly and has not yet been released, but it will transform the generic xml into the generic claim object using the xslt here:  http://x12parser.codeplex.com/SourceControl/changeset/view/13003#154136 , This is done so that it can be deserizialized into the objects created in the OopFactory.X12.Hipaa.Claims namespace.\r\n3.  The last transformation is done in C# code so that it can be strongly typed and users can easily copy or override.  This is done here:  http://x12parser.codeplex.com/SourceControl/changeset/view/13003#188972.  It actually has two methods, one that transforms the claim properties to the fields on the UB04 form and the second that transforms the UB04 forms to the actual x-y coordinates on the UB04 form.\r\n\r\nI've actually implemented this feature 3 times in some legacy apps there were tightly coupled to another implementation, but was about 80% done with refactoring it into these assemblies when I had some other priorities.  I'll try and get some check-in's done this week since you are available to help me test.\r\n\r\nThanks for you interest in this tool.",
+      "PostedDate": "2012-01-04T04:42:59.94-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi, I was wondering if you had made any progress on getting those missing fields into the claim object.\r\nI also noticed that the Revenue Code Description FL43 on the UB04 is not filled in.\r\nThanks for your help on this.\r\nDoug",
+      "PostedDate": "2012-01-15T15:54:02.067-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have added the original fields that you mentioned in changeset 13887.\r\nThe Field 43 Description is not represented in the 837I, so if you wanted that filled you would have to add a lookup algorithm to translate them into known values.\r\nI will start looking at the payer fields that you identified next.",
+      "PostedDate": "2012-01-16T18:36:35.323-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 15600.",
+      "PostedDate": "2012-04-01T09:08:57.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-04-28T20:08:46.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:01.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:02.753-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

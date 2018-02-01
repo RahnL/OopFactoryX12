@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1446722",
+    "ThreadId": "645697",
+    "Html": "Do you think it would be feasible for this library to be extended to include ASAP 4.1 and 4.2 standards for PMP reporting? \r<br />\n<br />\n(Please note I'm not asking for this to be implemented. I am just asking if you think it is possible before I download the source and start looking at it.)\r<br />\n<br />\nThank you!<br />\n",
+    "PostedDate": "2015-10-01T09:14:37.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1446725",
+    "ThreadId": "645697",
+    "Html": "ASAP is a completely different EDI standard.  This tool would only be valuable if you are trying to translate something like an 837P which can sometimes be used for Prescriptions into another format. \r<br />\n<br />\nI haven't looked at the details of ASAP, but if it is based on segments and loops like X12 you might be able to borrow similar algorithms from the source, but you wouldn't be extending existing code.<br />\n",
+    "PostedDate": "2015-10-01T09:24:11.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

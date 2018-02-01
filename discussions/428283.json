@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "982414",
+    "ThreadId": "428283",
+    "Html": "\r\n<p><span style=\"text-decoration:underline\"><span style=\"color:#800000\">THIS IS FROM 832</span></span></p>\r\n<p><span style=\"color:#ff0000\">&nbsp; &lt;CTT&gt;</span><br>\r\n<span style=\"color:#ff0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CTT01&gt;133&lt;/CTT01&gt;</span><br>\r\n<span style=\"color:#ff0000\">&nbsp; &lt;/CTT&gt;</span></p>\r\n<p>&nbsp;</p>\r\n<p><span style=\"text-decoration:underline\"><span style=\"color:#800000\">THIS IS FROM 850</span></span></p>\r\n<p><span style=\"color:#000000\">I am not sure why CCT01 is represented differently here.</span></p>\r\n<p>&nbsp;&nbsp; &lt;Loop LoopId=&quot;CTT&quot; Name=&quot;&quot;&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CTT&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"color:#ff0000\"> &lt;CTT01&gt;</span><br>\r\n<span style=\"color:#ff0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CTT0101&gt;2&lt;/CTT0101&gt;</span><br>\r\n<span style=\"color:#ff0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;CTT0102 /&gt;</span><br>\r\n<span style=\"color:#ff0000\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/CTT01&gt;</span><br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/CTT&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;AMT&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!--Amount Qualifier Code--&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;AMT01&gt;TT&lt;/AMT01&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!--Monetary Amount--&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;AMT02&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;AMT0201&gt;12&lt;/AMT0201&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;AMT0202 /&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/AMT02&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/AMT&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;/Loop&gt;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-02T12:15:21.157-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002469",
+    "ThreadId": "428283",
+    "Html": "This is due to a sub-element delimiter appearing on that segment.\r<br />\nThis is character 105 in the ISA segment.\r<br />\n<br />\nYour CTT segment in your file might look like this:\r<br />\nCTT*2:*~\r<br />\n<br />\nIn the above case the ~ is the segment delimiter, the * is the element delimiter and the : is the sub-element delimiter.\r<br />\nSometimes this happens because someone doesn't realize their using a delimiter within the content of their data.<br />\n",
+    "PostedDate": "2013-02-17T11:40:42.13-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

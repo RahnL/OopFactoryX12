@@ -1,0 +1,1377 @@
+[
+  {
+    "Id": "228007",
+    "Title": "835 Files",
+    "LatestDate": "2010-10-01T13:06:33.8-07:00"
+  },
+  {
+    "Id": "233675",
+    "Title": "Great project",
+    "LatestDate": "2010-11-05T12:10:31.823-07:00"
+  },
+  {
+    "Id": "250243",
+    "Title": "856 spec",
+    "LatestDate": "2011-03-18T07:11:15.98-07:00"
+  },
+  {
+    "Id": "260972",
+    "Title": "Parser Utilization",
+    "LatestDate": "2011-06-14T09:14:32.387-07:00"
+  },
+  {
+    "Id": "262351",
+    "Title": "Is there any good resource to start learning EDI?",
+    "LatestDate": "2011-07-01T06:15:58.48-07:00"
+  },
+  {
+    "Id": "262543",
+    "Title": "Create Message with API and Generate X12",
+    "LatestDate": "2011-06-25T11:17:06.957-07:00"
+  },
+  {
+    "Id": "263319",
+    "Title": "Unbundling How To?",
+    "LatestDate": "2011-07-10T12:57:19.647-07:00"
+  },
+  {
+    "Id": "263624",
+    "Title": "TransformToX12 How To... first attempt",
+    "LatestDate": "2011-07-12T17:39:24.977-07:00"
+  },
+  {
+    "Id": "263921",
+    "Title": "Wanted Add GUI",
+    "LatestDate": "2011-07-06T03:51:29.187-07:00"
+  },
+  {
+    "Id": "264028",
+    "Title": "XSLT for Loop 2110",
+    "LatestDate": "2011-07-11T00:00:56.727-07:00"
+  },
+  {
+    "Id": "265463",
+    "Title": "Message Version",
+    "LatestDate": "2011-08-14T09:10:31.973-07:00"
+  },
+  {
+    "Id": "265789",
+    "Title": "unbundlex12.exe command line arguments",
+    "LatestDate": "2011-07-20T07:16:32.12-07:00"
+  },
+  {
+    "Id": "266473",
+    "Title": "837I parse error",
+    "LatestDate": "2011-07-27T05:13:58.827-07:00"
+  },
+  {
+    "Id": "266785",
+    "Title": "unbundling 837 question",
+    "LatestDate": "2011-09-02T07:28:07.47-07:00"
+  },
+  {
+    "Id": "268377",
+    "Title": "Retrieving StartingSegments from 835",
+    "LatestDate": "2011-08-10T09:20:12.027-07:00"
+  },
+  {
+    "Id": "270711",
+    "Title": "File Viewer",
+    "LatestDate": "2012-06-05T09:24:48.993-07:00"
+  },
+  {
+    "Id": "273412",
+    "Title": "X12 From Model",
+    "LatestDate": "2011-09-22T06:20:51.187-07:00"
+  },
+  {
+    "Id": "273644",
+    "Title": "Getting latest",
+    "LatestDate": "2011-09-24T07:41:55.42-07:00"
+  },
+  {
+    "Id": "273652",
+    "Title": "How to check the SegmentId",
+    "LatestDate": "2011-09-23T17:50:52.11-07:00"
+  },
+  {
+    "Id": "273706",
+    "Title": "Parsing TA1 Messages",
+    "LatestDate": "2011-09-26T20:26:53.33-07:00"
+  },
+  {
+    "Id": "275387",
+    "Title": "XSL For 4010 to 5010 Conversion",
+    "LatestDate": "2011-10-13T15:59:24.3-07:00"
+  },
+  {
+    "Id": "276065",
+    "Title": "TransformToX12",
+    "LatestDate": "2011-10-16T10:26:04.103-07:00"
+  },
+  {
+    "Id": "277667",
+    "Title": "VB CODE FOR CREATING 810 Invoice",
+    "LatestDate": "2011-10-29T21:53:15.397-07:00"
+  },
+  {
+    "Id": "278387",
+    "Title": "Generating 837i",
+    "LatestDate": "2016-10-15T06:51:15.173-07:00"
+  },
+  {
+    "Id": "283565",
+    "Title": "NuGet Package",
+    "LatestDate": "2013-05-16T15:23:19.98-07:00"
+  },
+  {
+    "Id": "284522",
+    "Title": "Porting X12 Parser to Linux with mono",
+    "LatestDate": "2011-12-29T15:05:44.207-08:00"
+  },
+  {
+    "Id": "287539",
+    "Title": "Error Converting to HTML on Straight EDI X12",
+    "LatestDate": "2012-03-14T18:28:36.403-07:00"
+  },
+  {
+    "Id": "287867",
+    "Title": "EDIFACT?",
+    "LatestDate": "2014-04-07T04:57:01.717-07:00"
+  },
+  {
+    "Id": "294499",
+    "Title": "rules for xml generation",
+    "LatestDate": "2012-02-08T12:27:13.13-08:00"
+  },
+  {
+    "Id": "297585",
+    "Title": "Loop 2000C PAT segment 5010 837P file",
+    "LatestDate": "2012-02-08T16:45:50.537-08:00"
+  },
+  {
+    "Id": "313738",
+    "Title": "build documentation",
+    "LatestDate": "2012-02-15T10:24:01.133-08:00"
+  },
+  {
+    "Id": "344730",
+    "Title": "Transform ClaimDocument to 837P",
+    "LatestDate": "2015-02-24T11:47:27.987-08:00"
+  },
+  {
+    "Id": "346708",
+    "Title": "display <!--comments--> as attributes",
+    "LatestDate": "2012-02-29T09:48:26.423-08:00"
+  },
+  {
+    "Id": "348469",
+    "Title": "Generate XML with unique names for <Loop> element",
+    "LatestDate": "2012-03-23T10:02:44.797-07:00"
+  },
+  {
+    "Id": "350346",
+    "Title": "Unbundle not creating any output",
+    "LatestDate": "2012-04-04T07:49:04.41-07:00"
+  },
+  {
+    "Id": "351325",
+    "Title": "1 is not a valid subelement separator in position 105 of the file.",
+    "LatestDate": "2012-04-09T10:56:21.967-07:00"
+  },
+  {
+    "Id": "353716",
+    "Title": "Error parsing 850 file",
+    "LatestDate": "2012-04-26T10:36:03.72-07:00"
+  },
+  {
+    "Id": "354862",
+    "Title": "Current state of 270/271 models",
+    "LatestDate": "2012-11-27T19:30:44.603-08:00"
+  },
+  {
+    "Id": "355297",
+    "Title": "Converting X12 270 XML transaction to EDI",
+    "LatestDate": "2012-05-23T06:41:25.653-07:00"
+  },
+  {
+    "Id": "355921",
+    "Title": "Bundling X12 Claims",
+    "LatestDate": "2014-09-26T14:49:12.983-07:00"
+  },
+  {
+    "Id": "356540",
+    "Title": "SegmentSpecification Name Property",
+    "LatestDate": "2012-05-21T06:04:22.29-07:00"
+  },
+  {
+    "Id": "356976",
+    "Title": "Parsing 271 response records using X12Parser",
+    "LatestDate": "2014-01-07T08:28:44.543-08:00"
+  },
+  {
+    "Id": "358256",
+    "Title": "856 with a different order for CTT?",
+    "LatestDate": "2012-06-04T08:17:15.57-07:00"
+  },
+  {
+    "Id": "358260",
+    "Title": "When x12parser fails, it crashes",
+    "LatestDate": "2012-06-04T09:39:49.093-07:00"
+  },
+  {
+    "Id": "371171",
+    "Title": "UnbundleByLoop 2300 only unbundling some of the 2300s in a claim",
+    "LatestDate": "2012-07-16T15:26:14.923-07:00"
+  },
+  {
+    "Id": "389042",
+    "Title": "XSLT for 835",
+    "LatestDate": "2012-07-29T09:19:34.2-07:00"
+  },
+  {
+    "Id": "390233",
+    "Title": "CLM02, SerializeToX12 and leading zeroes",
+    "LatestDate": "2013-04-04T09:54:51.413-07:00"
+  },
+  {
+    "Id": "390657",
+    "Title": "Looking for some help.  Read an 837I and produce a 999",
+    "LatestDate": "2012-08-14T05:49:14.273-07:00"
+  },
+  {
+    "Id": "391029",
+    "Title": "Converting 5010 835 to 4010 835...",
+    "LatestDate": "2012-08-13T08:02:19.997-07:00"
+  },
+  {
+    "Id": "391706",
+    "Title": "TransactionValidationException on 837P 5010 file",
+    "LatestDate": "2015-01-29T09:23:31.077-08:00"
+  },
+  {
+    "Id": "392044",
+    "Title": "workin with complex elements",
+    "LatestDate": "2012-08-17T07:36:25.69-07:00"
+  },
+  {
+    "Id": "393148",
+    "Title": "Validation of X12",
+    "LatestDate": "2012-08-26T19:46:48.38-07:00"
+  },
+  {
+    "Id": "393209",
+    "Title": "Issue with unbundling 837 files",
+    "LatestDate": "2012-09-04T18:15:14.137-07:00"
+  },
+  {
+    "Id": "393253",
+    "Title": "OopFactory.X12.Hipaa.Eligibility Samples",
+    "LatestDate": "2012-08-28T17:01:46.383-07:00"
+  },
+  {
+    "Id": "393506",
+    "Title": "SE counts not updated or wrong.",
+    "LatestDate": "2012-09-10T14:01:26.33-07:00"
+  },
+  {
+    "Id": "393919",
+    "Title": "Create x12 file from ClaimDocument object",
+    "LatestDate": "2012-09-05T08:03:11.827-07:00"
+  },
+  {
+    "Id": "394484",
+    "Title": "TypedSegmentDTP only for DEBUG",
+    "LatestDate": "2012-09-05T07:12:01.727-07:00"
+  },
+  {
+    "Id": "394513",
+    "Title": "Issue processing 5010 837 data",
+    "LatestDate": "2012-09-06T17:36:18.32-07:00"
+  },
+  {
+    "Id": "395020",
+    "Title": "trim down the interchange, functiongroup, transaction model",
+    "LatestDate": "2012-09-10T12:25:21.3-07:00"
+  },
+  {
+    "Id": "395350",
+    "Title": "Having 835 parsing issue",
+    "LatestDate": "2012-09-13T08:52:46.917-07:00"
+  },
+  {
+    "Id": "395436",
+    "Title": "EDI 867 - Do you have plans to support this specification?",
+    "LatestDate": "2012-09-13T18:59:40.133-07:00"
+  },
+  {
+    "Id": "395596",
+    "Title": "Easy way break apart 837 message...",
+    "LatestDate": "2012-09-14T13:17:20.443-07:00"
+  },
+  {
+    "Id": "395994",
+    "Title": "Issue with LoopContainer and segment",
+    "LatestDate": "2012-09-18T14:33:48.417-07:00"
+  },
+  {
+    "Id": "397607",
+    "Title": "Create 837P Transaction",
+    "LatestDate": "2012-10-30T22:07:04.123-07:00"
+  },
+  {
+    "Id": "397677",
+    "Title": "Using OopsFactory with MonoDevelop/Mono",
+    "LatestDate": "2012-10-02T04:26:53.143-07:00"
+  },
+  {
+    "Id": "397865",
+    "Title": "Claim object's Payer property not picking up of Payer Indentification",
+    "LatestDate": "2012-10-22T18:47:29.177-07:00"
+  },
+  {
+    "Id": "397970",
+    "Title": "SNIP Levels",
+    "LatestDate": "2012-10-04T09:13:52.54-07:00"
+  },
+  {
+    "Id": "398844",
+    "Title": "837 Professional Claim Form to EDI Converter",
+    "LatestDate": "2012-10-30T07:24:55.427-07:00"
+  },
+  {
+    "Id": "401228",
+    "Title": "835 - Provider adjustment problem",
+    "LatestDate": "2012-11-03T05:45:25.607-07:00"
+  },
+  {
+    "Id": "401766",
+    "Title": "835 record to EOB (PDF) form conversion service",
+    "LatestDate": "2012-11-03T08:50:27.18-07:00"
+  },
+  {
+    "Id": "401803",
+    "Title": "TransformToX12",
+    "LatestDate": "2012-11-03T20:34:43.577-07:00"
+  },
+  {
+    "Id": "401835",
+    "Title": "837 claim parser not populating \"OccurrenceSpans\" (InstitutionalClaim4010.txt)",
+    "LatestDate": "2012-11-04T09:03:01.593-08:00"
+  },
+  {
+    "Id": "402285",
+    "Title": "Passing in multiple files to the X12parser",
+    "LatestDate": "2012-11-07T10:39:34.793-08:00"
+  },
+  {
+    "Id": "402986",
+    "Title": "TransformToX12 not generating correct EDI",
+    "LatestDate": "2012-11-13T01:23:57.47-08:00"
+  },
+  {
+    "Id": "404145",
+    "Title": "Unbundling by CLP01 / Merging 835's",
+    "LatestDate": "2012-11-22T06:42:06.443-08:00"
+  },
+  {
+    "Id": "404771",
+    "Title": "P is not a valid subelement in position 105",
+    "LatestDate": "2012-11-28T00:28:22.173-08:00"
+  },
+  {
+    "Id": "406024",
+    "Title": "How to properly handle multiple transactions?",
+    "LatestDate": "2012-12-07T15:01:23.577-08:00"
+  },
+  {
+    "Id": "415242",
+    "Title": "Comments on your design",
+    "LatestDate": "2013-02-17T11:09:05.863-08:00"
+  },
+  {
+    "Id": "415277",
+    "Title": "POI (present on admission) missing when parsing 837i?",
+    "LatestDate": "2013-02-17T11:52:55.31-08:00"
+  },
+  {
+    "Id": "426703",
+    "Title": "X12 Acknowledgement creation - null error encountered (elementNote.ContextErrors)",
+    "LatestDate": "2012-12-26T18:16:51.193-08:00"
+  },
+  {
+    "Id": "428283",
+    "Title": "CTT segment in 832 and 850 - Serialzied XML looks different",
+    "LatestDate": "2013-02-17T11:40:42.13-08:00"
+  },
+  {
+    "Id": "428293",
+    "Title": "CUR (currency) segment in 850",
+    "LatestDate": "2013-02-17T11:47:23.467-08:00"
+  },
+  {
+    "Id": "428516",
+    "Title": "unbundling 832 by LIN loop",
+    "LatestDate": "2013-02-17T11:45:23.21-08:00"
+  },
+  {
+    "Id": "428616",
+    "Title": "Loop Ids for x12 files",
+    "LatestDate": "2013-02-17T11:35:13.407-08:00"
+  },
+  {
+    "Id": "428817",
+    "Title": "855 spelling -     <Loop LoopId=\"ACK\" Name=\"Line Item Acknowledgmen\">",
+    "LatestDate": "2013-02-17T11:42:23.343-08:00"
+  },
+  {
+    "Id": "429085",
+    "Title": "856 (ASN) example data files showing errors when opened with Liaison EDI Notepad application",
+    "LatestDate": "2013-02-18T10:22:38.79-08:00"
+  },
+  {
+    "Id": "432025",
+    "Title": "Is it possible add support for X12.852, the Product Activity Data?",
+    "LatestDate": "2013-02-17T11:30:56.5-08:00"
+  },
+  {
+    "Id": "433588",
+    "Title": "Batch Parsing of 835's",
+    "LatestDate": "2013-03-28T18:34:38.073-07:00"
+  },
+  {
+    "Id": "434660",
+    "Title": "Any assistance is very much appreciated",
+    "LatestDate": "2013-03-07T07:27:31.2-08:00"
+  },
+  {
+    "Id": "434997",
+    "Title": "How to generate a 270 edi file using only the OopFactory.X12.Hipaa.Eligibility?",
+    "LatestDate": "2013-03-01T02:11:36.113-08:00"
+  },
+  {
+    "Id": "434998",
+    "Title": " Is it possible to transform the object of the Claim to 837P file?",
+    "LatestDate": "2013-03-14T08:19:44.82-07:00"
+  },
+  {
+    "Id": "438217",
+    "Title": "X12 837 P Database",
+    "LatestDate": "2013-04-14T10:43:27.43-07:00"
+  },
+  {
+    "Id": "438378",
+    "Title": "837I Parse",
+    "LatestDate": "2013-04-04T12:48:32.42-07:00"
+  },
+  {
+    "Id": "438815",
+    "Title": "Error unbundling X12 837 Professional ",
+    "LatestDate": "2013-04-08T15:23:55.107-07:00"
+  },
+  {
+    "Id": "438816",
+    "Title": "Hierarchical Loop error unbundling 837 P claims (5010)",
+    "LatestDate": "2013-04-03T12:18:13.237-07:00"
+  },
+  {
+    "Id": "439177",
+    "Title": "Problem Executing from command prompt",
+    "LatestDate": "2013-04-08T07:00:37.11-07:00"
+  },
+  {
+    "Id": "439522",
+    "Title": "837 XSLT",
+    "LatestDate": "2013-04-17T18:19:34.097-07:00"
+  },
+  {
+    "Id": "439791",
+    "Title": "Supporting Documentation and EDI 837",
+    "LatestDate": "2013-04-15T12:07:13.217-07:00"
+  },
+  {
+    "Id": "440661",
+    "Title": "X12 WEDI level validaton",
+    "LatestDate": "2013-04-17T13:03:25.327-07:00"
+  },
+  {
+    "Id": "440842",
+    "Title": "OopFactory.X12.ImportX12",
+    "LatestDate": "2013-04-18T17:59:27.17-07:00"
+  },
+  {
+    "Id": "441616",
+    "Title": "ImportX12",
+    "LatestDate": "2013-04-25T17:35:37.34-07:00"
+  },
+  {
+    "Id": "441849",
+    "Title": "I'm impressed",
+    "LatestDate": "2013-04-28T08:15:48.323-07:00"
+  },
+  {
+    "Id": "442085",
+    "Title": "A General Industry Question",
+    "LatestDate": "2013-04-30T07:09:03.6-07:00"
+  },
+  {
+    "Id": "442127",
+    "Title": "Specification question",
+    "LatestDate": "2013-05-01T14:48:23.297-07:00"
+  },
+  {
+    "Id": "442269",
+    "Title": "Invalid character",
+    "LatestDate": "2013-05-12T07:58:26.393-07:00"
+  },
+  {
+    "Id": "442375",
+    "Title": "Invalid diag_code_pointer specification in SV107 in version 3.0.1 above",
+    "LatestDate": "2013-05-02T18:17:40.803-07:00"
+  },
+  {
+    "Id": "442376",
+    "Title": "Tooth surface information got dropped after service.Transform837ToClaimDocument()",
+    "LatestDate": "2013-05-02T19:03:03.133-07:00"
+  },
+  {
+    "Id": "443172",
+    "Title": "TransactionValidationException",
+    "LatestDate": "2013-05-09T15:26:18.05-07:00"
+  },
+  {
+    "Id": "443274",
+    "Title": "Unique identification of a each claim.",
+    "LatestDate": "2013-05-30T11:03:21.75-07:00"
+  },
+  {
+    "Id": "443286",
+    "Title": "834 XSD files",
+    "LatestDate": "2013-05-10T12:24:22.907-07:00"
+  },
+  {
+    "Id": "443405",
+    "Title": "NullReferenceException",
+    "LatestDate": "2013-05-12T16:58:33.6-07:00"
+  },
+  {
+    "Id": "443621",
+    "Title": "Unbundle doesn't include SE* segment?",
+    "LatestDate": "2013-08-29T13:49:19.14-07:00"
+  },
+  {
+    "Id": "443730",
+    "Title": "5010 files with newlines after every 80 characters",
+    "LatestDate": "2013-08-09T12:30:25.827-07:00"
+  },
+  {
+    "Id": "444080",
+    "Title": "Error while creating Acknowledgments for professional claim (837)",
+    "LatestDate": "2013-09-15T08:33:35.603-07:00"
+  },
+  {
+    "Id": "444486",
+    "Title": "Unbundle by Functional Group",
+    "LatestDate": "2013-05-21T14:48:07.52-07:00"
+  },
+  {
+    "Id": "444620",
+    "Title": "SQL Table Names",
+    "LatestDate": "2013-05-29T15:37:55.827-07:00"
+  },
+  {
+    "Id": "444906",
+    "Title": "Cannot process 811 Transaction",
+    "LatestDate": "2013-07-15T05:38:48.03-07:00"
+  },
+  {
+    "Id": "444908",
+    "Title": "Error on X12 to Claim",
+    "LatestDate": "2013-05-24T09:22:51.623-07:00"
+  },
+  {
+    "Id": "445491",
+    "Title": "Is there an easy way to document ANSI 837 structure to database structure?",
+    "LatestDate": "2013-05-30T12:08:18.36-07:00"
+  },
+  {
+    "Id": "445578",
+    "Title": "Table Structures",
+    "LatestDate": "2013-05-31T08:23:46.567-07:00"
+  },
+  {
+    "Id": "445866",
+    "Title": "NSF (National Standard Format) to X12",
+    "LatestDate": "2013-06-03T13:10:56.177-07:00"
+  },
+  {
+    "Id": "446123",
+    "Title": "ParseMultiple overloads question.",
+    "LatestDate": "2013-06-05T15:18:02.653-07:00"
+  },
+  {
+    "Id": "446378",
+    "Title": "\"The ANSI header is defined at the EMC Receiver level\"",
+    "LatestDate": "2013-06-11T08:15:49.197-07:00"
+  },
+  {
+    "Id": "446723",
+    "Title": "Missing Loops in 5010 837P.  (Billing Provider, Payer, Patient) How do I add these loops to serialize to x12?",
+    "LatestDate": "2013-06-11T12:23:17.927-07:00"
+  },
+  {
+    "Id": "446728",
+    "Title": "SerializeToX12 Decimal Places ",
+    "LatestDate": "2013-06-11T14:27:31.09-07:00"
+  },
+  {
+    "Id": "447480",
+    "Title": "Example of creating a invoice (810) X12",
+    "LatestDate": "2013-08-27T14:20:29.637-07:00"
+  },
+  {
+    "Id": "447595",
+    "Title": "Unbundling loops",
+    "LatestDate": "2013-06-19T13:32:27.27-07:00"
+  },
+  {
+    "Id": "448480",
+    "Title": "Extract useful data from X12Parser object",
+    "LatestDate": "2013-08-16T08:00:36.49-07:00"
+  },
+  {
+    "Id": "449361",
+    "Title": "271 Display Comments for EB03 Service Type Code",
+    "LatestDate": "2014-01-13T07:43:17.163-08:00"
+  },
+  {
+    "Id": "449475",
+    "Title": "HL Loop Parent ID 0 Validation",
+    "LatestDate": "2013-07-09T09:41:11.643-07:00"
+  },
+  {
+    "Id": "449944",
+    "Title": "Domain Driven Design",
+    "LatestDate": "2013-07-18T15:49:56.833-07:00"
+  },
+  {
+    "Id": "449994",
+    "Title": "write data into Interchange Object",
+    "LatestDate": "2013-07-29T11:44:30.71-07:00"
+  },
+  {
+    "Id": "450308",
+    "Title": "270 Eligibility Request",
+    "LatestDate": "2014-01-17T18:33:21.563-08:00"
+  },
+  {
+    "Id": "450343",
+    "Title": "837 OopFactory.X12.Hipaa.Claims.DrugIdentification class: UnitPrice and Quantity missing",
+    "LatestDate": "2013-07-17T08:19:56.2-07:00"
+  },
+  {
+    "Id": "451552",
+    "Title": "Missing format in DTPFormatQualifier",
+    "LatestDate": "2013-07-26T13:43:09.567-07:00"
+  },
+  {
+    "Id": "451687",
+    "Title": "277 5010 sample file has invalid date values",
+    "LatestDate": "2013-09-15T15:22:15.61-07:00"
+  },
+  {
+    "Id": "451704",
+    "Title": "277 - Loop 2200A has wrong name",
+    "LatestDate": "2013-09-15T08:41:14.743-07:00"
+  },
+  {
+    "Id": "452135",
+    "Title": "ANSI ASC X12.835, Health Care Claim Payment/ Advice (835) Parser Program (ASC X12N/005010X221)",
+    "LatestDate": "2013-08-01T11:14:01.613-07:00"
+  },
+  {
+    "Id": "452234",
+    "Title": "Creation of 277 X12 File sample code",
+    "LatestDate": "2013-08-02T07:10:58.963-07:00"
+  },
+  {
+    "Id": "452518",
+    "Title": "Output X12 validation",
+    "LatestDate": "2013-08-06T00:32:33.7-07:00"
+  },
+  {
+    "Id": "452969",
+    "Title": "Troubleshooting 837P Errors",
+    "LatestDate": "2013-08-22T19:18:04.603-07:00"
+  },
+  {
+    "Id": "454049",
+    "Title": "License with x12parser tool",
+    "LatestDate": "2013-08-22T19:05:23.903-07:00"
+  },
+  {
+    "Id": "454220",
+    "Title": "Xml Schema for oopfactory x12 parser",
+    "LatestDate": "2013-08-22T19:08:43.473-07:00"
+  },
+  {
+    "Id": "454588",
+    "Title": "Create EDI file from HCFA1500Claim object",
+    "LatestDate": "2013-08-26T16:33:11.253-07:00"
+  },
+  {
+    "Id": "454798",
+    "Title": "SV107_CompDiagCodePoint cannot be set as \"1:2:3\". it is decimal only?",
+    "LatestDate": "2013-09-15T08:24:35.83-07:00"
+  },
+  {
+    "Id": "454902",
+    "Title": "SqlReadOnlyTransactionRepository to X12",
+    "LatestDate": "2013-08-30T08:52:06.847-07:00"
+  },
+  {
+    "Id": "455526",
+    "Title": "Can't parse the sample 834 Transaction or a standard 997",
+    "LatestDate": "2013-09-11T14:19:39.803-07:00"
+  },
+  {
+    "Id": "456401",
+    "Title": "First attempt to Parse 4010 837P resulted in error",
+    "LatestDate": "2013-09-10T14:47:51.17-07:00"
+  },
+  {
+    "Id": "456458",
+    "Title": "On Dental Claim, SV3.SV311 has wrong constrain in length.",
+    "LatestDate": "2013-09-15T08:22:03.993-07:00"
+  },
+  {
+    "Id": "456505",
+    "Title": "HL7 parser",
+    "LatestDate": "2013-11-18T10:58:58.977-08:00"
+  },
+  {
+    "Id": "456544",
+    "Title": "Message: There is an error in XML document (826, 142)",
+    "LatestDate": "2013-09-18T10:00:53.303-07:00"
+  },
+  {
+    "Id": "456672",
+    "Title": "Multiple ISA segments in a single file.",
+    "LatestDate": "2013-09-12T06:35:55.003-07:00"
+  },
+  {
+    "Id": "456721",
+    "Title": "Custom Element Name not showing in output XML file",
+    "LatestDate": "2013-09-12T14:41:10.95-07:00"
+  },
+  {
+    "Id": "457286",
+    "Title": "Import 837 to DataBase",
+    "LatestDate": "2015-05-14T00:29:31.403-07:00"
+  },
+  {
+    "Id": "457332",
+    "Title": "Translation of an error message.",
+    "LatestDate": "2013-10-02T06:48:03.943-07:00"
+  },
+  {
+    "Id": "458566",
+    "Title": "New Bug found for TransformClaimDocumentToFoXml for Dental Claim",
+    "LatestDate": "2013-09-20T08:35:59.327-07:00"
+  },
+  {
+    "Id": "458847",
+    "Title": "Insurance company practices",
+    "LatestDate": "2013-09-23T18:59:23.927-07:00"
+  },
+  {
+    "Id": "459385",
+    "Title": "Substituting <Loop> element names from custom xsd",
+    "LatestDate": "2013-09-26T13:02:09.08-07:00"
+  },
+  {
+    "Id": "460956",
+    "Title": "Storing ICD-9 Values",
+    "LatestDate": "2013-10-02T11:57:08.81-07:00"
+  },
+  {
+    "Id": "461382",
+    "Title": "Override Unbundle Method",
+    "LatestDate": "2013-10-07T05:23:38.863-07:00"
+  },
+  {
+    "Id": "461533",
+    "Title": "852 Product Activity Data elements missing?",
+    "LatestDate": "2013-10-14T06:14:20.217-07:00"
+  },
+  {
+    "Id": "462137",
+    "Title": "header contains RISA",
+    "LatestDate": "2013-10-16T06:26:08.007-07:00"
+  },
+  {
+    "Id": "462615",
+    "Title": "X12.ImportX12 not creating all segment tables",
+    "LatestDate": "2013-10-21T08:27:26.523-07:00"
+  },
+  {
+    "Id": "462635",
+    "Title": "Loop N1* could not be added because it could not be found in the specification for ST",
+    "LatestDate": "2013-11-13T08:31:25.873-08:00"
+  },
+  {
+    "Id": "462651",
+    "Title": "Tax id for Hospital in 5010 837 `REF*EI*123456789~` not showing up correctly in UB04Claim object.",
+    "LatestDate": "2013-10-17T16:10:05.383-07:00"
+  },
+  {
+    "Id": "463192",
+    "Title": "Validation",
+    "LatestDate": "2013-10-22T10:54:50.147-07:00"
+  },
+  {
+    "Id": "463198",
+    "Title": "Ansi-837 5010 file with newline (LF) as a segment delimiter.",
+    "LatestDate": "2013-10-28T07:12:37.923-07:00"
+  },
+  {
+    "Id": "463443",
+    "Title": "Composite Element Example?",
+    "LatestDate": "2013-10-24T09:35:32.56-07:00"
+  },
+  {
+    "Id": "465110",
+    "Title": "CMS/DSH Federal Exchange 834 Effectuation file generation",
+    "LatestDate": "2013-11-01T10:02:41.177-07:00"
+  },
+  {
+    "Id": "465116",
+    "Title": "Full Oct 2012 EDI Workbook from ASCX12 is currently downloadable for free",
+    "LatestDate": "2017-06-08T05:01:06.107-07:00"
+  },
+  {
+    "Id": "465201",
+    "Title": "How to bundle x12 claims into a single x12 file",
+    "LatestDate": "2013-11-04T17:51:11.82-08:00"
+  },
+  {
+    "Id": "465655",
+    "Title": "help-installing X12Parser.exe",
+    "LatestDate": "2016-09-07T12:25:47.317-07:00"
+  },
+  {
+    "Id": "466201",
+    "Title": "Can the X12 Interchange Model parse large 10M 832 files?",
+    "LatestDate": "2013-11-07T07:35:10.643-08:00"
+  },
+  {
+    "Id": "466341",
+    "Title": "Is MaxBatchSize in the config file needed for X12 Interchange Model?",
+    "LatestDate": "2013-11-07T07:38:54.987-08:00"
+  },
+  {
+    "Id": "466751",
+    "Title": "Is this the most efficient way to process all the LIN segments in an 832 file?",
+    "LatestDate": "2013-11-07T07:33:36.183-08:00"
+  },
+  {
+    "Id": "466754",
+    "Title": "What is an HLoop vs. a regular Loop?",
+    "LatestDate": "2013-11-07T07:39:35.267-08:00"
+  },
+  {
+    "Id": "470452",
+    "Title": "Hierarchical Loop failures",
+    "LatestDate": "2013-12-11T15:28:26.127-08:00"
+  },
+  {
+    "Id": "470537",
+    "Title": "Exporting X12 documents",
+    "LatestDate": "2013-11-19T22:29:49.813-08:00"
+  },
+  {
+    "Id": "470604",
+    "Title": ".Net 3.5 Compatibility",
+    "LatestDate": "2013-11-20T16:30:27.807-08:00"
+  },
+  {
+    "Id": "471323",
+    "Title": "Get TypedLoop When Parsing",
+    "LatestDate": "2013-11-27T09:40:55.757-08:00"
+  },
+  {
+    "Id": "472115",
+    "Title": "Context Errors (CTX segments) when generating 999",
+    "LatestDate": "2015-01-27T10:42:24.387-08:00"
+  },
+  {
+    "Id": "472676",
+    "Title": "Convert 4010 to 5010",
+    "LatestDate": "2013-12-10T14:27:37.423-08:00"
+  },
+  {
+    "Id": "473509",
+    "Title": "Terms for Healthcare Files",
+    "LatestDate": "2013-12-26T06:00:20.487-08:00"
+  },
+  {
+    "Id": "473548",
+    "Title": "834 Transformation File",
+    "LatestDate": "2014-01-23T07:02:33.35-08:00"
+  },
+  {
+    "Id": "479297",
+    "Title": "Generate 5010 834 file from scratch.",
+    "LatestDate": "2014-08-05T06:01:13.773-07:00"
+  },
+  {
+    "Id": "480137",
+    "Title": "parsing 835 to pdf",
+    "LatestDate": "2014-01-03T14:16:23.943-08:00"
+  },
+  {
+    "Id": "502341",
+    "Title": "Error with 4010 Professional",
+    "LatestDate": "2014-02-06T07:28:56.173-08:00"
+  },
+  {
+    "Id": "510017",
+    "Title": "Documentation - Table of contents",
+    "LatestDate": "2014-01-23T06:47:41.303-08:00"
+  },
+  {
+    "Id": "518059",
+    "Title": "852 Conversion to csv help",
+    "LatestDate": "2014-01-23T06:40:37.95-08:00"
+  },
+  {
+    "Id": "528194",
+    "Title": "Edit 837 file with Excel",
+    "LatestDate": "2014-01-30T08:45:57.233-08:00"
+  },
+  {
+    "Id": "528196",
+    "Title": "Parse(System.IO.Stream)' is obsolete",
+    "LatestDate": "2014-02-11T14:54:43.797-08:00"
+  },
+  {
+    "Id": "528456",
+    "Title": "Strip the ACH Payment (STP 820) info from NACHA file?",
+    "LatestDate": "2014-01-30T11:12:35.907-08:00"
+  },
+  {
+    "Id": "529345",
+    "Title": "Modify an X12",
+    "LatestDate": "2014-02-10T13:46:13.543-08:00"
+  },
+  {
+    "Id": "531109",
+    "Title": "Error: Object reference not set to an instance of an object",
+    "LatestDate": "2014-02-10T00:21:59.453-08:00"
+  },
+  {
+    "Id": "532786",
+    "Title": "Transform 271 Transaction as HTML",
+    "LatestDate": "2014-02-19T08:58:53.893-08:00"
+  },
+  {
+    "Id": "535669",
+    "Title": "Example for creating 850 Purchase Order",
+    "LatestDate": "2014-02-26T09:42:20.78-08:00"
+  },
+  {
+    "Id": "539329",
+    "Title": "Grouping of similar nodes in xml",
+    "LatestDate": "2014-03-18T02:55:40.17-07:00"
+  },
+  {
+    "Id": "539751",
+    "Title": "Modify HI segment of 837 I & P files",
+    "LatestDate": "2014-03-21T10:11:25.55-07:00"
+  },
+  {
+    "Id": "539752",
+    "Title": "Unbound 837 using ST segment",
+    "LatestDate": "2014-03-21T10:13:21.88-07:00"
+  },
+  {
+    "Id": "539978",
+    "Title": "Patient Ethnicity",
+    "LatestDate": "2014-03-24T09:06:37.78-07:00"
+  },
+  {
+    "Id": "541143",
+    "Title": "Unix version of x12 parser",
+    "LatestDate": "2014-04-03T23:16:01.063-07:00"
+  },
+  {
+    "Id": "541144",
+    "Title": "3.5 version of x12 parser",
+    "LatestDate": "2014-04-03T23:17:07.893-07:00"
+  },
+  {
+    "Id": "541271",
+    "Title": "810 Invoice SAC segment incorrect order?",
+    "LatestDate": "2014-04-19T05:24:53.327-07:00"
+  },
+  {
+    "Id": "541741",
+    "Title": "EligibilityBenefitDocument to X12",
+    "LatestDate": "2014-04-09T07:09:13.083-07:00"
+  },
+  {
+    "Id": "541893",
+    "Title": "Question on unbundling 837 files",
+    "LatestDate": "2014-04-10T10:46:25.763-07:00"
+  },
+  {
+    "Id": "542373",
+    "Title": "Problem in parsing More than 10 MB file.",
+    "LatestDate": "2014-04-20T23:52:14.28-07:00"
+  },
+  {
+    "Id": "542713",
+    "Title": "837I file using \"OopFactory.X12.ImportX12\" fails ",
+    "LatestDate": "2015-05-14T00:26:24.51-07:00"
+  },
+  {
+    "Id": "545833",
+    "Title": "Validating a Member/Patient within 837P",
+    "LatestDate": "2014-05-19T08:17:15.823-07:00"
+  },
+  {
+    "Id": "546182",
+    "Title": "Parsing 856 Loop Ids",
+    "LatestDate": "2014-05-23T13:16:00.233-07:00"
+  },
+  {
+    "Id": "546647",
+    "Title": "Can ImportX12 generate foreign keys",
+    "LatestDate": "2014-05-26T19:38:13.393-07:00"
+  },
+  {
+    "Id": "549230",
+    "Title": "Unbundle X12 function results in \"Thread was being aborted\" error",
+    "LatestDate": "2014-07-01T14:55:50.647-07:00"
+  },
+  {
+    "Id": "551498",
+    "Title": "How to generate FA-997 for inbound 850",
+    "LatestDate": "2014-07-14T05:15:42.757-07:00"
+  },
+  {
+    "Id": "554656",
+    "Title": "DX2 is being skipped",
+    "LatestDate": "2014-07-30T14:11:18.993-07:00"
+  },
+  {
+    "Id": "554782",
+    "Title": "Claim Adjustment Segment - CAS missing",
+    "LatestDate": "2014-07-31T17:45:59.03-07:00"
+  },
+  {
+    "Id": "558897",
+    "Title": "X12Parser.UnbundleByLoop() and Transaction Trailer Segments.",
+    "LatestDate": "2014-08-05T10:20:26.233-07:00"
+  },
+  {
+    "Id": "559911",
+    "Title": "Generate EDI from scratch ",
+    "LatestDate": "2014-08-05T05:52:47.607-07:00"
+  },
+  {
+    "Id": "559916",
+    "Title": "Change this to a warning, pass throwExceptionOnSyntaxErrors",
+    "LatestDate": "2014-08-05T11:49:56.377-07:00"
+  },
+  {
+    "Id": "560312",
+    "Title": "EDI 830 - Need 'NTE' Segment",
+    "LatestDate": "2014-08-19T08:54:09.69-07:00"
+  },
+  {
+    "Id": "561703",
+    "Title": "filter out SegmentTerminator and ElementSeparator instead of throw exception",
+    "LatestDate": "2014-08-22T07:26:24.633-07:00"
+  },
+  {
+    "Id": "566941",
+    "Title": "Parsing UB-04 claim data",
+    "LatestDate": "2014-09-16T14:01:43.403-07:00"
+  },
+  {
+    "Id": "567806",
+    "Title": "Eligibility Benefit Inquiry and Response (270/271)",
+    "LatestDate": "2014-12-04T06:46:02.13-08:00"
+  },
+  {
+    "Id": "568099",
+    "Title": "Problems parsing NTE segments in 837 file",
+    "LatestDate": "2014-09-23T05:12:51.977-07:00"
+  },
+  {
+    "Id": "568751",
+    "Title": "Does X12 Parser provides the rule engine??",
+    "LatestDate": "2014-10-01T02:13:31.333-07:00"
+  },
+  {
+    "Id": "570532",
+    "Title": "837 X12 Database Extract",
+    "LatestDate": "2015-05-14T00:20:15.957-07:00"
+  },
+  {
+    "Id": "570724",
+    "Title": "How to create x12 270 batch using X12 Parser?",
+    "LatestDate": "2014-10-28T05:47:05.25-07:00"
+  },
+  {
+    "Id": "570759",
+    "Title": "XML Parser Error",
+    "LatestDate": "2014-10-28T12:55:59.997-07:00"
+  },
+  {
+    "Id": "571399",
+    "Title": "835 Unbundle creating corrupt files",
+    "LatestDate": "2014-11-05T13:40:55.097-08:00"
+  },
+  {
+    "Id": "571442",
+    "Title": "CSV file to 837 EDI ",
+    "LatestDate": "2014-11-06T05:43:13.267-08:00"
+  },
+  {
+    "Id": "573925",
+    "Title": "Generating 270 requests with Create270Test",
+    "LatestDate": "2014-12-03T09:17:55.307-08:00"
+  },
+  {
+    "Id": "576449",
+    "Title": "New HDMA ASN (856) Specifications - Is it supported?",
+    "LatestDate": "2014-12-29T11:16:47.227-08:00"
+  },
+  {
+    "Id": "578256",
+    "Title": "QTY segment missing in 2400 loop for 837",
+    "LatestDate": "2015-01-21T10:24:57.237-08:00"
+  },
+  {
+    "Id": "578378",
+    "Title": "Error when Importing 835 into SQL 2008",
+    "LatestDate": "2015-05-14T00:18:14.61-07:00"
+  },
+  {
+    "Id": "578395",
+    "Title": "Acknowledgement Service Unexpected IK5 for 834",
+    "LatestDate": "2015-01-22T15:13:14.467-08:00"
+  },
+  {
+    "Id": "579323",
+    "Title": "835 Builder",
+    "LatestDate": "2015-02-24T11:12:34.72-08:00"
+  },
+  {
+    "Id": "579699",
+    "Title": "need parsing of ANSI and result should show errors in ANSI structure itself",
+    "LatestDate": "2015-02-06T23:43:20.24-08:00"
+  },
+  {
+    "Id": "579789",
+    "Title": "Getting Error while building file",
+    "LatestDate": "2016-07-28T16:06:44.623-07:00"
+  },
+  {
+    "Id": "580573",
+    "Title": "Interchange requires repetition element separator",
+    "LatestDate": "2015-12-30T09:27:35.81-08:00"
+  },
+  {
+    "Id": "580682",
+    "Title": "Unbundlex12 Missing SE when Splitting 835's by Loop ID 1000B",
+    "LatestDate": "2015-02-13T07:22:00.843-08:00"
+  },
+  {
+    "Id": "626250",
+    "Title": "Large 834 Parsing and Unbundling (75MB+)",
+    "LatestDate": "2015-04-13T09:52:56.42-07:00"
+  },
+  {
+    "Id": "636140",
+    "Title": "Store 837 Account Numbers For Comparison",
+    "LatestDate": "2015-04-30T11:21:41.607-07:00"
+  },
+  {
+    "Id": "637760",
+    "Title": "WPF interface ",
+    "LatestDate": "2015-05-11T12:19:39.933-07:00"
+  },
+  {
+    "Id": "642376",
+    "Title": "OopFactory.X12.ImportX12 | Date Parsing | Receiving Errors Parsing Valid Date",
+    "LatestDate": "2015-08-05T09:07:58.35-07:00"
+  },
+  {
+    "Id": "642384",
+    "Title": "Formatting on 1500 transform slightly off",
+    "LatestDate": "2015-11-05T02:58:29.623-08:00"
+  },
+  {
+    "Id": "644286",
+    "Title": "X12 Specification Compliance Validation",
+    "LatestDate": "2015-08-27T05:45:35.28-07:00"
+  },
+  {
+    "Id": "645697",
+    "Title": "PMP Reporting using ASAP Standards",
+    "LatestDate": "2015-10-01T09:24:11.413-07:00"
+  },
+  {
+    "Id": "646274",
+    "Title": "Clarification of OopFactory dll license ",
+    "LatestDate": "2015-10-15T22:46:57.34-07:00"
+  },
+  {
+    "Id": "646902",
+    "Title": "x12 parser - X12 xml to response FLAT file conversion",
+    "LatestDate": "2015-11-02T06:35:02.977-08:00"
+  },
+  {
+    "Id": "647073",
+    "Title": "834 Compare Program",
+    "LatestDate": "2015-11-07T07:09:27.87-08:00"
+  },
+  {
+    "Id": "647893",
+    "Title": "Azure safe?",
+    "LatestDate": "2015-11-24T17:16:49.607-08:00"
+  },
+  {
+    "Id": "648297",
+    "Title": "Validate and convert Custom XML file into X12",
+    "LatestDate": "2015-12-02T22:46:40.433-08:00"
+  },
+  {
+    "Id": "648311",
+    "Title": "Memory exception parsing 820 to XML",
+    "LatestDate": "2015-12-03T12:15:08.827-08:00"
+  },
+  {
+    "Id": "650271",
+    "Title": "Transaction Set Code 867 isnt working",
+    "LatestDate": "2016-01-21T13:11:14.377-08:00"
+  },
+  {
+    "Id": "650374",
+    "Title": "CommunicationNumberQualifiers missing",
+    "LatestDate": "2016-01-22T12:21:13.16-08:00"
+  },
+  {
+    "Id": "654332",
+    "Title": "Transaction Set Code 837P-5010 isnt working",
+    "LatestDate": "2016-06-25T05:03:30.9-07:00"
+  },
+  {
+    "Id": "656233",
+    "Title": "271 EligibilityBenefitResponse is returning null/empty/0 benefit information",
+    "LatestDate": "2016-07-08T14:17:40.233-07:00"
+  },
+  {
+    "Id": "656742",
+    "Title": "837 Occurrence Fields",
+    "LatestDate": "2016-07-27T16:16:32.78-07:00"
+  },
+  {
+    "Id": "657208",
+    "Title": "Need 835 specification xml with element specification",
+    "LatestDate": "2016-08-17T04:36:55.95-07:00"
+  },
+  {
+    "Id": "657232",
+    "Title": "1500_RED",
+    "LatestDate": "2016-08-25T05:23:01.833-07:00"
+  },
+  {
+    "Id": "657956",
+    "Title": "OutOfMemoryException using X12Import",
+    "LatestDate": "2016-09-14T08:45:49.613-07:00"
+  },
+  {
+    "Id": "658100",
+    "Title": "Do we have a x12 parser for 277CA?",
+    "LatestDate": "2016-09-19T17:31:08.073-07:00"
+  },
+  {
+    "Id": "658620",
+    "Title": "ClaimDocument XML to PDF",
+    "LatestDate": "2016-10-10T07:57:04.473-07:00"
+  },
+  {
+    "Id": "658737",
+    "Title": "Development of 837 Institutional(837I)",
+    "LatestDate": "2016-10-15T06:45:22.473-07:00"
+  },
+  {
+    "Id": "660301",
+    "Title": "Looping of Header, Detail and Summary",
+    "LatestDate": "2016-12-22T15:26:05.35-08:00"
+  },
+  {
+    "Id": "660530",
+    "Title": "Modifying existing files?",
+    "LatestDate": "2017-01-09T13:29:56.037-08:00"
+  },
+  {
+    "Id": "661068",
+    "Title": "Error when creating a 835 file",
+    "LatestDate": "2017-01-31T11:12:51.457-08:00"
+  },
+  {
+    "Id": "661393",
+    "Title": "Printing UB04 Creation Date isn't printing on form",
+    "LatestDate": "2017-02-16T05:26:59.82-08:00"
+  },
+  {
+    "Id": "661423",
+    "Title": "Error when trying to install in Linux",
+    "LatestDate": "2017-03-02T06:41:19.713-08:00"
+  },
+  {
+    "Id": "661676",
+    "Title": "where do I RTFM on this?",
+    "LatestDate": "2017-03-02T05:46:26.5-08:00"
+  },
+  {
+    "Id": "662090",
+    "Title": "AS2 x12 sender",
+    "LatestDate": "2017-03-20T22:46:17.727-07:00"
+  },
+  {
+    "Id": "662451",
+    "Title": "GitHub Copy",
+    "LatestDate": "2017-04-07T08:35:53.387-07:00"
+  },
+  {
+    "Id": "663348",
+    "Title": "Serializing Interchange into JSON results in Exception due to circular reference",
+    "LatestDate": "2017-06-30T12:41:03.59-07:00"
+  },
+  {
+    "Id": "663493",
+    "Title": "Resources for XSLTs?",
+    "LatestDate": "2017-07-27T07:38:50.813-07:00"
+  },
+  {
+    "Id": "663503",
+    "Title": "Eligibility Services Error in received 271",
+    "LatestDate": "2017-07-28T05:53:05.863-07:00"
+  },
+  {
+    "Id": "663721",
+    "Title": "Field names",
+    "LatestDate": "2017-09-06T10:55:26.043-07:00"
+  },
+  {
+    "Id": "663767",
+    "Title": "Awesome Job!",
+    "LatestDate": "2017-09-26T07:16:44.27-07:00"
+  }
+]

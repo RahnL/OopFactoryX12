@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1110700",
+    "ThreadId": "463192",
+    "Html": "I work with an organization that has the &quot;opportunity&quot; to accept ANSI-837 5010 data from a variety of sources. Working with OopFactory X12 and with liberal help from Dannie, we have written a routine that imports these types of files into an Oracle DB for diagnostic analysis.\r<br />\n<br />\nOne of the issues that we have is that the folks sending the data have no financial incentive to provide data in a standard format. We end up receiving data that cannot be processed by the program we have written.\r<br />\n<br />\nThe only recourse we have is to tell the sender that it is invalid. At present we do not have an industry accepted tool that will validate the data. \r<br />\n<br />\nDoes anybody know if such a tool exists,? Affordable? If so pointing me where I might find it would be greatly appreciated.<br />\n",
+    "PostedDate": "2013-10-22T10:54:50.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

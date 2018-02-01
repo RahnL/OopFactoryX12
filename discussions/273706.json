@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "676171",
+    "ThreadId": "273706",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>We are trying to use the X12 Parser to parse TA1 messages.</p>\r\n<p>We're running into two problems:</p>\r\n<p>1. The TA1 messages have no container</p>\r\n<p>2. The TA1 messages have no version</p>\r\n<p>In looking at the parser source code, it looks like changes would need to take place in a couple of locations:</p>\r\n<p>- The X12Parser.Parse method inside the segment switch statement</p>\r\n<p>- The SpecificationFinder.FindSegmentSpec method</p>\r\n<p>- The SpecificationFinder.FindTransactionSpec method</p>\r\n<p>I think we can add in support for these TA1 messages, but the way we're going about it seems wrong/hacky ...so could you please advise as to the best way to add support for this? The additional problem/constraint is that the TA1 messages may have multiple\r\n TA1 lines in it.&nbsp;</p>\r\n<p>Thank you.</p>\r\n",
+    "PostedDate": "2011-09-24T08:17:39.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676181",
+    "ThreadId": "273706",
+    "Html": "<p>Is your message a TA1 inside an ISA without any GS segments?</p>\r\n<p>Can you give me an example of a complete message or point me to a specification?</p>",
+    "PostedDate": "2011-09-24T09:30:28.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676186",
+    "ThreadId": "273706",
+    "Html": "<p>I think I have fixed this with your suggestion in changeset 10682, if you have some sample messages then I will add it to the unit test. &nbsp;I have added the change to the switch statement as you have suggested.</p>\r\n<p>I am not certain what changes you feel need to happen with the SpecificationFinder, but since the acknowledgment can happen in any transaction set, the change shouldn't care about what transaction set this is.</p>\r\n<p>&nbsp;</p>\r\n<p>Incidently, I am looking to add something that will create these acknowledgment files from an incoming file. &nbsp;I am aware of the 997 and 999, and know this TA1 acknowledgement. &nbsp;Do you have any suggestions as to what would be a useful way to provide these acknowledgements? &nbsp;I was thinking of simple method calls that took in the incoming message as a parameter and the return value would be these acknowledgment messages.</p>",
+    "PostedDate": "2011-09-24T09:49:19.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676192",
+    "ThreadId": "273706",
+    "Html": "<p>Thank you!</p>\r\n<p>Here is the sample message we are testing</p>\r\n<p>ISA&gt;00&gt;1234567890&gt;00&gt;1234567890&gt;28&gt;PPPPP &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&gt;28&gt;SSSSSS &nbsp; &nbsp; &nbsp; &nbsp; &gt;100624&gt;1430&gt;^&gt;00501&gt;000000001&gt;0&gt;P&gt;+</p>\r\n<p>TA1&gt;900000001&gt;100624&gt;1430&gt;R&gt;006&gt;+</p>\r\n<p>IEA&gt;0&gt;000000001</p>\r\n<p>...although please note, the TA1 may appear multiple times.</p>\r\n<p>I didn't realize what you were saying about where acknowledgements can happen...so I guess you're right that the SpecificationFinder might not need to change.</p>\r\n<p>&nbsp;</p>\r\n<p>We have created the xml for the 999 file, and I'll post that shortly, in case it helps.</p>\r\n<p>As for a way of providing acknowledgements, my gut programmer instinct says to create an interface called IAcknowledgementProvider or create an event on the Parser (or something else)&nbsp;</p>\r\n<p>event EventHandler&lt;AcknowledgementRequestedEventArgs&gt; AcknowledgementRequested</p>\r\n<p>that allows the parser to request an acknowledgement to generate.</p>\r\n<p>...But without being as close to the code as you are, I'm sure your intuition would be better on this.</p>",
+    "PostedDate": "2011-09-24T10:18:59.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676198",
+    "ThreadId": "273706",
+    "Html": "<p>I have added a unit test and made some other fixes in changeset 10684. &nbsp;Let me know how it works out for you.</p>",
+    "PostedDate": "2011-09-24T10:52:59.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676199",
+    "ThreadId": "273706",
+    "Html": "<p>I have added your sample message into the unit tests.</p>\r\n<p>I like your idea about the event handler. &nbsp;I guess if it was a simple acknowledgement that you received something than it can be a simple transform where you get in a file and spit out a file.</p>\r\n<p>Some of the acknowledgment files look like they require you to do a bunch of validation which may be implementation specific. &nbsp;I think your idea of doing the event handler sounds perfect for that. &nbsp;I would probably have to throw an event to allow the client app to inject any of it's own business rules but then take care of construction the message. &nbsp;It's been on my list for a while to do, and someone else just added that they wanted the 999 acknowledgement also.</p>\r\n<p>Thanks for your ideas.</p>",
+    "PostedDate": "2011-09-24T11:07:54.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676493",
+    "ThreadId": "273706",
+    "Html": "<p>Thanks, we will try it out tomorrow morning.</p>\r\n<p>Unrelated - here is the 999 spec we put together (I know it's not much, but in case it helps someone else):</p>\r\n<p>&nbsp;</p>\r\n<pre>&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;\r\n&lt;TransactionSpecification xmlns=\"http://tempuri.org/X12ParserSpecification.xsd\" TransactionSetIdentifierCode=\"999\"&gt;\r\n\t&lt;Segment SegmentId=\"ST\"/&gt;\r\n\t&lt;Segment SegmentId=\"AK1\"&gt;\r\n\t\t&lt;EntityIdentifier Code=\"HC\"/&gt;\r\n\t&lt;Loop LoopId=\"2000\"&gt;\r\n\t\t&lt;Name&gt;Transaction Set Response Header&lt;/Name&gt;\r\n\t\t&lt;StartingSegment SegmentId=\"AK2\"/&gt;\r\n\t\t\t&lt;EntityIdentifier Code=\"837\"/&gt;\r\n\t\t&lt;/StartingSegment&gt;\r\n\t&lt;/Loop&gt;\r\n\t&lt;Loop LoopId=\"2100\"&gt;\r\n\t\t&lt;Name&gt;Error Identification&lt;/Name&gt;\r\n\t\t&lt;StartingSegment SegmentId=\"IK3\"/&gt;\r\n\t\t&lt;Segment SegmentId=\"CTX\"/&gt;\r\n\t\t&lt;Segment SegmentId=\"CTX/\"&gt;\r\n\t&lt;/Loop&gt;\r\n\t&lt;Loop LoopId=\"2110\"&gt;\r\n\t\t&lt;Name&gt;Implementation Data Element Note&lt;/Name&gt;\r\n\t\t&lt;StartingSegment SegmentId=\"IK4\"/&gt;\r\n\t\t&lt;Segment SegmentId=\"CTX\"/&gt;\r\n\t\t&lt;Segment SegmentId=\"IK5\"/&gt;\r\n\t\t&lt;Segment SegmentId=\"AK9\"/&gt;\r\n\t&lt;/Loop&gt;\r\n&lt;/TransactionSpecification&gt;</pre>",
+    "PostedDate": "2011-09-25T19:35:42.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676958",
+    "ThreadId": "273706",
+    "Html": "<p>Cool, I started with your specification and found a document at&nbsp;<a href=\"http://www.dhs.wisconsin.gov/publications/P0/p00268.pdf\">http://www.dhs.wisconsin.gov/publications/P0/p00268.pdf</a>&nbsp;to make some modifications and grab a sample message. &nbsp;Changes are checked in at 10775 if you would like to test it against your messages.</p>",
+    "PostedDate": "2011-09-26T20:26:53.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

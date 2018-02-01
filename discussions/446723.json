@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1055545",
+    "ThreadId": "446723",
+    "Html": "I'm trying to create a 837P 5010 file using the example from:<br />\n<br />\n<a href=\"http://x12parser.codeplex.com/SourceControl/changeset/view/20228#151876\" rel=\"nofollow\">http://x12parser.codeplex.com/SourceControl/changeset/view/20228#151876</a><br />\n<br />\nThere seems to be missing loops:<br />\n2010AA (Billing Provider)<br />\n2010BB (Payer)<br />\n2010CA (Patient)<br />\n<br />\nWhat's the process for adding these loops into the test method documented above?<br />\n<br />\nThanks and keep up the great work guys!  :)<br />\n",
+    "PostedDate": "2013-06-11T12:23:17.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

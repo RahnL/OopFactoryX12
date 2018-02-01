@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1481400",
+    "ThreadId": "657232",
+    "Html": "Hi all.. this is great.. using the example for OopFactory.X12.Hipaa.ClaimParser is super simple. Now hopefully not to hard to get the updated 1500. Any direction would be awesome and greatly appreciated. \r<br />\n<br />\nI also have a few data elements that I see on my samples on the new form that are not on the current 1500 so I may also need some direction on how I can place other elements on the form. \r<br />\n<br />\n<br />\nAgain really appreciate any help with this.. \r<br />\n<br />\nMuch thanks in advance. <br />\n",
+    "PostedDate": "2016-08-17T14:02:05.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1481417",
+    "ThreadId": "657232",
+    "Html": "Got it.. I found the branch \r<br />\n<br />\nNeed to add some fields to the form, the data is in the xml but not on the pdf. \r<br />\n<br />\nDirection on this would be awesome... Ill keep hunting in the meantime..\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2016-08-17T20:09:48.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1481457",
+    "ThreadId": "657232",
+    "Html": "<ol>\n<li>\nREF*D9 I need to print on the pdf in Box 19 on the 1500 as &quot;ICN: 000000000000000&quot;<br />\n</li>\n</ol>\nI have a few other missing items from my sample pdf to the pdf generated with OopFactory but if someone could get me started with the above I could probably figure it out. \r<br />\n<br />\nThanks much... <br />\n",
+    "PostedDate": "2016-08-18T07:51:05.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1481458",
+    "ThreadId": "657232",
+    "Html": "Id also like to name the PDF generated as the REF*D9 <br />\n",
+    "PostedDate": "2016-08-18T07:55:00.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1482069",
+    "ThreadId": "657232",
+    "Html": "All transaction sets are embedded in the source code.  To see details of the 837 look at the xml spec for it here:  <a href=\"http://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-837P-5010Specification.xml\" rel=\"nofollow\">http://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-837P-5010Specification.xml</a>\r<br />\n<br />\nThis will tell you what is in the 2010 loops.  There are actually multiple depending on what the NM1's entity ID code is.\r<br />\n<br />\nTo be able to split your claims until multiple PDFs, I suggest you unbundle the file first into claims using the 2300 loop.  See the OopFactory.X12.UnbundleX12 console app code to see how to do this.  You don't have necessary have to write out the claims into individual files, but code will show you how to unbundle.  Then you can take that serialize the individual interchanges back to X12.  Once you the individual claim as an isolated X12, you can send that to your transform and it will spit out however many pages you need to represent that claim.<br />\n",
+    "PostedDate": "2016-08-25T04:23:38.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1482071",
+    "ThreadId": "657232",
+    "Html": "thanks much, Good direction to start.. <br />\n",
+    "PostedDate": "2016-08-25T05:23:01.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

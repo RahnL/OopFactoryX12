@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Documentation updated.",
+    "ClosedDate": "2013-09-15T04:21:16.16-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Cool tool....just one issue, it doesn't support transaction 240 (Motor Carrier Package Status).  Its similar to the 214.",
+    "LastUpdatedDate": "2013-09-15T04:21:16.16-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-09-12T08:32:02.593-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Transaction Set 240",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1770
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It actually does.  The full list is here http://x12parser.codeplex.com/wikipage?title=Transaction%20Set%20Configuration.  I haven't had time to update the document page.  When I get the chance I'll close this case.",
+      "PostedDate": "2013-09-13T17:32:56.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-13T17:33:28.547-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "you rock!",
+      "PostedDate": "2013-09-13T18:33:32.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-15T04:21:16.16-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

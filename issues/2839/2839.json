@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was playing with the SqlTransactionRepository.Save(...) method and I received an unhandled exception.\n\nThe exception occurs in the OopFactory.X12.Sql project in the IIdProvider.cs file line 169.\n\nThe SQL statement declared on line 145 clearly has 3 string arguments to be replaced {0}, {1} and {2}. On line 169 as part of string.format(...) only one of the 3 defined arguments are provided.",
+    "LastUpdatedDate": "2017-09-10T22:30:53.97-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2017-09-10T22:30:53.97-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Sql Save Exception",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2839
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

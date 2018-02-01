@@ -1,0 +1,126 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've found NuGet immensely useful, especially because you can see if there've been updates for the packages and directly download them.\nI don't know how much work it is, hopefully not a lot, but if you could, I'd ask you to create a package for it.",
+    "LastUpdatedDate": "2015-09-24T05:33:11.627-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-03-15T14:04:19.42-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Suggestion: Createa NuGet package for the parser",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 1135
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2223,
+      "FileName": "pack_nuget.bat",
+      "DownloadUrl": ".\\2223"
+    },
+    {
+      "FileId": 2224,
+      "FileName": "OopFactory.X12.nuspec",
+      "DownloadUrl": ".\\2224"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "It is extremely easy to do.  I stumbled on this issue when trying to track down the NuGet package for this project, and was very surprised there was not one.  NuGet has made things so easy that if a developer can't find your package on NuGet, many of them won't bother with your project.\r\n\r\nIf the owners of the project don't have the bandwidth, I'd be happy to upload a NuGet package of the latest release if they were OK with it.",
+      "PostedDate": "2012-11-25T17:28:23.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-11-25T17:28:36.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm okay with you adding to nuGet.  If you post links to instructions I can try to get subsequent releases updated there.",
+      "PostedDate": "2012-12-15T19:13:36.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:00.08-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Any update on this? Is there a NuGet package available? Thanks, Dave",
+      "PostedDate": "2013-11-05T17:11:33.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, I forget to get back around to this.  I'll try to get a NuGet package created/published this week.\r\n\r\n",
+      "PostedDate": "2013-11-06T05:25:45.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I would also definitely love to see a Nuget package for this project. It helps us manage version-ing nicely and stay up to date with the latest release.",
+      "PostedDate": "2015-03-19T18:45:41.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Details available here on how to create Nuget package: http://docs.nuget.org/create",
+      "PostedDate": "2015-03-19T18:48:06.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-03-29T12:04:36.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi, sorry this took so long, but I just built the last released version (3.0.8.0) into a NuGet package and published it: https://www.nuget.org/packages/OopFactory.X12/\r\n\r\n@dstrubhar, if you create an account on nuget.org and send me the username, I'll add you as a administrator for that package.\r\n\r\nThe steps are really simple. First, add the NuGet binaries into your solution (either by right-clicking the solution in VS and selecting Enable Package Restore, or just copying the .nuget folder from another solution into your solution folder).\r\n\r\nThen create a .nuspec file. The easy way is to run the NuGet \"spec\" command to create a template. For the OopFactory.X12 project, this was: ..nuget\\NuGet.exe spec .\\src\\OopFactory.X12.\r\n\r\nOnce you have the nuspec file, make sure it's in the root of your project, and then edit the values as necessary. Use replacement tags like $version$ to auto-set values when the package is built.\r\n\r\nAt that point, you're all set up to generate a NuGet package for that project any time you want. To build the package, run the NuGet \"pack\" command, like ..nuget\\NuGet.exe pack .\\src\\OopFactory.X12\\OopFactory.X12.csproj -Build -Properties Configuration=Release (I added a batch file for this).\r\n\r\nI submitted a patch, but I'm not really familiar with CodePlex or SVN patches, so no sure if it came through OK. Also, I attached the batch file and nuspec file. Let me know if there is anything else I can help with, or if you'd like me to generate another one once the next release is ready.\n",
+      "PostedDate": "2015-03-29T12:04:41.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-03-30T07:45:22.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Adding .nuspec",
+      "PostedDate": "2015-03-30T07:45:27.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks Mike.  Sorry for taking so long to get back to you.\nI'm preparing a new release with some sqlbulkcopy features for the repos that speed up the load performance by 20x. \nPlease add dstrubhar to the nuget.com account and I will publish the release out to nuget.org.",
+      "PostedDate": "2015-09-22T07:59:11.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sure dstrubhar, I just added you as an owner of the NuGet package: https://www.nuget.org/packages/OopFactory.X12/",
+      "PostedDate": "2015-09-22T08:07:49.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-09-24T05:33:11.627-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Please see the attached file the ASN sample.",
+    "LastUpdatedDate": "2015-01-05T05:20:06.05-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-01-05T05:18:11.143-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Not able to parse the following ASN 856 file",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 2601
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2214,
+      "FileName": "asn856.txt",
+      "DownloadUrl": ".\\2214"
+    }
+  ],
+  "Comments": []
+}

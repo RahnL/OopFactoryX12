@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-09-13T18:26:12.947-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After updating the source code to 3.0.5 and rebuilding my project I am receiving a warning stating that parser.parse is obsolete and needs to be changed to ParseMultiple. When I attempt to make the change and rebuild I receive this error:\n\nError\t1\tCannot implicitly convert type 'System.Collections.Generic.List<OopFactory.X12.Parsing.Model.Interchange>' to 'OopFactory.X12.Parsing.Model.Interchange'\t\n\n\nIn a previous post you stated that you were not using Parse anymore.\n\"Make sure you use ParseMultiple instead of Parse which I am about to deprecate because it only parses the first interchange.\"\nBelow represents the code when I edit Parse to ParseMultiple\n```\n     Stream transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(\"_835_Parser.EDI-835-To-CSV.xslt\");\n                    Stream inputStream = new FileStream(inputFilename, FileMode.Open, FileAccess.Read);\n                    \n\n                    X12Parser parser = new X12Parser();\n                    Interchange interchange = parser.ParseMultiple(inputStream);\n                    string xml = interchange.Serialize();\n\n                    var transform = new XslCompiledTransform();\n                    transform.Load(XmlReader.Create(transformStream));\n\n                    string outputFilename = inputFilename + \"_output\" + \".csv\";\n                    Stream outputFile = new FileStream(outputFilename, FileMode.Create, FileAccess.Write);\n\n                    transform.Transform(XmlReader.Create(new StringReader(xml)), new XsltArgumentList(), outputFile);\n\n                    outputFile.Close();\n```\n\nThanks for your help\nPhil",
+    "LastUpdatedDate": "2013-09-13T18:26:12.947-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-05-13T12:45:00.8-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Editing parser.Parse to parser.ParseMultiple",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1579
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Parse() returns OopFactory.X12.Parsing.Model.Interchange.  ParseMultiple() returns List<OopFactory.X12.Parsing.Model.Interchange>.  You need to change the type of the variable that you are using for the ParseMultiple() return value.",
+      "PostedDate": "2013-05-21T22:38:14.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I agree with tfabraham.\nInstead of processing one interchange, you need to loop through in case there are multiple.\nUnless you know your partners will only send one interchange.\nIf you continue to use Parse it will ignore all but the first interchange.",
+      "PostedDate": "2013-09-13T18:26:07.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-13T18:26:12.947-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

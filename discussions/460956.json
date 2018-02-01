@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1102833",
+    "ThreadId": "460956",
+    "Html": "How does the rest of the world store an ICD-9 Diagnosis Code. Are they broken into pieces and stored in separate fields? It seems to be a bit difficult with the floating &quot;.&quot; and the alpha prefix of &quot;V&quot; or &quot;E&quot;. How do you run a query? How do you define the field?\r<br />\n<br />\nThanx\r<br />\nJim H<br />\n",
+    "PostedDate": "2013-10-02T10:04:21.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102881",
+    "ThreadId": "460956",
+    "Html": "Sorry to everyone. I got a little ahead of myself. I figured it out!<br />\n",
+    "PostedDate": "2013-10-02T11:57:08.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

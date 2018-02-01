@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1442126",
+    "ThreadId": "644286",
+    "Html": "Can X12Parser perform compliance validation against a target specification when parsing a document?  The only solution I can think of is the following:<br />\n<pre><code>SpecificationFinder finder = new SpecificationFinder();\nvar transSpec = finder.FindTransactionSpec(&quot;BE&quot;, &quot;005010X220 &quot;, &quot;834&quot;);\n\nX12Parser parser = new X12Parser();\nvar interchanges = parser.ParseMultiple(File.ReadAllText(@&quot;834.edi&quot;));\nvar interchange = interchanges.FirstOrDefault();\n//now recurse over the interchange comparing it against the transaction spec.</code></pre>\n\n",
+    "PostedDate": "2015-08-27T05:45:35.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

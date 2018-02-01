@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1037793",
+    "ThreadId": "442127",
+    "Html": "In the CLP segment for our 835 files, our provider is not including a value for the Monetary Amount that is Reference = 05.  Their documentation lists this as a situational field, and the XML for this field is written as &quot;&lt;CLP05 /&gt;&quot; if no value is supplied.  However, in the Ansi-5010Specification.xml file, the type is listed as &quot;R&quot; with a MinLength of 1.  As a result, the CLP table created includes 05 as a decimal field, while our XML is passing in a blank string and throwing an error.  Before changing anything on the Ansi-5010Specification.xml file, I wanted to make sure that this was working as expected.<br />\n\r<br />\nThanks for all the work you have done on this project!!\r<br />\nChristy<br />\n",
+    "PostedDate": "2013-04-30T12:55:56.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1037798",
+    "ThreadId": "442127",
+    "Html": "Good catch.  None of my test data had that scenario.  I have added <a href=\"https://x12parser.codeplex.com/SourceControl/changeset/view/25710\" rel=\"nofollow\">changeset 25710</a> that will fix this.  It will push null into the field when the field is a decimal type and the x12 has an empty value.  I should have another release in the next week after I get some other changes finished.\r<br />\n<br />\nBTW, you are correct that <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/se/se_CLP.htm\" rel=\"nofollow\">CLP05</a> is an optional field.<br />\n",
+    "PostedDate": "2013-04-30T13:12:27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038150",
+    "ThreadId": "442127",
+    "Html": "Thanks for making this change!  I am having a similar problem with the CAS segment for our 835 files.  Most of the time, our provider is giving us CAS01, CAS02, and CAS03 only.  That works fine since everything after that is optional.  However in a few cases, we are receiving values for CAS05 and CAS06, as well.  In those cases, we have the XML for CAS04 written as &quot;&lt;CAS04 /&gt;&quot; as no value is supplied.  We have the same problem with errors as we did with CLP because the code interprets this value as a blank string being entered into a decimal field.  From your reply, I assume the change will fix this as well.<br />\n\r<br />\nOne last quick question:  is the source code the same code as for the latest version of the dll?  I am able to import our files (with a few temporary tweaks to the tables after they are created) using the code I downloaded from the source code tab.  However, I am getting an error when I use the latest dll.  Some of the data is entered, but not really any from the various segments from what I can tell.  The error is a SqlException with the following message:<br />\n<pre><code>Incorrect syntax near ','.\nIncorrect syntax near ','.\nIncorrect syntax near ','.\nIncorrect syntax near ','.</code></pre>\n\nIs there a difference between these files?  If they are just a bit out of sync that is fine because I will re-download anyway with the new changeset.<br />\n\r<br />\nThanks again!<br />\n",
+    "PostedDate": "2013-05-01T08:53:21.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038197",
+    "ThreadId": "442127",
+    "Html": "I had not update the dll yesterday, but I just did.  Please use <a href=\"https://x12parser.codeplex.com/releases/view/106001\" rel=\"nofollow\">release 3.0.3</a>.  This represents the latest changeset.\r<br />\n<br />\nLet me know if this resolves your problem.<br />\n",
+    "PostedDate": "2013-05-01T10:15:57.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038296",
+    "ThreadId": "442127",
+    "Html": "Thanks!!  It worked with no problems!<br />\n",
+    "PostedDate": "2013-05-01T14:48:23.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

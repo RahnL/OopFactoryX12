@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1459950",
+    "ThreadId": "650271",
+    "Html": "The providing company has changed their EDI file to conform with NAESB V3.0 including FERC order 809.  The code is giving me the following error:<br />\n<pre><code>&quot;Segment 'LCD**MTR***SV*4186-1' in segment position 8 within transaction \n'' cannot be identified within the supplied specification for transaction set 867 in any of the expected loops: PTD. </code></pre>\n\nHere is the example:<br />\n<pre><code>ISA*  *          *  *          *  *               *  *               *151228*1505*\u0019*     *         * * *\u001f\nGS****20151228*15052353\nST*867\nBPT*00**20151211\nDTM*102****DT*28122015 15052300\nN1*41**1*006931794\nPER*IC*YESI GORDON*TE*3039144952\nN1*40**1*00123456\nPTD*FG\nLCD**MTR***SV*4186-1\nLQ*SMB*AC\nQTY*V2*6681\nMEA***6454*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*4186-2\nLQ*SMB*AC\nQTY*V2*0\nMEA***0*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*4186-3\nLQ*SMB*AC\nQTY*V2*0\nMEA***0*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*4187-1\nLQ*SMB*AC\nQTY*V2*211335\nMEA***202791*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*4187-2\nLQ*SMB*AC\nQTY*V2*214014\nMEA***205362*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*4189-2\nLQ*SMB*AC\nQTY*V2*13492\nMEA***13030*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*4189-3\nLQ*SMB*AC\nQTY*V2*14775\nMEA***14270*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*900130-4\nLQ*SMB*AC\nQTY*V2*86807\nMEA***84203*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*900130-5\nLQ*SMB*AC\nQTY*V2*44122\nMEA***42804*TZ\nDTM*405****RD8*20151130-20151130\nPTD*FG\nLCD**MTR***SV*900130-6\nLQ*SMB*AC\nQTY*V2*2687\nMEA***2608*TZ\nDTM*405****RD8*20151130-20151130\nSE*67\nGE*1\nIEA*1*  </code></pre>\n\n",
+    "PostedDate": "2016-01-20T12:45:53.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1459956",
+    "ThreadId": "650271",
+    "Html": "You can inject your own specification for the 867 by following the instructions <a href=\"https://x12parser.codeplex.com/wikipage?title=Injecting%20your%20own%20X12%20Specification\" rel=\"nofollow\">here</a>\r<br />\n<br />\nIf you have a link to this companion guide than I can update the embedded specs, though I am surprised that it doesn't meet the generic X12 definition for an 867.<br />\n",
+    "PostedDate": "2016-01-20T14:00:53.26-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1460024",
+    "ThreadId": "650271",
+    "Html": "Here is the link :<br />\n<a href=\"https://drive.google.com/file/d/0B8t13iO5MXfCOUhhRmFNdG50VTA/view?usp=sharing\" rel=\"nofollow\">https://drive.google.com/file/d/0B8t13iO5MXfCOUhhRmFNdG50VTA/view?usp=sharing</a><br />\nPages 251 and 252<br />\n<br />\nMy Code:<br />\n<pre><code> X12Parser parser = new X12Parser();\n var interchange = parser.ParseMultiple(fileContents).First();\n var x12Xml = interchange.Serialize();</code></pre>\n\n",
+    "PostedDate": "2016-01-21T04:48:00.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1460133",
+    "ThreadId": "650271",
+    "Html": "I have checked in a change to add LCD and LQ to the spec at:\r<br />\n<a href=\"https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-867-4010Specification.xml\" rel=\"nofollow\">https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-867-4010Specification.xml</a>\r<br />\n<br />\nYou can either get the latest source code change and rebuild yourself or you can take the xml file linked above and follow the directions to inject your own specification.<br />\n",
+    "PostedDate": "2016-01-21T13:11:14.377-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

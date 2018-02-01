@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1317116",
+    "ThreadId": "570759",
+    "Html": "I wrote a script to simply batch convert a directory of x12 files to XML but I receive a general fault error.\r<br />\n<br />\nThe weird thing is it works fine when I run the command on the files one at a time, but when I put them into a looping script they error out.  I have tried adding a 5 second delay between each execution but the error still persists.  Here is the debug information:\r<br />\n<br />\nSource\r<br />\nOopFactory.X12.AcknowledgeX12\r<br />\n<br />\nSummary\r<br />\nStopped working\r<br />\n<br />\nDate\r<br />\n‎10/‎28/‎2014 7:36 AM\r<br />\n<br />\nStatus\r<br />\nNot reported\r<br />\n<br />\nDescription\r<br />\nFaulting Application Path:\tC:\\Users\\ThatGuy\\Downloads\\Release 3.0.8 binaries\\Release\\OopFactory.X12.AcknowledgeX12.exe\r<br />\n<br />\nProblem signature\r<br />\nProblem Event Name:\tCLR20r3\r<br />\nProblem Signature 01:\toopfactory.x12.acknowledgex12\r<br />\nProblem Signature 02:\t3.0.8.0\r<br />\nProblem Signature 03:\t52f823b0\r<br />\nProblem Signature 04:\tOopFactory.X12.AcknowledgeX12\r<br />\nProblem Signature 05:\t3.0.8.0\r<br />\nProblem Signature 06:\t52f823b0\r<br />\nProblem Signature 07:\t1\r<br />\nProblem Signature 08:\t0\r<br />\nProblem Signature 09:\tSystem.IndexOutOfRangeException\r<br />\nOS Version:\t6.1.7601.2.1.0.256.48\r<br />\nLocale ID:\t1033\r<br />\nAdditional Information 1:\t0a9e\r<br />\nAdditional Information 2:\t0a9e372d3b4ad19135b953a78882e789\r<br />\nAdditional Information 3:\t0a9e\r<br />\nAdditional Information 4:\t0a9e372d3b4ad19135b953a78882e789<br />\n",
+    "PostedDate": "2014-10-28T11:26:12.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1317149",
+    "ThreadId": "570759",
+    "Html": "Figured it out.  \r<br />\n",
+    "PostedDate": "2014-10-28T12:55:59.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-10-28T12:56:03.91-07:00"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "911871",
+    "ThreadId": "395350",
+    "Html": "\r\n<p>Hi, this is a great library.&nbsp; I've used it to parse over 30,000 835 files but then I sterted getting files like below.&nbsp; The parser does not throw any exceptions but the resulting XML only has an Interchange node containing a single complete ISA\r\n node.&nbsp; The file consists of 80 character rows&nbsp;with a line feed at the end of each.&nbsp; Do you have any clue to what is happening?&nbsp; I would like to continue using this library due to its simplicity and incredible speed.</p>\r\n<p>Thank you very much!</p>\r\n<p>835 Input File:</p>\r\n<p>ISA*00*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *00*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *ZZ*ANTHEM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *ZZ*FBKBLUECROSS&nbsp;&nbsp; *111101*180<br>\r\n6*U*00401*000009358*0*P*:~GS*HP*ANTHEMFCS*FLAGET*20111101*132100*9358*X*004010X0<br>\r\n91A1~ST*835*000009358~BPR*I*9999.99*C*CHK******9999999999**01*999999999*DA*X9999<br>\r\n999999*20111101~TRN*1*9999999999*9999999999~REF*EV*FAC~DTM*405*20111101~N1*PR*XX<br>\r\nXXXX XXXXXX XXXXX XX XX, XXX.~N3*9999 XXXXXXX XXXXXX XXXX XXXX~N4*XXXXXXXXXX*OH*<br>\r\n99999~PER*CX**TE*9999999999~N1*PE*XXXXXXX XX XXXXXX XXXXXX*XX*9999999999~N3*999 <br>\r\nX 9XX XX~N4*XXXXXXXXX*KY*99999~REF*TJ*999999999~LX*1~CLP*999999999*1*9999.99*999<br>\r\n9.99**12*9999999XX9999*82*1***0~NM1*QC*1*XXXXXXX*XXXX****MI*XXX999999999~REF*1W*<br>\r\n999999999~DTM*050*20111017~SVC*XX:9999*9999.99*9999.99**7**0~DTM*472*20110824~AM<br>\r\nT*B6*9999.99~SE*22*000009358~GE*1*9358~IEA*1*000009358~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>835 XML:</p>\r\n<p>&lt;?xml version=&quot;1.0&quot;?&gt;<br>\r\n&lt;Interchange segment-terminator=&quot;:&quot; element-separator=&quot;*&quot; sub-element-separator=&quot;*&quot;&gt;<br>\r\n&nbsp; &lt;ISA&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Author Information Qualifier--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA01&gt;00&lt;!--No Authorization Information Present--&gt;&lt;/ISA01&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Author Information--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA02&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/ISA02&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Security Information Qualifer--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA03&gt;00&lt;!--No Security Information Present--&gt;&lt;/ISA03&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Security Information--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA04&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/ISA04&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Interchange ID Qualifier--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA05&gt;ZZ&lt;!--Mutually Defined--&gt;&lt;/ISA05&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Interchange Sender ID--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA06&gt;ANTHEM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/ISA06&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Interchange ID Qualifier--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA07&gt;ZZ&lt;!--Mutually Defined--&gt;&lt;/ISA07&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Interchange Receiver ID--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA08&gt;FBKBLUECROSS&nbsp;&nbsp; &lt;/ISA08&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Interchange Date--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA09&gt;111101&lt;/ISA09&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Interchange Time--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA10&gt;180<br>\r\n6&lt;/ISA10&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Inter Control Standards Identifier--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA11&gt;U&lt;!--U.S. EDI Community of ASC X12, TDCC, and UCS--&gt;&lt;/ISA11&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Inter Control Version Number--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA12&gt;00401&lt;/ISA12&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Inter Control Number--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA13&gt;000009358&lt;/ISA13&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Acknowlegment Requested--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA14&gt;0&lt;!--No Acknowledgment Requested--&gt;&lt;/ISA14&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;!--Usage Indicator--&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA15&gt;P&lt;!--Production Data--&gt;&lt;/ISA15&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;ISA16 /&gt;<br>\r\n&nbsp; &lt;/ISA&gt;<br>\r\n&lt;/Interchange&gt;</p>\r\n",
+    "PostedDate": "2012-09-12T15:08:45.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911898",
+    "ThreadId": "395350",
+    "Html": "<p>From the xml it looks like it is looking the : to be the segment-terminator when the file is using ~ as the segment terminator.&nbsp; There appears to be one extra character in your ISA segment which is pushing the : into the wrong position.</p>\r\n<p>Copy and paste this ISA&nbsp;next to the ISA segment in one of your other files so you can see them on top of each other&nbsp;and you should be able to find the offending element.&nbsp; The ISA segment is special in that it is expected to be fixed width so all the delimiter characters msut be in an absolute position in that segment.</p>",
+    "PostedDate": "2012-09-12T15:52:37.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911917",
+    "ThreadId": "395350",
+    "Html": "\r\n<p>Maybe it is the line feed character.&nbsp; When I take the line feed out the ~ is in column 106.&nbsp;I was already thinking about having some code to detect this format and remove the line feeds before sending it to the X12Parser code.&nbsp; I hesitated\r\n because EDIFileEditor did not seem to complain about it at all.&nbsp; I'll manually remove the line feeds and re-run the file to see what happens. EDIT: Removing the line feeds resulted in successful parsing!</p>\r\n<p>Thanks for the quick reply.</p>\r\n<p>P.S. I have another file that has TS3 segments without a preceding LX segment.&nbsp; The code sees this as an error. I was wandering if you knew if TS3/TS2 segments are really supposed to be preceded by a LX segment?&nbsp; Your &quot;Ansi-835-5010Specification.xml&quot;\r\n doc seems to show this but the &quot;835 Healthcare Claim Payment - Advice 5010&quot;&nbsp;guide I have is confusing to me since I am pretty new to 835 and X12 in general. I have only seen some examples in my guide where TS3 segments are shown preceded by a LX segment.</p>\r\n",
+    "PostedDate": "2012-09-12T16:32:30.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911944",
+    "ThreadId": "395350",
+    "Html": "<p>The 5010 guide that I used to do the 835 spec expected TS2 and TS3 as optional segments in the LX loop (LoopId=2000).</p>\r\n<p>When a segment appears within a loop definition than it is expected that it will appear after the starting segment of that loop.</p>\r\n<p>Double check your x12 version in the GS08 element to see if it is some other version. &nbsp;Make sure that is the version that is in your specification document.</p>\r\n<p>You may need create your own SpecificationFinder if you are in need of a special configuration that isn't embedded in the assembly.</p>\r\n<p>Sometimes it is necessary to add some segments to a custom specification if your trading partner is not responsive in fixing invalid x12 or is choosing to use a specification that diverges from the standard.</p>",
+    "PostedDate": "2012-09-12T18:30:06.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911950",
+    "ThreadId": "395350",
+    "Html": "<p>The version is <strong>005010</strong>X221A1 so&nbsp;this is why I&nbsp;suspected the file might be incorrect.&nbsp; In the embedded specicification the usage for TS3 and TS2 are \"Required\".&nbsp; Should these be set to \"Situational\"?</p>\r\n<p>Current spec for the version of the code I have is:</p>\r\n<p>&nbsp;&nbsp;&nbsp; &lt;StartingSegment SegmentId=\"LX\" Usage=\"Situational\" Repeat=\"1\"/&gt;<br />&nbsp;&nbsp;&nbsp; &lt;Segment SegmentId=\"TS3\" Usage=\"<strong>Required</strong>\" Repeat=\"1\"/&gt;<br />&nbsp;&nbsp;&nbsp; &lt;Segment SegmentId=\"TS2\" Usage=\"<strong>Required</strong>\" Repeat=\"1\"/&gt;</p>\r\n<p>Thanks for being so responsive!&nbsp; Your code rocks! I use this in a multi-threaded service and so far it can parse a couple of hundred files in way less than a minute.</p>",
+    "PostedDate": "2012-09-12T18:52:29.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "912160",
+    "ThreadId": "395350",
+    "Html": "<p>I have made the change to Situational for both the 4010 and 5010 spec, I don't think this will make a difference for you if you don't have an LX segment.</p>\r\n<p>If you want to do a test, you can try and compile a local change where you add the TS2 and TS3 at the TransactionSpecification level to get your files to parse.&nbsp; I looked around on the internet and I didn't see any companion guides that suggested the TS2 and TS3 could be used outside the LX loop.</p>",
+    "PostedDate": "2012-09-13T05:20:25.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "912266",
+    "ThreadId": "395350",
+    "Html": "<p>Changing the usage nor adding the TS2 and TS3 at the TransactionSpecification level really did anything.&nbsp; Adding these at the TransactionSpecification level just moved the issue from the TS3 to the CLP segment next in line&nbsp;so the file is just not constructed properly.&nbsp; I created a version of the original file with some fabricated LX segments ahead of the TS3 segments and it parsed perfectly.</p>\r\n<p>I appreciate you taking the time to help me out and keep up the great work!&nbsp; I think this is an excellent library and now I need to try and dig in to get an understanding of exactly how it works.&nbsp; The XML output is very flexible but at the moment I am using SSIS to just load it into 30+ database tables.&nbsp; Querying the data is not too bad unless you only have mediocre SQL skills:-)</p>",
+    "PostedDate": "2012-09-13T08:52:46.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

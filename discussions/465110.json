@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1116617",
+    "ThreadId": "465110",
+    "Html": "I am almost done writing a module that creates an 834 Enrollment Effectuation file for the Federal Exchange (DSH/CMS) that uses this project. It starts with enrollees being in a flat structure called CMSEnrolleeImport. Issuers would just need to transform their EDI/Enrollment data into this format before generating the 834 Effectuation files. I'll be done with it within a week or so. It is written in VB.NET but should easily convert to C# via online converters. Is there a place to put user contributed code?<br />\n",
+    "PostedDate": "2013-11-01T10:02:41.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

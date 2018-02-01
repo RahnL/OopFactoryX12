@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "I assume these changes have worked for you.  They were released in 2.2.3 and I have added them to the list on the documentation page, this I am closing this issue.",
+    "ClosedDate": "2012-03-14T18:44:51-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello!\nI am very new to EDI, and discovered this project this morning.\n \nI am working on building a system to manage 417 and 322's and load their data into a local SQL database.\n \nI am attaching the specifications for each of them, as well as the XSD's I extracted for each of them.\n \nPlease let me know anything I can do to help!",
+    "LastUpdatedDate": "2013-05-16T04:34:02.933-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-12-14T12:13:25.96-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Transaction Code 417 and 322",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 955
+  },
+  "FileAttachments": [
+    {
+      "FileId": 459,
+      "FileName": "CSX_417_v_005030.pdf",
+      "DownloadUrl": ".\\459"
+    },
+    {
+      "FileId": 460,
+      "FileName": "CSX_Intermodal_EDI_322_v_004010.pdf",
+      "DownloadUrl": ".\\460"
+    },
+    {
+      "FileId": 461,
+      "FileName": "edi_417_322.zip",
+      "DownloadUrl": ".\\461"
+    },
+    {
+      "FileId": 463,
+      "FileName": "417 and 322 Samples.zip",
+      "DownloadUrl": ".\\463"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Here's the 322\r\n",
+      "PostedDate": "2011-12-14T12:14:21.577-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-14T12:16:03.493-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And the XSD/Xquery files for both ",
+      "PostedDate": "2011-12-14T12:16:03.867-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This looks pretty straight forward, I can probably add the needed specification to the parser this weekend and then give you some xslt's that would allow you to transform into this xsd structure that you have uploaded.\r\nWould you mind if I use this as a documentation page so that I can show this as a use case of how to use the parser?\r\nI should be able to get something up and running over the weekend.",
+      "PostedDate": "2011-12-15T10:34:21.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Man, you're AWESOME!!\r\nThank you so much!\r\n\r\nThe zip file should probably be dropped, but otherwise, this would be great!\r\n\r\nI am glad to assist in any way, and can provide some sample files for the 417's now, and I *should* have 322's after this weekend (feed just got set up today).",
+      "PostedDate": "2011-12-15T10:54:04.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm making some clean 417 and 322 files now for you.\r\n",
+      "PostedDate": "2011-12-16T06:47:11.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-16T07:52:04.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here are some sample 417 and 322's",
+      "PostedDate": "2011-12-16T07:52:05.387-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can't figure out how to edit attachments... I'd delete the XSD zip file (edi_417_322.zip) if I could.\r\n",
+      "PostedDate": "2011-12-16T07:52:51.123-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I finished these SPEcs, I will get these checked in tonight.",
+      "PostedDate": "2011-12-19T06:50:30.853-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are awesome!\r\n\r\nI will watch this, and pull as soon as it's ready!",
+      "PostedDate": "2011-12-19T07:05:54.46-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 13003.",
+      "PostedDate": "2011-12-19T19:50:02.34-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have created a new release that supports the 322 and 417.  I added all of your samples to the unit test but I did need to add another space to your ISA08 segment that needed 15 characters instead of 14 characters.\r\nThe last step to get it into the format you need is to perform one more XSLT transformation to replace the generic Loop elements with the ones from your XSD.  I will try and get that posted tomorrow.  That won't be a change to the parser, I will just post a sample project on a documentation page that shows you how to do that.",
+      "PostedDate": "2011-12-19T20:03:02.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-03-14T18:44:51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:01.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:02.933-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

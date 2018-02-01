@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This is an issue with xslt that is being used to parse 271 response to Eligibility Benefit Response object the solution that takes care of this issue is here.\n\nput following snippet in xslt and it will solve the issue:\n\n  <xsl:template name=\"EntityName\">\n    <xsl:param name=\"Loop\"/>\n    <xsl:attribute name=\"Identifier\">\n      <xsl:value-of select=\"$Loop/NM1/NM101\"/>\n    </xsl:attribute>\n    <xsl:attribute name=\"Qualifier\">\n      <xsl:choose>\n        <xsl:when test=\"$Loop/NM1/NM102='1'\">Person</xsl:when>\n        <xsl:otherwise>NonPerson</xsl:otherwise>\n      </xsl:choose>\n    </xsl:attribute>\n    <xsl:attribute name=\"LastName\">\n      <xsl:value-of select=\"$Loop/NM1/NM103\"/>\n    </xsl:attribute>\n    <xsl:if test=\"$Loop/NM1/NM102='1'\">\n      <xsl:attribute name=\"FirstName\">\n        <xsl:value-of select=\"$Loop/NM1/NM104\"/>\n      </xsl:attribute>\n      <xsl:if test=\"string-length($Loop/NM1/NM105)>0\">\n        <xsl:attribute name=\"MiddleName\">\n          <xsl:value-of select=\"$Loop/NM1/NM105\"/>\n        </xsl:attribute>\n      </xsl:if>\n      <xsl:if test=\"string-length($Loop/NM1/NM106)>0\">\n        <xsl:attribute name=\"Prefix\">\n          <xsl:value-of select=\"$Loop/NM1/NM106\"/>\n        </xsl:attribute>\n      </xsl:if>\n      <xsl:if test=\"string-length($Loop/NM1/NM107)>0\">\n        <xsl:attribute name=\"Suffix\">\n          <xsl:value-of select=\"$Loop/NM1/NM107\"/>\n        </xsl:attribute>\n      </xsl:if>\n    </xsl:if>\n    <Identification>\n      <xsl:attribute name=\"Qualifier\">\n        <xsl:value-of select=\"$Loop/NM1/NM108\" />\n      </xsl:attribute>\n      <xsl:attribute name=\"Id\">\n        <xsl:value-of select=\"$Loop/NM1/NM109\"/>\n      </xsl:attribute>\n      <xsl:value-of select=\"$Loop/NM1/NM108/comment()\"/>\n    </Identification>\n    <Type>\n      <xsl:attribute name=\"Identifier\">\n        <xsl:value-of select=\"$Loop/NM1/NM101\"/>\n      </xsl:attribute>\n      <xsl:attribute name=\"Qualifier\">\n        <xsl:choose>\n          <xsl:when test=\"$Loop/NM1/NM102='1'\">Person</xsl:when>\n          <xsl:otherwise>NonPerson</xsl:otherwise>\n        </xsl:choose>\n      </xsl:attribute>\n    </Type>\n  </xsl:template>",
+    "LastUpdatedDate": "2017-01-11T09:47:33.57-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2016-01-12T21:24:09.677-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "while deserializing 271 response to EligibilityBenefitResponse type information is not available for Entity",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2765
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3249,
+      "FileName": "X12-271-To-BenefitResponse.xslt",
+      "DownloadUrl": ".\\3249"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have an issue that sounds very similar to what you're describing. \r\n\r\nI just downloaded the latest dll. It looks like the code already includes what you're describing. https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12.Hipaa/Eligibility/Services/Xsl/X12-271-To-BenefitResponse.xslt\r\n\r\nAm I missing something? Is there another way to address this?\r\n\r\nHelp would be very much appreciated!",
+      "PostedDate": "2016-07-07T13:51:52.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To be slightly more descriptive, It's pulling through Subscriber/Receiver information (I haven't gone through field by field to make sure it's 100%, but it looks right). However, The benefits section is giving a whole lot of 0's/nulls/Not Applicable responses.\r\n\r\n",
+      "PostedDate": "2016-07-07T13:53:43.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok. When I go through, set up the dependencies, and replace the xslt file with the one downloaded... then it turns the blank values into null values. I guess it's good that it's more explicit about things.\r\n\r\nI can't exactly post the files because it's PHI. They're coming from a clearinghouse, and the file includes multiple payers.\r\n\r\nIs anyone else experiencing this?",
+      "PostedDate": "2016-07-07T14:41:10.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think it will pull the description also if you change the <Type> segment to this: \n```\n <Type>\n      <xsl:attribute name=\"Identifier\">\n        <xsl:value-of select=\"$Loop/NM1/NM101\"/>\n      </xsl:attribute>\n      <xsl:attribute name=\"Qualifier\">\n        <xsl:choose>\n          <xsl:when test=\"$Loop/NM1/NM102='1'\">Person</xsl:when>\n          <xsl:otherwise>NonPerson</xsl:otherwise>\n        </xsl:choose>\n      </xsl:attribute>\n      <xsl:value-of select=\"$Loop/NM1/NM101/comment()\"/>\n    </Type>\n```",
+      "PostedDate": "2017-01-11T09:47:33.57-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

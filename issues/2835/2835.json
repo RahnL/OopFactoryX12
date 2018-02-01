@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Greetings.\n\nLet me first preface my post that I'm fairly new to working with EDI and the X12 format.\n\nI'm attempting to parse a JSON based version of a previously parsed X12 string BACK into a valid X12 document. The JSON as XML and the EDI as XML both match... But when attempting to use the TransformToX12 library I'm not getting the entire EDI string as X12.\n\nHowever, when I do the conversion from JSON back to X12 I only get the interchange.\n\nI've attached a sample C# program with my test. The output is below.\n\nAny help is greatly appreciated.\n\nThanks,\n\nJon\n\n**** Sample Application Output ****\nWelcome to the Edi Conversion Tester\nTest Edi : ISA * 00 * *00 * *08 * 6122650000 * 01 * 0130113 * 170130 * 1705 * U * 00401 * 856000361 * 0 * P *> ~GS * SH * 6122650000 * 0130113 * 20170130 * 1705 * 856000361 * X * 004010~ST * 856 * 0001~BSN * 00 * 17063401301700009 * 20170130 * 170528 * 0001~HL * 1 * *S~TD1 * CTN76 * 1 * ***G * 2.4 * LB~TD5 * ****UPS Collect~REF * BM * 0000027747506~DTM * 011 * 20170130~N1 * ST * *92 * 79~HL * 2 * 1 * O~PRF * nbq1 - 79 * **20160802~TD1 * CNT25 * 1 * ***G * 2.4 * LB~HL * 3 * 2 * P~MAN * GM * 00008839053384255627~HL * 4 * 3 * I~LIN * *UP * 190325857165 * VA * W1080BY7 * SZ * 12~SN1 * *1 * EA~CTT * 4~SE * 18 * 0001~GE * 1 * 856000361~IEA * 1 * 856000361~\n\n\nEdi as XML\n\n<?xml version=\"1.0\"?><Interchange segment-terminator=\" \" element-separator=\" \" sub-element-separator=\"*\"><ISA><!--Author Information Qualifier--><ISA01><ISA0101 /><ISA0102 /></ISA01><!--Author Information--><ISA02>00</ISA02><!--Security Information Qualifer--><ISA03><ISA0301 /><ISA0302 /></ISA03><!--Security Information--><ISA04><ISA0401 /><ISA0402>00</ISA0402></ISA04><!--Interchange ID Qualifier--><ISA05><ISA0501 /><ISA0502 /></ISA05><!--Interchange Sender ID--><ISA06><ISA0601 /><ISA0602>08</ISA0602></ISA06><!--Interchange ID Qualifier--><ISA07><ISA0701 /><ISA0702 /></ISA07><!--Interchange Receiver ID--><ISA08>6122650000</ISA08><!--Interchange Date--><ISA09><ISA0901 /><ISA0902 /></ISA09><!--Interchange Time--><ISA10>01</ISA10><!--Inter Control Standards Identifier--><ISA11><ISA1101 /><ISA1102 /></ISA11><!--Inter Control Version Number--><ISA12>0130113</ISA12><!--Inter Control Number--><ISA13><ISA1301 /><ISA1302 /></ISA13><!--Acknowlegment Requested--><ISA14>170130</ISA14><!--Usage Indicator--><ISA15><ISA1501 /><ISA1502 /></ISA15><!--Component Element Separator--><ISA16>1705</ISA16><ISA17><ISA1701 /><ISA1702 /></ISA17><ISA18>U</ISA18><ISA19><ISA1901 /><ISA1902 /></ISA19><ISA20>00401</ISA20><ISA21><ISA2101 /><ISA2102 /></ISA21><ISA22>856000361</ISA22><ISA23><ISA2301 /><ISA2302 /></ISA23><ISA24>0</ISA24><ISA25><ISA2501 /><ISA2502 /></ISA25><ISA26>P</ISA26><ISA27><ISA2701 /><ISA2702>&gt;</ISA2702></ISA27><ISA28>~GS</ISA28><ISA29><ISA2901 /><ISA2902 /></ISA29></ISA></Interchange>\n\nEdi Converted from X12 to JSON\n\n{\"?xml\":{\"@version\":\"1.0\"},\"Interchange\":{\"@segment-terminator\":\" \",\"@element-separator\":\" \",\"@sub-element-separator\":\"*\",\"ISA\":{\"#comment\":[],\"ISA01\":{\"ISA0101\":null,\"ISA0102\":null},\"ISA02\":\"00\",\"ISA03\":{\"ISA0301\":null,\"ISA0302\":null},\"ISA04\":{\"ISA0401\":null,\"ISA0402\":\"00\"},\"ISA05\":{\"ISA0501\":null,\"ISA0502\":null},\"ISA06\":{\"ISA0601\":null,\"ISA0602\":\"08\"},\"ISA07\":{\"ISA0701\":null,\"ISA0702\":null},\"ISA08\":\"6122650000\",\"ISA09\":{\"ISA0901\":null,\"ISA0902\":null},\"ISA10\":\"01\",\"ISA11\":{\"ISA1101\":null,\"ISA1102\":null},\"ISA12\":\"0130113\",\"ISA13\":{\"ISA1301\":null,\"ISA1302\":null},\"ISA14\":\"170130\",\"ISA15\":{\"ISA1501\":null,\"ISA1502\":null},\"ISA16\":\"1705\",\"ISA17\":{\"ISA1701\":null,\"ISA1702\":null},\"ISA18\":\"U\",\"ISA19\":{\"ISA1901\":null,\"ISA1902\":null},\"ISA20\":\"00401\",\"ISA21\":{\"ISA2101\":null,\"ISA2102\":null},\"ISA22\":\"856000361\",\"ISA23\":{\"ISA2301\":null,\"ISA2302\":null},\"ISA24\":\"0\",\"ISA25\":{\"ISA2501\":null,\"ISA2502\":null},\"ISA26\":\"P\",\"ISA27\":{\"ISA2701\":null,\"ISA2702\":\">\"},\"ISA28\":\"~GS\",\"ISA29\":{\"ISA2901\":null,\"ISA2902\":null}}}}\n\nEdi Converted from Json to X12\n\nISA * 00 * *00 * *08 * 6122650000 * 01 * 0130113 * 170130 * 1705 * U * 00401 * 856000361 * 0 * P *> ~GS *\nComparing Test Edi with parsed and reconstituted Edi\n\n\nEdi Match Failure : Conversion and Reconstitution Failed\nEnd of Line",
+    "LastUpdatedDate": "2017-06-28T13:48:06.42-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2017-06-19T09:15:58.453-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Parsing Edi to Json and back to X12",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2835
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3274,
+      "FileName": "Program.cs",
+      "DownloadUrl": ".\\3274"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This might be more appropriate for the discussion forum, but just from reviewing your comments, I am unsure that you are actually using this parser in your program.\r\n\r\nThe ISA segment is fixed-width and ends with ISA16.  See example here https://x12parser.codeplex.com/wikipage?title=Parsing%20an%20837%20Transaction&referringTitle=Home.\r\n\r\nWhat you are parsing is not recognizing the segment delimiter ~ and is treating your entire file as ISA segments.  This is why I doubt this code is generated from the parser.\r\n\r\nAfter the parser inspects the first 106 characters.  It uses the last character ~ as the segment delimiter in the rest of the file.\r\n\r\nThe fact that your ISA segment goes up to ISA29 means that you have ignored all delimiters in your parse.",
+      "PostedDate": "2017-06-19T10:54:23.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, whitespace is very important in a true X12 transaction, if you have injected any unexpected whitespace in the first 106 characters that may also be affecting your ability to find the delimiters.",
+      "PostedDate": "2017-06-19T10:56:17.753-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you @dstrubhar and yes I realized after I clicked post that I put it into the wrong place. My sincere apologies for that.\r\n\r\nI am using version X12Parser 3.0.8.1 from NuGet to parse this EDI. I got the EDI Contents from an example within our system. It is possible that the example had already been manipulated and therefore didn't have all the appropriate information within it.\r\n\r\nAFAIK, I'm not injecting any whitespace with the methods I'm using. \r\n\r\nI'll review your example and make sure that I'm parsing it correctly.\r\n\r\nRegards,\r\n\r\nJon",
+      "PostedDate": "2017-06-19T11:19:24.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I grabbed the example EDI from the link above and removed the carriage returns from it. After moving through the various conversions the change appears to be within ISA*00*..........*01*SECRET within TransformToX12, the periods are to denote 10 spaces and do not actually exist..\r\n\r\nThe flow is the document is converted into an XML document using the ParseMultiple() followed by the serialization of the resulting document. It is then passed to the TransformToX12 executable where upon conversion from XML to X12 the spacing seen above denoted by the aforementioned periods is now seen as four spaces.\r\n\r\nOriginal:\r\n\r\nISA*00*          *01*SECRET    *ZZ*SUBMITTERS.ID  *ZZ*RECEIVERS.ID   *030101*1253*^*00501*000000905*1*T*:~GS*HC*SENDER CODE*RECEIVER CODE*19991231*0802*1*X*005010X222~ST*837*0021*005010X222~BHT*0019*00*244579*20061015*1023*CH~NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23~PER*IC*JERRY*TE*3055552222*EX*231~NM1*40*2*KEY INSURANCE COMPANY*****46*66783JJT~HL*1**20*1~PRV*BI*PXC*203BF0100Y~NM1*85*2*BEN KILDARE SERVICE*****XX*9876543210~N3*234 SEAWAY ST~N4*MIAMI*FL*33111~REF*EI*587654321~NM1*87*2~N3*2345 OCEAN BLVD~N4*MAIMI*FL*33111~HL*2*1*22*1~SBR*P**2222-SJ******CI~NM1*IL*1*SMITH*JANE****MI*JS00111223333~DMG*D8*19430501*F~NM1*PR*2*KEY INSURANCE COMPANY*****PI*999996666~REF*G2*KA6663~HL*3*2*23*0~PAT*19~NM1*QC*1*SMITH*TED~N3*236 N MAIN ST~N4*MIAMI*FL*33413~DMG*D8*19730501*M~CLM*26463774*100***11:B:1*Y*A*Y*I~REF*D9*17312345600006351~HI*BK:0340*BF:V7389~LX*1~SV1*HC:99213*40*UN*1***1~DTP*472*D8*20061003~LX*2~SV1*HC:87070*15*UN*1***1~DTP*472*D8*20061003~LX*3~SV1*HC:99214*35*UN*1***2~DTP*472*D8*20061010~LX*4~SV1*HC:86663*10*UN*1***2~DTP*472*D8*20061010~SE*42*0021~GE*1*1~IEA*1*000000905~\r\n\r\nPOST Conversions (X12 -> XML -> X12)\r\n\r\nISA*00**01*SECRET    *ZZ*SUBMITTERS.ID  *ZZ*RECEIVERS.ID   *030101*1253*^*00501*000000905*1*T*:~GS*HC*SENDER CODE*RECEIVER CODE*19991231*0802*1*X*005010X222~ST*837*0021*005010X222~BHT*0019*00*244579*20061015*1023*CH~NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23~PER*IC*JERRY*TE*3055552222*EX*231~NM1*40*2*KEY INSURANCE COMPANY*****46*66783JJT~HL*1**20*1~PRV*BI*PXC*203BF0100Y~NM1*85*2*BEN KILDARE SERVICE*****XX*9876543210~N3*234 SEAWAY ST~N4*MIAMI*FL*33111~REF*EI*587654321~NM1*87*2~N3*2345 OCEAN BLVD~N4*MAIMI*FL*33111~HL*2*1*22*1~SBR*P**2222-SJ******CI~NM1*IL*1*SMITH*JANE****MI*JS00111223333~DMG*D8*19430501*F~NM1*PR*2*KEY INSURANCE COMPANY*****PI*999996666~REF*G2*KA6663~HL*3*2*23*0~PAT*19~NM1*QC*1*SMITH*TED~N3*236 N MAIN ST~N4*MIAMI*FL*33413~DMG*D8*19730501*M~CLM*26463774*100***11:B:1*Y*A*Y*I~REF*D9*17312345600006351~HI*BK:0340*BF:V7389~LX*1~SV1*HC:99213*40*UN*1***1~DTP*472*D8*20061003~LX*2~SV1*HC:87070*15*UN*1***1~DTP*472*D8*20061003~LX*3~SV1*HC:99214*35*UN*1***2~DTP*472*D8*20061010~LX*4~SV1*HC:86663*10*UN*1***2~DTP*472*D8*20061010~SE*42*0021~GE*1*1~IEA*1*000000905~\n",
+      "PostedDate": "2017-06-19T11:42:08.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "QUICK UPDATE:\r\n\r\nI believe I may have found the issue. It would appear that the mechanism which is logging this information for us appears to be changing the semi-colon that denotes the end of the interchange, or so I believe, is getting changed to a 'greater than sign' which is likely due to a failure to parse the document within our system and then it is being logged incorrectly.\r\n\r\nI'm looking into whether changing that back to a semi-colon resolves the issue. Thank you for guidance and clarification thus far.\r\n\r\n- Jon\r\n\r\n",
+      "PostedDate": "2017-06-19T11:54:23.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've tried some other EDI documents along with the example provided above and the same issue occurs where the whitespace found in the first two positions of the EDI document is getting modified to either less than it was or remove entirely.\r\n\r\nI believe the issue MAY be the conversion from the X12 to JSON which I'm currently doing by taking the resulting XML that is provided from the X12Parser and using Newtonsoft.JsonConvert.SerializeXmlNode() method to convert it to JSON.\r\n\r\nI'm not seeing a parameter in any of the methods to preserve whitespace. I do recall another discussion post regarding a suggested change to the parser to handle whitespace...\r\n\r\nhttps://x12parser.codeplex.com/workitem/2811\r\n\r\nI plugged that into my example app and it appeared to resolve the initial issue but caused others. So, I'm thinking that there is more to it than that... but maybe that's the right direction.",
+      "PostedDate": "2017-06-19T12:41:27.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've been digging into this further today and the loss of whitespace happens between the Serialization of the X12Parser output xml into JSON and that conversion BACK to XML and then to an X12 document via TransformToX12.\r\n\r\nThe Base Edi Interchange is: ISA*00*          *00*          *ZZ*NBRICSAS2      *ZZ*RICSTEST       *110209*1204*U*00401*000000012*0*T*:\r\n\r\nAnd it gets turned into this: ISA*00**00**ZZ*NBRICSAS2      *ZZ*RICSTEST       *110209*1204*U*00401*000000012*0*T*:\r\n\r\nIf I do a string.Replace within my code and put in the correct Interchange it works just fine.\r\n\r\nSo there is something happening to that whitespace in between conversions the conversion of the Edi into Xml into JSON and then back.\r\n\r\nWhen I used X12Parser.exe on the EDI and took it's output and ran it in TransformToX12.exe the Notepad++ Compare plug-in indicated there was a difference...\r\n\r\nI'm leaning towards this being an issue with the preservation of whitespace during the Serialization of the XML output from X12Parser into JSON and then back out using DeserializeXmlNode back to XML and back through TransformToX12.\r\n\r\nAny thoughts on how to proceed from here?\r\n\r\nThanks,\r\n\r\nJon",
+      "PostedDate": "2017-06-28T13:20:52.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Apparently I just needed to write all that out... then google for the issue again... to come across THIS.\r\n\r\nXMLDocument.PreserveWhiteSpace = true;\r\n\r\nBy adding that property to wherever I was manipulating or working an the XML Document allowed it to work within my test application. I'm now attempting to handle this within my larger application.\r\n\r\nSo, for those that find this issue if you wish to convert your XML output from X12Parser into JSON and have a need to convert it back to X12 the XMLDocument.PreserveWhiteSpace property MUST be set to true.\r\n\r\nThank you dstrubhar. Please feel free to close this issue.",
+      "PostedDate": "2017-06-28T13:48:06.42-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

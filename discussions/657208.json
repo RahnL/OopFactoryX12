@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1481344",
+    "ThreadId": "657208",
+    "Html": "Hi Please give 835 xml with element specification. I can see only segment level specification present in the source code.<br />\n",
+    "PostedDate": "2016-08-17T03:11:43.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1481348",
+    "ThreadId": "657208",
+    "Html": "The element specification is in a different xml document.  There should be a version for 2015.  These specs are shared across all transaction set definitions so are defined in one place.<br />\n",
+    "PostedDate": "2016-08-17T04:36:55.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

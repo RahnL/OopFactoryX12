@@ -1,0 +1,13 @@
+Index: src/OopFactory.X12/Parsing/Model/Interchange.cs
+===================================================================
+--- src/OopFactory.X12/Parsing/Model/Interchange.cs	(revision 43639)
++++ src/OopFactory.X12/Parsing/Model/Interchange.cs	(working copy)
+@@ -14,7 +14,7 @@
+         private ISpecificationFinder _specFinder;
+         private List<FunctionGroup> _functionGroups;
+ 
+-        internal Interchange() : base(null, null, "GS") { }
++        internal Interchange() : base(null, new X12DelimiterSet('~', '*', ':'), "GS") { }
+ 
+         internal Interchange(ISpecificationFinder specFinder, string segmentString)
+             : base(null, new X12DelimiterSet(segmentString.ToCharArray()), segmentString)

@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-03-27T18:36:14.677-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Add XML file to speficy 856 for parsing.",
+    "LastUpdatedDate": "2013-05-16T04:34:08.63-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-03-18T04:48:04.56-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Add 856 Specification for Ship Notice/Manifest",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 643
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 6988.",
+      "PostedDate": "2011-03-18T05:34:02.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "** Closed by dstrubhar 3/18/2011 5:34 AM",
+      "PostedDate": "2011-03-18T07:09:16.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Need to do domain objects too.",
+      "PostedDate": "2011-03-18T07:09:17.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 6989.",
+      "PostedDate": "2011-03-18T07:09:41.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 6991.",
+      "PostedDate": "2011-03-18T07:39:45.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 6992.",
+      "PostedDate": "2011-03-18T07:48:05.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 6997.",
+      "PostedDate": "2011-03-18T17:11:28.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 6999.",
+      "PostedDate": "2011-03-18T19:04:56.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7000.",
+      "PostedDate": "2011-03-18T19:56:54.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7001.",
+      "PostedDate": "2011-03-18T20:33:14.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7002.",
+      "PostedDate": "2011-03-18T23:13:54.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7009.",
+      "PostedDate": "2011-03-19T10:22:02.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 7160.",
+      "PostedDate": "2011-03-27T18:36:14.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:07.7-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:08.63-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

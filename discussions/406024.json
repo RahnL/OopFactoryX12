@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "953165",
+    "ThreadId": "406024",
+    "Html": "\r\n<p>I've been trying to rework an 837 message in that I've successfully transformed from 4010 to 5010 into multiple transactions. &nbsp;the requirement is that each claim loop be in it's own transaction. &nbsp;In effect I want to have multiple ST segments within\r\n a file. &nbsp;This seems to have worked and the message converts back to X12 without error. &nbsp;However when I convert the message back to XML I get the error: &quot;An item with the same key has already been added.&quot;</p>\r\n<p>Upon further research the X12 string that was being created by the TransformToX12 method is not correct at this point and doesn't contain multiple transaction sets.</p>\r\n<p>I've looked at the example for&nbsp;UnbundleByLoop and the sample file you have includes multiple ST sets in the file. &nbsp;I think the question is what should the XML look like to have it successfully parse back to X12 and create multiple transaction sets.\r\n &nbsp;Should I be creating a new Interchange object and then adding function groups to that?</p>\r\n<p>I've figured this out using posting&nbsp;http://x12parser.codeplex.com/discussions/294499.</p>\r\n<p>One thing: The transaction control numbers are not unique - Do I need to set these myself?</p>\r\n<p>Sorry for all the posts but I'm constantly learning something new about the parser, it is really a very handy library!</p>\r\n",
+    "PostedDate": "2012-12-07T15:01:23.577-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

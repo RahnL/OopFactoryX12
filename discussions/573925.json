@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1328453",
+    "ThreadId": "573925",
+    "Html": "I see Create270Test in the x12.Test.Unit project.\r<br />\n<br />\nIs there a way to create 270 requests more 'generically'?\r<br />\nHow do I know if this conforms to 5010 270?\r<br />\n<br />\nI'm new to x12 and HIPPA calls, so what's the best way to create requests?\r<br />\n<br />\nDo I need to create my own XSLT to transform XML from the WPC HIPPA wsd's?\r<br />\n<br />\nIf I create a class from the WPC 270_A1.xsd - can I use that with the Parser to create the X12 270 request?\r<br />\n<br />\nSo many questions - basically - what's the best way to start using this?<br />\n",
+    "PostedDate": "2014-12-03T09:17:55.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

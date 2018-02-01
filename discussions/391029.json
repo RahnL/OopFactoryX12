@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "898142",
+    "ThreadId": "391029",
+    "Html": "\r\n<p>I have a scenario where I need to convert the 5010 835 files we are receiving to the older 4010 version. &nbsp;It seems like this project could help me accomplish that goal; however, I'm not quite sure exactly where to start.</p>\r\n<p>If it is indeed possible to do this conversion with the x12parser, could you point me in the right direction? &nbsp;If it is not possible, thanks for letting me know.</p>\r\n",
+    "PostedDate": "2012-08-10T10:03:36.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "898221",
+    "ThreadId": "391029",
+    "Html": "<p>You could use this tool to parse an 5010 835 and recreate it as a 4010 835, but before you start.&nbsp; If you use a clearinghouse, most of them are prepared to do this for you, it's at least worth asking since their code will already be tested.</p>\r\n<p>The x12 will get loaded into an Interchange object which you can traverse and create a new Interchange object using the older version.</p>\r\n<p>There is some code examples in the discussion for doing this with 837s here <a href=\"http://x12parser.codeplex.com/discussions/265463\">http://x12parser.codeplex.com/discussions/265463</a>.</p>",
+    "PostedDate": "2012-08-10T12:40:35.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "898627",
+    "ThreadId": "391029",
+    "Html": "<p>Thanks for the link. &nbsp;I'll take a look at it. &nbsp;We do not use a clearing house, so unfortunately I can't count on them for the conversion.</p>\r\n<p>Mike</p>",
+    "PostedDate": "2012-08-12T19:58:39.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "898798",
+    "ThreadId": "391029",
+    "Html": "<p>Mike,</p>\r\n<p>If you're interested (and assuming you're not doing dental claims) I could get you connected with a pretty affordable clearinghouse that has these type of tools available. Having had to support an environment where we submitted direct to payers, I've found it makes life much easier to have a central management point for claims and remits, i.e. the clearinghouse. (Full disclosure - my company is a reseller for them).</p>\r\n<p>Thanks,</p>\r\n<p>-Nate</p>",
+    "PostedDate": "2012-08-13T08:02:19.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

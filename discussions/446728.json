@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1055564",
+    "ThreadId": "446728",
+    "Html": "Hi, \r<br />\nI'm having trouble with the default tostring() formatting/precision of CLM02. It's currently doing 4 decimal places. \r<br />\n<br />\nIs there a way to change to precision/decimal places to 2? \r<br />\n<br />\nRegards, \r<br />\n<br />\nRuy<br />\n",
+    "PostedDate": "2013-06-11T13:34:13.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1055589",
+    "ThreadId": "446728",
+    "Html": "solved by modifying setter for property, disregard thanks. <br />\n",
+    "PostedDate": "2013-06-11T14:27:31.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

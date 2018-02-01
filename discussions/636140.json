@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1421869",
+    "ThreadId": "636140",
+    "Html": "Is there an easy way to use this software to store account numbers from an 837 and look them up against account numbers in a .csv file?\r<br />\n<br />\nI've tried to read through some of the provided source, hoping I could see how that particular field was being identified and use that to store it to an array or list, but I think it is going over my head.\r<br />\n<br />\nAny ideas?<br />\n",
+    "PostedDate": "2015-04-30T11:21:41.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

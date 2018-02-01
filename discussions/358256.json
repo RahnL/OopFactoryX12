@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "844433",
+    "ThreadId": "358256",
+    "Html": "\r\n<p>I have some EDI files that supposedly follow the 856 spec (dialect: x12, version: 4010) and when I tried to round-trip it through X12Parser (to xml) and then TransformToX12 (back to edi), the ultimate target file doesn't match with the original input document.\r\n It seems that the issue has to do with the location of the 'CTT' element, which in this OopFactory project is\r\n<em>before</em> the first hierarchical loop (i.e. &quot;SHIPMENT&quot;), but in most of the other documentation I've see (e.g. http://www.edidev.com/samples/business/VbNetGen856Sourcecode.htm and StylusStudio), it comes\r\n<em>at the end of </em>that 1st HL.</p>\r\n<p>Any idea why this might be different? And if I really need it to be round-tripable, what should I do? Attempt to create a 2nd 856 implementation with a different Ansi-856-4010Specification.xml file, in which the //Segment[SegmentId = 'CTT'] comes in the\r\n other location (at the end of the 1st HL)?</p>\r\n<p>Also, can you give the link to the actual spec so I can see what it says?</p>\r\n<p>Thanks,<br>\r\nBob Eaton</p>\r\n",
+    "PostedDate": "2012-06-04T08:17:15.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

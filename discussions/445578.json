@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1051246",
+    "ThreadId": "445578",
+    "Html": "One of the standards we have at our company is to include a couple extra columns on each table.  They are set by defaults.  On the current tables, I have written a script to set them up ahead of time.  However, there are a couple Insert statements that do not include the fields for the Container and Revision tables.  For example, SaveRevision, SaveLoop, SaveInterchange, etc.  As a result, the Insert statement fails.  Is there any way the fields will be added to these?  If not, I can work around it another way.\r<br />\n<br />\nThanks again for all the work you are doing!!<br />\n",
+    "PostedDate": "2013-05-31T08:23:46.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

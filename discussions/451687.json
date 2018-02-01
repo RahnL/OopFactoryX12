@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1074080",
+    "ThreadId": "451687",
+    "Html": "FromLatitude81uk-5010.txt\r<br />\n<br />\nHas invalid date values.<br />\n",
+    "PostedDate": "2013-07-28T10:41:16.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1074323",
+    "ThreadId": "451687",
+    "Html": "I have fixed the date values.\r<br />\n<br />\nISA<em>00</em>          <em>00</em>          <em>ZZ</em>0343434BS      <em>ZZ<em>EMS00056       <em>070403</em>1859</em>^<em>343434</em>43434343</em>0<em>P</em>:~\r<br />\n  GS<em>HN<em>34343gh</em>rer434346</em>20120524<em>1859</em>1<em>X</em>005010X214~<br />\n<pre><code>ST*277*000001*005010X214~\n  BHT*34343*08*3434343*20434343*34343*TH~\n  HL*1**20*1~\n    NM1*PR*2*rtrtrtr rtrtrtr rtrtrt*****46*4343434GH~\n    TRN*1*20120524132154~\n      DTP*040*D8*20121212~\n      DTP*006*D8*20121212~\n    HL*2*1*21*1~\n      NM1*41*2*Testing testing med*****46*EMerere~\n      TRN*2*3078~\n        STC*A1:20:41*2trtrtrt*yh*19554~\n        QTY*90*4~\n        AMT*YU*1917~\n      HL*3*2*19*1~\n        NM1*85*2*Testing testing med*****XX*14434343434~\n        TRN*1*0~\n          STC*A1:562:85**WQ*1917~\n          REF*TJ*45454515454~\n          QTY*QA*4~\n          AMT*YU*1917~\n        HL*4*3*PT~\n          NM1*QC*1*Goat*matton****MI*Wyh1fggfgfgW~\n          TRN*2*MVC132-0145454~\n            STC*A2:20:PRP*20120101*WQ*442~\n            REF*1K*545454~\n            DTP*472*RD8*20121212-20131212~\nSE*27*000001~</code></pre>\n\nGE<em>1</em>1~\r<br />\nIEA<em>1</em>000000002~<br />\n",
+    "PostedDate": "2013-07-29T07:42:39.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092848",
+    "ThreadId": "451687",
+    "Html": "Thank you for pointing this out.  It was causing errors when it attempted to load into the database.\r<br />\nSince this could happen to the end user, I have changed SqlTransactionRepository so that it will log this problem to the ParsingError table instead of throwing an exception.  The fix is available in version 3.0.7.<br />\n",
+    "PostedDate": "2013-09-15T08:29:32.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092937",
+    "ThreadId": "451687",
+    "Html": "\r\n<div dir=\"ltr\">This is the least I can do to support this great project. Thanks again for sharing such a cool and useful project. I see that you live in the DFW area. We should meet for coffee sometime. I am in the process of developing a product.\r\n<br>\r\n<br>\r\n<br>\r\n<div>\r\n<hr id=\"stopSpelling\">\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2013-09-15T15:22:15.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

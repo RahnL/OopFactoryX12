@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have a file that is ~120mb, I know that the X12Parser can handle larger as I also parse files that are 200+mb without an issue.  The issue I'm running into is that the file has Multiple HL1 loops with a null parent which from what I see the X12 parser tries to push into different Files.  I.E.  the first HL1 goes into an _1 file, the second into a _2 file, etc.  I can parse into the _1.xml file just fine, but when it tries to create the _2.xml file it throws an out of memory exception.",
+    "LastUpdatedDate": "2016-07-30T07:39:36.71-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2016-07-30T07:39:36.71-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Multiple HL1 loops in 811 causes Out of Memory Exception",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2807
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

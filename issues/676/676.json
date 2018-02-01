@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed and released in X12 Parser 2.1.4.Added unit tests to verify fix.",
+    "ClosedDate": "2011-04-21T17:08:10.46-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'll be adding to this ticket if I find any more - \n \n1) Interchange.cs - Line 92 is missing a }\n2) ElementValidationException - Line 11 should be : base(String.Format(formatString, elementId, value, args[0], args[1]), elementId) - otherwise you  get an index exception",
+    "LastUpdatedDate": "2013-05-16T04:34:07.5-07:00",
+    "PlannedForRelease": "X12 Parser 2.1.4",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-04-21T06:45:20.817-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Some little bugs I found",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 676
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Interchange.cs - line 27 - should have 004010 instead of 00401",
+      "PostedDate": "2011-04-21T06:55:33.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Scratch the last comment - I was mislead by some document I found on the net.",
+      "PostedDate": "2011-04-21T09:24:26.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7747.",
+      "PostedDate": "2011-04-21T16:55:41.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank for being an early adopter.  I have fixed and release your changes.  Hope you enjoy it.  Let me know if there are other features that you or your peers would need to encourage others to use this tool.",
+      "PostedDate": "2011-04-21T17:07:08.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-21T17:08:10.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:07.063-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:07.5-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

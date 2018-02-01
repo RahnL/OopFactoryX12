@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-09-13T17:42:39.107-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi I am new to this.\n\nPlease let me know how to install. I have downloaded 'Release 3.0.4 binaries.zip'. Please let me know how to get started.\n\nThanks,\nKarthik.",
+    "LastUpdatedDate": "2013-09-13T17:42:39.107-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-07-25T06:20:16.47-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "How to install",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1659
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I just unzipped the files into a directory, C:\\apps\\X12Parser3.0.5\r\n\r\nThen, you can run the EXEs.\r\n\r\n",
+      "PostedDate": "2013-08-01T07:57:42.063-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This does not require any special installation.  Once you have unzipped the files, you can run the exes from a command line prompt or in a batch files.  The exes are very rudimentary.  The target audience for this is developers who will reference the dlls in their projects that will integrate their inbound x12 files with the rest of the processing systems.",
+      "PostedDate": "2013-09-13T17:42:26.063-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-13T17:42:39.107-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "979595",
+    "ThreadId": "426703",
+    "Html": "\r\n<p>File Name: X12Extensions.cs</p>\r\n<p><span style=\"color:#ff0000\">elementNote.ContextErrors is null</span> (when I was using one of the 837 files). For now, I am checking for null condition before the foreach loop.</p>\r\n<p>&nbsp;foreach (var context in <span style=\"color:#ff0000\">elementNote.ContextErrors</span>)<br>\r\n&nbsp;{<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var ctx = ik4.AddSegment&lt;TypedSegmentCTX&gt;(new TypedSegmentCTX());<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ctx.CTX01._1_ContextName = &quot;SITUATIONAL TRIGGER&quot;;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ctx.CTX01._2_ContextReference = context.IdentificationReference;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ctx.CTX02_SegmentIdCode = context.SegmentIdCode;<br>\r\n&nbsp; &nbsp;&nbsp;&nbsp; ctx.CTX03_SegmentPositionInTransactionSet = context.SegmentPositionInTransactionSet;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ctx.CTX04_LoopIdentifierCode = context.LoopIdentifierCode;<br>\r\n&nbsp;}</p>\r\n<p>Please look into this</p>\r\n",
+    "PostedDate": "2012-12-26T18:16:51.193-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

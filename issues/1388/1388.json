@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Resolved with user instructions.",
+    "ClosedDate": "2012-10-15T13:00:59.007-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n\nI downloaded the parser recently and I haven't been able to use it. After I add the reference of the OopFactory.X12.dll to my project, I compile my project and a error came up.\n\n\"The type or namespace name 'OopFactory' could not be found (are you missing a using directive or an assembly reference?)\"\n\nPlease someone help me out.\n\nThanks!",
+    "LastUpdatedDate": "2013-05-16T04:33:58.967-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-10-15T08:47:16.08-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "OopFactory X12 Parser not working on VS 2012",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1388
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The latest build targets the .NET Framework 4.\nMake sure your project's Target framework is set to this.",
+      "PostedDate": "2012-10-15T10:06:17.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks that did it!",
+      "PostedDate": "2012-10-15T12:00:00.667-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-15T13:00:59.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:56.247-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:33:58.967-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

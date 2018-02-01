@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1091701",
+    "ThreadId": "456672",
+    "Html": "We have received files from a vendor that contain multiple ISA sements in a single file. My program loops on;<br />\n<pre><code>For Each interchange In parser.ParseMultiple(memStream, encoding)</code></pre>\n\nIs this acceptable?\r<br />\n<br />\nAt present my program seems to be in an infinite loop, but without knowing whether this is an allowed structure in ANSI-837/5010, I don't know whether it is a bug or, bad data.<br />\n",
+    "PostedDate": "2013-09-12T05:49:48.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091706",
+    "ThreadId": "456672",
+    "Html": "OK, not an infinite loop.\r<br />\n<br />\nI am analyzing the results now. It may not be an issue. But confirmation of my original question would be nice.<br />\n",
+    "PostedDate": "2013-09-12T06:14:52.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091719",
+    "ThreadId": "456672",
+    "Html": "Yes this is legal, that's why the Parse method got obsoleted and replaced by ParseMultiple.\r<br />\nIt doesn't happen often, but it does happen.\r<br />\nIt's probably a result of clearinghouses who are trying to combine files from multiple senders and retain the same header information from the original sender, but could be for other reasons.\r<br />\nThe nice thing is you don't have to worry about each ISA section having different delimiters, the parser should handle that for you.<br />\n",
+    "PostedDate": "2013-09-12T06:35:55.003-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

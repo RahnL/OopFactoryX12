@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Good evening, \n\nI am coming across an error when trying to process 856 files after they have been converted to EDI documents using TransformToX12 with the 856 transaction set. The issue is that the CTT segment is getting written directly after the BSN, rather than at the end of all HL segments, just prior to the SE segment. \n\nThis is the case with both 4010 and 4030 X12 standards documents.",
+    "LastUpdatedDate": "2013-02-27T17:42:30.54-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-02-12T22:16:19.39-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Issue in the 856 (ASN) Transformation with CTT Segment",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1508
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Associated with changeset 23145.",
+      "PostedDate": "2013-02-17T10:33:32.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are correct.  I have fixed this serialization to keep the segments with Trailer=\"true\" at the bottom.  It is in changeset http://x12parser.codeplex.com/SourceControl/changeset/23145 and I will be doing a release within the next few weeks.",
+      "PostedDate": "2013-02-17T10:35:39.263-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:54.11-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks a lot, I appreciate the work that you have put into this project, it is quite amazing! ",
+      "PostedDate": "2013-02-27T17:42:30.54-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

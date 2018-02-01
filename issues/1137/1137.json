@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Released in 2.2.4",
+    "ClosedDate": "2012-04-28T20:07:03.167-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Is there a reason for:\n \nHierarchical.cs:\n \ninternal HierarchicalLoopSpecification Specification { get; set; }\n \nvs\n \nLoop.cs:\n \npublic LoopSpecification Specification { get; private set; }\n \nI would like to get at the LoopID for Hierarchical loops, but it's set internal... I have made the following change and haven't observed any issues, can this be applied?\n \nHierarchical.cs:\n \npublic HierarchicalLoopSpecification Specification { get; internal set; }\n \n \nThanks",
+    "LastUpdatedDate": "2013-05-16T04:34:01.83-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-03-21T14:06:33.33-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Loop Specification is public get, but HierchicalLoop is private?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1137
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've update in changeset 15281.  It will get in the next build.",
+      "PostedDate": "2012-03-21T15:26:41.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-04-28T20:07:03.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:59.893-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:01.83-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

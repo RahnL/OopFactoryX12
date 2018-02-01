@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1045225",
+    "ThreadId": "444080",
+    "Html": "File Name: X12Extensions.cs\r<br />\n <br />\nIn my case, elementNote.ContextErrors is null.\r<br />\n<br />\nforeach (var context in elementNote.ContextErrors)<br />\n<pre><code>                            {\n                                var ctx = ik4.AddSegment&lt;TypedSegmentCTX&gt;(new TypedSegmentCTX());\n                                ctx.CTX01._1_ContextName = &quot;SITUATIONAL TRIGGER&quot;;\n                                ctx.CTX01._2_ContextReference = context.IdentificationReference;\n                                ctx.CTX02_SegmentIdCode = context.SegmentIdCode;\n                                ctx.CTX03_SegmentPositionInTransactionSet = context.SegmentPositionInTransactionSet;\n                                ctx.CTX04_LoopIdentifierCode = context.LoopIdentifierCode;\n                            }</code></pre>\n\nforeach (var context in elementNote.ContextErrors)<br />\n<pre><code>                            {\n                                var ctx = ik4.AddSegment&lt;TypedSegmentCTX&gt;(new TypedSegmentCTX());\n                                ctx.CTX01._1_ContextName = &quot;SITUATIONAL TRIGGER&quot;;\n                                ctx.CTX01._2_ContextReference = context.IdentificationReference;\n                                ctx.CTX02_SegmentIdCode = context.SegmentIdCode;\n                                ctx.CTX03_SegmentPositionInTransactionSet = context.SegmentPositionInTransactionSet;\n                                ctx.CTX04_LoopIdentifierCode = context.LoopIdentifierCode;\n                            }\n\n</code></pre>\n\nFor current work around I am checking for NULL<br />\n",
+    "PostedDate": "2013-05-17T10:51:58.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1045245",
+    "ThreadId": "444080",
+    "Html": "Would you happen to have a de-identified version of the claim that is causing this error so the problem can be reproduced?<br />\n",
+    "PostedDate": "2013-05-17T11:11:20.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1045257",
+    "ThreadId": "444080",
+    "Html": "\r\n<div>I will try get to you one. Unfortunately, I can do that only during this week end.</div>\r\n<div><br>\r\nSent from my iPhone</div>\r\n<div><br>\r\n</div>\r\n",
+    "PostedDate": "2013-05-17T11:34:26.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1047477",
+    "ThreadId": "444080",
+    "Html": "I am trying to get this file to you so that you can reproduce the problem. \r<br />\n<br />\nI unbundled all the claims in this file and tried to create ACK for each one of them so that I can identify the problem claim. But, when I tried that, none of them is helping me to reproduce the problem. However when I use the original claim file which has multiple claims, I can see that problem.\r<br />\n<br />\nDo you have any tool to de-identify a given claim file (which has multiple claims in it)?\r<br />\n<br />\nI am trying my best to get this file to you.<br />\n",
+    "PostedDate": "2013-05-22T19:10:07.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1047666",
+    "ThreadId": "444080",
+    "Html": "There is a de-identify tool here: (<a href=\"http://etasoft.com/ot.htm\" rel=\"nofollow\">http://etasoft.com/ot.htm</a>)<br />\n",
+    "PostedDate": "2013-05-23T05:11:25.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1047718",
+    "ThreadId": "444080",
+    "Html": "I have created an issue and attached the file which can be used to reproduce the problem. \r<br />\nThanks again for all your great work.<br />\n",
+    "PostedDate": "2013-05-23T06:36:06.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1076136",
+    "ThreadId": "444080",
+    "Html": "The ContextErrors list is not initialized in the DataElementNote class and it is not supplied when the DataElementError is created:<br />\n<pre><code>protected SegmentError CreateDataElementError(SegmentInformation segmentInfo, int elementPositionInSegment, string syntaxErrorCode, string element)\n        {\n            var error = new SegmentError\n            {\n                SegmentIdCode = segmentInfo.SegmentId,\n                SegmentPosition = segmentInfo.SegmentPosition,\n                LoopIdentifierCode = segmentInfo.LoopId,\n                ImplementationSegmentSyntaxErrorCode = &quot;8&quot;\n            };\n            error.ElementNotes.Add(new DataElementNote\n            {\n                PositionInSegment = new PositionInSegment { ElementPositionInSegment = elementPositionInSegment },\n                SyntaxErrorCode = syntaxErrorCode,\n                CopyOfBadElement = element\n            });\n            return error;\n        }</code></pre>\n\nThe result is that ContextErrors is always null.<br />\n",
+    "PostedDate": "2013-08-02T12:34:02.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092850",
+    "ThreadId": "444080",
+    "Html": "I have updated DataElementNote to initialize ContextErrors in changeset 30924.  Let me know if this doesn't fix the problem.<br />\n",
+    "PostedDate": "2013-09-15T08:33:35.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

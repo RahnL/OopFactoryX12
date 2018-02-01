@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1104473",
+    "ThreadId": "461382",
+    "Html": "I have a special situation where I need a different InterchangeControlNumber generated for each unbundled file.  Is there a way for me to just override the UnbundleByLoop method?<br />\n<br />\nIt would be nice if we could create our own classes and just inherit/override certain methods.<br />\n<br />\n<br />\nI don't really want to modify the OopFactory code base, but I'd like to add this functionality for my special case.<br />\n<br />\nThx<br />\n",
+    "PostedDate": "2013-10-07T05:23:38.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1047221",
+    "ThreadId": "444620",
+    "Html": "In the SqlTransactionRepository class, the table names are set to various values that reflect the data they contain.  However, we are planning to include these tables and corresponding views in the same database that we use for other client information.  Is there a way to add an optional, user-supplied prefix for these tables and views (something that could be included as an optional parameter, perhaps) so that these tables will be grouped together when we look at the database?<br />\n\r<br />\nThanks for all the work you've done on this project!!<br />\n",
+    "PostedDate": "2013-05-22T09:52:04.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1047234",
+    "ThreadId": "444620",
+    "Html": "Yes, there is already a feature described <a href=\"https://x12parser.codeplex.com/wikipage?title=Sql%20Server%20Database%20Integration\" rel=\"nofollow\">here</a> for specifying a schema and containerSchema so that you can separate these from the tables in your dbo schema.  The schema will be generated for you if it doesn't already exist on your first attempt to load a file.\r<br />\n<br />\nYou could potential run this under multiple schemas if you didn't want different data sources to co-mingle.<br />\n",
+    "PostedDate": "2013-05-22T10:06:04.017-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1050351",
+    "ThreadId": "444620",
+    "Html": "Thanks!  That should work.<br />\n\r<br />\nI did have a couple questions about the non-dbo schema.  I ran it with a different schema, but SplitStatement and FlatElementsFunction are created with a dbo schema in CreateSplitStatementFunction and CreateFlatElementsFunction in DbCreation.cs.  Also, the Revision table is created with the new schema, but the data is added to dbo.Revision in CreateRevisionTable in DbCreation.cs.  Are those supposed to be prefaced with the schema?\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2013-05-29T15:37:55.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

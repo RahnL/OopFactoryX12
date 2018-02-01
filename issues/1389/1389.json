@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Just like Claim object in 837, this will add lot of benefit for the consumers of ERA (835)",
+    "LastUpdatedDate": "2017-11-27T18:20:56.697-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-10-15T16:37:18.873-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Create Object Model Remittance Advise (835)",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 2,
+    "Id": 1389
+  },
+  "FileAttachments": [
+    {
+      "FileId": 584,
+      "FileName": "ERA Object Model.vsd",
+      "DownloadUrl": ".\\584"
+    },
+    {
+      "FileId": 585,
+      "FileName": "ERA Object Model.pdf",
+      "DownloadUrl": ".\\585"
+    },
+    {
+      "FileId": 586,
+      "FileName": "x12.EraParser.rar",
+      "DownloadUrl": ".\\586"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Adding PDF version of the model for quick viewing purposes",
+      "PostedDate": "2012-10-15T16:37:55.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-22T18:44:01.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Implemented the logic to populate the ERA object model from a given ERA (835) file. ",
+      "PostedDate": "2012-10-22T18:44:46.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:56.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Dear Shanthu,\r\n\r\nThis is not working fine as we are expcting. It is not loading all the data from transform to Model. When i am trying to wrting this to PDF report, it is showing only first line service number in \r\n\r\nRemttanceFileContent --> Transactions --> Check--> Header--> ClaimPayments--> ServicePayments.\r\n\r\nWhich is leading to issue in preparing report. If you can fix this issue, i can transform a bunch of files to standard PDF form.",
+      "PostedDate": "2013-04-24T00:53:48.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Shanthu,\r\n\r\nI have check and found that if ERA is containing more than one 2000 Loop then header is replacing with older one, Which is leading to show only latest header in RemttanceTransaction Object. Kindly look into this. so, i can go head and start working on this.\r\n\r\n\nThanks.\nchowdary.",
+      "PostedDate": "2013-04-29T01:02:48.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "chowdary,\nHow do I test this? How does the PDF report looks like?",
+      "PostedDate": "2013-04-29T18:19:37.26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Shanthu,\r\n\r\nYou must have .835 file to test this. The pdf report you can obtain a copy by googling the follwing words\r\n\r\n\"Medicare Remittance Easy print\" download it from CMS website, install and import one 835 file you can see the report which i am trying to do the similar. This is a free of cost one which is provided by Federal Govt CMS.",
+      "PostedDate": "2013-04-30T01:37:56.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "chowdary2005,\nI have sometime to test this and give feedback. Please provide some instructions on how to test this.",
+      "PostedDate": "2013-05-06T14:40:36.91-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-09-23T08:51:34.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:20:56.697-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

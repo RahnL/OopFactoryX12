@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "936335",
+    "ThreadId": "401835",
+    "Html": "\r\n<p>I am using this test file. When I run the form unit test cases, the UB04 PDB file has the OccurrenceSpans properly populated.</p>\r\n<p>However, when I parse the same file to popualte the object model (Claim class instance), OccurrenceSpans property has zero entries.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-04T08:51:19.16-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "936339",
+    "ThreadId": "401835",
+    "Html": "<p>My bad. I was looking at InstitutionalClaim4010.txt when PDF was generated using InstitutionalClaim5010.txt</p>\r\n<p>Please neglect my previous post.</p>",
+    "PostedDate": "2012-11-04T09:03:01.593-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

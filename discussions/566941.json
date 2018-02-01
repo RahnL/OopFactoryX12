@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1303058",
+    "ThreadId": "566941",
+    "Html": "Hello,\r<br />\n<br />\nWe have UB-04 claim data available as text files. Each file has multiple claims separated by line breaks. Can I use the X12 Parser to parse &amp; transform this data to XML similar to what I am currently doing for X12 4010 and 5010 professional and institutional claims?\r<br />\n<br />\nAny help would be greatly appreciated.\r<br />\n<br />\nKind Regards,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-09-09T17:07:04.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1303440",
+    "ThreadId": "566941",
+    "Html": "Can someone please help with this? \r<br />\n<br />\nThank you,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-09-10T20:23:30.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1304816",
+    "ThreadId": "566941",
+    "Html": "This is an example of the Ub-04 claim available in text format. Does the X12parser support parsing this format?\r<br />\n<br />\n<br />\nABC CHILDRENS RES HOS                             1234567\r<br />\nP O BOX 1111 DEPT 55                                  0000000000012345       0000\r<br />\nCITY      ST 111110001\r<br />\n1111222222  1111333333                            11-2223333 123456 123456<br />\n<pre><code>                                     1111 STREET LANE APT 555</code></pre>\n\nLNAME, FNAME N.              CITY                           ST 12345\r<br />\n<br />\n09271994  F 123456789  1  1 11 01\r<br />\n<br />\n<br />\n<br />\n LNAME  FNAME\r<br />\n1111 STREET LANE APT 555\r<br />\nCITY                    ST 12345-\r<br />\n(111)222-3333\r<br />\n<br />\n<br />\n0250 PHARMACY                                120611       1      9070\r<br />\n0402 ULTRASOUND               76705          120611       1     78500\r<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n0001     001   001                           010112             87570<br />\n<pre><code>                                                                1033112230</code></pre>\n\nMYCHOICE-MYCARE   123456789      Y  Y                 87570\r<br />\n<br />\n<br />\n<br />\nLNAME,FNAME N.           18 AB12345657                          WT01<br />\n<pre><code>                                                      NONE\n\n</code></pre>\n\n28261   V4579   V623    V180    V183    V0481\r<br />\n9<br />\n<pre><code>                                                      1111111111\n                                                DRLNAME              DRFNAME\n\n\n MYCHOICE-MYCARE  A1112BC2000A\n PO BOX 1111\n CITY ST 1234511\n\n</code></pre>\n\nThanks for your help,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-09-15T06:58:05.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1305283",
+    "ThreadId": "566941",
+    "Html": "Can someone from the X12Parser team please respond?\r<br />\n<br />\nThanks,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-09-16T10:44:00.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1305311",
+    "ThreadId": "566941",
+    "Html": "The text you are showing me is no longer in an X12 format.\r<br />\nMy only guess is that they have layed out the data so that it could be projected onto a UB-04 form.  But that may not be the case either.\r<br />\nThe format looks like it was created to be human readable and not automation readable.\r<br />\n<br />\nI am not sure why someone is giving you these files, but it appears to be a proprietary format.  Perhaps you can ask them for the raw x12 files that generated these files.  Most everyone receives claims as x12 or as paper, so there must have been some internal program that generated this.<br />\n",
+    "PostedDate": "2014-09-16T12:16:38.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1305357",
+    "ThreadId": "566941",
+    "Html": "Dear dstrubhar,\r<br />\nThank you so much for taking the time to respond, I really appreciate it. \r<br />\nYou are absolutely correct. This is data projected from a UB-04 form. And it adheres to the official UB-04 data spec. \r<br />\n<br />\nUnfortunately, we have to live with this format because that's the only format this particular Provider supports (for now). We receive 4010 and 5010s (raw X12 files) from all other providers and your X12 parser has been a huge blessing!\r<br />\n<br />\nBased on your feedback, it appears I am going to have to write a parser from the ground up to make it automation readable by referring to the UB-04 spec (lines1-4 are provider name and address, left justified, positions 1-20, etc).\r<br />\n<br />\nOnce again, thank you for your response.\r<br />\n<br />\nKind Regards,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-09-16T14:01:43.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

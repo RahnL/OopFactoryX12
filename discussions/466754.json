@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1119552",
+    "ThreadId": "466754",
+    "Html": "I'm starting to understand x12 but the purpose of the HLoop method escapes me. What are HLoops and how are they different than regular Loops? Thanks, Dave<br />\n",
+    "PostedDate": "2013-11-06T19:03:12.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119748",
+    "ThreadId": "466754",
+    "Html": "HLoops are explicit loops in which each has an ID and a parentID to identify their parent-child relationship.  A transaction set that has HL segments will imply that all segments after the HL belongs to that loop until another HL is encountered.  Each HL will have a unique ID within the transaction which is typically sequential starting at 1.  They can be identified without any knowledge of the transaction set specification they belong to.<br />\n<br />\nRegular loops are only identifiable by the specification of the transaction set they belong to.  Sometimes a generic x12 spec may indicate a segment is a loop, but a trading partner who never specifies child segments and only uses that segment once, may specify that it is not a loop.  (This becomes a degenerate representation of the loop)<br />\n<br />\nIn a medical claim 837, a CLM segment indicates the start of the claim and all other segments that follow it until the next CLM are expected as part of that claim.  It's parent is the Subscriber or Patient HL loop that it is contained within.  This is only knowable by referring to the 837 spec.<br />\n<br />\nIn terms of why this might matter, it has more to do with how clearinghouses break up these interchanges and redirect them to the correct receiver.  A clearinghouse is more likely to break up hierarchical loops and repackage them for receivers, and they are very unlikely to break up regular loops that might depend on implementation details.  (A hospital sends one interchange to their clearinghouse which may contain claims that need to be sent to multiple insurance companies or government entities)  This allows the core routing mechanisms from clearinghouses to be much more resistant to changes in the specs and differences in implementations between different trading partners.<br />\n",
+    "PostedDate": "2013-11-07T06:40:43.817-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119797",
+    "ThreadId": "466754",
+    "Html": "Thank you!<br />\n",
+    "PostedDate": "2013-11-07T07:39:35.267-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

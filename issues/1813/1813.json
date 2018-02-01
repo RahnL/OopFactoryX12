@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "As per the discussion [here](https://x12parser.codeplex.com/discussions/462635):\n\nTyped N1 loops only support a single type of N1 loop in a file. If a spec (like 834) has multiple N1 loops with different types, they will not work.",
+    "LastUpdatedDate": "2014-06-04T08:22:51.393-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-11-13T08:27:25.037-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Multiple Typed N1 loops not supported in single EDI file",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 1813
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've ran into the same issue.  It does however let me parse out an existing 834 and SerializeToX12 with no problems that I can see using Liaison EDI Notepad.  ",
+      "PostedDate": "2014-01-01T08:54:13.127-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-02-19T00:48:39.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "*BUMP*\r\n\r\nI submitted a patch for this (15428) a few months ago, but I haven't seen it get reviewed yet. Do you guys have any plans to integrate this fix?",
+      "PostedDate": "2014-06-04T08:22:51.393-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

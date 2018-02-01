@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-04-14T17:12:46.263-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "View the X12 as formatted X12 with tool tips and spans with class definitions so that it can be seen in a condensed format but still have the lookup values available.",
+    "LastUpdatedDate": "2017-11-27T18:20:55.627-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-04-09T05:00:08.04-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Create a transformation to html with tool tips on element definitions",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 657
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Associated with changeset 7437.",
+      "PostedDate": "2011-04-09T20:27:23.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7439.",
+      "PostedDate": "2011-04-09T22:27:33.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7440.",
+      "PostedDate": "2011-04-09T22:45:06.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 7541.",
+      "PostedDate": "2011-04-14T17:12:46.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:07.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:07.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:20:55.627-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

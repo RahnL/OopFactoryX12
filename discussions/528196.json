@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1200215",
+    "ThreadId": "528196",
+    "Html": "Following code giving warning as obsolete, i tried using ParseMultiple but end up with error. How to use it? <br />\n<pre><code>FileStream fStream = new FileStream(@&quot;C:\\EDItoXML\\h837.txt&quot;,FileMode.Open,FileAccess.Read);\n            Stream outputFile = new FileStream(@&quot;C:\\EDItoXML\\h837_TestLog.txt&quot;, FileMode.Create, FileAccess.Write);\n                                            \n            X12Parser parser = new X12Parser();\n                        \n            Interchange interchange = parser.Parse(fStream);\n            string xmlfile = interchange.Serialize();</code></pre>\n\nWarning\t57\t'OopFactory.X12.Parsing.X12Parser.Parse(System.IO.Stream)' is obsolete: 'Use ParseMultiple instead.  Parse will only return the first interchange in the file.' (CS0618)\tTestUserCode.cs\t\r<br />\n<br />\n&quot;Error\t57\tCannot implicitly convert type 'System.Collections.Generic.List&lt;OopFactory.X12.Parsing.Model.Interchange&gt;' to 'OopFactory.X12.Parsing.Model.Interchange' (CS0029)\tTestUserCode.cs\t\r<br />\n&quot;<br />\n",
+    "PostedDate": "2014-01-28T15:33:59.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200525",
+    "ThreadId": "528196",
+    "Html": "Parse multiple is going to return a List&lt;Interchange&gt; not just a single entity Interchange. You need to change your above code to:<br />\n<pre><code>FileStream fStream = new FileStream(@&quot;C:\\EDItoXML\\h837.txt&quot;,FileMode.Open,FileAccess.Read);\n            Stream outputFile = new FileStream(@&quot;C:\\EDItoXML\\h837_TestLog.txt&quot;, FileMode.Create, FileAccess.Write);\n                                            \n            X12Parser parser = new X12Parser();\n                        \n            List&lt;Interchange&gt; interchange = parser.ParseMultiple(fStream);\n            string xmlfile = interchange.Serialize();</code></pre>\n\n",
+    "PostedDate": "2014-01-29T08:23:28.66-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200697",
+    "ThreadId": "528196",
+    "Html": "Thank you Mark, it helps; however i am getting error while accessing the Transaction segment. Please help.<br />\n<pre><code>                 FileStream fStream = new FileStream(@&quot;C:\\EDItoXML\\270.txt&quot;,FileMode.Open,FileAccess.Read);\n            X12Parser parser = new X12Parser();\n            \n            List&lt;Interchange&gt; interchange = parser.ParseMultiple(fStream);\n            \n            Transaction transaction = interchange[0].FunctionGroups.First().Transactions.First();</code></pre>\n\nError\t195\t'System.Collections.Generic.IEnumerable&lt;OopFactory.X12.Parsing.Model.FunctionGroup&gt;' does not contain a definition for 'First' and no extension method 'First' accepting a first argument of type 'System.Collections.Generic.IEnumerable&lt;OopFactory.X12.Parsing.Model.FunctionGroup&gt;' could be found (are you missing a using directive or an assembly reference?) (CS1061)\tTestUserCode.cs\t<br />\n",
+    "PostedDate": "2014-01-29T15:22:43.85-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200980",
+    "ThreadId": "528196",
+    "Html": "If I am understanding right what you are trying to do - get the first transaction in the interchange, you could try this:<br />\n<pre><code>\nFileStream fStream = new FileStream(@&quot;C:\\EDItoXML\\270.txt&quot;,FileMode.Open,FileAccess.Read);\n            X12Parser parser = new X12Parser();\n            \n            List&lt;Interchange&gt; interchanges = parser.ParseMultiple(fStream); //I would suggest pluralizing interchange\n            \n            Transaction transaction =interchanges.First().FunctionGroups.First().Transactions.First();\n            \n            //Or something like this if you have need of it...\n            foreach (Interchange interchange   in interchanges)\n                        {\n                            foreach (FunctionGroup group in interchange.FunctionGroups)\n                            {\n                                foreach (Transaction transaction in group.Transactions)\n                                {\n                                    var loops = transaction.Loops;\n                                    //And so on....\n                                    \n                                }\n                                \n                            }\n                            \n                        }</code></pre>\n\n",
+    "PostedDate": "2014-01-30T08:40:17.977-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-02-19T08:59:37.51-08:00"
+  },
+  {
+    "Id": "1201484",
+    "ThreadId": "528196",
+    "Html": "Hi Mark, the looping helps however the ParserMultiple still giving me the same error.Actually,  I am trying to edit an 837 file in HI (BK &amp; BF) segment by replacing ICD9 codes with corresponding ICD10 codes . Would you please guide?<br />\n",
+    "PostedDate": "2014-01-31T13:05:28.363-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1207013",
+    "ThreadId": "528196",
+    "Html": "Hi Mark, I get it worked. Thank you for your help.<br />\n",
+    "PostedDate": "2014-02-11T14:54:43.797-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

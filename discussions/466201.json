@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1118653",
+    "ThreadId": "466201",
+    "Html": "I have to parse 10 Meg size 832 files that contain lots of price data. Can the X12Parser object deal with this size file without having to read the entire file into memory at once? I just want to process each item in the loop until run out of items. Feasible? Thanks, Dave<br />\n",
+    "PostedDate": "2013-11-05T18:40:31.843-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119535",
+    "ThreadId": "466201",
+    "Html": "I am parsing 8M files so I guess this is not a problem.<br />\n",
+    "PostedDate": "2013-11-06T18:36:53.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119757",
+    "ThreadId": "466201",
+    "Html": "Yes, the limits are really dependent on the resources on your machine.  THe MaxBatchSize can be used to parse into multiple output files per one input file if your system hits its limits.  I think I've only seen problems when I use to develop on a netbook and had files that over 100Mb.<br />\n",
+    "PostedDate": "2013-11-07T06:54:23.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119789",
+    "ThreadId": "466201",
+    "Html": "Thanks. Also sounds like I don't need MaxBatchSize while using the object model directly.<br />\n",
+    "PostedDate": "2013-11-07T07:35:10.643-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

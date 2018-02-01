@@ -1,0 +1,1 @@
+.\.nuget\NuGet.exe pack .\src\OopFactory.X12\OopFactory.X12.csproj -Build -Properties Configuration=Release

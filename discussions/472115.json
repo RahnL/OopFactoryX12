@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1132510",
+    "ThreadId": "472115",
+    "Html": "Are there any example specifications that include context for situational segments such that the AcknowledgmentService will produce CTX segments in a 999 when doing validation?\r<br />\n<br />\nI'm trying to make modifications to the 270 specification to be a bit more explicit about which segments are situational and which are required so that I can output a more useful 999. Explicitly stating this property on each segment in the xml file seems to work okay, but I don't see how I can get it to generate context errors if particular situational fields are missing when they should be there.\r<br />\n<br />\nI'll contribute back my modified spec once I'm satisfied with it. Thanks for any help.<br />\n",
+    "PostedDate": "2013-12-06T07:31:18.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1329198",
+    "ThreadId": "472115",
+    "Html": "I was looking for 999 creation details...<br />\n<br />\nSee if this helps you out: <a href=\"http://www.palmettogba.com/Palmetto/Providers.Nsf/files/EDI_5010_Understanding_999.pdf/$File/EDI_5010_Understanding_999.pdf\" rel=\"nofollow\">http://www.palmettogba.com/Palmetto/Providers.Nsf/files/EDI_5010_Understanding_999.pdf/$File/EDI_5010_Understanding_999.pdf</a><br />\n<br />\n<br />\noops - sorry, I just saw the date of your question...sorry if this is late and useless<br />\n<br />\nA question though; what would be the point of you modifying the 270 spec, unless you're submitting that to x12.org??<br />\n",
+    "PostedDate": "2014-12-05T10:12:17.953-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1329230",
+    "ThreadId": "472115",
+    "Html": "I think you're misunderstanding my question. I'm not talking about changing the official specification for X12, I'm talking about changing how it is implemented in the X12 Parser. That is, I was wondering if there was any way to mark segments as situationally required when defining the 270 format in X12parser.<br />\n",
+    "PostedDate": "2014-12-05T12:26:27.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1345223",
+    "ThreadId": "472115",
+    "Html": "Justin, did you ever figure out your problem?\r<br />\n<br />\nI think I'm in the same boat... too many IK3 errors in creating the 999, saying segments are missing when, in reality, they are optional.<br />\n",
+    "PostedDate": "2015-01-22T14:23:25.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1346031",
+    "ThreadId": "472115",
+    "Html": "@JustinTConroy\r<br />\n<br />\nI do not believe this exists in the implementation. You really have 2 choices as far as I am concerned.\r<br />\n<br />\n1) Modify the parser to read some your own properties from the XML elements. Depending on complexity of your requirements (do the values come into play or just the fact it is not empty or not existing ect.) it could be from simple to implement or a nightmare.<br />\n\r<br />\n2) Modify the code that generates the 999 and either replace or supplement the code that is looping through the spec. The down side to this option is maintenance..you could still use a file or something to read from at runtime but at that point you might as well have went with option 1 and possibly have improved the code for all of us =)\r<br />\n<br />\n<a href=\"https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12.Validation/X12AcknowledgmentService.cs\" rel=\"nofollow\">https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12.Validation/X12AcknowledgmentService.cs</a><br />\n",
+    "PostedDate": "2015-01-26T17:16:08.213-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1346035",
+    "ThreadId": "472115",
+    "Html": "@bschulz\r<br />\n<br />\nAs JustinTConroy stated in his post required fields can be defined in the xml spec for your document.\r<br />\n<br />\nHere is the 850 spec unmodified as used in this project\r<br />\n<br />\n<a href=\"https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-850-4010Specification.xml\" rel=\"nofollow\">https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-850-4010Specification.xml</a>\r<br />\n<br />\nYou will see segments that exist in the 850 laid out like this:\r<br />\n<br />\n&lt;Segment SegmentId=&quot;BEG&quot; Usage=&quot;Required&quot; Repeat=&quot;1&quot; /&gt;\r<br />\n<br />\nYou should see that Usage=&quot;Required&quot; next to the ones you are having problems with. If you remove that the issue should clear up. \r<br />\n<br />\nThe question then becomes should you really be missing that much initially required data? Unless somebody on your team modified those files and added a ton of usage=required flags for you, I would suspect you are either not getting valid EDI or you are passing in a bad object to the acknowledgement service.<br />\n",
+    "PostedDate": "2015-01-26T17:24:02.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1346381",
+    "ThreadId": "472115",
+    "Html": "For some reason the version of the program I have (I just downloaded the latest version last week) makes the assumption that EVERYTHING is required UNLESS you say include Usage=&quot;Situational&quot; in the optional Loops and Segments.\r<br />\n<br />\nOnce I did that, then everything worked okay.<br />\n",
+    "PostedDate": "2015-01-27T10:27:20.483-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1346386",
+    "ThreadId": "472115",
+    "Html": "The reason it made the assumption that everything was required was because of the way the Enumerations.cs was laid out:<br />\n<pre><code>[XmlType(AnonymousType = true)]\npublic enum UsageEnum\n{\n    Required,\n    Situational,\n    [XmlEnum(&quot;Not Used&quot;)]\n    NotUsed\n}</code></pre>\n\nIt had Required listed first and so it was the default if not referenced specifically.\r<br />\n<br />\nSo, alternately, the other option (preferred) is to put Situational first and then mark the Loops/Segments that are needed as Usage=&quot;Required&quot;.<br />\n",
+    "PostedDate": "2015-01-27T10:42:24.387-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

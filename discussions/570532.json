@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1316097",
+    "ThreadId": "570532",
+    "Html": "Hi All,\r<br />\n<br />\nLet me start by saying I'm so new to what 837 is, that before a few days ago I didn't know what 837 stood for.  With that said, I have successfully implemented the tool to parse 837 files directly into a sql server database out of box like the straight forward instructions illustrate.  I now need to pull data OUT of the database various ways.\r<br />\n<br />\nAre there any canned queries out there that anyone has to pull information into a sql result set (for example):  \r<br />\n<ul>\n<li>\nDistinct claim information joining to... Subscriber Information<br />\n</li>\n</ul>\nI am having trouble understanding how to join the tables noted in the SQL section that outlines the database schema that gets created with this awesome tool.  For example, I understand how to join Segment to NM1 to get subscriber information but do not understand how I can join subscriber information to N3 to obtain subscriber address information.<br />\n\r<br />\nThank you,<br />\n",
+    "PostedDate": "2014-10-23T12:42:18.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1425343",
+    "ThreadId": "570532",
+    "Html": "Hi ,\r<br />\n<br />\nVery good morning,\r<br />\n<br />\nI have seen your description is that you can able to convert/upoad the X12 file to sql database, please help me to share if you have code for convert/upoad the X12 file to sql database.. please help me, i am a beginner i need a code for assignment...\r<br />\n<br />\nthanks &amp; regards,\r<br />\nkarthikc<br />\n",
+    "PostedDate": "2015-05-14T00:20:15.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

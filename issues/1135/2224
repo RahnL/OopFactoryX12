@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>OopFactory.X12</id>
+    <title>OopFactory X12 Parser</title>
+    <version>$version$</version>
+    <authors>Dannie Strubhar</authors>
+    <owners>dstrubhar, Mike Mooney</owners>
+    <licenseUrl>https://x12parser.codeplex.com/license</licenseUrl>
+    <projectUrl>https://x12parser.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      This is an open source .NET C# implementation of an X12 Parser.
+
+      The parser allows for a specification of any X12 transaction set to create a generic X12 xml representation of the hierarchical data contained within the X12 document.
+
+      No database integration is required by design, though  you can use the ImportX12 app to parse into a SQL Server database and skip the XML.
+    </description>
+    <summary>An open source .NET C# implementation of an X12 Parser.</summary>
+    <!--<releaseNotes>Summary of changes made in this release of the package.</releaseNotes>-->
+    <!--<copyright>Copyright 2015</copyright>-->
+    <tags>X12 Parser</tags>
+  </metadata>
+</package>

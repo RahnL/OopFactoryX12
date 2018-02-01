@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1345161",
+    "ThreadId": "578378",
+    "Html": "I don't have this problem on SQL 2014 Express, but when I moved to my production server which is running SQL 2008 I am receiving this error:<br />\n<pre><code>   DateTime=2014-12-16T21:04:10.3470185Z\nOopFactory.X12.ImportX12.exe Error: 0 : Error parsing C:\\Temp\\Inbound\\CO_150111_77016_O_302583_124467_835_124467_835.001: Column, parameter, or variable #24: Cannot find data type date.\n   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)\n   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)\n   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)\n   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)\n   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)\n   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)\n   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()\n   at OopFactory.X12.Repositories.DbCreation`1.ExecuteCmd(SqlCommand cmd)\n   at OopFactory.X12.Repositories.DbCreation`1.CreateIndexedSegmentTable(SegmentSpecification spec, String commonSchema)\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.EnsureSchema()\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.Save(Interchange interchange, String filename, String userName)\n   at OopFactory.X12.ImportX12.Program.Main(String[] args)\n</code></pre>\n\nAny help would be appreciated.<br />\n",
+    "PostedDate": "2015-01-22T09:51:33.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1425341",
+    "ThreadId": "578378",
+    "Html": "Hi ,\r<br />\n<br />\nVery good morning,\r<br />\n<br />\nI have seen your description is that you can able to convert/upoad the X12 file to sql database, please help me to share if you have code for convert/upoad the X12 file to sql database.. please help me, i am a beginner i need a code for assignment...\r<br />\n<br />\nthanks &amp; regards,\r<br />\nkarthikc<br />\n",
+    "PostedDate": "2015-05-14T00:18:14.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

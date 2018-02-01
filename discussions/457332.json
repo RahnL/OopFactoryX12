@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1094131",
+    "ThreadId": "457332",
+    "Html": "I frequently get the following messages;\r<br />\n<br />\nMessage: Hierarchical Loop 21 expects Parent ID 31 which did not occur preceding it.\r<br />\nMessage: Hierarchical Loop 14 expects Parent ID 44 which did not occur preceding it.\r<br />\nMessage: Hierarchical Loop 14 expects Parent ID 28 which did not occur preceding it.\r<br />\nMany others....\r<br />\n<br />\nThey are followed by a message saying I can change these to warnings, if I want.\r<br />\n<br />\nBefore I change these to a warning, I would like to work with the vendor providing the data and if they have a problem with their software, see if they can identify and correct it. In order to do that I need to be able to translate these messages into something they might understand (as well as me).\r<br />\n<br />\nIs there something that I can reference that will translate these messages into ANSI 837/5010 terminology?<br />\n",
+    "PostedDate": "2013-09-18T10:10:22.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1094246",
+    "ThreadId": "457332",
+    "Html": "See here for spec on HL: <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/se/se_HL.htm\" rel=\"nofollow\">https://www.disa.org/apps/workbook/X12_October_2012/se/se_HL.htm</a>.<br />\n<br />\nThe hieriarchical loop defines a unique section in a transaction (between ST and SE) segments.  A transaction doesn't have to have hierarchical loops, but if it does the ID of each must be unique within the transaction and all segments following the HL segment is assumed to be part of that loop until another HL segment is encountered.<br />\nThe 1st element in the HL segment is its ID, but the second element is it's parent ID and must point to another HL in the transaction.<br />\n<br />\nThough it is not a hard and fast rule that the parent ID occurs before it, this is typically how it works:  each HL is sequential numbered and the child HLs appear after the parent HL.<br />\n<br />\nThe fact that the parent ID has a higher number than the ID is suspect.  This could still be a valid file if the HL segment 31 actually does occur after the HL 21.  You can check the file for this first.  Most likely, the file is invalid and perhaps that just reversed the ID and parent ID.  The fact that you have Loop 14 throwing an exception that it has parent 44 and parent 28 is also suspect.  The loop should only have one parent, thus it's hierarchical.<br />\n",
+    "PostedDate": "2013-09-18T15:45:38.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1094465",
+    "ThreadId": "457332",
+    "Html": "Dannie, thanks again for your timely help and patience with a dilettante. \r<br />\n<br />\nI am working on a program that will generate readable output for these files that have issues. I think I would like to create HTML. I was going to use your example (converted to VB of course);<br />\n<pre><code> var htmlService = new X12HtmlTransformationService(new X12EdiParsingService(suppressComments: false));\n\n  Stream ediFile = new FileStream(&quot;c:\\\\5010_Example1_HealthInsurance.txt&quot;, FileMode.Open, FileAccess.Read);\n\n  string html = htmlService.Transform(new StreamReader(ediFile).ReadToEnd());\n</code></pre>\n\nIs there a way of passing the parameter to convert the errors into warnings to X12HtmlTransformationService? so that I would get HTML that looks reasonable for a file with these types of syntax errors?<br />\n",
+    "PostedDate": "2013-09-19T06:55:59.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1094497",
+    "ThreadId": "457332",
+    "Html": "I have a second question regarding the HTML generation program I am trying to write. How do I pass the &quot;encoding&quot; parameter? Some of my files are UNICODE, and some are UTF8. Here is my code so far;<br />\n<pre><code>Imports System.IO\nImports OopFactory.X12.Parsing\nImports OopFactory.X12.Transformations\n\nModule Module1\n\n    Sub Main()\n        Dim strArgument As String\n        Dim aryArgument As Array\n        Dim strInputFile As String = &quot;&quot;\n        Dim strOutputFile As String = &quot;&quot;\n        For Each strArgument In Environment.GetCommandLineArgs()\n            '            Console.WriteLineLine(strArgument)\n            aryArgument = strArgument.Split(&quot;=&quot;)\n            Select Case aryArgument(0).ToString.ToLower\n                Case &quot;inputfile&quot;\n                    strInputFile = aryArgument(1)\n                Case &quot;outputfile&quot;\n                    strOutputFile = aryArgument(1)\n            End Select\n        Next strArgument\n        If strOutputFile = &quot;&quot; _\n        Then\n            strOutputFile = strInputFile.Substring(0, strInputFile.LastIndexOf(&quot;.&quot;)) &amp; &quot;.html&quot;\n        End If\n\n        Dim fsTemp As FileStream = New FileStream(strInputFile, FileMode.Open)\n        Dim strHeader(106) As Byte\n        fsTemp.Read(strHeader, 0, 106)\n        fsTemp.Close()\n        fsTemp.Dispose()\n        fsTemp = Nothing\n        Dim bolChunkified As Boolean = False\n        If strHeader(105) &lt;&gt; 13 And strHeader(105) &lt;&gt; 10 _\n        Then\n            For i = 0 To 104\n                bolChunkified = (bolChunkified Or (strHeader(i) = 10 Or strHeader(i) = 13))\n            Next\n        End If\n        Dim encoding As Text.Encoding\n        Dim strEncoding As String\n        If (strHeader(1) = 0 And strHeader(3) = 0 And strHeader(5) = 0) _\n        Then\n            encoding = Text.Encoding.Unicode\n            strEncoding = &quot;UNICODE&quot;\n        Else\n            encoding = Text.Encoding.UTF8\n            strEncoding = &quot;UTF8&quot;\n        End If\n\n        Dim inStream As FileStream\n\n        inStream = New FileStream(strInputFile, FileMode.Open, FileAccess.Read)\n        Dim rdrTemp As StreamReader = New StreamReader(inStream)\n        Dim strTemp As String = rdrTemp.ReadToEnd\n        inStream.Close()\n        inStream.Dispose()\n        inStream = Nothing\n        If bolChunkified _\n        Then\n            strTemp = Replace(Replace(strTemp, vbCr, &quot;&quot;), vbLf, &quot;&quot;)\n        End If\n        Dim baTemp As Byte()\n        baTemp = Text.Encoding.UTF8.GetBytes(strTemp)\n        Dim memStream As New MemoryStream(baTemp)\n\n        Dim htmlService = New X12HtmlTransformationService(New X12EdiParsingService(suppressComments:=False))\n        Dim strHTML As String = htmlService.Transform(New StreamReader(memStream).ReadToEnd())\n        Dim objWriter As New System.IO.StreamWriter(strOutputFile)\n        objWriter.Write(strHTML)\n    End Sub\n\nEnd Module\n</code></pre>\n\nIt bombs saying &quot;First segment must start with ISA&quot; because the file I am trying to process is UNICODE. I have the code to identify if it is unicode, but I don't know how to get it to the parser.<br />\n",
+    "PostedDate": "2013-09-19T07:45:30.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098011",
+    "ThreadId": "457332",
+    "Html": "Dannie, is what I am trying to do (get an HTML view of a file with syntax errors) reasonable? <br />\n",
+    "PostedDate": "2013-09-23T06:35:07.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102744",
+    "ThreadId": "457332",
+    "Html": "Dannie, Is there a way to produce the HTML version of the ANSI-837 file using your API with the following conditions?\r<br />\n<br />\nA) The incoming file is unicode, not utf-8.\r<br />\nB) The file has syntax errors, specifically Loop Hierarchy errors.\r<br />\n<br />\nIf there is documentation that I can read that defines how to call the API to do what I need, I will gladly read it, just tell me where to go:)<br />\n",
+    "PostedDate": "2013-10-02T06:48:03.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

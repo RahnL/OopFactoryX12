@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1279337",
+    "ThreadId": "554656",
+    "Html": "In some of the 837 data, the X12 parser seems to skip the first Diagnosis code (code identifier = &quot;BF&quot;). The generated XML is missing the &lt;HI01&gt;/&lt;HI0101&gt; element/node. It directly starts with &lt;HI02&gt;/&lt;HI0201&gt;, as seen below.<br />\n&lt;!--Health Care Code Information--&gt;\n<pre><code>            &lt;HI02&gt;\n              &lt;HI0201&gt;BF&lt;/HI0201&gt;\n              &lt;HI0202&gt;1985&lt;/HI0202&gt;\n             &lt;/HI02&gt;\n        &lt;!--Health Care Code Information--&gt;\n            &lt;HI03&gt;\n              &lt;HI0301&gt;BF&lt;/HI0301&gt;\n              &lt;HI0302&gt;V1088&lt;/HI0302&gt;\n      &lt;/HI03&gt;                                                                               \n\n</code></pre>\n\nCorresponding line in 837 Claim:<br />\n<pre><code>              HI*BK:V580*BF:1985*BF:V1088~\n</code></pre>\n\nI omitted showing Principal Diagnosis code in the XML example above.<br />\n<br />\nAs such, we end up with no value for DX2 (maps to &lt;HI01&gt; in our system), but values for DX3(maps to &lt;HI02&gt;) and DX4 maps to &lt;HI03&gt;, and so on.<br />\n<br />\nDo you think this is an issue in the supplied data? <br />\n<br />\nThanks, in advance, for all your help.<br />\n<br />\nKind Regards,<br />\nnk5491<br />\n",
+    "PostedDate": "2014-07-30T14:11:18.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

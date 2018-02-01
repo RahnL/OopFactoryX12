@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "626154",
+    "ThreadId": "260972",
+    "Html": "\r\n<p>I have a use case where I bring in an EDI document that has claims for multiple providers.&nbsp; The file parses correctly.&nbsp; Each provider wants only thier messages from within that EDI message.&nbsp; Is there an easy way to do this?&nbsp; I would like\r\n to just use XML and delete those that are not from a provider, but I can't see how to move the XML back to X12 EDI.&nbsp; The next thought was to look at the Parsed Interchange document.&nbsp; This is not really easy because each segment and transaction sets\r\n are IEnumerable and thus can't be removed if I check it out.</p>\r\n<p>1.&nbsp; What's the story on XML back to EDI X12?</p>\r\n<p>2.&nbsp; Is there a way to remove parts of a parsed EDI and then I can just serialize it back out as EDI?&nbsp; It's just easier in XML but I can do it that way.&nbsp; My vision is to clone the current parsed document, go through and just leave one providers\r\n claims and then serialize it back out.</p>\r\n<p>Thanks in advance for any guidance.</p>\r\n",
+    "PostedDate": "2011-06-10T12:58:38.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "626162",
+    "ThreadId": "260972",
+    "Html": "<div>The easiest way to do what you want is to unbundle by the provider loop. Please review the documentation <a href=\"/wikipage?title=Unbundling%20an%20X12%20file%20by%20Loop%20ID&amp;referringTitle=Home\"> here</a>, if that does not solve your problem then please further elaborate.<br /> <br />I also agree that there isn't an easy way to get it back to X12, so I will add that as a feature request, it shouldn't take more than a day of work to write an xslt to transform the XML back. &nbsp;I'll make that my next priority.</div>\n<blockquote>\n<div>\n<div id=\"ThreadNotificationPostBody\"></div>\n</div>\n</blockquote>",
+    "PostedDate": "2011-06-10T13:14:59.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "626625",
+    "ThreadId": "260972",
+    "Html": "<p>It's wierd - the Unbundle is giving me the same Interchange twice - detecting it as a Loop and a Hierarchical Loop.&nbsp; I can see why, I'm just trying to figure out the difference of the two routines on my EDI document.&nbsp; I'm learning.</p>\r\n<p>I really appreciate the willingness to get the XML back to a parseable Interchange object.&nbsp; The XML is so easy to manipulate, but I think that is more from familiarity with Linq to XML than anything with the Parser object model.</p>\r\n<p>Great work in this project.</p>",
+    "PostedDate": "2011-06-12T11:18:51.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "626666",
+    "ThreadId": "260972",
+    "Html": "<p>I have added a method called TransformToX12 on the X12Parser class so that you can modify your xml and turn it back into X12.</p>\r\n<p>I had to update the parser to add the delimiters to the xml so that it could be picked up on the transformation back.</p>\r\n<p>See unit test ParseAndTransformToX12 for syntax.</p>\r\n<p>It should be available in changeset 8796.</p>\r\n<p>I will do a release by the end of the month with this change.</p>\r\n<p>If you think the UnbundleByLoop method is not behaving as expected, you are welcome to shoot me an example to troubleshoot.</p>",
+    "PostedDate": "2011-06-12T15:17:36.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "627245",
+    "ThreadId": "260972",
+    "Html": "<p>Excellent work - validating it out now.</p>",
+    "PostedDate": "2011-06-13T19:29:42.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "627479",
+    "ThreadId": "260972",
+    "Html": "<p>BTW, I am going to ramp up getting the 837 fully defined for the 5010.&nbsp; Has your company decided when they are going to start transitioning to that version?&nbsp; I am trying to figure out what my urgency should be.</p>\r\n<p>I am also going to have to do some compromises with the Institutional since some of their entity codes map to different Loop Ids than the Professional implementation guide.&nbsp; I will probably have to create a separate SpecificationFinder implementation that will point to an 837I specification.&nbsp; Are you doing work with both Institutional and Professional 837s?&nbsp; I would like a second opinion on these design considerations.</p>",
+    "PostedDate": "2011-06-14T06:00:15.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "627603",
+    "ThreadId": "260972",
+    "Html": "<p>Right now I'm doing the imports of 835's.&nbsp; We do work with Professional 837's but I'd be willing to look over whatever you are doing.</p>",
+    "PostedDate": "2011-06-14T09:14:32.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

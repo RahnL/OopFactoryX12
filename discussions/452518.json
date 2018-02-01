@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1077097",
+    "ThreadId": "452518",
+    "Html": "Hi,\r<br />\n<br />\nI have read the x12 to xml file without any issues. I want to Write the xml to x12 Output file with Validating the Loops and segments. I have tried with the below method and its not validating the xml to x12 file Transformations.\r<br />\n \r<br />\nMethod Name: TransformToX12(String xml)\r<br />\n<br />\ncould you please respond me if any other methods to validating the ouput file before write in to Location.\r<br />\n<br />\nThanks,\r<br />\nGnanadesigan k<br />\n",
+    "PostedDate": "2013-08-06T00:32:33.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

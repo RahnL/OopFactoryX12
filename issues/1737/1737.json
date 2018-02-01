@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Documentation updated.",
+    "ClosedDate": "2013-09-15T04:21:41.68-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n\nIf possible, please add support for the 4010 version of the 278 format.\n\nThanks!",
+    "LastUpdatedDate": "2013-09-15T04:21:41.68-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-08-27T12:16:22.163-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Request to add support for 4010 version of 278",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1737
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It does already, the full list is here: https://x12parser.codeplex.com/wikipage?title=Transaction%20Set%20Configuration.  I just need to update the document page to include this one.",
+      "PostedDate": "2013-09-13T17:34:39.657-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-13T17:34:56.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-15T04:21:41.68-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

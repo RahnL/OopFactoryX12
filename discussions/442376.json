@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1038682",
+    "ThreadId": "442376",
+    "Html": "For a claim contains the tooth surface information, When the claim needs to be transformed to claimdocument, the tooth surface information got dropped. \r<br />\n<br />\nPlease help.\r<br />\n<br />\nThanks\r<br />\nJinpin<br />\n",
+    "PostedDate": "2013-05-02T10:42:32.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038835",
+    "ThreadId": "442376",
+    "Html": "I just added a unit test and confirmed that the TOO will transform to ToothInformation at the ServiceLine level for both 4010 and 5010 claims.  Do you have any further information that I could troubleshoot with, such as a de-identified x12 of the claim?<br />\n",
+    "PostedDate": "2013-05-02T18:33:22.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038838",
+    "ThreadId": "442376",
+    "Html": "Actually, I think this was always a problem, the xslt was not picking up the tooth information if only one was specified because it didn't recognize it as a composite element.  This is fixed in <a href=\"https://x12parser.codeplex.com/SourceControl/changeset/25782\" rel=\"nofollow\">changeset 25782</a>.\r<br />\n<br />\nThanks for finding this one.<br />\n",
+    "PostedDate": "2013-05-02T18:43:35.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038843",
+    "ThreadId": "442376",
+    "Html": "For your test, here is the x12 text:<br />\n<br />\nISA<em>00</em>          <em>00</em>          <em>30</em>061181226      <em>30<em>061181226      <em>130502</em>2155</em>^<em>00501</em>000000112</em>1<em>P</em>:~GS<em>HC<em>061181226</em>061181226</em>20130502<em>2155</em>1<em>X<em>005010X224A2~ST</em>837<em>000000112<em>005010X224A2~BHT</em>0019</em>00<em>000000112</em>20130502<em>2155<em>CH~NM1</em>41<em>2<em>FAMILY HLTH CTR</em></em></em></em><em>46<em>061181226~PER</em>IC<em>NELSON<em>TE</em>7189457150~NM1</em>40<em>2</em>Medi-Cal<em><em><strong><em>46<em>061181226~HL</em>1<em><em>20<em>1~NM1</em>85</em>2<em>FAMILY HLTH CNTR</em></em></em></strong>XX<em>1497700736~N3</em>BEACH CHANNEL DRIVE~N4<em>ARVERNE<em>NY</em>116921409~REF</em>EI<em>061181226~REF</em>0B</em>041916~PER<em>IC</em>Y,MAR T<em>TE<em>7189457150~HL</em>2</em>1<em>22</em>0~SBR</em>P<em>18</em><em><em><strong><em><em>CI~NM1<em>IL</em>1</em>CCC<em>KKK</em></em></strong>MI<em>PT12345K~N3</em>200 HHHHH AVE~N4</em>ELMONT<em>NY</em>11692~DMG</em>D8<em>20080416</em>F~NM1<em>PR<em>2</em>HEALTHFIRST DENTAQUEST<strong><em><em><em>PI<em>04356~N3</em>12121 NORTH CORP PARKAWAY</em>04356~N4<em>MEQUON</em>WI</em>53092~CLM<em>01249143173009</em>60</em></strong>11:B:1<em>Y</em>A<em>Y<em>Y</em>P~HI<em>BK:V722~NM1<em>82</em>1</em>BENEDICTO-YU<em>MARIA T</em></em></em></em>XX<em>1972509206~REF</em>0B<em>041916~PRV<em>PE</em>PXC</em>122300000X~NM1<em>77</em>2<em>F.H.C.~N3<em>6200 BEACH CHANNEL DR~N4</em>ARVERNE<em>NY<em>116921409~LX</em>1~SV3</em>AD:D2140<em>60</em></em>**1<em><em><em><em><em>1~TOO</em>JP</em>A</em>O~DTP</em>472</em>D8<em>20130426~REF<em>6R</em>0124914301~SE</em>35<em>000000112~GE</em>1<em>1~IEA<em>1</em>000000112~<br />\n<br />\nYou can see the segment &quot;TOO</em>JP<em>A</em>O&quot; contains tooth number &quot;A&quot; and tooth surface &quot;O&quot;. However, When I do: <br />\ninterchange = parser.ParseMultiple(X12Text)<br />\nClmDoc=service.Transform837ToClaimDocument(interchange(0))<br />\nClm=ClmDoc.claims(0)<br />\n<br />\nThen you can see in Clm, tooth number is carried over, but tooth surface is gone. <br />\n<br />\nThanks for looking into this. Without this, I could not print ADA form. <br />\n<br />\nJinpin<br />\n",
+    "PostedDate": "2013-05-02T19:03:03.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

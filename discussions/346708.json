@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "803128",
+    "ThreadId": "346708",
+    "Html": "<p>I think it would be nice if the comments that come out were added as attributes on the elements instead of &lt;!--comments--&gt;. There wouldn't be so much need to build descriptions into the XSLTs if they  were already in the XML.</p>",
+    "PostedDate": "2012-02-29T05:34:56.43-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "803180",
+    "ThreadId": "346708",
+    "Html": "<p>I'm a little rusty with my xslt... Can you show &lt;!--comments--&gt; from the original XML in your transformed file?</p>\n<p>Nope. &lt;!-- --&gt; are ignored by xslt processor.</p>",
+    "PostedDate": "2012-02-29T07:43:35.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "803224",
+    "ThreadId": "346708",
+    "Html": "<p>Yes, look at the xslt that does the html.</p>\n<div><a href=\"http://x12parser.codeplex.com/SourceControl/changeset/view/14689#137535\">http://x12parser.codeplex.com/SourceControl/changeset/view/14689#137535</a> <br /> <br />\n<div></div>\n</div>",
+    "PostedDate": "2012-02-29T09:00:13.293-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "803242",
+    "ThreadId": "346708",
+    "Html": "<p><span>Thanks! I'd already dug that up before your response. That looks like it works just fine. </span></p>\n<p><span>This document:&nbsp;</span><a title=\"Parsing an 837 Transaction\" href=\"http://x12parser.codeplex.com/wikipage?title=Parsing%20an%20837%20Transaction\">http://x12parser.codeplex.com/wikipage?title=Parsing  an 837 Transaction</a><span> describes using this code to create formatted HTML:</span></p>\n<pre>  <span style=\"color: blue;\">var</span> htmlService = <span style=\"color: blue;\">new</span> X12HtmlTransformationService(<span style=\"color: blue;\">new</span> X12EdiParsingService(suppressComments: <span style=\"color: blue;\">false</span>));\n  Stream ediFile = <span style=\"color: blue;\">new</span> FileStream(<span style=\"color: #a31515;\">\"c:\\\\5010_Example1_HealthInsurance.txt\"</span>, FileMode.Open, FileAccess.Read);\n  <span style=\"color: blue;\">string</span> html = htmlService.Transform(<span style=\"color: blue;\">new</span> StreamReader(ediFile).ReadToEnd());<br /><br /></pre>\n<p>Use this code where? A new console application? Inserted into the .dll code somewhere? Only for IIS on an MS weberver? Is it already built into the commandline somehow? <br /> <br /> BTW: I've locally edited the Ansi-4010Specification.xml to include the 5010 277 claim status codes so that the STC segment error codes have nice comments too. I'm going to do the same for the 999 and 997 AKx segments. I'm not sure that I understand why the  277 spec info was in Ansi-4010Specification.xml. Shouldn't that be in Ansi-5010Specification.xml? I'll play around with moving that to the Ansi-5010Specification.xml and see what happens.</p>",
+    "PostedDate": "2012-02-29T09:48:26.423-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

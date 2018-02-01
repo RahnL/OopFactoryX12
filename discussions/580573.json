@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1351775",
+    "ThreadId": "580573",
+    "Html": "I have my fork disconnected from the main. <br />\n<strong>I now have a working 5010 270 / 271 implementation of this parser.</strong><br />\nI would like to share some of my experience with all of you.<br />\n<br />\nI can't say that the 999 completely works because what I've experienced is that the information source (IS) I send requests to has improperly hardcoded the 999 reject and it's not properly formed. I get back a rudimentary reject and a lot of garbage that never validates. They also don't send AK3 or AK4 segments that would have prevented a LOT of back and forth.<br />\n<br />\nThe 270 and 271 work perfectly once I added the repetition separator character (RSC), via addition to the enum, and expanding all constructors to include it. You might think this is a wasted effort, as this is a 'sending source' (the receiver) defined field. The problems are this:<br />\n<ol>\n<li>\nThis library has hard-coded an upper case 'U', which is illegal as a it's a plain text character.<br />\n Well, ok, so just pick another non plain text character...like, say ']', right? ...4 days later...\n</li>\n<li>\nThe IS hard coded '%' as the only acceptable character for this field, and summarily rejects any 270 without it. <br />\n</li>\n</ol>\nSo from the above, I needed to instantiate the Interchange element with a specific repetition character and expanded the library to include it.<br />\n<br />\nNote: When you parse your data, don't forget to HTML Decode the string, in case the Payor sent something like '&gt;' as a separator character, which might be HTML encoded over the wire...<br />\n <br />\nThere needs to be an 'orchestration class' above the parser, with 'situational flags' to fire off when to add loops &amp; segments, portions of a segment, or to not include loops and segments. I am working on this now.<br />\n<br />\nCheers<br />\n",
+    "PostedDate": "2015-02-12T06:23:15.037-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1353498",
+    "ThreadId": "580573",
+    "Html": "I'm sure the hard coded 'U' comes from 3051/4010 usage where ISA11 was a standards identifier vs a repition separator. Did you extend X12DelimiterSet to house the repitition character? I would be very interested to see your branch/patch for this as it's a problem we'll all encounter.<br />\n",
+    "PostedDate": "2015-02-17T10:46:54.27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1353712",
+    "ThreadId": "580573",
+    "Html": "I updated it, rather than extend, as my sole purpose was using this library for 5010. Perhaps you're right; I'll extend instead.<br />\n<br />\nI also updated the constructors of the Interchange to allow its specification. I think that should be a permanent change, with defaulted parameter values.<br />\n<br />\nI'm still not getting the 2100C EB segment to properly break out when EB03 is the repetition element (when all other 2100C info is the same for each service type code). I thought the proper repetition character would have jump started that. Perhaps the xslt doesn't know what to do with it? I need to debug that to see why. <br />\n<br />\nI'd be happy to share, once I get it working correctly.<br />\n",
+    "PostedDate": "2015-02-18T06:19:39.11-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1353733",
+    "ThreadId": "580573",
+    "Html": "Interesting... If you want a parser to at least see what you have for testing your request or response... Here's a jave applet... <a href=\"http://edi-parser.appspot.com/\" rel=\"nofollow\">http://edi-parser.appspot.com/</a><br />\n",
+    "PostedDate": "2015-02-18T07:25:30.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1457549",
+    "ThreadId": "580573",
+    "Html": "Any updates? I'm very interested in your work since I'm encountering the same issue.  Thanks!<br />\n",
+    "PostedDate": "2015-12-30T09:27:35.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

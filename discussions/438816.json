@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1024362",
+    "ThreadId": "438816",
+    "Html": "Dear Dstrubhar,\r<br />\n<br />\nThis is another error I am getting when trying to unbundle some X12 837 5010 P claims:\r<br />\n<br />\nHierarchical Loop 1425 expects Parent ID 1411 which did not occur preceding it. <br />\n\r<br />\nAny insight into how/why this occurs and anything we can do as a workaround would be greatly appreciated. \r<br />\n<br />\nThank you, in advance, for your kind help.\r<br />\nKind Regards,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2013-04-02T10:02:25.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024371",
+    "ThreadId": "438816",
+    "Html": "Have you always gotten this error? Or is it only in the latest release?<br />\n<br />\nAccording to <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/se/se_HL.htm\" rel=\"nofollow\">https://www.disa.org/apps/workbook/X12_October_2012/se/se_HL.htm</a> the numbers should be unique and sequential within the file.<br />\n<br />\nIS this a true EDI file that has passed through a clearinghouse or is a test file?<br />\n<br />\nDoes the HL * 1411 * ~ segment occur later in the file?<br />\n<br />\nI could either modify the code so that HL loops that point to non-exist parent IDs can just parse as if it didn't have a parent ID, but if the parent ID appears later in the file this could be harder to do.  But my understanding is the HL loops should be sequential.  Did the parser fail to see the HL * 1411 * segment earlier in the file?<br />\n",
+    "PostedDate": "2013-04-02T10:17:27.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024543",
+    "ThreadId": "438816",
+    "Html": "Thank you for your response. This information is very useful.\r<br />\n<br />\nI am getting this error with last year's release (August'12).\r<br />\n<br />\nUsing example from another claim that also fails with a similar error:\r<br />\nHierarchical Loop 1017 expects Parent ID 998 which did not occur preceding it. <br />\n\r<br />\nI don't find the HL * 998 * * anywhere in the claim. This means the parent segment is missing, correct? \r<br />\n<br />\nThanks again!<br />\n",
+    "PostedDate": "2013-04-02T16:39:14.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024560",
+    "ThreadId": "438816",
+    "Html": "Yes, it appears that it is pointing to a parent that is missing.  I am surprised that you are getting this problem in production files.  Though I have had a few others report this same problem.\r<br />\nThere might be some validation tools available to help point out these type of syntax errors before you accept a file from your trading partner.\r<br />\n<br />\nI am going to change the code to continue parsing this type of error, but throwing warning events so you know the file may not be valid.  I'll update the discussion when the code is checked in.<br />\n",
+    "PostedDate": "2013-04-02T18:30:44.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024564",
+    "ThreadId": "438816",
+    "Html": "\r\n<div dir=\"ltr\">Respected Sir,\r\n<div style=\"\">I can't thank you enough for your help with this issue. In fact, this is not the first time you actually fixed the parser for syntax errors in production data I reported to you.\r\n</div>\r\n<div style=\"\"><br>\r\n</div>\r\n<div style=\"\">I have communicated your response back to our Trading partner. Hopefully, they will be able to correct this for future claims.</div>\r\n<div style=\"\"><br>\r\n</div>\r\n<div style=\"\">I can't express how grateful I am to you and this wonderful product you (and your team) has created.\r\n</div>\r\n<div style=\"\"><br>\r\n</div>\r\n<div style=\"\">In the true interest of open source, I can only pray that this product get more visibility and be widely accepted in the healthcare arena (if not already well-known in the industry). Thank you again, Sir.</div>\r\n<div style=\"\"><br>\r\n</div>\r\n<div style=\"\">Sincerely,</div>\r\n<div style=\"\">Nitin</div>\r\n</div>\r\n<div><br>\r\n<br>\r\n<div></div>\r\n</div>\r\n",
+    "PostedDate": "2013-04-02T18:50:33.357-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024566",
+    "ThreadId": "438816",
+    "Html": "I have updated <a href=\"http://x12parser.codeplex.com/SourceControl/changeset/24814\" rel=\"nofollow\">changeset 24814</a> to allow for parsing of the syntax error that you have.\r<br />\nBecause this will no longer throw an exception on this error.  Make sure that you have an event handler for the new ParserWarning event that I have added.  This will allow you to identify files that are invalid.  It will be up to you if you still want to process and accept the file even with the bad syntax.<br />\n",
+    "PostedDate": "2013-04-02T19:12:49.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024852",
+    "ThreadId": "438816",
+    "Html": "I have made one more change to <a href=\"http://x12parser.codeplex.com/SourceControl/changeset/24841\" rel=\"nofollow\">changeset 24841</a> that will actually make the default behavior throw exceptions as before.  When you pass into the X12Parser constructor throwExceptionOnSyntaxErrors = false, this will have the new behavior that will throw warnings instead for both the missing HL parent and for unrecognized segments.\r<br />\nThis will keep the behavior the same for existing users, but allow them to switch over to warnings at their convenience.  I will probably get a new release out within the week.<br />\n",
+    "PostedDate": "2013-04-03T07:06:14.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1025047",
+    "ThreadId": "438816",
+    "Html": "\r\n<div dir=\"ltr\">I absolutely agree. I will download the new files and test shortly.\r\n<div>Thank you again for making this change on such a short notice. I really appreciate your prompt help.\r\n</div>\r\n</div>\r\n<div><br>\r\n<br>\r\n<div></div>\r\n</div>\r\n",
+    "PostedDate": "2013-04-03T12:18:13.237-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "921591",
+    "ThreadId": "397970",
+    "Html": "\r\n<p>Can you tell me if the parser supports the different snip level edits. &nbsp;if not, how would recommend implementing them?</p>\r\n",
+    "PostedDate": "2012-10-03T17:08:20.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "921948",
+    "ThreadId": "397970",
+    "Html": "<p>The parser is not specifically targeting snip level edits, but can support them in the following way:</p>\r\n<p>There is a new assembly called OopFactory.X12.Validation and a new console app called OopFactory.X12.AcknowledgeX12 which does type 1 and type 2 SNIP validation.&nbsp; It is intended for creating 999 acknowledgement files, but can be used without needing to create these files.&nbsp; (This is not in the current release, but is in the source code and will be in the next release)</p>\r\n<p>The OopFactory.X12.Validation.X12AcknowledgmentService class has a method called AcknowledgeTransactions which will take a stream of the EDI to be validated.</p>\r\n<p>To do additional types of validation you can extend this class and override the ValidateContainerAgainstSpec or the ValidateSegmentAgainstSpec.</p>\r\n<p>The class will also take another implementation of ISpecificationFinder if you need to roll your own specification that is not already supported, or you have more details you need then the ones provided.&nbsp; See this https://x12parser.codeplex.com/wikipage?title=Injecting%20your%20own%20X12%20Specification, for details on how to do this.</p>\r\n<p>The return value from AcknowledgeTransactions method is a List&lt;FunctionGroupResponse&gt; which you can format however you like, the code in the AcknowledgeX12 app will show you how to spit it out as a 999 response file.</p>",
+    "PostedDate": "2012-10-04T09:13:52.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

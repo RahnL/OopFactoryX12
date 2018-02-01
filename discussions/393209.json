@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "904601",
+    "ThreadId": "393209",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I get the following error when trying to &nbsp;unbundle certain 837 files:</p>\r\n<p><em>Unhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException: Transaction control number 8990 for transaction code 837 already exist within the functional group 1.Parameter name: 837&nbsp; &nbsp;at OopFactory.X12.Parsing.Model.FunctionGroup.AddTransaction(String\r\n segmentString)</em><br>\r\n<em>&nbsp; &nbsp;at OopFactory.X12.Parsing.X12Parser.Parse(Stream stream)&nbsp; &nbsp;at OopFactory.X12.X12Parser.Program.Main(String[] args)</em></p>\r\n<p>Not all files fail with the same transaction control number.</p>\r\n<p>Any idea what could be wrong with the raw data?</p>\r\n<p>Your help would be greatly appreciated.</p>\r\n<p>Thanks in advance for your help.&nbsp;</p>\r\n",
+    "PostedDate": "2012-08-27T06:58:49.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "904621",
+    "ThreadId": "393209",
+    "Html": "<p>Within each Functional Group which starts with an GS* segment and ends with a GE* segment, each transaction is expected to have a unique control number.</p>\r\n<p>Transactions start with an ST* segment and end with an SE* segment.</p>\r\n<p>You can probably search your raw file for ST*837*8990 and it will appear more than once in your file.</p>",
+    "PostedDate": "2012-08-27T07:42:39.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "904622",
+    "ThreadId": "393209",
+    "Html": "<p>Btw, if you can't control that your data will have duplicates like this you can use the X12StreamReader to get one transaction at a time and then send it to the UnbundleByLoopId method. &nbsp;This was added in the last release so that the entire file would not have to be loaded to start parsing it. &nbsp;See the ParseX12 console app for a usage example.</p>",
+    "PostedDate": "2012-08-27T07:45:12.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "904654",
+    "ThreadId": "393209",
+    "Html": "<p>Dear dstrubhar, thank you so much for your timely help. &nbsp;I will try that now.</p>\r\n<p>Also, your valuable help is always greatly appreciated. I maintain what I have said before - The X12Parser is a real blessing to us developers.</p>\r\n<p>Kind Regards.&nbsp;</p>",
+    "PostedDate": "2012-08-27T09:07:47.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "907119",
+    "ThreadId": "393209",
+    "Html": "<p>Dear Sir,</p>\r\n<p>I referred to the ParserX12 console app for a usage example on how to use X12StreamReader to get 1 transaction at a time. However, the UnbundleByLoopId method in the new version continues to accept only an Interchange object as the first argument. How do I pass the Transaction object instead? Also, the Unbundle in the previous version retains the header information, which is really great. Using X12StreamReader and hence an individual Transaction now, can we retain the header information as well? I would really appreciate if you could please provide an example of using the Unbundle feature with X12StreamReader so I can work around the duplicate transaction control number issue.</p>\r\n<p>Many thanks, in advance.</p>\r\n<p>Kind Regards.</p>",
+    "PostedDate": "2012-08-31T15:43:14.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "907472",
+    "ThreadId": "393209",
+    "Html": "<p>I have changed to UnbundleX12 console app to use the X12StreamReader on all transactions, so that others will also be able to bypass this problem.&nbsp; See Changeset 19582.</p>\r\n<p>This will also avoid having out of memory exceptions on large files.</p>\r\n<p>BTW, when you call ToString on the object returned from GetNextTransaction, this is what will add the ISA and GS segments back onto the transaction so that you can work with it as a self contained X12 string.</p>",
+    "PostedDate": "2012-09-02T09:06:43.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "908420",
+    "ThreadId": "393209",
+    "Html": "<p>Dear Sir,</p>\r\n<p>THANK YOU SO MUCH for providing me with a code sample for the Unbundle feature using transactions. The latest API and these new features work like a charm. My issue with duplicate transaction control numbers is resolved, all thanks to you.&nbsp;</p>\r\n<p>I am really very much appreciative of all your help, especially for providing the sample over a holiday weekend.&nbsp;</p>\r\n<p>Kind Regards.</p>\r\n<p>Sincerely,<br />nk5491&nbsp;</p>",
+    "PostedDate": "2012-09-04T18:15:14.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1286503",
+    "ThreadId": "559916",
+    "Html": "receiving the below error:\r<br />\n<br />\nex\t{&quot;Segment 'NTE<em>DEL</em>SHIP NO MORE THAN   5 DAYS PRIOR TO SHIP DATE' in segment position 59 within transaction '000091162' cannot be identified within the supplied specification for transaction set 830 in any of the expected loops: LIN,SHP.  To change this to a warning, pass throwExceptionOnSyntaxErrors = false to the X12Parser constructor.\\r\\nParameter name: 830&quot;}\tSystem.Exception\r<br />\n<br />\n code:\r<br />\n var parser = new X12Parser();<br />\n<pre><code>        Interchange interchange = parser.Parse(fstream);\n        string xml824 = interchange.Serialize();\n\n        //dump to xml file\n        XmlDocument myDocument = new XmlDocument();\n        myDocument.LoadXml(xml824.Trim());\n\n</code></pre>\n\nhow to fix!!<br />\n",
+    "PostedDate": "2014-08-05T06:56:42.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1286625",
+    "ThreadId": "559916",
+    "Html": "<strong>leeman wrote:</strong><br />\n<blockquote>\nreceiving the below error:<br />\n<br />\nex\t{&quot;Segment 'NTE<em>DEL</em>SHIP NO MORE THAN   5 DAYS PRIOR TO SHIP DATE' in segment position 59 within transaction '000091162' cannot be identified within the supplied specification for transaction set 830 in any of the expected loops: LIN,SHP.  To change this to a warning, pass throwExceptionOnSyntaxErrors = false to the X12Parser constructor.\\r\\nParameter name: 830&quot;}\tSystem.Exception<br />\n<br />\n code:<br />\n var parser = new X12Parser();<br />\n<pre><code>        Interchange interchange = parser.Parse(fstream);\n        string xml824 = interchange.Serialize();\n\n        //dump to xml file\n        XmlDocument myDocument = new XmlDocument();\n        myDocument.LoadXml(xml824.Trim());\n\n</code></pre>\n\nhow to fix!!<br />\n</blockquote>\nUpdate: fixed with the following - var parser = new X12Parser(new SpecificationFinder(), false); added constructor values!!<br />\n",
+    "PostedDate": "2014-08-05T11:49:56.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

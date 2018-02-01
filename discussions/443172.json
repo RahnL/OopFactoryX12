@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1041578",
+    "ThreadId": "443172",
+    "Html": "First off, thanks for the outstanding work on this project! This has been a lifesaver on a critical time-sensitive project.\r<br />\n<br />\nI'm currently having issues with some 837i files from one provider. I get a &quot;Segment 'OI<strong><em>Y</em></strong>Y' in segment position 5672 within transaction 'XXXX' cannot be identified within the supplied specification for transaction set 837 in any of the expected loops: 2000A[195],2000B[196],2300,2310A. \r<br />\n<br />\nI have run the 837 files through validation tools, and they appear to be valid, but I get the above exception trying to parse any of them. I haven't had any luck with the throwExceptionOnSyntaxErrors option. Maybe I don't understand how to use it correctly, but even when I pass False to the constructor, it still throws the exception. I'm not sure what section of the source file to post here. How do I attach a de-identified file attachment?<br />\n",
+    "PostedDate": "2013-05-09T14:24:17.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041591",
+    "ThreadId": "443172",
+    "Html": "According to the <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/ts/837.htm\" rel=\"nofollow\">generic X12 standard for 837</a> and the 837I implementation guide for 5010, the OI segment (Other Insurance Coverage Information) should appear within loop 2320 (Other Subscriber Information) which is indicated by an SBR segment.  The last loop that the parser was able to identify was 2310A which is the attending physician name.  The 2320 loop would be a sibling of the 2310A loop, but must have the SBR segment to indicate it's start.\r<br />\n<br />\nIf the sender of the x12 does not think they have an error, than you would have to inject your own specification that would allow the OI segment in the position it is occurring, but since that would be non-standard, it is better to get the sender to correct this.<br />\n",
+    "PostedDate": "2013-05-09T14:39:29.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041594",
+    "ThreadId": "443172",
+    "Html": "Thanks for the quick response! Your are fantastic.\r<br />\n<br />\nThese are the lines that immediately precede the OI segments:\r<br />\n<br />\nSBR<em>P</em>18*<strong><em><strong><em>MA~\r<br />\nAMT<em>D</em>999.99~\r<br />\nOI</em></strong>Y</em></strong>Y~\r<br />\n<br />\nWouldn't that indicate that it does have the 2320 loop?<br />\n",
+    "PostedDate": "2013-05-09T14:45:41.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041601",
+    "ThreadId": "443172",
+    "Html": "Your delimiters are getting scrambled.  Can you insert using the &quot;Insert Code&quot; (Ctrl+K), so that the site doesn't treat them as wiki markup?\r<br />\nAlso, is this happening in a 5010 or 4010 file?  Does this correspond to the 5672 position in that file from the error message?<br />\n",
+    "PostedDate": "2013-05-09T14:56:28.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041602",
+    "ThreadId": "443172",
+    "Html": "Sorry about that. This is 5010. I'm not sure how to find position 5672 exactly. Is there documentation out here that you could point me to?<br />\n<pre><code>SBR*P*18*******MA~\nAMT*D*999.99~\nOI***Y***Y~</code></pre>\n\n",
+    "PostedDate": "2013-05-09T14:59:57.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041605",
+    "ThreadId": "443172",
+    "Html": "Position 5672 is just the segment position.\r<br />\nIf you have a text editor that will allow you to take the ~ segment delimiter and put a carriage return after each, then it should show up in the 5672nd line of the file.  I double checked the spec that's embedded in the code and didn't see any problems.  It might be possible that some of the OI segments are correct and some of them aren't.<br />\n",
+    "PostedDate": "2013-05-09T15:03:46.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041609",
+    "ThreadId": "443172",
+    "Html": "Ah, OK. I already had it with carriage returns, but it looks like it counts beginning with the ST segment and not with the ISA. Here is the OI segment at 5672 and the lines preceding it back to the nearest SBR loop.<br />\n<pre><code>SBR*P*18*******CH~\nNM1*IL*1*XXXX*XXXX****MI*999999999~\nN3*9999 9XX XXX XX~\nN4*XXXXX*ND*99999~\nDMG*D8*19670302*M~\nNM1*PR*2*XXXXXXX XXX*****PI*9999999~\nN3*XX XXX 99999*XXXX XXXXXX XXXXXX~\nN4*XXXXXXX*WI*99999-9999~\nCLM*99999999*12003.30***99:X:9**A*Y*Y~\nDTP*434*RD8*20120801-20120831~\nCL1*3*2*01~\nREF*G1*99~\nREF*EA*999999~\nREF*D9*9999999-9~\nHI*XX:X999~\nHI*XX:X999~\nHI*XX:9999*XX:99999*XX:9999*XX:99999*XX:99999*XX:9999*XX:99999*XX:9999*XX:99999*XX:99999*XX:99999*XX:X9999~\nHI*BF:V1209~\nHI*XX:99*XX:XX~\nNM1*71*1*XXXXXXXXX*XXXXXX***MD*XX*9999999999~\nOI***Y***Y~</code></pre>\n\n",
+    "PostedDate": "2013-05-09T15:09:56.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041614",
+    "ThreadId": "443172",
+    "Html": "I see the problem.\r<br />\nThe SBR that you are showing me as at the top of LOOP 2000B, which indicates the Subscriber Heriarchical Loop.\r<br />\nThe OI segment that you are showing me needs to be after an SBR that is a child of the Loop 2300 Claim Loop.  (Basically it needs to occur after the CLM segment but before the OI segment.\r<br />\n<br />\nThe first SBR is indicating the Primary subscriber, whereas the 2nd SBR after the CLM segment typically indicates a secondary subscriber.\r<br />\n<br />\nIt seems like the file sometimes has this correct, but in this case it does not.<br />\n",
+    "PostedDate": "2013-05-09T15:22:06.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1041616",
+    "ThreadId": "443172",
+    "Html": "Thank you so much for identifying the issue. At least now I can take it up with them and understand the issue.<br />\n",
+    "PostedDate": "2013-05-09T15:26:18.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

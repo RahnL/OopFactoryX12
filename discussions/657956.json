@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1483695",
+    "ThreadId": "657956",
+    "Html": "I am getting an OutOfMemoryException when trying to use X12Import on a 210MB file.\r<br />\n90MB file works fine, box has tons of memory.\r<br />\n<br />\nOopFactory.X12.ImportX12.exe Error: 0 : Error parsing C:\\Temp\\Inbound\\large834file.txt: Exception of type 'System.OutOfMemoryException' was thrown.\r<br />\n   at OopFactory.X12.Parsing.Model.DetachedSegment.Initialize(String segment)\r<br />\n   at OopFactory.X12.Parsing.Model.Container.AddSegment(String segmentString, Boolean forceAdd)\r<br />\n   at OopFactory.X12.Parsing.X12Parser.ParseMultiple(Stream stream, Encoding encoding)\r<br />\n   at OopFactory.X12.ImportX12.Program.Main(String[] args)\r<br />\n   DateTime=2016-09-13T16:51:50.5908370Z<br />\n",
+    "PostedDate": "2016-09-14T08:45:49.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

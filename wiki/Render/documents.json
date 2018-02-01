@@ -1,0 +1,424 @@
+[
+  {
+    "Title": "X12 Interchange Model",
+    "Id": "818723",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2014-01-20T12:07:33.07-08:00",
+    "FileAttachments": [
+      {
+        "Id": "0c7d66f7-d6e2-4164-a086-c947ba611fbb",
+        "FileName": "ParsingModel.png",
+        "DownloadUri": "./818723/0c7d66f7-d6e2-4164-a086-c947ba611fbb"
+      },
+      {
+        "Id": "e04baae5-6203-4ee1-a9d6-518354e33d66",
+        "FileName": "image_2.png",
+        "DownloadUri": "./818723/e04baae5-6203-4ee1-a9d6-518354e33d66"
+      },
+      {
+        "Id": "5a4aa312-c2cb-4d8e-9f2d-e559555cfaaf",
+        "FileName": "image_thumb.png",
+        "DownloadUri": "./818723/5a4aa312-c2cb-4d8e-9f2d-e559555cfaaf"
+      },
+      {
+        "Id": "90b6b219-58f6-46f9-9b0b-f59c32d1e9be",
+        "FileName": "image_4.png",
+        "DownloadUri": "./818723/90b6b219-58f6-46f9-9b0b-f59c32d1e9be"
+      },
+      {
+        "Id": "a8ce60bf-96b3-499a-a1fa-cf4c1baf982f",
+        "FileName": "image_thumb_1.png",
+        "DownloadUri": "./818723/a8ce60bf-96b3-499a-a1fa-cf4c1baf982f"
+      },
+      {
+        "Id": "ec2ab533-4f70-4ab4-85d1-886d3191d129",
+        "FileName": "image_6.png",
+        "DownloadUri": "./818723/ec2ab533-4f70-4ab4-85d1-886d3191d129"
+      },
+      {
+        "Id": "ccf03369-db49-485e-85f8-8e2f04d864bd",
+        "FileName": "image_thumb_2.png",
+        "DownloadUri": "./818723/ccf03369-db49-485e-85f8-8e2f04d864bd"
+      },
+      {
+        "Id": "1d607384-7f07-4ba5-9eca-92a742231059",
+        "FileName": "image_8.png",
+        "DownloadUri": "./818723/1d607384-7f07-4ba5-9eca-92a742231059"
+      },
+      {
+        "Id": "6797a6f5-c360-4793-8741-f7dbba59701e",
+        "FileName": "image_thumb_3.png",
+        "DownloadUri": "./818723/6797a6f5-c360-4793-8741-f7dbba59701e"
+      },
+      {
+        "Id": "f3e68296-b25e-404f-815d-59fc50998b87",
+        "FileName": "image_12.png",
+        "DownloadUri": "./818723/f3e68296-b25e-404f-815d-59fc50998b87"
+      },
+      {
+        "Id": "ee97675b-9531-44fb-a07a-8de0162289ff",
+        "FileName": "image_thumb_5.png",
+        "DownloadUri": "./818723/ee97675b-9531-44fb-a07a-8de0162289ff"
+      },
+      {
+        "Id": "242dcf53-b02b-4ccf-9573-5457b29aa13f",
+        "FileName": "image_14.png",
+        "DownloadUri": "./818723/242dcf53-b02b-4ccf-9573-5457b29aa13f"
+      },
+      {
+        "Id": "8202bf9f-9c3c-4db8-a377-68df0edf3a57",
+        "FileName": "image_thumb_6.png",
+        "DownloadUri": "./818723/8202bf9f-9c3c-4db8-a377-68df0edf3a57"
+      },
+      {
+        "Id": "2d841699-78f2-43b8-8e12-5abc9eebe729",
+        "FileName": "image_16.png",
+        "DownloadUri": "./818723/2d841699-78f2-43b8-8e12-5abc9eebe729"
+      },
+      {
+        "Id": "ce37181c-adab-4984-a27f-a026bd5f1285",
+        "FileName": "image_thumb_7.png",
+        "DownloadUri": "./818723/ce37181c-adab-4984-a27f-a026bd5f1285"
+      },
+      {
+        "Id": "77d52dc9-db9c-4f1d-b259-8b45def948b0",
+        "FileName": "image_2.png",
+        "DownloadUri": "./818723/77d52dc9-db9c-4f1d-b259-8b45def948b0"
+      },
+      {
+        "Id": "0045c83d-70b6-448e-b3f8-c56b338cd84c",
+        "FileName": "image_thumb.png",
+        "DownloadUri": "./818723/0045c83d-70b6-448e-b3f8-c56b338cd84c"
+      },
+      {
+        "Id": "1c6b7f9e-3706-4429-8d84-41eff9221118",
+        "FileName": "image_18.png",
+        "DownloadUri": "./818723/1c6b7f9e-3706-4429-8d84-41eff9221118"
+      },
+      {
+        "Id": "b5b6b362-f133-4aaa-9a01-d54f82b7d71a",
+        "FileName": "image_thumb_8.png",
+        "DownloadUri": "./818723/b5b6b362-f133-4aaa-9a01-d54f82b7d71a"
+      },
+      {
+        "Id": "8a7970f9-f8a0-4424-841f-06d2770cd181",
+        "FileName": "image_18.png",
+        "DownloadUri": "./818723/8a7970f9-f8a0-4424-841f-06d2770cd181"
+      },
+      {
+        "Id": "93ded923-6a6b-4f9b-b5a2-99b393440ec0",
+        "FileName": "image_thumb_8.png",
+        "DownloadUri": "./818723/93ded923-6a6b-4f9b-b5a2-99b393440ec0"
+      },
+      {
+        "Id": "95bd7308-65c0-48b5-95c8-5a9a22ecaa55",
+        "FileName": "image_4.png",
+        "DownloadUri": "./818723/95bd7308-65c0-48b5-95c8-5a9a22ecaa55"
+      },
+      {
+        "Id": "a8f08b9b-f993-43e1-9648-b2e2ecc39ae7",
+        "FileName": "image_thumb_1.png",
+        "DownloadUri": "./818723/a8f08b9b-f993-43e1-9648-b2e2ecc39ae7"
+      },
+      {
+        "Id": "3d8bdc88-ecc5-4eed-bc1a-49c215421087",
+        "FileName": "image_6.png",
+        "DownloadUri": "./818723/3d8bdc88-ecc5-4eed-bc1a-49c215421087"
+      },
+      {
+        "Id": "7cca6b9a-b0e5-48b3-8e7b-c75a0421c68c",
+        "FileName": "image_thumb_2.png",
+        "DownloadUri": "./818723/7cca6b9a-b0e5-48b3-8e7b-c75a0421c68c"
+      },
+      {
+        "Id": "22e6b3a9-4258-4739-8877-dd94f9859605",
+        "FileName": "image_8.png",
+        "DownloadUri": "./818723/22e6b3a9-4258-4739-8877-dd94f9859605"
+      },
+      {
+        "Id": "d7a0ea07-7f07-4c8f-9eb0-c769f1f3245f",
+        "FileName": "image_thumb_3.png",
+        "DownloadUri": "./818723/d7a0ea07-7f07-4c8f-9eb0-c769f1f3245f"
+      },
+      {
+        "Id": "192321a9-a836-449c-80c6-114aa9ce73e9",
+        "FileName": "image_12.png",
+        "DownloadUri": "./818723/192321a9-a836-449c-80c6-114aa9ce73e9"
+      },
+      {
+        "Id": "5002525f-93dc-441d-949d-4b6ec69688f5",
+        "FileName": "image_thumb_5.png",
+        "DownloadUri": "./818723/5002525f-93dc-441d-949d-4b6ec69688f5"
+      },
+      {
+        "Id": "222769e7-b5f6-46f3-bf51-f1c7926a2907",
+        "FileName": "image_14.png",
+        "DownloadUri": "./818723/222769e7-b5f6-46f3-bf51-f1c7926a2907"
+      },
+      {
+        "Id": "25d86a70-a2bf-43c0-ba0f-1c1c9f16f398",
+        "FileName": "image_thumb_6.png",
+        "DownloadUri": "./818723/25d86a70-a2bf-43c0-ba0f-1c1c9f16f398"
+      }
+    ]
+  },
+  {
+    "Title": "Documentation",
+    "Id": "774528",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2013-09-15T04:20:45.273-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Transaction Set Configuration",
+    "Id": "774524",
+    "ParentWikiTitle": "Sql Server Database Integration",
+    "FileExtension": "html",
+    "UpdatedDate": "2013-09-15T04:16:22.087-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "SqlTransactionRepository class",
+    "Id": "727078",
+    "ParentWikiTitle": "Sql Server Database Integration",
+    "FileExtension": "html",
+    "UpdatedDate": "2013-05-05T05:31:32.013-07:00",
+    "FileAttachments": [
+      {
+        "Id": "c1be7859-b3e7-466b-bcd4-7f282e1d9e08",
+        "FileName": "SqlTransactionRepository.png",
+        "DownloadUri": "./727078/c1be7859-b3e7-466b-bcd4-7f282e1d9e08"
+      },
+      {
+        "Id": "5970e4b8-a3b3-42c6-9a1a-da82244b1ba0",
+        "FileName": "RepoLoop.png",
+        "DownloadUri": "./727078/5970e4b8-a3b3-42c6-9a1a-da82244b1ba0"
+      },
+      {
+        "Id": "4e89e883-236e-4c59-aa50-c6735e1684cd",
+        "FileName": "RepoSegment.png",
+        "DownloadUri": "./727078/4e89e883-236e-4c59-aa50-c6735e1684cd"
+      },
+      {
+        "Id": "eee6fa66-93d9-495f-b89c-4abfe2077cf8",
+        "FileName": "RepoTransactionSet.png",
+        "DownloadUri": "./727078/eee6fa66-93d9-495f-b89c-4abfe2077cf8"
+      }
+    ]
+  },
+  {
+    "Title": "Sql Server Database Integration",
+    "Id": "727077",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2013-05-05T05:22:27.34-07:00",
+    "FileAttachments": [
+      {
+        "Id": "d645f941-b797-4207-a7aa-09a5858e172e",
+        "FileName": "X12Schema.png",
+        "DownloadUri": "./727077/d645f941-b797-4207-a7aa-09a5858e172e"
+      },
+      {
+        "Id": "43d09ea3-4960-4316-af59-4b10a2109fbf",
+        "FileName": "X12Schema.emf",
+        "DownloadUri": "./727077/43d09ea3-4960-4316-af59-4b10a2109fbf"
+      }
+    ]
+  },
+  {
+    "Title": "SQL Server as a Staging Environment",
+    "Id": "718514",
+    "ParentWikiTitle": "Sql Server Database Integration",
+    "FileExtension": "html",
+    "UpdatedDate": "2013-04-14T12:46:31.7-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Home",
+    "Id": "718448",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "html",
+    "UpdatedDate": "2013-04-14T09:24:07.34-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Sql Server Functions and Views",
+    "Id": "718445",
+    "ParentWikiTitle": "Sql Server Database Integration",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2013-04-14T09:13:31.95-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "837 Claim Parser Usage",
+    "Id": "565277",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2012-04-29T07:05:52.18-07:00",
+    "FileAttachments": [
+      {
+        "Id": "aea29c77-0bb1-4485-9196-2caaab0552f5",
+        "FileName": "Example1.PNG",
+        "DownloadUri": "./565277/aea29c77-0bb1-4485-9196-2caaab0552f5"
+      }
+    ]
+  },
+  {
+    "Title": "Creating a flat file from the X12 xml using XSLT and XslCompiledTransform",
+    "Id": "482695",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2011-10-07T07:51:01.043-07:00",
+    "FileAttachments": [
+      {
+        "Id": "fa4a7e45-5b27-4eb5-a388-d48348309dda",
+        "FileName": "AddNewItemXslt.png",
+        "DownloadUri": "./482695/fa4a7e45-5b27-4eb5-a388-d48348309dda"
+      },
+      {
+        "Id": "dac6a6fc-5195-4e08-a869-97a3ef564a99",
+        "FileName": "AddSampleEdiFile.png",
+        "DownloadUri": "./482695/dac6a6fc-5195-4e08-a869-97a3ef564a99"
+      },
+      {
+        "Id": "8af0afeb-9828-407f-a0e5-e7892cd460f6",
+        "FileName": "ChangeBuildAction.png",
+        "DownloadUri": "./482695/8af0afeb-9828-407f-a0e5-e7892cd460f6"
+      },
+      {
+        "Id": "5a057a92-a31a-43e7-8564-489b5f7b1a54",
+        "FileName": "CreateProject.png",
+        "DownloadUri": "./482695/5a057a92-a31a-43e7-8564-489b5f7b1a54"
+      },
+      {
+        "Id": "9c46bb41-e299-4263-bb6a-0f24f96b9dc5",
+        "FileName": "SetCommandLineArguments.png",
+        "DownloadUri": "./482695/9c46bb41-e299-4263-bb6a-0f24f96b9dc5"
+      },
+      {
+        "Id": "c3a9d66c-7b43-460d-8aa5-c4f54a65cfb3",
+        "FileName": "MyX12.Edi835Parser.zip",
+        "DownloadUri": "./482695/c3a9d66c-7b43-460d-8aa5-c4f54a65cfb3"
+      },
+      {
+        "Id": "c5464edb-8259-4231-a9cd-c9462994ec18",
+        "FileName": "Parse835ToExcel.png",
+        "DownloadUri": "./482695/c5464edb-8259-4231-a9cd-c9462994ec18"
+      },
+      {
+        "Id": "604fbbf6-8707-4d90-82cb-e88a75057576",
+        "FileName": "OopFactory.Edi835Parser.zip",
+        "DownloadUri": "./482695/604fbbf6-8707-4d90-82cb-e88a75057576"
+      }
+    ]
+  },
+  {
+    "Title": "About the X12 Parser",
+    "Id": "477659",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2011-09-24T07:40:13.423-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Testimonials",
+    "Id": "466073",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2011-08-27T13:36:01.263-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Comparing Open Source EDI Software",
+    "Id": "450790",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "html",
+    "UpdatedDate": "2011-07-15T09:34:37.023-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Injecting your own X12 Specification",
+    "Id": "442217",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2011-06-25T11:16:17.223-07:00",
+    "FileAttachments": [
+      {
+        "Id": "6e2e473d-058c-44bb-ae1a-20ed598f202c",
+        "FileName": "MyCustomerParser.zip",
+        "DownloadUri": "./442217/6e2e473d-058c-44bb-ae1a-20ed598f202c"
+      },
+      {
+        "Id": "deb82d12-0a1f-4811-93d8-3afb77920bd1",
+        "FileName": "SpecificationModel.png",
+        "DownloadUri": "./442217/deb82d12-0a1f-4811-93d8-3afb77920bd1"
+      }
+    ]
+  },
+  {
+    "Title": "Unbundling an X12 file by Loop ID",
+    "Id": "414549",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2011-04-23T19:59:28.07-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Parsing an 837 Transaction",
+    "Id": "408677",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "html",
+    "UpdatedDate": "2011-04-10T17:57:16.77-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Parsing an 837 Transaction to HTML",
+    "Id": "408283",
+    "ParentWikiTitle": "Parsing an 837 Transaction",
+    "FileExtension": "html",
+    "UpdatedDate": "2011-04-09T22:20:54.577-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Unobstrusive X12 Manipulation",
+    "Id": "406973",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2011-04-07T04:14:59.743-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Parsing an 834 Transaction",
+    "Id": "406965",
+    "ParentWikiTitle": "Documentation",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2011-04-07T04:03:49.98-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "837P Sample 1 X12 XML",
+    "Id": "406820",
+    "ParentWikiTitle": "Parsing an 837 Transaction",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2011-04-06T18:08:14.623-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "834 Sample 1 X12 with whitespace",
+    "Id": "406370",
+    "ParentWikiTitle": "Parsing an 834 Transaction",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2011-04-05T18:41:49.26-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "834 Sample 1 X12 XML",
+    "Id": "406361",
+    "ParentWikiTitle": "Parsing an 834 Transaction",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2011-04-05T18:29:04.893-07:00",
+    "FileAttachments": []
+  }
+]

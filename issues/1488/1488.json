@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I just tried out the parser on a 271 file. When just one EB03 value is present, it interprets it fine:\n\nEB*1**88~\n\n```\n\n  \n  1\n  \n  \n  88\n\n```\n\nWhen there is a repeating EB03 value, it isn't parsed out correctly:\n\nEB*I**82^68^54^41~\n\n```\n\n  \n  I\n  \n  \n  82^68^54^41\n\n```\n\nIt would be useful for X12Parser to support repeating elements as this is part of the standard.",
+    "LastUpdatedDate": "2017-01-10T14:56:57.02-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-01-30T07:18:32.95-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ISA11 repetition support",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 1488
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Wow, Codeplex sucks...I enclosed the XML in code tags and it still doesn't preserve it?",
+      "PostedDate": "2013-01-30T07:21:47.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-01-31T18:20:59.513-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:54.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think you have to insert it as a code snippit otherwise it things you are using wiki shortcuts.\nI'm not sure this is a problem.\nYour EB03 looks like a composite.  IT will parse out correctly if the ^ is specified as the component separator in your ISA segment.  If you show me what your ISA segment looks like (first 106 characters in the file), I can determine if this is a file issue or a parsing issue.",
+      "PostedDate": "2013-09-15T06:29:50.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-05-07T13:33:23.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am encountering the same issue when parsing a 271, the following EB segment:\r\n\r\n```\nEB*B*IND*1^47^48^50^88^98^AL^35^86^MH^UC*MC*104 - LIM - Adult*27*0~\n```\r\n\r\nResults in a single EB loop when parsing, with \"1^47^48^50^88^98^AL^35^86^MH^UC\" as the value for the EB03 segment. Per the standard, this should result in 11 EB loops with the individual values separated by the repetition separator (^) being placed into the EB03 segment.",
+      "PostedDate": "2014-05-07T13:39:52.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The response I get is using the caret for ISA16 - Component Element Separator and right curly brace for ISA11.  I replaced all of the right curly braces in the input with caret and parser did better but still does not correctly set the description for each service type code:\r\n\r\nHere is the unmodified response I am getting from the vendor:\r\n\r\n\nISA|00|          |00|          |ZZ|ZIRMED         |ZZ|605            |140417|2100|}|00501|000015485|1|P|^~GS|HB|ZIRMED|111|20140417|2100|15317|X|005010X279A1~ST|271|0001|005010X279A1~BHT|0022|11|2501|20140417|210000~HL|1||20|1~NM1|PR|2|CMS|||||PI|CMS~PER|IC||UR|http://www.cms.gov/HETSHelp/|UR|http://www.cms.gov/center/provider.asp~HL|2|1|21|1~NM1|1P|2|ZIRMED|||||XX|1234567890~HL|3|2|22|0~TRN|2|217643527|9ZIRMEDCOM~TRN|2|220686598|9ZIRMEDCOM|ELR ID~TRN|1|218559149|9ZIRMEDCOM|ELI ID~NM1|IL|1|DOE|JANE|A|||MI|123456789A~N3|333 SOMEWHERE STREET~N4|ANYWHERE|WA|982081941~DMG|D8|19421205|F~DTP|307|RD8|20140306-20140410~EB|I||54}41~EB|1||88~EB|1||30}BV}BU}BT}AG}A7}A5}83}76}69}49}48}45}42|MA~DTP|291|D8|20081001~EB|C||30|MA||26|1216~DTP|291|RD8|20140101-20141231~EB|C||30|MA||29|1216~DTP|291|RD8|20140101-20141231~EB|C||45}42|MA||26|0~DTP|292|RD8|20140101-20141231~EB|1||30}UC}DM}BV}BU}BT}AL}AK}AJ}AI}A8}A6}A4}98}86}83}76}73}69}67}53}52}51}50}42}40}39}38}37}36}33}3}28}27}26}25}24}23}2|MB~DTP|291|D8|20081001~EB|C||30|MB||23|147~DTP|291|RD8|20140101-20141231~EB|C||30|MB||29|0~DTP|291|RD8|20140101-20141231~EB|A||UC}DM}BV}BU}BT}AL}98}86}83}76}73}69}53}52}51}50}40}39}38}37}36}33}3}28}27}26}25}24}23}2|MB||27||.2~DTP|292|RD8|20140101-20141231~EB|C||AJ}67}42|MB||23|0~DTP|292|RD8|20140101-20141231~EB|R||88|OT~REF|18|S5932 029~DTP|292|D8|20130501~LS|2120~NM1|PR|2|HEALTHSPRING LIFE & HEALTH INSURANCE COMPANY, INC.~N3|2900 N Loop West|Suite 1300~N4|Houston|TX|77092~PER|IC||TE|6155658476|UR|www.mycignahealthspring.com~LE|2120~SE|46|0001~GE|1|15317~IEA|1|000015485~",
+      "PostedDate": "2015-02-16T14:19:23.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The issue, as I noted in my post, is that this library hard codes the repetition character as a 'U'. \r\n\r\nThis is not only an illegal character for a separator, but as noted with the OP, the EB segments are not broken out.\r\n\r\nI wasn't connected to the repository, so I couldn't update the Separator enum, or the constructors for the Interchange object. This needs to happen.",
+      "PostedDate": "2015-02-17T06:29:49.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-02-17T06:31:04.827-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I changed the char from U to } and recompiled and although it now separates the ServiceTypes, it does not correctly assign the Lookup.Description which remains null",
+      "PostedDate": "2015-02-17T08:09:40.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The problem is the repetition delimiter is not coded at all in this parser.  You can fudge it by changing the subelement delimiter to the repetition delimiter. There is also a problem with the ansi-5010Specification.xml where the EB segment needs this change for industry code(Service Type Code). If you change this you will get the Description.\r\n\r\n```\n<Element Name=\"Industry Code\" Reference=\"03\" Type=\"ID\" MinLength=\"1\" MaxLength=\"3\" QualifierSetRef=\"Service Type Code\"/>\n```",
+      "PostedDate": "2017-01-10T14:56:57.02-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

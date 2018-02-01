@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Error occurs at :\n                                foreach (var context in elementNote.ContextErrors)\n                                {\n                                    var ctx = ik4.AddSegment<TypedSegmentCTX>(new TypedSegmentCTX());\n                                    ctx.CTX01._1_ContextName = \"SITUATIONAL TRIGGER\";\n                                    ctx.CTX01._2_ContextReference = context.IdentificationReference;\n                                    ctx.CTX02_SegmentIdCode = context.SegmentIdCode;\n                                    ctx.CTX03_SegmentPositionInTransactionSet = context.SegmentPositionInTransactionSet;\n                                    ctx.CTX04_LoopIdentifierCode = context.LoopIdentifierCode;\n                                }\n\nThe reason being: elementNote.ContextErrors is null. \n\nI am attaching the 837P file which help you to reproduce the error.",
+    "LastUpdatedDate": "2017-11-27T18:20:56.973-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-05-23T06:33:37.32-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error in X12Extensions.cs while creating acknowledgments for 837P",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1585
+  },
+  "FileAttachments": [
+    {
+      "FileId": 661,
+      "FileName": "ACK-ISSUE-837P-Sample.txt",
+      "DownloadUrl": ".\\661"
+    }
+  ],
+  "Comments": []
+}

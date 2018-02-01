@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "631166",
+    "ThreadId": "262351",
+    "Html": "<p>I just have started researching about EDI, and I discovered this project from googling. I think this is a good tool but I still don't have the basic foundation of EDI. Any help to find a good starting point to learn EDI would be much appreciated.</p>\n<p>Keep up the good work!</p>",
+    "PostedDate": "2011-06-22T08:06:56.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631262",
+    "ThreadId": "262351",
+    "Html": "<p>Most of the implementation guides for a transaction set have some good information about basic workflow from different trading partners.</p>\r\n<p>You probably need to start somewhere that will explain how trading partners and clearinghouses pass this information around for Business-To-Business communication.</p>\r\n<p>This website will help you to visualize the messages once you understand which messages you need.</p>",
+    "PostedDate": "2011-06-22T10:33:42.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "631344",
+    "ThreadId": "262351",
+    "Html": "<p>I am actually interested on 837P as this is one of the requirements in the current project that I am working on. I still have 3 months time frame before I could start working for the billing process.</p>",
+    "PostedDate": "2011-06-22T12:07:50.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "632014",
+    "ThreadId": "262351",
+    "Html": "<p>The Implementation Guides are actually quite thorough in their explanation of the workflow of EDI messages as well as the format.</p>\r\n<p>Washington Publishing Company publishes all of these documents:&nbsp; <a href=\"http://www.wpc-edi.com/content/view/661/393/\">http://www.wpc-edi.com/content/view/661/393/</a>.</p>\r\n<p>If your company is doing this work, it should already have purchased the necessary specifications.</p>\r\n<p>In my own research I have found that most tools out there are either very expensive or does not have many features or relies too heavily on a database integration.</p>\r\n<p>If there is a particular area of the 837P that is unclear to you, I would be happy to blog about it and point to good resources for further explanation.&nbsp; Anything that will encourage other users to try out the parser will be worth the effort.</p>",
+    "PostedDate": "2011-06-23T11:18:25.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "635992",
+    "ThreadId": "262351",
+    "Html": "<p>I found the following guide to be helpful in beginning to understand X12:&nbsp;http://www.xtranslator.com/prod/beginguidex12.pdf. I'm sure no where near the depth of the official guides, but a good place to start.</p>",
+    "PostedDate": "2011-07-01T06:15:58.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

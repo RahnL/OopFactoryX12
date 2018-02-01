@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2013-09-15T06:30:49.437-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There are some errors while parsing this file. Please take a look",
+    "LastUpdatedDate": "2013-09-15T06:30:49.437-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-01-12T15:28:53.61-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error while parsing 856 (ASN) file",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1464
+  },
+  "FileAttachments": [
+    {
+      "FileId": 644,
+      "FileName": "856-1edisource.txt",
+      "DownloadUrl": ".\\644"
+    },
+    {
+      "FileId": 645,
+      "FileName": "856 File Parsing.png",
+      "DownloadUrl": ".\\645"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I am able to successfully parse this using EDI Notepad",
+      "PostedDate": "2013-01-12T15:36:08.68-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 23146.",
+      "PostedDate": "2013-02-17T10:55:11.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The specification in the code did not recognized your N1 segments with SH and OB entity codes.  Since I was not able to find this in any the specifications that I used, I went ahead and added another Loop specification called \"Other Entities\" so that this file will parse.\r\n\r\nThis is checked into changeset 23146 and will be available on the next release in a few days.",
+      "PostedDate": "2013-02-17T10:57:39.283-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:54.86-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-15T06:30:49.437-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-01-20T11:03:38.857-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Create a test method that duplicates the 270 given in the Read270Test so that the given method returns an exact duplicate of the original 270.\nCreate documentation at https://x12parser.codeplex.com/wikipage?title=X12%20Interchange%20Model that describes the process of creating the 270.",
+    "LastUpdatedDate": "2017-11-27T18:21:13.133-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-01-19T18:22:34.573-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Add documentation and a related test for creating a 270 file",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 0,
+    "Id": 1870
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Test method currently in process in a shelveset.",
+      "PostedDate": "2014-01-19T20:35:15.86-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 34043: WorkItem#1870 - Creation of a 270 Test example (With output to debug at each level of creation for seeing what each level does) with notes on the sections of a 270 and links to helpful documentation on X12 and 270's. Created a flatfile and \"WhiteSpaced\" version of the example 270 file and added a Test to ensure they are the same.",
+      "PostedDate": "2014-01-20T11:03:38.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nice work Mark. Thanks for sharing!",
+      "PostedDate": "2015-03-25T14:59:47.723-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:21:13.133-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

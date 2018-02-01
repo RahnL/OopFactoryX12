@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Really this is very great work Doing EDI frame work that too in .net platform in opensource i really didnot expected this. You made impossible thing. I really appreaciate your team good work. Infact, i wanted to add more to this work. Is there any possibility to add XSLT file writer from front end like If we click the nodes of the segement and specify the length. Then it automatially creates .XSLT file which would be of more helpful to the users and adds more to the present thing.\n \nOnce again i really appreciate your team of work.\n \nThank you.",
+    "LastUpdatedDate": "2013-02-21T16:47:05.39-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-07-04T23:36:53.53-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Create XSLT creator",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 753
+  },
+  "FileAttachments": [
+    {
+      "FileId": 386,
+      "FileName": "sefedit.gif",
+      "DownloadUrl": ".\\386"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Very interesting screen shot.  Is this a commercial off-the-shelf product or is it proprietary?  I couldn't tell from the screen shot.\r\nI am currently focusing on creating the core functionality, so right now I am focusing on the audience being developers who know how to work with xslt in it's native form in Visual Studio.  \r\nIf you are interested in writing the tool that you are describing, I am up for adding you as a developer, I just need a little more understanding of what you want to create.  I couldn't tell if the screen shot was a tool for describing the transaction specification or a tool for creating XSLT transformations.",
+      "PostedDate": "2011-07-05T18:36:54.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually i extracted this from edidev.com website. They uses this concept to create their SEF files. Based on the SEF the EDI frame work extracts the data from the file.",
+      "PostedDate": "2011-07-05T23:53:01.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "dstrubhar,\r\n\r\ni donot think i am that much level of programmer. But any way i will try.",
+      "PostedDate": "2011-07-05T23:54:10.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So the SEF is equivalent to XML specification files.  What might be more useful for someone who already has invested in creating SEF files is create a utility that will transform all of the SEF files into a format that can be used by this X12 parser.\r\n\r\nThe XML files are quite easy to create using the included xsd file if you have an xml editor that can use the xsd to provide intellisense.\r\n\r\nIs the edidev.com tool something you are already using in production?",
+      "PostedDate": "2011-07-06T16:27:14.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes. Presently we are using EDIdev tool for production but now i am planning to use .net X12 for this so, i am evaluting this.\r\n",
+      "PostedDate": "2011-07-06T21:19:08.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-15T07:42:51.173-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:05.39-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

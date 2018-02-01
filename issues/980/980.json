@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed, will be deployed in next release.",
+    "ClosedDate": "2012-02-21T12:25:31.057-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When attempting to parse X12 277 files (Health Care Claim Status Notification) I'm getting the following error:\n \nUnhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException: Segment 'TRN*1*9999999999999999999' in position 6 within transaction '0001' cannot be identified within the supplied specification for transaction set 277.\nParameter name: 277\n   at OopFactory.X12.Parsing.X12Parser.Parse(Stream stream)\n   at OopFactory.X12.X12Parser.Program.Main(String[] args)\n \nI've attached the 277 file (deidentified).  I've got some larger ones that can be tested if needed.\n \nAs always, thanks for the help!",
+    "LastUpdatedDate": "2013-05-16T04:34:02.567-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-01-12T12:11:45.317-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "X12 277 error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 980
+  },
+  "FileAttachments": [
+    {
+      "FileId": 474,
+      "FileName": "277deident.edi",
+      "DownloadUrl": ".\\474"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "You are getting this error because the TRN segment is appearing after a hierarchical loop with level code = 20 which means it's the information source level.  HL*1**20*1~\r\nThe TRN segment is only expected in the other hierarchical loops.\r\nThe spec won't recognize the DTP segments that follow either.\r\n\r\nIf you still need this to parse (i.e. you can't get your data source to change this), than I can give you a modified specification that you can inject to get rid of this error.  Then at least you could ignore these segments.",
+      "PostedDate": "2012-01-12T14:11:00.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So that 277 is built out of spec?  That figures...\r\nIt came from a commercial clearinghouse so I doubt I'll be able to get them to change the way they build it.  Interestingly though, I've also tested 277's from Medicare and run into the same problem... in fact I can't get a Medicare 277 to run without this error.\r\n\r\nThat would be great if you can provide the modified spec.",
+      "PostedDate": "2012-01-13T07:29:11.543-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just did a check-in that added an non-standard loop that should start recognizing the TRN and DTP in your Information Source loop.\r\nIf you are getting this from Medicare messages, it's worth just adding it to this spec, since most people just use it for parsing and not validation.\r\nI have seen specification documents that have sample EDI that don't follow the specification in the same document, so I'm not too surprised that this is happening.\r\n\r\nLet me know if you get any other errors.\r\n\r\nI'll probably do an official build by the end of the month.",
+      "PostedDate": "2012-01-13T10:20:05.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks Danny, for working on this!\r\n\r\nA quick build with changeset 13836 resulted in a new error (I tested several files):\r\n\r\nUnhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException: Segment 'QTY*AA*3' in position 13 within transaction '0001' cannot be identified within the supplied specification for transaction set 277.\r\nParameter name: 277\r\n   at OopFactory.X12.Parsing.X12Parser.Parse(Stream stream)\r\n   at OopFactory.X12.X12Parser.Program.Main(String[] args)",
+      "PostedDate": "2012-01-13T13:33:35.393-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I didn't see that segment in the file that you attached.\r\nIf you can attach the EDI with that segment, I'll modify the spec and add both of those to the unit test so that you can be assured they continue to work.",
+      "PostedDate": "2012-01-13T15:08:18.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, you can ignore the last message, I was looking at the wrong file.  They all start looking the same after a while.\r\nI have added your file to unit test and made the necessary changes.\r\nI think I see the root of my misunderstanding.\r\nI have implemented the spec only for 5010x212 which is claim status and notification, but there are many different flavors of the a 277.  Yours looks like a 5010x214 which is a claim acknowledgment.  There were some hloops with level code \"PT\" that were not in my spec, so I copied he \"dependent level\" hloop spec to get it to recognize these segments.  I don't really have the correct loop IDs, because I don't have the spec.  For not it will get the file to parse.  I will look around this weekend and see if there is a spec I can get my hands on that show what the correct loop IDs for these segments are.",
+      "PostedDate": "2012-01-13T15:35:31.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, I've cleaned up the spec and it should match loop IDs identified at http://www.tmhp.com/EDI%20Companion%20Guides/Acute%20Care/Version%205010/277CA%20COMPANION%20GUIDE_5010.pdf",
+      "PostedDate": "2012-01-13T15:48:20.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In further testing it looks like everything is now working well with the 277CA spec.  Thanks again!",
+      "PostedDate": "2012-01-17T08:18:36.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-02-21T12:25:31.057-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:01.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:02.567-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In creating an 837P, Loop 2300, element DTP01 requires code \"439\" for \"Date Of Accident\", but I cannot find it in the enum in TypedSegmentDTP.cs.  Could you add it in the source?",
+    "LastUpdatedDate": "2013-02-21T16:46:55.363-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-11-26T09:59:52.05-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "837P need DTPQualifier for DateOfAccident",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1421
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

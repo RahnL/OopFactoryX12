@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "(Moved from discussion board)\nFirst, Thanks for this tool, it is truly awesome.\n\nI am using \nClaimDocument document = service.Transform837ToClaimDocument(stream.BaseStream);\nand then working on each claim\nforeach (Claim claim in document.Claims)\nFrom there I am turning each claim into a UB04\nUB04Claim Ub04 = _transformation.TransformClaimToUB04(claim);\nand then using the UB04 object to load into my DB.\n\nI am not getting any data in the Ub04.Field05_FederalTaxId field.\nbelow is the x12 snippet that contains the Hospital Information (de identified):\n\n`\nHL*1**20*1~\nPRV*BI*PXC*123N12345X~\nNM1*85*2*SPRINGFIELD HOSPITAL*****XX*1234567890~\nN3*123 FAKE ST~\nN4*SPRINGFIELD*IN*123456789~\nREF*EI*987654321~\n`\nThe tax id for the hospital: `REF*EI*987654321~` is showing up in Ub04.Field57_OtherProviderIdA.\n\nIf you fix this please let me know where.  Or can you direct me where I would find the code and I'll take a stab at it.\n\nThanks much, Doug Schmidt\n\nP.S On a side not the process that outputs a pdf of the 5010 claim isn't working quite correct as well.  My code is as follows.\n\nXmlDocument foDocument = new XmlDocument();\nstring foXml = service.TransformClaimDocumentToFoXml(document);\nfoDocument.LoadXml(foXml);\nvar driver = Fonet.FonetDriver.Make();\ndriver.Render(foDocument, @\"c:\\temp\\FileName.pdf\");\n\nI have several PDFs of the originals printed at the hospital and the created PDF with your parser with comments written on them from the billers in the company I work for.  Not sure if I can de identify them but I'm sure I can find a way if you would like me to send the PDFs to you.\n\nThanks again.",
+    "LastUpdatedDate": "2015-05-11T00:10:40.43-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-10-24T14:21:35.52-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Tax id for Hospital in 5010 837 `REF*EI*123456789~` not showing up correctly in UB04Claim object.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1794
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi,\r\n\r\nDo you have a code to convert to db. please help me?..",
+      "PostedDate": "2015-05-11T00:10:40.43-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

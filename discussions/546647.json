@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1249818",
+    "ThreadId": "546647",
+    "Html": "I'm processing an EDI 810 using ImportX12 and it successfully creates the tables in my SQL Server db, except that it doesn't generate any foreign keys.  I'm trying to use Entity Framework in a Database First model and it needs to foreign keys to pull together the data via relationships.  Is this theoretically possible in EDI - to generate foreign keys?  Is it a configuration option in ImportX12?<br />\n",
+    "PostedDate": "2014-05-26T19:38:13.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm using the \"OopFactory.EDI835Parser\" project off your documentation page, which shows how to convert to CSV, and to convert to formatted XML for excel.\n\nI'm trying to export CAS data using the below change to the XLST document:\n\n      <Cell>\n        <Data ss:Type=\"Number\">\n          <!-- mod - was - Paid Amount - no acct no -->\n          <xsl:value-of select=\"$claim/CAS/CAS03\"/>\n        </Data>\n      </Cell>\n\nEverything executes just fine, but the column populates with all zeroes - I've verified in the file that it should be giving me a value for field 3 of CAS.  Any ideas?",
+    "LastUpdatedDate": "2015-09-20T13:02:30.36-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-09-20T13:02:30.36-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unable To Export CAS In 835",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2728
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

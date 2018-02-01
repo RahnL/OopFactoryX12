@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n\nI just downloaded the latest version 3.08 and noticed that the HCFA 1500 GIF file (HCFA1500_Red.gif) was still the old version (version 0938-0999 from 08/2005).  Does anybody know where I can get the latest one (0938-1197 from 02-2012) in GIF format.  The latest approved version has 12 lines vs. 4 lines for the Diagnoses (Line 21).\n\nThanks you in advance...\n\nSteve\n\n\nIf you could, please help test branch:\n\n[https://x12parser.svn.codeplex.com/svn/branches/837Typed/](https://x12parser.svn.codeplex.com/svn/branches/837Typed/)\n\nInitial rendering of a 02/12 CMS-1500 was added.",
+    "LastUpdatedDate": "2017-11-27T18:21:07.377-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-04-07T06:41:48.41-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "HCFA 1500 Version (02-12) format",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 1946
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2222,
+      "FileName": "HCFA1500_Red.gif",
+      "DownloadUrl": ".\\2222"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Steve,\r\n\r\nDid you ever get ahold of this document? I was wanting to add the generation for the 02-2012 version to the project with the added data to populate it.\r\n\r\nJeremy",
+      "PostedDate": "2015-02-18T13:25:44.55-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-02-18T18:40:08.81-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi Jeremy,\r\n\r\nI ended up creating one myself.  I attached the GIF file that I created.\r\n\r\nSteve",
+      "PostedDate": "2015-02-18T18:40:09.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-03-19T14:00:51.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Spasha,\r\n\r\nJust wanted to update on this. I've abandoned the GIF form and went to a PDF form. Reson being that Fonet seems to be an abandoned format. Plus I think PDF give more flexibility as it can be rasterized to a TIFF using Ghostscript.",
+      "PostedDate": "2015-03-20T09:26:24.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you could, please help test branch:\r\n\r\n[https://x12parser.svn.codeplex.com/svn/branches/837Typed/](https://x12parser.svn.codeplex.com/svn/branches/837Typed/)\r\n\r\nInitial rendering of a 02/12 CMS-1500 was added.\r\n\r\n",
+      "PostedDate": "2015-03-26T12:02:30.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:21:07.377-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

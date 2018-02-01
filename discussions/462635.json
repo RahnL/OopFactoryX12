@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1108908",
+    "ThreadId": "462635",
+    "Html": "When trying to create an 834 from scratch, I get this exception when trying to add an N1 loop.<br />\n<pre><code>OopFactory.X12.Parsing.Model.TransactionValidationException was unhandled\n  HResult=-2147024809\n  Message=Loop N1* could not be added because it could not be found in the specification for ST\n  Source=OopFactory.X12\n  ElementId=ST\n  Value=N1*\n  StackTrace:\n       at OopFactory.X12.Parsing.Model.LoopContainer.AddLoop[T](T loop)\n       at TestEdi834.Program.TestMapDataToFile() in c:\\_Projects\\Test\\TestEdi834\\TestEdi834\\Program.cs:line 84\n       at TestEdi834.Program.Main(String[] args) in c:\\_Projects\\Test\\TestEdi834\\TestEdi834\\Program.cs:line 16\n       at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)\n       at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)\n       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n       at System.Threading.ThreadHelper.ThreadStart_Context(Object state)\n       at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n       at System.Threading.ThreadHelper.ThreadStart()\n  InnerException: </code></pre>\n\nI'm fairly new to this EDI stuff, so I may just be doing something entirely wrong. If so, any help would be appreciated. Thank you.<br />\n",
+    "PostedDate": "2013-10-17T11:18:20.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108934",
+    "ThreadId": "462635",
+    "Html": "The default 834 specification embedded in the assembly requires that you have an entity code identifier of &quot;P5&quot;, &quot;IN&quot;, &quot;BO&quot; or &quot;TV&quot;.  This is an implementation of the 834.  It will be able to find the appropriate spec for your N1 loop once you have supplied an entity code identifier.  If you are looking to use a different entity code you may need to use a more generic 834 specification that you inject yourself.\r<br />\n<br />\nSee here for the currently embedded 834: <a href=\"https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-834-5010Specification.xml\" rel=\"nofollow\">https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-834-5010Specification.xml</a>.\r<br />\n<br />\nSee here to inject your own: <a href=\"https://x12parser.codeplex.com/wikipage?title=Injecting%20your%20own%20X12%20Specification\" rel=\"nofollow\">https://x12parser.codeplex.com/wikipage?title=Injecting%20your%20own%20X12%20Specification</a>\r<br />\n<br />\nExamples of how to add an N1 loop are here: <a href=\"https://x12parser.codeplex.com/SourceControl/latest#trunk/tests/OopFactory.X12.Tests.Unit/Creation/Invoice810CreationTester.cs\" rel=\"nofollow\">https://x12parser.codeplex.com/SourceControl/latest#trunk/tests/OopFactory.X12.Tests.Unit/Creation/Invoice810CreationTester.cs</a>\r<br />\n<br />\nFeel free to post your code that adds the N1 loop and I will take a look.\r<br />\n<br />\nIt might be that I need to modify the TypedLoopN1 so that you can pass in the entity identifier code before it gets attached to the transaction.<br />\n",
+    "PostedDate": "2013-10-17T12:08:39.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108947",
+    "ThreadId": "462635",
+    "Html": "The entity code identifier that I'm using is &quot;P5&quot;, but I wasn't setting that until after adding the loop to the transaction, i.e.:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">var</span> sponsorLoop = transaction.AddLoop(<span style=\"color:Blue;\">new</span> TypedLoopN1());\nsponsorLoop.N101_EntityIdentifierCode = <span style=\"color:#A31515;\">&quot;P5&quot;</span>;\nsponsorLoop.N102_Name = <span style=\"color:#A31515;\">&quot;John Smith&quot;</span>;\nsponsorLoop.N103_IdentificationCodeQualifier = <span style=\"color:#A31515;\">&quot;FI&quot;</span>;\nsponsorLoop.N104_IdentificationCode = <span style=\"color:#A31515;\">&quot;001234567&quot;</span>;\r\n</pre></div>The exception occurs on the AddLoop line, so there is no chance to set the EntityIdentifierCode before the exception happens. After seeing your post, I tried setting that field at the time that the loop was instantiated (before adding it to the transaction like so:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:Blue;\">var</span> sponsorLoop = transaction.AddLoop(<span style=\"color:Blue;\">new</span> TypedLoopN1()\n{\n    N101_EntityIdentifierCode = <span style=\"color:#A31515;\">&quot;P5&quot;</span>\n});\n<span style=\"color:Green;\">//sponsorLoop.N101_EntityIdentifierCode = &quot;P5&quot;;</span>\nsponsorLoop.N102_Name = <span style=\"color:#A31515;\">&quot;John Smith&quot;</span>;\nsponsorLoop.N103_IdentificationCodeQualifier = <span style=\"color:#A31515;\">&quot;FI&quot;</span>;\nsponsorLoop.N104_IdentificationCode = <span style=\"color:#A31515;\">&quot;001234567&quot;</span>;\r\n</pre></div>but this resulted in a NullReferenceException on the AddLoop line.<br />\n",
+    "PostedDate": "2013-10-17T12:42:06.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108956",
+    "ThreadId": "462635",
+    "Html": "I noticed that when examining the transactions at runtime that the specification for the 810, used in the example from the unit test, has N1 included in the LoopSpecifications property, but the 834 transaction does not include this.<br />\n",
+    "PostedDate": "2013-10-17T12:51:44.56-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108958",
+    "ThreadId": "462635",
+    "Html": "The 810 example worked because there were not multiple N1 loops defined at the same level.  This is one way to fix it by having a generic spec that doesn't differentiate between the different implementations of N1.\r<br />\n<br />\nI think what I need to do is make TypedLoopN1 more like TypedLoopNM1 so that you can pass in the code and it can be available when it attaches to the transaction and tries to resolve which loop spec to use.  I can try and get the code checked by tomorrow for you to try.<br />\n",
+    "PostedDate": "2013-10-17T12:55:30.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108960",
+    "ThreadId": "462635",
+    "Html": "Thank you. I appreciate the help.<br />\n",
+    "PostedDate": "2013-10-17T12:58:21.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110089",
+    "ThreadId": "462635",
+    "Html": "Would it be enough to override GetSegmentString and Initialize in TypedLoopN1 as it is done in TypedLoopNM1? That is the only major difference I can see between those two classes, but I don't know enough about the code base to understand if that will cause any problems.\r<br />\n<br />\nI'm going to try it today and I'll report back my findings here.<br />\n",
+    "PostedDate": "2013-10-21T09:52:08.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1122979",
+    "ThreadId": "462635",
+    "Html": "I created an issue <a href=\"https://x12parser.codeplex.com/workitem/1813\" rel=\"nofollow\">here</a> and submitted patch 15428 to fix this. Sorry for the delay in submitting a patch.<br />\n",
+    "PostedDate": "2013-11-13T08:31:25.873-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1111704",
+    "ThreadId": "463443",
+    "Html": "I ran into a scenario where I am building an X12 852 document. Under the LIN loop I am using an N9 segment. So far I am fine adding the various elements, up until the point where I need to add a composite element. Here is what I'm trying to add <img src=\"http://picpaste.com/compositeElements-yxQITxtd.jpg\" alt=\"Image\" /> \r<br />\n<a href=\"http://picpaste.com/compositeElements-yxQITxtd.jpg\" rel=\"nofollow\">Linked here</a>\r<br />\n<br />\nI looked on this project website and Googled around but no luck finding an example of how to do this. There is the AddSegment(int,, value) method, but no AddCompositeSegment(int, int, value) method. Or something along those lines.\r<br />\n<br />\nAny suggestions?<br />\n",
+    "PostedDate": "2013-10-24T09:13:22.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1111719",
+    "ThreadId": "463443",
+    "Html": "Currently I have worked around the situation by just manually adding the element using a string, with the colon delimiter as part of the inferred composite nature of what I need. Like<br />\n<pre><code>seg = linLoop.AddSegment(&quot;N9&quot;);  \nseg.SetElement(7, &quot;IN:&quot; + strConsigneeInvoiceNumber);</code></pre>\n\nThis parses okay in my EDI Notepad so I am assuming this is a workaround. Unless I'm missing something in terms of properly using the SetElement() method in the X12Parser...<br />\n",
+    "PostedDate": "2013-10-24T09:35:32.56-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

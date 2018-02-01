@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1054195",
+    "ThreadId": "446378",
+    "Html": "A provider wishes to create whole new batches of information to send to us. They say it is difficult to get the header from the original batch, and want us to define a new header for them. Since I am not an expert, I have no idea what header they are referring to, to clarify they said &quot;The ANSI header is defined at the EMC Receiver level.&quot; \r<br />\n<br />\nThis didn't clarify much for me. Can you shed light on this. Perhaps tell me where to look in some documentation to convert this into something I might understand.<br />\n",
+    "PostedDate": "2013-06-07T15:53:15.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1055044",
+    "ThreadId": "446378",
+    "Html": "For an 837, the header is considered everything in Table 1 that is not inside a hierarchical loop.\r<br />\nThe generic X12 standard for Table can be seen here:  <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/ts/837.htm\" rel=\"nofollow\">https://www.disa.org/apps/workbook/X12_October_2012/ts/837.htm</a>\r<br />\nThe more specific implementation guide can be purchased at <a href=\"http://www.wpc-edi.com/\" rel=\"nofollow\">http://www.wpc-edi.com/</a>.\r<br />\n<br />\nIn the example <a href=\"https://x12parser.codeplex.com/wikipage?title=Parsing%20an%20837%20Transaction&amp;referringTitle=Home\" rel=\"nofollow\">here</a>, the header is:<br />\n<pre><code>ST*837*0021*005010X222~\nBHT*0019*00*244579*20061015*1023*CH~\nNM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23~\nPER*IC*JERRY*TE*3055552222*EX*231~\nNM1*40*2*KEY INSURANCE COMPANY*****46*66783JJT~\n</code></pre>\n\n",
+    "PostedDate": "2013-06-10T12:57:49.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1055432",
+    "ThreadId": "446378",
+    "Html": "Thanks, that was just what I needed.<br />\n",
+    "PostedDate": "2013-06-11T08:15:49.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

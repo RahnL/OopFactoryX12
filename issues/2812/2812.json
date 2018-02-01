@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Per the discussion I posted a couple of years ago (https://x12parser.codeplex.com/discussions/546182), there is an issue parsing __856 - Advanced Ship Notice__ documents using this project. Looking at the most recent source code located under ___/trunk/src/OopFactory.X12/Specifications___ this still appears to need patching. \n\nI am attaching what I did in order to remedy this. It works in my production environment, so perhaps this could be included in a future update for this project? Although based on my recollections, the modified XML file might not strictly adhere to ANSI 856-4010 standards. But it was my attempt to patch this project so that I could parse these 856's, which definitely weren't being handled by the versions of OopFactory.X12 noted in my discussion thread.\n\nYour feedback is welcomed :)",
+    "LastUpdatedDate": "2016-09-06T05:39:50.917-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2016-09-06T05:39:49.133-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ANSI 856-4010 Specification",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2812
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3264,
+      "FileName": "Ansi-856-4010Specification.xml",
+      "DownloadUrl": ".\\3264"
+    }
+  ],
+  "Comments": []
+}

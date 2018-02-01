@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1024353",
+    "ThreadId": "438815",
+    "Html": "Dear Dstrubhar,<br />\n<br />\nSome of my X12 837 Professional (5010) files are failing to unbundle with the following exception. I get the same error using the latest 2.3.4 release. Is there anything in the raw file I can change to get this to work? <br />\n<br />\nNOTE: The email editor seems to remove the asterisk symbol. <br />\n<br />\n<strong>Unhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException:</strong> <br />\nSegment 'CAS(asterisk)CO(asterisk)45(asterisk)17.27(asterisk)1' in segment position 41892 within transaction '4275' cannot b<br />\ne identified within the supplied specification for transaction set 837 in any of the<br />\nexpected loops: 2000A[2136],2000B[2146],2300,2400.<br />\n<br />\nAs always, your kind help is very much appreciated.<br />\nKind Regards,<br />\nnk5491<br />\n",
+    "PostedDate": "2013-04-02T09:48:09.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024367",
+    "ThreadId": "438815",
+    "Html": "Did this work in the previous release?  This shouldn't have changed in the last 2 years.\r<br />\n<br />\nIt looks like the parser is looking for the CAS in the 2400 loop, but the CAS needs to appear after a SVD in loop 2430, or after SBR in the 2320 loop.\r<br />\n<br />\nIf this is a file you are receiving and the sender cannot fix this, than you inject your own specification that allows the CAS at the 2400 loop.  <a href=\"http://x12parser.codeplex.com/wikipage?title=Injecting%20your%20own%20X12%20Specification\" rel=\"nofollow\">Inject your own specification.</a><br />\n",
+    "PostedDate": "2013-04-02T10:05:51.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1024372",
+    "ThreadId": "438815",
+    "Html": "Dear Dstrubhar,\r<br />\nThank you so much for your prompt response. I get the same error with the previous version of the X12Parser as well. I just tried the new version (03/31/2013) because I happened to find one available on your home page.\r<br />\n<br />\nI will contact the sender and hopefully they will fix it. But I am going to try injecting the spec based on your suggestion... just so I know how-to do this in future. \r<br />\n<br />\nOnce again, many thanks for your help!\r<br />\nKind Regards.<br />\n",
+    "PostedDate": "2013-04-02T10:17:37.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1027526",
+    "ThreadId": "438815",
+    "Html": "Dear Dstrubhar,\r<br />\nI received the a response from the sender. According to them, Secondary claims will contain the CAS segment that reflect how the primary payment was remitted.\r<br />\nClaim level CAS (Claim Adjustment Segment) do come before the first SVC service line segment. Line level CAS are always after the SVC in the file. Some insurance utilize claim level CAS.  While not normal, it is allowed. You should anticipate this in the data. Note that the CAS in the 837 may not be relevant to your study.\r<br />\n<br />\nBased on that it appears they don't see anything wrong with the data, right? What is your recommendation on how I should proceed?\r<br />\nThank you very much. <br />\n",
+    "PostedDate": "2013-04-08T14:52:26.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1027547",
+    "ThreadId": "438815",
+    "Html": "According to <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/ts/837.htm\" rel=\"nofollow\">the 837 specification</a>the claim level CAS should be in loop 2320 which occurs after a SBR.  According to your error message it appears that this CAS was at the line level, so should have been after a SVC segment.\r<br />\n<br />\n<br />\nI can't guarantee that everyone adhers to the x12 standard as it's printed, I know I've come across plenty of example X12s that didn't follow the specification that was in the same document.\r<br />\n<br />\nRather than argue with your sender with whether their data is wrong or not, your two options are to inject your own specification.  You should be able to copy the one in the source code and make your own which allows the CAS at the line level, or you can use the new feature to only throw a warning and this will automatically get parsed at what ever loop level it is currently at.<br />\n",
+    "PostedDate": "2013-04-08T15:23:55.107-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

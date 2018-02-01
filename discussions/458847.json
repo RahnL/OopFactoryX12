@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1098231",
+    "ThreadId": "458847",
+    "Html": "I work with folks collecting claims for the diagnostic and treatment data, for epidemiological surveys, etc. <br />\n<br />\nIn discussing with someone that submits data, they indicated something that didn't make sense to me. We were discussing the service to diagnosis pointers in the services portion of the data structure. He said to me that their data entry people link every procedure to every diagnosis, rather than the proper procedure/service to the specific diagnosis.<br />\n<br />\nI find this difficult to believe. I assume that an insurance company would want a procedure/service  to link to the diagnosis it was indicated for, or their software would reject the claim. In other words if a patient received a specific Chemo drug for a diagnosis of a potassium deficiency, I would expect the insurance company to reject that claim. <br />\n<br />\nAm I wrong?<br />\n<br />\nI have received a fair number of claims, and they seem to have reasonable pointers, where the procedure/service matches the diagnosis for which it was indicated. Are the folks I've been receiving the data from doing it right, but insurance companies don't care?<br />\n<br />\nReplace insurance company with clearinghouse where appropriate above.<br />\n",
+    "PostedDate": "2013-09-23T14:37:50.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098246",
+    "ThreadId": "458847",
+    "Html": "There are two types of claims, professional and institutional.<br />\nIn a professional claim each service line can be linked to a diagnosis, in an institutional claim all diagnosis are assumed for the entire claim.  This may be what your colleagues are speaking of.<br />\nMost claim processing systems have a combination of standard edits and custom edits, the standard edits are commonly referred to as <a href=\"http://en.wikipedia.org/wiki/Usual,_customary_and_reasonable\" rel=\"nofollow\">UCR</a> edits.  Many of these are bought and imported into the system that do what you speak of, identify unreasonable procedure-diagnosis combinations.  Many will even change the amount they will pay for a procedure depending on the diagnosis and whether it is on a professional or institutional claim.<br />\n<br />\nWhen you are collecting information for treatment reasons, it may not be as important to only link procedures with diagnosis for that procedure.<br />\nFor instance sometimes care coordination wants to know if a procedure occurred with an encounter for mental illness though that procedure may not be because of the diagnosis.<br />\n<br />\nTreatment applications will use claim data differently then payment processing applications.  Since the original intent of the claim is usually for payment processing, when it's being used for treatment it is now a data mining exercise, especially since claim data is more standardized and an single organization (the member's insurer) will have all of their data.  In contrast EMR (electronic medical records) which might seem more appropriate for treatment purposes is harder to standardize (though there is legislation to try and improve this), harder to disclose across multiple providers and has a higher cost of procurement.<br />\n",
+    "PostedDate": "2013-09-23T15:06:10.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1098302",
+    "ThreadId": "458847",
+    "Html": "The claims we are processing are all professional. Having a direct link from the procedure to diagnosis is big plus for us, because we can link medications to diagnoses, getting valuable information. \r<br />\n<br />\nThe epidemiologists love to be able to analyze the relationship between disease, treatment and outcome.\r<br />\n<br />\nSo for professional claims do most insurers require a specific link between service and diagnosis? <br />\n",
+    "PostedDate": "2013-09-23T18:59:23.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

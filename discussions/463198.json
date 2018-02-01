@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "1110719",
+    "ThreadId": "463198",
+    "Html": "I have a company sending files with what appears to be a line feed as the segment delimiter.\r<br />\n<br />\nThe first character begins with an &quot;R&quot; as in &quot;RISA&quot; When I strip the &quot;R&quot; from the beginning character position 106 seems to be a line feed. And from a brief look at the file, there appear to be  new lines where the delimiters should be. \r<br />\n<br />\nUnfortunately the program will bomb later with the following;\r<br />\n<br />\nSegment '\u001a' in segment position 1707 within transaction '0001' cannot be identified within the supplied specification for transaction set 835 in any of the expected loops: .  To change this to a warning, pass throwExceptionOnSyntaxErrors = false to the X12Parser constructor.\r<br />\nParameter name: 835.\r<br />\n<br />\nFirst do &quot;Line Feeds&quot; work as a segment separator?\r<br />\n<br />\nIf so how can I trouble shoot the subsequent message?<br />\n",
+    "PostedDate": "2013-10-22T11:40:45.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110772",
+    "ThreadId": "463198",
+    "Html": "To answer my own question;<br />\n<br />\nYes Line feeds work as segment Separators.<br />\n<br />\nTo make an enhancement request/bug-fix;<br />\n<pre><code>&gt; It appears that when this particular submitter creates their files not only do they add an &quot;R&quot; to the beginning as in &quot;RISA&quot; they also do not provide the last line feed so the last segment looks like &quot;IEA*1*000000363&quot; without a segment separator at the end. I have modified my program to look to see if the last character matches the character in position 105 of the file. If it does not match I append the character from 105 to the end of the file.</code></pre>\n\nMy request would be to either do the same, or treat &quot;end of file&quot; as segment terminator.<br />\n",
+    "PostedDate": "2013-10-22T13:26:34.63-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110817",
+    "ThreadId": "463198",
+    "Html": "Well, the operation was a success, but the patient died.\r<br />\n<br />\nIn my last post I indicated there was no segment separator at the end. That wasn't true. There was a segment separator, but it was followed by a chr(26) (End of File in some OSes). Dannie, you may wish to check for that.\r<br />\n<br />\nSo now my program removed the &quot;R&quot; at the beginning, and the chr(26) at the end, and the file processed without any errors. But no data was extracted. I ran it on about 20 similarly defined files from the same vendor, and I get the same results, no errors, but no claims inserted into the DB.\r<br />\n<br />\nSo I am at a total loss, because I am getting no errors. I tested on a file from a different vendor that was a known working file, and it worked.\r<br />\n<br />\nThe files that have a chr(13) at position 106 and a chr(10) at position 107 and use both as a segment separator do not report an any errors, but no data is inserted into the DB.<br />\n",
+    "PostedDate": "2013-10-22T15:52:47.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110818",
+    "ThreadId": "463198",
+    "Html": "You can have a line feed chr(13) as your separator, but it must be exactly one character.  The chr(13) followed by chr(10) CRLF will not work.  You might have your pre-processor change all CRLF to just CR.<br />\n",
+    "PostedDate": "2013-10-22T15:57:56.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110827",
+    "ThreadId": "463198",
+    "Html": "Dannie not to be particular, but CHR(13) is CR and chr(10) is LF, can I have either? If not should I get rid of chr(10) (LF) or chr(13) (CR)?<br />\n",
+    "PostedDate": "2013-10-22T16:25:42.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110828",
+    "ThreadId": "463198",
+    "Html": "Actually I tried both removing the CR then tried removing the LF. I got the same results, the file processed with no errors, and no data got into the DB.<br />\n",
+    "PostedDate": "2013-10-22T16:35:52.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1111791",
+    "ThreadId": "463198",
+    "Html": "I have tracked the problem down to a line in &quot;public ClaimDocument Transform837ToClaimDocument(Interchange interchange)&quot;;<br />\n<pre><code> return ClaimDocument.Deserialize(xml);</code></pre>\n\nThe xml looks reasonable, but it returns a document with no children.\r<br />\n<br />\nI stepped into the ClaimDocument.Deserialize routine which is two lines long, and tried to step into the routine it called, but it provided nothing I could understand.\r<br />\n<br />\nI need help from a person that can guide me to the solution on this one.<br />\n",
+    "PostedDate": "2013-10-24T11:39:14.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112131",
+    "ThreadId": "463198",
+    "Html": "At this point I would suggest that you replace the CRLF combo with a single not white space character.  This should be any character that will not appear within the content of any segments.  Usually a ~ or ^ will work if those aren't already being used as element or component separators.<br />\n",
+    "PostedDate": "2013-10-25T08:14:05.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112234",
+    "ThreadId": "463198",
+    "Html": "What I propose is the following for my preprocessor, where strTemp is a string that contains the entire file.<br />\n<pre><code>If strSegmentSeparator = vbCr Or _\n   strSegmentSeparator = vbLf _\nThen\n    Dim strReplaceSegmentSeparator As String\n    Dim intTildeFound As Integer = InStr(strTemp, &quot;~&quot;)\n    If intTildeFound = 0 _\n    Then\n        strReplaceSegmentSeparator = &quot;~&quot;\n    Else\n        Dim intCarretFound As Integer = InStr(strTemp, &quot;^&quot;)\n        If intCarretFound = 0 _\n        Then\n            strReplaceSegmentSeparator = &quot;^&quot;\n        Else\n            strReplaceSegmentSeparator = vbCr\n        End If\n    End If\n    strTemp = Replace(strTemp, strSegmentSeparator, strReplaceSegmentSeparator)\n    strTemp = Replace(strTemp, vbCr, &quot;&quot;)\n    strTemp = Replace(strTemp, vbLf, &quot;&quot;)\nEnd If\n</code></pre>\n\n",
+    "PostedDate": "2013-10-25T12:36:03.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112242",
+    "ThreadId": "463198",
+    "Html": "After implementing the code above, the preprocessor successfully replaces the line terminators with &quot;~&quot; but I get the same results. It appears that they are using an angle bracket as one of the sub-segment separators. Could this be causing the problem?\r<br />\n<br />\nAfter my preprocessor runs this is the first 106 bytes;<br />\n<pre><code>ISA*00*          *00*          *ZZ*111111111      *ZZ*222222222      *111111*1111*U*00401*000092546*0*P*&lt;~</code></pre>\n\nI changed the values that that show as multiple 1s and 2s because I was too lazy to see if they contained any identifying info.\r<br />\n<br />\nUsing a program called EDI File Editor V 3.0.5.3 when I open the file created from the preprocessor, it does not see any errors, it says the element separator is * (2A), Segment Separator is ~ (7E), and the Sub Element Separator is &lt; (3C).<br />\n",
+    "PostedDate": "2013-10-25T13:08:03.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112244",
+    "ThreadId": "463198",
+    "Html": "It appears that you need to strip out all of your whitespace.\r<br />\nSince the file was already using the &lt; as the segment separator, it was treating the whitespace as the beginning of the segment and not recognzing the segment identifiers.\r<br />\nSometime systems add this whitespace after a parse so that it can viewed by humans easily, but it is no longer valid X12.<br />\n",
+    "PostedDate": "2013-10-25T13:23:56.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112269",
+    "ThreadId": "463198",
+    "Html": "Dannie:<br />\n<br />\nI'm not sure what you mean. If I find either a CR or LF at 106, I replace that character with a &quot;~&quot; throughout the entire file, and then I remove all CR and LF in the entire file. When I am done (before I convert to stream and send to ParseMultiple), there are no CR or LF in the file. For giggles, I also removed chr(0), with no positive effect.<br />\n<br />\nTh &quot;&lt;&quot; character is used as a &quot;Sub Element Separator&quot; not a &quot;Segment Separator&quot;, as far as I can tell. The &quot;&lt;&quot; is in position 105, the &quot;~&quot; is in 106.<br />\n",
+    "PostedDate": "2013-10-25T14:26:40.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112275",
+    "ThreadId": "463198",
+    "Html": "I would need to see more of your file after the ISA segment.\r<br />\nBasically, the ISA segment should be immediately followed by the GS segment without any white spaces.\r<br />\nIf it doesn't see all the control segments it expects it won't even see the transactions.\r<br />\n<br />\nCan you post up to the end of the ST segment?<br />\n",
+    "PostedDate": "2013-10-25T14:44:30.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112287",
+    "ThreadId": "463198",
+    "Html": "After Preprocessing;<br />\n<pre><code>ISA*00*          *00*          *ZZ*133052274      *ZZ*650753936      *131003*0700*U*00401*000092546*0*P*&lt;~GS*HP*133052274*650753936*20131003*0700*1*X*004010X091~ST*835*0001~</code></pre>\n\nBefore Preprocessing;<br />\n<pre><code>RISA*00*          *00*          *ZZ*133052274      *ZZ*650753936      *131003*0700*U*00401*000092546*0*P*&lt;\nGS*HP*133052274*650753936*20131003*0700*1*X*004010X091\nST*835*0001\n</code></pre>\n\n",
+    "PostedDate": "2013-10-25T15:41:24.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1112302",
+    "ThreadId": "463198",
+    "Html": "Your problem is that this is not an 837 claim file.  It is an 835 claim payment advice file.\r<br />\n<br />\nThe plain jane X2 parser will parse this into the 835 format, but the ClaimDocument will not find the necessary 837 elements thus is parsing blank Claims.\r<br />\n<br />\nthe number after ST* indicates the format.  You should have your pre-processor check for that and reject unexpected files.<br />\n",
+    "PostedDate": "2013-10-25T17:21:05.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1113081",
+    "ThreadId": "463198",
+    "Html": "Thanks for pointing that out. I can certainly update the preprocessor section of my program to find the ST segment and check this.\r<br />\n<br />\nWould this be a beneficial enhancement to X12parser, to check this and report an error when it was not an ansi 837 format?\r<br />\n<br />\nAlso, are there other things I should look for, that might define problems, such as an indicator indicating that it is a 5010 format file?<br />\n",
+    "PostedDate": "2013-10-28T07:12:37.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

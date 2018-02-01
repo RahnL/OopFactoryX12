@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1437416",
+    "ThreadId": "642384",
+    "Html": "Hi there!<br />\n<br />\nFirst, thank you so much for the amazing effort put into creating this library.  It's already saved my team and I a great deal of time as we build an EMR for a client.<br />\n<br />\nAt the moment we are working to generate 1500 form output that can be printed onto a 1500 form.  It's awesome that this is supported at all (again, kudos for doing this!)  We are having a problem with the alignment of some of the output though, and I wanted to see if there's anything we can do to customize the output formatting.  Our function is below, and a screenshot of the output is <a href=\"https://drive.google.com/file/d/0B3oYPrrB1XGaY0MyRzcxaUswOG8/view?usp=sharing\" rel=\"nofollow\">here</a>.<br />\n<br />\nMany thanks!<br />\n<pre><code>public byte[] Generate1500File(byte[] doc)\n        {\n            using (var stream = new MemoryStream(doc))\n            {\n                var service = new ClaimFormTransformationService(\n                    new ProfessionalClaimToHcfa1500FormTransformation(&quot;&quot;),\n                    new InstitutionalClaimToUB04ClaimFormTransformation(&quot;&quot;),\n                    new ProfessionalClaimToHcfa1500FormTransformation(&quot;&quot;)\n                    );\n\n                OopFactory.X12.Hipaa.Claims.ClaimDocument document = service.Transform837ToClaimDocument(stream);\n\n                XmlDocument foDocument = new XmlDocument();\n\n                string foXml = service.TransformClaimDocumentToFoXml(document);\n                foDocument.LoadXml(foXml);\n\n                using (var outputStream = new MemoryStream())\n                {\n                    var driver = Fonet.FonetDriver.Make();\n\n                    driver.Render(foDocument, outputStream);\n\n                    return outputStream.ToArray();\n                }\n            }\n        }</code></pre>\n\n",
+    "PostedDate": "2015-08-05T13:01:17.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1442587",
+    "ThreadId": "642384",
+    "Html": "Josh,\r<br />\n<br />\nSorry I didn't notice this earlier. From your offline contact I assumed you were using the included GIF as an overlay, but this looks like you are using preprinted HCFA form stock. If this is the case, then the alignments from the included GIF overlay probably won't come out very well, but it shouldn't be too hard to adjust them<br />\n",
+    "PostedDate": "2015-08-31T12:58:59.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1444064",
+    "ThreadId": "642384",
+    "Html": "This library is great. Did anybody look at the transformation into CMS-1500 which is slightly different from HCFA1500. E.g ProfessionalClaimToCMS1500FormTransformation in addition to ProfessionalClaimToHcfa1500FormTransformation<br />\n",
+    "PostedDate": "2015-09-11T11:52:48.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1446727",
+    "ThreadId": "642384",
+    "Html": "So the original implementation is from an image that I screen scraped, so it's probably not compliant with official HCFA form stock.  IF you create a work item with the image you need to align, I can try to update the image to align with the standard form.\r<br />\n<br />\nIf you think the relative spacing works, but just the offsets need to be tweeked, I can probably add some configuration that allows you inject X and Y offsets into the PDF transformation.  That's probably best, but I would like you to share what offsets actually work for you so that I could make that part of the default.<br />\n",
+    "PostedDate": "2015-10-01T09:27:24.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1450991",
+    "ThreadId": "642384",
+    "Html": "You can modify the page margins in the xslt FormDocument-ToFoXml.xslt and this will allow you to move the text around.  I will see if I can make those into arguments that can configured in the program's app.config in the next release.<br />\n<pre><code>        &lt;fo:simple-page-master page-width=&quot;8.5in&quot; page-height=&quot;11in&quot; margin=&quot;0.0in&quot; master-name=&quot;hcfa1500&quot;&gt;\n          &lt;fo:region-body margin-top=&quot;0.0625in&quot; margin-left=&quot;0.0625in&quot; margin-right=&quot;0.140in&quot; /&gt;\n</code></pre>\n\n",
+    "PostedDate": "2015-11-05T02:58:29.623-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

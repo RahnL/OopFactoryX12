@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1091856",
+    "ThreadId": "456721",
+    "Html": "I opened the Ansi-210-4010Specification.xml and changed the following:<br />\n<pre><code>&lt;Segment SegmentId=&quot;C3&quot; /&gt;</code></pre>\n\nto the following:<br />\n<pre><code>&lt;Segment SegmentId=&quot;C3&quot;&gt;\n    &lt;Element Name=&quot;Currency Code&quot; Required=&quot;true&quot; Type=&quot;ID&quot; MinLength=&quot;3&quot; MaxLength=&quot;3&quot; /&gt;\n&lt;/Segment&gt;</code></pre>\n\nbut the output does not seem to contain the &quot;Currency Code&quot; comment.<br />\n<pre><code>&lt;C3&gt;\n    &lt;C301&gt;USD&lt;/C301&gt;\n&lt;/C3&gt;</code></pre>\n\nbut I want the following:<br />\n<pre><code>&lt;C3&gt;\n    &lt;!--Currency Code--&gt;\n    &lt;C301&gt;USD&lt;/C301&gt;\n&lt;/C3&gt;</code></pre>\n\n",
+    "PostedDate": "2013-09-12T11:26:56.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091924",
+    "ThreadId": "456721",
+    "Html": "This is actually being controlled here:\r<br />\n<a href=\"http://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-4010Specification.xml\" rel=\"nofollow\">http://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-4010Specification.xml</a><br />\n",
+    "PostedDate": "2013-09-12T14:41:10.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "745612",
+    "ThreadId": "297585",
+    "Html": "\r\n<p>We're generating 5010 837P files using the api and we're finding that the PAT segment in the 2000C Loop is including elements PAT02, 03 and 04 as empty, star-delimited text even when the values are not present.&nbsp; This would be okay if we had values in\r\n any of&nbsp;PAT05/06, PAT 07/08 or PAT09 but if there aren't, we end up with PAT*01****~, which isn't allowed.&nbsp; (Can't end a segment with trailing element separators before the segment separator.)&nbsp; Do we need to make a change in the source code so\r\n that we get PAT*01~ in this case?&nbsp; Here's what we're doing:</p>\r\n<p>Dim pat2000C = hl2000C.AddSegment(New TypedSegmentPAT)</p>\r\n<p>pat2000C.PAT01_IndividualRelationshipCode = &quot;01&quot;&nbsp;</p>\r\n<p>Thanks for any suggestions here.</p>\r\n",
+    "PostedDate": "2012-02-07T11:28:01.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "745904",
+    "ThreadId": "297585",
+    "Html": "<p>Thanks for the catch, I just checked in some changes in changeset 14269 to the Segment serialization to X12 that should fix this.</p>\r\n<p>I will try to get it in a release by the end of the month.</p>",
+    "PostedDate": "2012-02-07T14:22:15.113-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "748070",
+    "ThreadId": "297585",
+    "Html": "<p>Fix worked great.&nbsp; Thanks!&nbsp; Hey, another (unrelated) question for you:&nbsp; we keep getting ArgumentNullException errors when setting a value like NameSuffix to NULL.&nbsp; We have to coalesce it to handle the error:&nbsp; nm12310A.NM107_NameSuffix = if(OurNameSuffix, \"\")&nbsp; instead of nm12310A.NM107_NameSuffix = OurNameSuffix.&nbsp; Any insight here?</p>",
+    "PostedDate": "2012-02-08T16:45:50.537-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

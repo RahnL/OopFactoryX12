@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n\nWhen edi 834 file is exported to xml Loop elements get exported with their attributes but REF Element does not get exported with their arguments as shown below.\n\n<Loop LoopId=\"2000\" Name=\"MEMBER LEVEL DETAIL\">\n        <INS>...        </INS>\n        <REF>\n          <!--Reference Identification Qualifier-->\n          <REF01>0F<!--Subscriber Number--></REF01>\n          <!--Reference Identification-->\n          <REF02>202443307</REF02>\n        </REF>\n        <REF>\n          <!--Reference Identification Qualifier-->\n          <REF01>1L<!--Group or Policy Number--></REF01>\n          <!--Reference Identification-->\n          <REF02>123456001</REF02>\n        </REF>\n\nIt become complex to find REF02 elements as to get from which REF Element first or second.",
+    "LastUpdatedDate": "2017-07-25T06:33:24.34-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2017-07-25T06:33:24.34-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "REF elements attributes are not getting exported in xml file",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2836
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

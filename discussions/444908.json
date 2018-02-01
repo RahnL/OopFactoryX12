@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1048314",
+    "ThreadId": "444908",
+    "Html": "When we convert X12 to Claim, the other payor's Identification information is incorrect. \r<br />\n&quot;clm.OtherSubscriberInformations(0).OtherPayer.Identification.Id&quot; is supposed to be the policy number. However, it is not. Please check. Thanks<br />\n",
+    "PostedDate": "2013-05-24T09:22:51.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

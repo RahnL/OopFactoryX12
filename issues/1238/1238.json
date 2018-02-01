@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-07-27T02:32:05.64-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This is my attempt of 824-4010:\n \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<TransactionSpecification xmlns=\"http://tempuri.org/X12ParserSpecification.xsd\"  TransactionSetIdentifierCode=\"824\">\n\t<Segment SegmentId=\"ST\" Usage=\"Required\"/>\n\t<Segment SegmentId=\"BGN\" Usage=\"Required\"/>\n\t<Loop LoopId=\"N1\" >\n\t\t<Name></Name>\n\t\t<StartingSegment SegmentId=\"N1\"/>\n\t\t<Segment SegmentId=\"N2\"/>\n\t\t<Segment SegmentId=\"N3\"/>\n\t\t<Segment SegmentId=\"N4\"/>\n\t\t<Segment SegmentId=\"REF\"/>\n\t\t<Segment SegmentId=\"PER\"/>\n\t</Loop>\n\t<Loop LoopId=\"OTI\" >\n\t\t<Name></Name>\n\t\t<StartingSegment SegmentId=\"OTI\" Usage=\"Required\"/>\n\t\t<Segment SegmentId=\"REF\"/>\n\t\t<Segment SegmentId=\"DTM\"/>\n\t\t<Segment SegmentId=\"PER\"/>\n\t\t<Segment SegmentId=\"AMT\"/>\n\t\t<Segment SegmentId=\"QTY\"/>\n\t\t<Segment SegmentId=\"NM1\"/>\n\t\t<Loop LoopId=\"TED\" >\n\t\t\t<Name></Name>\n\t\t\t<StartingSegment SegmentId=\"TED\"/>\n\t\t\t<Segment SegmentId=\"NTE\"/>\n\t\t\t<Segment SegmentId=\"RED\"/>\n\t\t</Loop>\n\t\t<Loop LoopId=\"LM\" >\n\t\t\t<Name></Name>\n\t\t\t<StartingSegment SegmentId=\"LM\"/>\n\t\t\t<Loop LoopId=\"LQ\" >\n\t\t\t\t<Name></Name>\n\t\t\t\t<StartingSegment SegmentId=\"LQ\" Usage=\"Required\" />\n\t\t\t\t<Segment SegmentId=\"RED\"/>\n\t\t\t</Loop>\n\t\t</Loop>\n\t</Loop>\n\t<Segment SegmentId=\"SE\" Usage=\"Required\" Trailer=\"true\"/>\n</TransactionSpecification>",
+    "LastUpdatedDate": "2013-05-16T04:34:00.8-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-05-25T12:19:03.887-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "824 Specification",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1238
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 18533.",
+      "PostedDate": "2012-07-27T02:32:05.64-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:58.533-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:00.8-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

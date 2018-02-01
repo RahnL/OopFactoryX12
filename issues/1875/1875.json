@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "OopFactory.X12",
+      "DisplayName": "OopFactory.X12"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "Do we need an easier way for people to construct documents? Typed documents?",
+    "Description": "I want to start out by saying X12 Parser ROCKS.  I love the way this library is coded. GREAT JOB TEAM!\n\nPlease provide a working example of how to create a 5010 834 file from scratch.  I'm able to generate 837's with no problems. I received an error when trying to add multiple REF's to the file but was able to get passed that by modifying the source code.  I need some help and direction on where to go from here.  \n\nThe following is what I have so far:\n\n```\npublic void Generate834(DataTable MemberEligDT)\n        {\n            int LoopID = 0;\n            List<string> Errors = new List<string>();\n            if (MemberEligDT == null)\n                return;\n            DateTime startDT = DateTime.Now;\n\n            // Create a new interchange...\n            var message = new Interchange(startDT, 000905, false)\n            {\n                InterchangeSenderIdQualifier = \"01\",\n                InterchangeSenderId = \"Blah Inc\",\n                InterchangeReceiverIdQualifier = \"01\",\n                InterchangeReceiverId = \"Blah 2 Inc.\",\n                SecurityInfo = \"\",\n                SecurityInfoQualifier = \"00\",\n            };\n            message.SetElement(12, \"00501\");\n            message.SetElement(10, \"1253\");\n            message.SetElement(11, \"^\");\n\n            var group = message.AddFunctionGroup(\"BE\", DateTime.Now, 1, \"005010X220A1\");\n            group.ApplicationSendersCode = \"9998503898\";\n            group.ApplicationReceiversCode = \"0123456789\";\n            group.Date = DateTime.Now;\n            group.ControlNumber = 1;\n            group.SetElement(5, \"0802\");\n\n            int transactionnum = LoopID;\n            transactionnum++;\n            string TransNumString = string.Empty;\n\n            if (transactionnum < 10)\n                TransNumString = \"0000\" + transactionnum.ToString();\n            else\n                TransNumString = \"000\" + transactionnum.ToString();\n\n            var transaction = group.AddTransaction(\"834\", TransNumString);\n\n            transaction.SetElement(2, TransNumString);\n            transaction.SetElement(3, \"005010X220A1\");\n\n            var bgnSegment = transaction.AddSegment(\"BGN\");\n            bgnSegment.SetElement(1, \"00\");\n            bgnSegment.SetElement(2, \"1\");\n            DateTime NOWdt = DateTime.Now;\n            bgnSegment.SetElement(3, NOWdt.ToString(\"yyyyMMdd\", CultureInfo.InvariantCulture));\n            bgnSegment.SetElement(4, DateTime.Now.ToString(\"hhmm\", CultureInfo.InvariantCulture));\n            bgnSegment.SetElement(6, \"1\");\n            bgnSegment.SetElement(8, \"4\");\n\n            var sponsorLoop = transaction.AddLoop(new TypedLoopN1());\n            sponsorLoop.N101_EntityIdentifierCode = \"P5\";\n            sponsorLoop.N102_Name = \"ACME Ins Co\";\n            sponsorLoop.N103_IdentificationCodeQualifier = \"FI\";\n            sponsorLoop.N104_IdentificationCode = \"PMED\";\n\n            var partyIDLoop = transaction.AddLoop(new TypedLoopN1());\n            partyIDLoop.N101_EntityIdentifierCode = \"IN\";\n            partyIDLoop.N103_IdentificationCodeQualifier = \"FI\";\n            partyIDLoop.N104_IdentificationCode = \"999505788\";\n\n            \n            \n            // Loop through the members...\n            for (int x = 0;x < MemberEligDT.Rows.Count;x++)\n            {\n                var InsSegment = transaction.AddSegment(\"INS\", true);\n                InsSegment.SetElement(1, \"Y\");\n                InsSegment.SetElement(2, \"18\");\n                InsSegment.SetElement(3, \"030\");\n                InsSegment.SetElement(4, \"XN\");\n                InsSegment.SetElement(5, \"A\");\n                InsSegment.SetElement(6, \"A:0\");\n                InsSegment.SetElement(8, \"AC\");\n\n                var InsRefLoop1 = transaction.AddSegment(new TypedSegmentREF());\n                InsRefLoop1.REF01_ReferenceIdQualifier = \"REF\";\n                InsRefLoop1.REF02_ReferenceId = \"0F\";\n                InsRefLoop1.REF03_Description = \"00025907AVA\";\n\n                var InsRefLoop2 = transaction.AddSegment(new TypedSegmentREF());\n                InsRefLoop2.REF01_ReferenceIdQualifier = \"REF\";\n                InsRefLoop2.REF02_ReferenceId = \"17\";\n                InsRefLoop2.REF03_Description = \"00025907AVA\";\n\n                var MemberNM1 = transaction.AddLoop(new TypedLoopNM1(\"NM1\"));\n                MemberNM1.NM101_EntityIdCode = \"NM1\";\n                MemberNM1.NM101_EntityIdentifierCodeEnum = EntityIdentifierCode.InsuredOrSubscriber;\n                MemberNM1.NM102_EntityTypeQualifier = EntityTypeQualifier.Person;\n                MemberNM1.NM103_NameLastOrOrganizationName = (string)MemberEligDT.Rows[x][\"FirstName\"];\n                MemberNM1.NM104_NameFirst = \"FIRST\";\n                MemberNM1.NM105_NameMiddle = \"M\";\n                \n            }\n            \n            string Output = message.SerializeToX12(true);\n        }\n```",
+    "LastUpdatedDate": "2017-11-27T18:21:13.247-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-01-23T06:54:04.467-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Generate 5010 834 file from scratch.",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 3,
+    "Id": 1875
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I was following your post, would you be able to post your 837 generation code?",
+      "PostedDate": "2014-03-07T17:46:41.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please post your 837 generation code",
+      "PostedDate": "2014-08-05T06:00:59.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-01-26T10:11:38.743-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi jmontoya,\r\n\r\nVery good morning,\r\n\r\nI have seen your description is that you can able to create 873 file , please help me to share if you have code for create 873 file. please help me, i am a beginner i need a code for assignment...\r\n\r\nthanks & regards,\nkarthikc",
+      "PostedDate": "2015-05-14T00:04:34.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tried ti create a 5101 834 but adding when I got to add a loop for the sponsor it fails.  Did you have any luck?",
+      "PostedDate": "2016-07-28T16:18:32.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2016-07-28T16:19:02.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:21:13.247-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fix released in 3.0.7",
+    "ClosedDate": "2013-09-15T06:23:22.83-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "While testing how robust the X12 Import application is, I attempted to add 160 835 files to the MS SQL server database. Only 70 files were imported. The files that were imported were 004010X091A1 the rest were 005010X221A1. \nAny Ideas on what I need to do to get these version 5010 files imported? I have looked at the source code and there is a reference to \"5010\".\n\n```\n  foreach (var segmentId in indexedSegments)\n            {\n                var spec = specFinder.FindSegmentSpec(\"5010\", segmentId.Trim());\n                _specs.Add(segmentId.Trim(), spec);\n            }\n```\nBelow is what is in the error log file for one file. The other error messages are the same just a different file name. I assume that since the string is not being read correctly it can not populate the database tables correctly which is causing the not-null error messages. \n\n```\nOopFactory.X12.ImportX12.exe Error: 0 : Error parsing C:\\Temp\\Inbound\\nasco005: Input string was not in a correct format.\n   at System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.AddSqlToBatch(String sql, Object[] args)\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.SaveSegment(SqlTransaction tran, DetachedSegment segment, Int32 positionInInterchange, T interchangeId, Nullable`1 functionalGroupId, Nullable`1 transactionSetId, Nullable`1 parentLoopId, Nullable`1 loopId, Nullable`1 revisionId, Nullable`1 previousRevisionId, Boolean deleted)\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.Save(Interchange interchange, String filename, String userName)\n   at OopFactory.X12.ImportX12.Program.Main(String[] args)\n   DateTime=2013-07-16T16:15:30.5176160Z\n\n\n```\n\nThanks",
+    "LastUpdatedDate": "2013-09-15T06:23:22.83-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-07-17T11:03:07.96-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Sql Server Database Integration and 835 version 5010",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1645
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Some of the 5010 835 files I am working with have an \" { \" at  ISA11 Interchange Control Standard ID. The standard value should be  \" U \".  I replaced the { with the letter U in my test files and the 835 file imported into SQL Server.",
+      "PostedDate": "2013-07-17T11:49:07.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Added \r\n\r\nsql = sql.Replace(\"{\",\"{{\").Replace(\"}\",\"}}\");\r\n\r\nas suggest in another issues entry ",
+      "PostedDate": "2013-07-17T12:17:17.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 28968.",
+      "PostedDate": "2013-07-17T21:24:05.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I checked in your suggested change for all the non-parameterized queries that I could find.  Let me know if this fixes it for you and I will do a build in next week.",
+      "PostedDate": "2013-07-17T21:27:06.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-15T06:23:22.83-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

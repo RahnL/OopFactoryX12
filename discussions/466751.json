@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1119548",
+    "ThreadId": "466751",
+    "Html": "I have to deal with large price files and have the parsing working but would appreciate any input as to if this is the most efficient way to process the line item segments in an 832 file. No error checking here since just a minimal example. Mostly want to make sure I am not causing the file to be parsed more than once by accessing the CTT segment and then processing the LIN segments, since I have no idea if the entire file is pre-parsed into memory or not. Thanks, Dave<br />\n<pre><code>        // get the x12 Interchanges\n        List&lt;Interchange&gt; lInterchanges = lParser.ParseMultiple(fstream); // there is normally only one Interchange?\n\n    // process each Interchange\n        foreach (Interchange lInterchange in lInterchanges)\n        {\n            FunctionGroup lFirstFunctionGroup = lInterchange.FunctionGroups.First();\n            Transaction lFirstTransaction = lFirstFunctionGroup.Transactions.First();\n            // should return lots of segments from the LIN loop\n            var lLinSegments = lTransactionSegments.Where(s =&gt; s.SegmentId == &quot;LIN&quot;);\n            // transaction total should match the count of LIN segments\n            var lCttSegment = lTransactionSegments.Where(s =&gt; s.SegmentId == &quot;CTT&quot;);\n\n            // check the LIN segment count is accurate\n            int lLinCount = lLinSegments.Count();\n            int lCttTotalCount = int.Parse(lCttSegment.First().GetElement(1)); // no 0 element\n            if (lLinCount != lCttTotalCount)\n            {\n                AppSupport.WriteLog(LogLevel.Error, &quot;LIN segment count '{0}' does not match total transaction count '{1}'.&quot;, lLinSegments.Count(), lCttTotalCount);\n            }\n\n            foreach (Segment lLinSegment in lLinSegments)\n            {\n                var lFirstLinSegmentElement1 = lLinSegment.GetElement(1);\n                var lFirstLinSegmentElement2 = lLinSegment.GetElement(2);\n                var lFirstLinSegmentElement3 = lLinSegment.GetElement(3);\n                var lFirstLinSegmentElement4 = lLinSegment.GetElement(4);\n                var lFirstLinSegmentElement5 = lLinSegment.GetElement(5);\n                var lFirstLinSegmentElement6 = lLinSegment.GetElement(6);\n                var lFirstLinSegmentElement7 = lLinSegment.GetElement(7);\n\n                // do something with the LIN segment elements!\n            }\n        }</code></pre>\n\n",
+    "PostedDate": "2013-11-06T18:47:55.153-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119761",
+    "ThreadId": "466751",
+    "Html": "According to <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/ts/832.htm\" rel=\"nofollow\">https://www.disa.org/apps/workbook/X12_October_2012/ts/832.htm</a>, the LIN is a loop under the transaction, so you would probably need to loop through the child loops to get to the LIN segments.\r<br />\n<br />\nYou could also try loading the file into a SQL server database with the ImportX12 tool.  <br />\n",
+    "PostedDate": "2013-11-07T07:00:31.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119788",
+    "ThreadId": "466751",
+    "Html": "I need to use the object model for various reasons so don't want to use any command line tool.\r<br />\n<br />\nI actually get all the LIN segments just fine. My concern is if I'm causing the x12 file to be parsed more than once since I fetched the CTT segment to check the count before processing the LIN segments.\r<br />\n<br />\nThanks, Dave<br />\n",
+    "PostedDate": "2013-11-07T07:33:36.183-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "647182",
+    "ThreadId": "266473",
+    "Html": "\r\n<p>Let me start by saying this is a great implementation!</p>\r\n<p>I'm trying to parse out some 837I files to xml and I'm getting this error(&quot;XXXXX*XXXXX&quot; are names):</p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<pre>Unhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException\r\n: Segment 'NM1*73*1*XXXXXX*XXXXXX****XX*1477640944' within transaction '611327716' cannot be identified within the supplied specification for transaction set\r\n 837.\r\nParameter name: 837\r\n   at OopFactory.X12.Parsing.X12Parser.Parse(Stream stream)\r\n   at OopFactory.X12.X12Parser.Program.Main(String[] args)</pre>\r\n<p></p>\r\n<p>I'm really new to this code and I'm not sure where to start looking. It appears that the NM1*73 element is unhandled? , NM1*71 and NM1*72 look like they parse fine.</p>\r\n<p>All our 837P files parse without a hitch.</p>\r\n<p>Any help would be greatly appreciated</p>\r\n",
+    "PostedDate": "2011-07-25T07:27:20.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647472",
+    "ThreadId": "266473",
+    "Html": "<p>The specification may need to have the 73 entity code added.&nbsp; Please let me know what Loop ID from the spec this is suppose to represent and I can modify the 837 specification so that it can recognize 73.</p>\r\n<p>I had originally used the Implementation Guide from all 3 837D, 837P and 837I to merge together into the default 837 spec.&nbsp; I may have just missed this entity code.</p>\r\n<p>I also have a separate specification finder for the Institutional but I have not yet had a chance to write documentation on it.&nbsp; I can update the code if you give me the loop Id where that segment belongs and I can shoot for another release by Sunday.</p>\r\n<p>Thanks for trying us out.</p>",
+    "PostedDate": "2011-07-25T18:36:27.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647768",
+    "ThreadId": "266473",
+    "Html": "<p>Thanks for getting back.</p>\r\n<p>I went ahead and pulled down the latest(9298) source and it cleared up that problem. However, its still crashing in some of the 2330B loops.</p>\r\n<p>\r\n<pre>Unhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException\r\n: Segment 'N3*CLAIM DEPARTMENT*PO BOX 1602' in position 2627 within transaction\r\n'611044383' cannot be identified within the supplied specification for transacti\r\non set 837.</pre>\r\n</p>\r\n<p>I'm poking at the code right now like a drunken pioneer surgeon. I've added N3, N4 and DTP elements to the 2330A and 2330B loops, both in ANSI-837-4010Specification and ANSI-837I-4010Specification.</p>\r\n<p>My confusion right now is that these look like they are handled, and correctly. Would posting the full transaction help, because I'm stumped.</p>",
+    "PostedDate": "2011-07-26T07:52:33.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647843",
+    "ThreadId": "266473",
+    "Html": "<p>Yes, please post the transaction and I will take a look.&nbsp; You can use the \"deidentifier\" tool here, if you need to remove a lot PII or PHI&nbsp;(<a href=\"http://etasoft.com/ot.htm\">http://etasoft.com/ot.htm</a>).</p>\r\n<p>Usually what happens when I see this, is there is a child segment in a loop that isn't expecting it, the parser will try to recurse back up to the transaction level locking for a loop where that child segment belongs.</p>\r\n<p>The problem probably isn't the 2330B loop, but the segment that appears right before may not be recognized in the loop.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-07-26T10:21:59.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647862",
+    "ThreadId": "266473",
+    "Html": "<p>Thanks again for looking at this!</p>\r\n<p>I've included the heading and trailing segments and adjusted the 'GS' count so its a valid ( or maybe not? ) 837I.</p>\r\n<p>Also, this is not failing on every transaction in the file. I've been combing over transactions that parse. If I find any structural differences I'll let you know. If it would help, I could post examples of transactions that successfully parse also.</p>\r\n<p>A question about the code: Where would I put a console message telling me which specification got 'chosen'?</p>\r\n<p>Here's a sanitized version of the transaction in question ( great tip on etasoft's utility!). I've added &lt;cr/lf&gt; line terminators at the '~'</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<pre>ISA*00*          *00*          *ZZ*580977458      *ZZ*12345678       *110411*1241*U*00401*611010013*1*P*|~\r\nGS*HC*580977458*12345678*20110411*1241*611010013*X*004010X096A1~\r\nST*837*611044383~\r\nBHT*9999*00*999999999*20070430*999999*CH~\r\nREF*87*999999X999X9~\r\nNM1*41*2*XXX, XXXXXX XXXXXXXXXXX XXXXXXXX*****46*999999999~\r\nPER*IC*XXXXXXXXXXXXX XXXXXXXXXX*TE*9999999999*FX*9999999999*EM*XXXXXXX@XXXXXXXXX.XXX~\r\nNM1*40*2*XXXXXXXX-XX XX XXXXXXXXX*****46*99999999~\r\nHL*1**20*1~\r\nPRV*BI*ZZ*999X99999X~\r\nNM1*85*2*XXXXX XXXXXXX XXX*****XX*9999999999~\r\nN3*XXX 999 XXX 99999~\r\nN4*XXXXXXX*WA*999999999~\r\nREF*EI*999999999~\r\nPER*IC*XXXXX XXXXXXX XXX*TE*9999999999~\r\nNM1*87*2*XXXXX XXXXXXX XXXXXX*****24*999999999~\r\nN3*XXXX 999 XXX 99999~\r\nN4*XXXXXXX*WA*999999999~\r\nHL*2*1*22*1~\r\nSBR*S********CI~\r\nNM1*IL*1*XXXX*XXXXXXX*L***MI*999999999~\r\nNM1*PR*2*XXXXXXXX-XX XX XXXXXXXXX*****PI*99999~\r\nN3*XXXXXX XXXX*X X XXX 99~\r\nN4*XXXXXXX*WA*99999~\r\nHL*3*2*23*0~\r\nPAT*01~\r\nNM1*QC*1*XXXX*XXXXX****MI*999999999~\r\nN3*XX XXX 9999~\r\nN4*XXXXX*ID*999999999~\r\nDMG*D8*19390220*F~\r\nCLM*XXX99999*999.99***99|X|9*Y*A*Y*Y*********N~\r\nDTP*434*RD8*20070417-20070417~\r\nCL1*3*1*01~\r\nAMT*C5*99.99~\r\nREF*D9*99999999999999999XXX9999XXXXX-~\r\nREF*EA*X9999999~\r\nHI*XX|X9999*XX|X9999~\r\nHI*XX|X999~\r\nHI*XX|99|X9|99999999~\r\nHI*XX|X9|||99.99~\r\nNM1*71*1*XXXXXXXXX*XXXXXXX****24*999999999~\r\nSBR*P*18*******MA~\r\nCAS*CO*A2*99.9~\r\nCAS*PR*2*99.99~\r\nAMT*C4*999.99~\r\nAMT*T3*999.99~\r\nDMG*D8*19390220*F~\r\nOI***Y***Y~\r\nNM1*IL*1*XXXX*XXXXX****MI*999999999X~\r\nN3*XX XXX 9999~\r\nN4*XXXXX*ID*999999999~\r\nNM1*PR*2*XXXXXXXX*****PI*99999~\r\nN3*XXXXX XXXXXXXXXX*XX XXX 9999~\r\nN4*XXXXX*NE*99999~\r\nDTP*573*D8*20070509~\r\nNM1*71*1~\r\nREF*1G*X99999~\r\nLX*1~\r\nSV2*9999*XX|99999*99.99*UN*1~\r\nDTP*472*D8*20070417~\r\nLX*2~\r\nSV2*9999*XX|99999*79*UN*1~\r\nDTP*472*D8*20070417~\r\nSE*62*611044383~\r\nGE*1*611010013~\r\nIEA*1*611010013~\r\n<br /></pre>\r\n</p>",
+    "PostedDate": "2011-07-26T11:12:08.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "648017",
+    "ThreadId": "266473",
+    "Html": "<p>I found the problem!</p>\r\n<p>I didnt' search the entire spec file for the 2330B loop specs, so I missed adding the NM3, NM4 and DTP to all the entries.</p>\r\n<p>&nbsp;</p>\r\n<p>Here's the approximate locations:</p>\r\n<p>File(line number):</p>\r\n<p>Ansi-837-4010Specification.xml(178)<br />Ansi-837-4010Specification.xml(477)<br />Ansi-837I-4010Specification.xml(160)<br />Ansi-837I-4010Specification.xml(340)</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks again for your help!</p>\r\n<p>This really is an excellent project. Keep up the good work!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-07-26T16:09:22.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "648235",
+    "ThreadId": "266473",
+    "Html": "<p>Cool, thanks for letting me know the needed changes. &nbsp;I will be adding your sample 837 to the inventory of unit tests and make those changes this week. &nbsp;I hope to get another release out in the next couple of weeks.</p>",
+    "PostedDate": "2011-07-27T05:13:58.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

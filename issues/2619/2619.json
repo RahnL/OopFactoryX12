@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi there,\nI am trying to build 835 using Interchange object using OopFactory.\n\nI written below lines of code.\n```\n\n var message = new Interchange(Convert.ToDateTime(\"01/01/03\"), 000905, false)\n            {\n                InterchangeSenderIdQualifier = \"ZZ\",\n                InterchangeSenderId = \"SUBMITTERS.ID\",\n                InterchangeReceiverIdQualifier = \"ZZ\",\n                InterchangeReceiverId = \"RECEIVERS.ID\",\n                SecurityInfo = \"SECRET\",\n                SecurityInfoQualifier = \"01\",\n            };\n            message.SetElement(12, \"00501\");\n            message.SetElement(10, \"1253\");\n            message.SetElement(11, \"^\");\n\n            var group = message.AddFunctionGroup(\"HC\", DateTime.Now, 1, \"005010X222\");\n            group.ApplicationSendersCode = \"SENDER CODE\";\n            group.ApplicationReceiversCode = \"RECEIVER CODE\";\n            group.Date = Convert.ToDateTime(\"12/31/1999\");\n            group.ControlNumber = 1;\n            group.SetElement(5, \"0802\");\n\n\n            var transaction = group.AddTransaction(\"835\", \"0001\");\n            transaction.SetElement(2, \"0001\");\n\n            var payeeIdentificationLoop = transaction.AddLoop(new TypedLoopN1());\n            payeeIdentificationLoop.N101_EntityIdentifierCode = \"PE\";\n            payeeIdentificationLoop.N102_Name = \"REGIONAL HOPE HSPITA\";\n            payeeIdentificationLoop.N103_IdentificationCodeQualifier = \"XX\";\n            payeeIdentificationLoop.N104_IdentificationCode = \"64356540\";\n```\n\nBut on the line transaction.AddLoop(new TypedLoopN1()) I am getting error saying Loop __N1* could not be added because it could not be found in the specification for ST.__\n\nI found specification for 835 5010 files as below from OopFactory project.\n```\n\n<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<TransactionSpecification xmlns=\"http://tempuri.org/X12ParserSpecification.xsd\" TransactionSetIdentifierCode=\"835\">\n  <Segment SegmentId=\"BPR\" Usage=\"Required\" Repeat=\"1\"/>\n  <Segment SegmentId=\"TRN\" Usage=\"Required\" Repeat=\"1\"/>\n  <Segment SegmentId=\"CUR\" Usage=\"Situational\" Repeat=\"1\"/>\n  <Segment SegmentId=\"REF\" Usage=\"Situational\" Repeat=\"1\"/>\n  <Segment SegmentId=\"DTM\" Usage=\"Situational\" Repeat=\"1\"/>\n  <Segment SegmentId=\"PLB\" Trailer=\"true\" Usage=\"Situational\" Repeat=\"1\"/>\n  <Loop LoopId=\"1000A\" Usage=\"Required\" LoopRepeat=\"1\">\n    <Name>PAYER IDENTIFICATION</Name>\n    <StartingSegment SegmentId=\"N1\" Usage=\"Required\" Repeat=\"1\">\n      <EntityIdentifier Code=\"PR\"/>\n    </StartingSegment>\n    <Segment SegmentId=\"N3\" Usage=\"Required\" Repeat=\"1\"/>\n    <Segment SegmentId=\"N4\" Usage=\"Required\" Repeat=\"1\"/>\n    <Segment SegmentId=\"REF\" Usage=\"Situational\" Repeat=\"4\"/>\n    <Segment SegmentId=\"PER\" Usage=\"Situational\" Repeat=\"1\"/>\n  </Loop>\n  <Loop LoopId=\"1000B\" Usage=\"Required\" LoopRepeat=\"1\">\n    <Name>PAYEE IDENTFICATION</Name>\n    <StartingSegment SegmentId=\"N1\" Usage=\"Required\" Repeat=\"1\">\n      <EntityIdentifier Code=\"PE\"/>\n    </StartingSegment>\n    <Segment SegmentId=\"N3\" Usage=\"Required\" Repeat=\"1\"/>\n    <Segment SegmentId=\"N4\" Usage=\"Required\" Repeat=\"1\"/>\n    <Segment SegmentId=\"REF\" Usage=\"Situational\" Repeat=\"4\"/>\n    <Segment SegmentId=\"RDM\" Usage=\"Situational\" Repeat=\"1\"/>\n  </Loop>\n  <Loop LoopId=\"2000\" Usage=\"Required\" Repeat=\"9999\">\n    <Name>HEADER NUMBER</Name>\n    <StartingSegment SegmentId=\"LX\" Usage=\"Situational\" Repeat=\"1\"/>\n    <Segment SegmentId=\"TS3\" Usage=\"Situational\" Repeat=\"1\"/>\n    <Segment SegmentId=\"TS2\" Usage=\"Situational\" Repeat=\"1\"/>\n    <Loop LoopId=\"2100\">\n      <Name>CLAIM PAYMENT INFORMATION</Name>\n      <StartingSegment SegmentId=\"CLP\" Usage=\"Required\" Repeat=\"9999\"/>\n      <Segment SegmentId=\"CAS\" Usage=\"Situational\" Repeat=\"99\"/>\n      <Segment SegmentId=\"NM1\" Usage=\"Required\" Repeat=\"1\"/>\n      <Segment SegmentId=\"MIA\" Usage=\"Situational\" Repeat=\"1\"/>\n      <Segment SegmentId=\"MOA\" Usage=\"Situational\" Repeat=\"1\"/>\n      <Segment SegmentId=\"REF\" Usage=\"Situational\" Repeat=\"5\"/>\n      <Segment SegmentId=\"DTM\" Usage=\"Situational\" Repeat=\"4\"/>\n      <Segment SegmentId=\"PER\" Usage=\"Situational\" Repeat=\"2\"/>\n      <Segment SegmentId=\"AMT\" Usage=\"Situational\" Repeat=\"13\"/>\n      <Segment SegmentId=\"QTY\" Usage=\"Situational\" Repeat=\"14\"/>\n      <Loop LoopId=\"2110\">\n        <Name>SERVICE PAYMENT INFORMATION</Name>\n        <StartingSegment SegmentId=\"SVC\" Usage=\"Situational\" Repeat=\"999\"/>\n        <Segment SegmentId=\"DTM\" Usage=\"Situational\" Repeat=\"2\"/>\n        <Segment SegmentId=\"CAS\" Usage=\"Situational\" Repeat=\"99\"/>\n        <Segment SegmentId=\"REF\" Usage=\"Situational\" Repeat=\"8\"/>\n        <Segment SegmentId=\"REF\" Usage=\"Situational\" Repeat=\"10\"/>\n        <Segment SegmentId=\"AMT\" Usage=\"Situational\" Repeat=\"9\"/>\n        <Segment SegmentId=\"QTY\" Usage=\"Situational\" Repeat=\"6\"/>\n        <Segment SegmentId=\"LQ\" Usage=\"Situational\" Repeat=\"99\"/>\n      </Loop>\n    </Loop>\n  </Loop>\n</TransactionSpecification>\n```\n\nI was trying to find out what is the problem and below one is my analysis. (I compared N1 of 835 to NM1 of 837 file)\n\nAs per my understanding NM1 loop can be multiple in 837 file - 1000A SUBMITTER NAME, 1000B RECEIVER NAME. Same way 835 file N1 loop can be multiple - 1000A PAYER IDENTIFICATION, 1000B PAYEE IDENTIFICATION.\n\nIf we want to create NM1 loop for 837 file than we are passing entityIdentifier in constructor like below code.\n\n```\ntransaction.AddLoop(new TypedLoopNM1(\"41\")); //here 41 is entityIdentifier \n```\n\nBut there is no option to pass entityIdentifier in constructor of TypedLoopN1 object. we can create object of N1 like below mentioned code.\n\n```\ntransaction.AddLoop(new TypedLoopN1()); \n```\n\nI debugged code and I found in Oopfactory below condition is not satisfying. (Inside LoopContainer Class -> GetLoopSpecification method)\n\n```\nmatchingLoopSpecs.Where(ls => ls.StartingSegment.SegmentId == segment.SegmentId).Count() ==1\n```\n\nAs per specification of 835, N1 can be two type. So here we are getting count as 2. So condition is not satisfying and its returning null and we are getting exception.\n\nLet me know if anything I am missing from my end.",
+    "LastUpdatedDate": "2017-11-27T18:21:07.587-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-02-10T23:00:18.353-08:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Getting Exception while building 835",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 2619
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm slowly trying to get all of these fixed up and normalized as I also need 837/835 generation abilities. The N1 should be identical to the NM1 in operation. Please try with the following branch:\r\n\r\n[https://x12parser.svn.codeplex.com/svn/branches/837Typed](https://x12parser.svn.codeplex.com/svn/branches/837Typed)\r\n\r\nAlso, in addition to constructing with the identifier, you are also required to set N101 to the same value. But it appears you were already doing so.\r\n\r\n```\n            var payeeIdentificationLoop = transaction.AddLoop(new TypedLoopN1(\"PE\"));\n            payeeIdentificationLoop.N101_EntityIdentifierCode = \"PE\";\n```\r\n\r\nIf this fixes your needs, please close this issue.\r\n\r\n",
+      "PostedDate": "2015-03-19T13:54:15.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-03-19T13:57:54.4-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am having the same issue creating a 5010 834 when I try and create the loop for the sponsor.  Any solution?",
+      "PostedDate": "2016-07-28T16:21:03.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:21:07.587-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

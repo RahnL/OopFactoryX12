@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1090758",
+    "ThreadId": "456401",
+    "Html": "From the documentation, it sounded like if I pointed OopFactory.X12.ImportX12.exe.config to an empty database, the application would create the necessary database objects.  However, when I attempt to do this I get the following error, and no database objects are created.\r<br />\n<br />\nOopFactory.X12.ImportX12.exe Error: 0 : Error parsing C:\\Temp\\Inbound\\201202171907128.txt: An item with the same key has already been added.\r<br />\n   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)\r<br />\n   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)\r<br />\n   at OopFactory.X12.Parsing.Model.HierarchicalLoopContainer.AddHLoop(String segmentString)\r<br />\n   at OopFactory.X12.Parsing.X12Parser.ParseMultiple(Stream stream, Encoding encoding)\r<br />\n   at OopFactory.X12.ImportX12.Program.Main(String[] args)\r<br />\n   DateTime=2013-09-10T17:30:47.7264554Z<br />\n",
+    "PostedDate": "2013-09-10T10:38:46.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1090764",
+    "ThreadId": "456401",
+    "Html": "This appears to be my own fault, as I tried to parse a file with a bunch of HL segment errors. <br />\n",
+    "PostedDate": "2013-09-10T10:49:57.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1090891",
+    "ThreadId": "456401",
+    "Html": "It is possible that what you are working with is a test file and not a production file.\r<br />\nAll segments that start with HL* have an ID as the first element and those IDs need to be unique within the file.\r<br />\nThis is used to point to other HL segments in the files, and unfortunately if the IDs are duplicated in the file the parser has no way to resolve any references to that ID.<br />\n",
+    "PostedDate": "2013-09-10T14:47:51.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

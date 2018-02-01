@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Greetings,\n\nI have some 837 files > I can able to import 837 file format  to DB,XML and PDF format using OOPFactory. \nI am having following queries:\n\n         1) How to export the data from Data Base or XML to PDF format?\n\n         2) How to export the data from Data Base  to 837 file format?\n\nThanks in Advance\nUsha",
+    "LastUpdatedDate": "2015-05-14T00:02:37.337-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-03-20T04:51:06.96-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Problem in exporting data from Database to 837 format",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1929
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi,\r\n\r\nI have a similar issue, did you get any resolution to this issue? I want to generate the x12 file from database.",
+      "PostedDate": "2014-05-21T04:04:41.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, I didn't get any solution for that",
+      "PostedDate": "2014-05-21T04:33:44.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi Usha,\r\n\r\nI need help to convert a 837 file to DB.. do you have exampple code...please share it if you have..thanks...\r\n\r\nRegards,\nkarthikc",
+      "PostedDate": "2015-04-19T12:05:03.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi Usha,\r\n\r\nVery good morning,\r\n\r\nI have seen your description is that you can able to convert/upoad the X12 file to sql database, please help me to share if you have code for convert/upoad the X12 file to sql database.. please help me, i am a beginner i need a code for assignment...\r\n\r\nthanks & regards,\nkarthikc",
+      "PostedDate": "2015-05-14T00:02:37.337-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

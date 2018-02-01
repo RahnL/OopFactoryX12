@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1043855",
+    "ThreadId": "443730",
+    "Html": "Some new providers are sending files that seem to be chunked at 80 bytes with newlines between each chunk..\r<br />\n<br />\nIs there a way to tell parser.parseMultiple to strip the extraneous CR/LF characters?\r<br />\n<br />\nIf not, my approach is to convert the file stream to a string, replace the CR/LF characters with &quot;&quot; and convert it back to a memory stream. Unless anyone can suggest a better way.\r<br />\n<br />\nPaul<br />\n",
+    "PostedDate": "2013-05-15T06:05:54.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1043886",
+    "ThreadId": "443730",
+    "Html": "The latest version has an overload on the X12Parser constructor for specifying an array of characters to ignore.\r<br />\nIf you are using the ClaimTransformationService, in C# this would look like:<br />\n<pre><code>var service = new ClaimTransformationService(new X12Parser(new SpecificationFinder(), true, new char[] { '\\n','\\r'}));</code></pre>\n\nSome senders do use these characters as segment delimiters, so you would need to make sure you either don't have any of those or you compensate for those differently.<br />\n",
+    "PostedDate": "2013-05-15T07:02:57.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1044016",
+    "ThreadId": "443730",
+    "Html": "When you say segment delimiters, you mean they replace a delimiter such as &quot;*&quot; with a newline?\r<br />\n<br />\nIf so, is there a reliable way to identify these types of files from the data? Such as &quot;ISA&lt;Newline&gt;00&lt;Newline&gt;&quot;.\r<br />\n<br />\nOr will I need to keep a provider profile, that specifies the format of the data they send?\r<br />\n<br />\nPaul<br />\n",
+    "PostedDate": "2013-05-15T10:56:53.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1044021",
+    "ThreadId": "443730",
+    "Html": "The ISA segment that starts each file is fixed width.  The 106th character of the file always represents the segment terminator.  This is typically a ~ in most of the specs that I have seen, but there is no requirement for it to be a tilde.  Since a separator character cannot also be used in the content of the x12 message, many systems will choose other delimiter characters that they know will not cause conflicts.\r<br />\n<br />\nIf you wanted a pre-step to inspect the 106th character to make sure it's not '\\r' or '\\n', then you could then use the ignoredChars parameter safely to compensate for your scenario.<br />\n",
+    "PostedDate": "2013-05-15T11:08:19.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1044028",
+    "ThreadId": "443730",
+    "Html": "Do you believe it might be possible that someone is using newline as a segment delimiter and chunk the file at 80 bytes?\r<br />\n<br />\nI sure hope not!\r<br />\n<br />\nPaul<br />\n",
+    "PostedDate": "2013-05-15T11:21:50.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1044066",
+    "ThreadId": "443730",
+    "Html": "I do not believe what you are receiving is a valid X12 file at all, since the ISA segment which is the first 105 characters should be fixed width, you obviously have a line break within this segment which already breaks the X12 standard.  So I am not sure you will even be looking at the segment separator in position 106 without normalizing this file first.\r<br />\n<br />\nIf it were a valid file it wouldn't have these returns every 80 characters and allow it to be a delimter.  Per the 837P spec:<br />\n<blockquote>\nOnce specified in the interchange header, the delimiters are not to be used in a data element value elsewhere in the interchange.<br />\n</blockquote>\nWhat they have done may have been some post processing for some other downstream internal process that can only read the file 80 characters at a time.<br />\n",
+    "PostedDate": "2013-05-15T12:18:24.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1044094",
+    "ThreadId": "443730",
+    "Html": "In case anyone else cares the vb version of the C#<br />\n<pre><code>var service = new ClaimTransformationService(new X12Parser(new SpecificationFinder(), true, new char[] { '\\n','\\r'}));</code></pre>\n\nis<br />\n<pre><code>Dim service As New ClaimTransformationService(New X12Parser(New SpecificationFinder(), True, New Char(1) {vbCr, vbLf}))\n</code></pre>\n\nPaul<br />\n",
+    "PostedDate": "2013-05-15T13:40:34.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1052280",
+    "ThreadId": "443730",
+    "Html": "I finally got around to testing this. Using the line;<br />\n<pre><code>        Dim transformationService As New ClaimTransformationService(New X12Parser(New SpecificationFinder(), True, New Char() {ControlChars.Lf, ControlChars.Cr}))\n</code></pre>\n\nI receive the error;\r<br />\n<br />\n6/3/2013 2:00:48 PM Error on File: I:\\datafile.5010.txt Message: P is not a valid subelement separator in position 105 of the file.\r<br />\n<br />\nThe first 109 characters of the file look like this;<br />\n<pre><code>ISA*00*          *00*          *ZZ*800222771      *ZZ*133052274      *130412*070\n1*|*00501*000000020*0*P*:~\n</code></pre>\n\nBased on this, it would appear that either I do not have the transformationService line coded properly, or, the OopFactory routines are not throwing away the carriage return/line feed at positions 81/82 prior to looking for the delimiter at position 105 (0 based).\r<br />\n<br />\nAny thoughts?<br />\n",
+    "PostedDate": "2013-06-03T11:14:32.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1078856",
+    "ThreadId": "443730",
+    "Html": "The extra Parameter to ignore CRLF did not work for me and I was getting the &quot;P is not a valid subelement separator in position 106&quot; message.\r<br />\n<br />\nI just wrote a utility method to remove CRLF's and it worked.<br />\n<pre><code>        String after = &quot;&quot;;\n\n        // Read file and modify\n        try\n        {\n            using (StreamReader sr = new StreamReader(filename))\n            {\n                String before = sr.ReadToEnd();\n                after = before.Remove(new Char[] { '\\r', '\\n' });\n            }\n        }\n</code></pre>\n\n",
+    "PostedDate": "2013-08-09T12:30:25.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

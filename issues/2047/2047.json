@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, \n\nI used OOP XML Parser ImportX12 to generate a SQL database from x12 file. Based on business rules I modified the database to modify/remove segments. Now I need to generate the output x12 file to be sent to business, how do I do that? Is there a way to do that in this tool?",
+    "LastUpdatedDate": "2015-05-14T00:00:20.03-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-05-21T04:02:08.927-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Generate x12 file from SQL Database",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2047
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi anshu,\r\n\r\nVery good morning,\r\n\r\nI have seen your description is that you can able to convert/upoad the X12 file to sql database, please help me to share if you have code for convert/upoad the X12 file to sql database.. please help me, i am a beginner i need a code for assignment...\r\n\r\nthanks & regards,\nkarthikc",
+      "PostedDate": "2015-05-14T00:00:20.03-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

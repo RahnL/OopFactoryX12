@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1129646",
+    "ThreadId": "471323",
+    "Html": "How can I get a TypedLoop (more specifically for my case, a TypedLoopNM1) out of an Interchange object that is returned from calling Parser.ParseMultiple(string)? It seems that when I use ParseMultiple, I only get Loop objects, but I think it would be useful to convert those to their respective Typed implementations.\r<br />\n<br />\nWhat I'm trying to do in this case is to create a 271 while processing a 270. Some of the information in the 271 can just be copied directly from the 270, but right now my code is a bit dense with a lot of SetElement(x, GetElement(x)).<br />\n",
+    "PostedDate": "2013-11-27T08:41:18.507-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1129668",
+    "ThreadId": "471323",
+    "Html": "Actually, on second thought, it is easier to just iterate through all of the elements and blindly copy them using the ElementCount as a bounds on a for loop.\r<br />\n<br />\nI am still interested in the answer to this question though. That is, how do I get a TypedLoop out of a parsing result?<br />\n",
+    "PostedDate": "2013-11-27T09:40:55.757-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

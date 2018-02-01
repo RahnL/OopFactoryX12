@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "799476",
+    "ThreadId": "344730",
+    "Html": "\r\n<p>Hi,<br>\r\nI find the ClaimDocument/Claim classes very helpful. Is it possible to transform the object of the Claim to 837P file. I saw the examples and Test projects but could not find such a thing. Am I missing something.<br>\r\nIf this feature is missing then I would like to work on it to make it a new feature in X12Parser.<br>\r\nX12 parser is very helpful and makes generating EDI documents very very easy. Good work.</p>\r\n",
+    "PostedDate": "2012-02-24T09:09:19.183-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "799535",
+    "ThreadId": "344730",
+    "Html": "<p>That is not currently a feature, but can be added.</p>\r\n<p>The problem right now is the Claim class is not complete so if you are going to transform to this you may loose some of your original data before you transform it back into X12.</p>\r\n<p>Let me spend some time completing this model and then I would be glad to have you help with the code that transforms back to x12.</p>",
+    "PostedDate": "2012-02-24T10:40:29.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "801533",
+    "ThreadId": "344730",
+    "Html": "<p>Oh yes I just figured out the Claim class is not complete. Today I started setting the properties in the claim class and figured this thing out. I hope you complete the Claim class soon.</p>\r\n<p>For now I will just make appropriate changes according to my need and will proceed.</p>",
+    "PostedDate": "2012-02-26T23:06:58.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "899836",
+    "ThreadId": "344730",
+    "Html": "\r\n<p>Any news on this?</p>\r\n<p>Or at least is Claim class already completed?</p>\r\n",
+    "PostedDate": "2012-08-16T02:37:46.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "900281",
+    "ThreadId": "344730",
+    "Html": "<p>The claim class is complete for professional and institutional claims. &nbsp;I still have some work to do for it to work for all the dental segments.</p>\r\n<p>See this discussion&nbsp;<a href=\"http://x12parser.codeplex.com/wikipage?title=837%20Claim%20Parser%20Usage\">http://x12parser.codeplex.com/wikipage?title=837%20Claim%20Parser%20Usage</a>&nbsp;for how to run the console app that will serialize the Claim class into an xml file.</p>",
+    "PostedDate": "2012-08-16T18:35:07.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1230069",
+    "ThreadId": "344730",
+    "Html": "My team just started working in the 837P spec, and we very much need to serialize a ClaimDocument to 837 EDI.  Has this been implemented yet, or does anyone have a suggestion on how to approach this?  We see a way to go from EDI to ClaimDocument in the examples and tests; in our case, we need to issue the raw EDI file.  Thanks.<br />\n",
+    "PostedDate": "2014-04-03T13:40:46.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1337036",
+    "ThreadId": "344730",
+    "Html": "ufff......I was so happy when I found this library but now I regret. There is no way to convert a claim document back to x12....omg..... just lost a week worth of efforts....<br />\n",
+    "PostedDate": "2014-12-24T09:54:19.17-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1346038",
+    "ThreadId": "344730",
+    "Html": "<strong>keeponsearching wrote:</strong><br />\n<blockquote>\nufff......I was so happy when I found this library but now I regret. There is no way to convert a claim document back to x12....omg..... just lost a week worth of efforts....<br />\n</blockquote>\nAh yes the struggles of receiving amazing code for free...\r<br />\n<br />\nThis is an open source project....put your programming hat on, heat up some pizza rolls and finish the tail end of what is needed for this....\r<br />\n<br />\nit only seems fair seeing as how i doubt you were going to run and tell your boss this great guy named dstrubhar gave you all the code you could possibly need to implement their edi solution.....if i'm wrong feel free to cc me on the email to throw it in my face.<br />\n",
+    "PostedDate": "2015-01-26T17:35:28.073-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1355357",
+    "ThreadId": "344730",
+    "Html": "<strong>vbnewb wrote:</strong><br />\n<blockquote>\n<strong>keeponsearching wrote:</strong><br />\n<blockquote>\nufff......I was so happy when I found this library but now I regret. There is no way to convert a claim document back to x12....omg..... just lost a week worth of efforts....<br />\n</blockquote>\nAh yes the struggles of receiving amazing code for free...<br />\n<br />\nThis is an open source project....put your programming hat on, heat up some pizza rolls and finish the tail end of what is needed for this....<br />\n<br />\nit only seems fair seeing as how i doubt you were going to run and tell your boss this great guy named dstrubhar gave you all the code you could possibly need to implement their edi solution.....if i'm wrong feel free to cc me on the email to throw it in my face.<br />\n</blockquote>\nMy boss is not as dumb as yours. Anyone works on Microsoft  platform know about codeplex.com. I guess you live in 1990s. <br />\nBTW post the solution here and send me the pizza bill.<br />\n",
+    "PostedDate": "2015-02-24T11:47:27.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1083666",
+    "ThreadId": "454220",
+    "Html": "Is there an xsd for the XML created by the x12 parser?<br />\n",
+    "PostedDate": "2013-08-22T07:50:36.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083741",
+    "ThreadId": "454220",
+    "Html": "Yes, there is a ClaimDocument.xsd in the source code.<br />\n",
+    "PostedDate": "2013-08-22T10:02:59.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083903",
+    "ThreadId": "454220",
+    "Html": "The ClaimDocument.xsd  is the schema of you are using the OopFactory,X12.Hippa.dll assembly.  The x12 that is created by the X12Parser executable is dynamically created depending on the transaction set specification that is loaded.  It is best to look at you specific transaction set's spec xml to know what to expect, though this is not the equivalent of an xsd.<br />\n",
+    "PostedDate": "2013-08-22T19:08:43.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

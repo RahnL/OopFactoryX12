@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "816670",
+    "ThreadId": "350346",
+    "Html": "\r\n<p>Hello all, great utilities!</p>\r\n<p>I'm splitting 835 files on loop 1000 using unbundle&nbsp;to obtain separate files for each EOB report.</p>\r\n<p>I fed an archive of 452 files through a VB script I wrote and one of the 835 input files caused UnbundleX12.exe to produce no output.</p>\r\n<p>I could redact out the private info and post the troublesome 835 if necessary.</p>\r\n<p>It appears to be a simple money transfer. It has a Transaction Control Number and&nbsp; a 1000A and 1000B loop, but there are&nbsp;no 2xxx loops.</p>\r\n<p>Should not UnbundleX12 still produce an output file in this case?</p>\r\n<p>Thank you.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-03-28T10:27:49.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "816681",
+    "ThreadId": "350346",
+    "Html": "<p>There is not a LoopId=\"1000\" in the embedded spec: &nbsp;OopFactory.X12.Specifications.Ansi-835-5010Specification.xml.</p>\r\n<p>If there was it would pick it up if \"2000\" was a child loop of \"1000\". &nbsp;But since \"1000A\" and \"1000B\" are sibling loops, if you pick any of those it won't pickup the \"2000\" loop.</p>\r\n<p>What you are doing might not be a good candidate for UnbundleByLoop.</p>\r\n<p>I've been meaning to add an UnbundleByTransaction since it appears that there are a lot of users needing to unbundle but the UnbundleByLoop appears to be too granular.</p>",
+    "PostedDate": "2012-03-28T10:54:24.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "816793",
+    "ThreadId": "350346",
+    "Html": "<p>Pardon, I'm confusing functions I'm using in two different scripts.</p>\n<p>But yes, a split-by-transation option would be useful to me.</p>\n<p>Thanks for your reply.</p>",
+    "PostedDate": "2012-03-28T13:22:24.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "819853",
+    "ThreadId": "350346",
+    "Html": "<p>I have updated the UnbundleX12 console app so that you can specify \"ST\" as the loop ID and it will unbundle by transaction. &nbsp;It is checked into changeset 15643. &nbsp;Hopefully this will meet your use case better.</p>",
+    "PostedDate": "2012-04-04T07:49:04.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

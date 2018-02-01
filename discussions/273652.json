@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "675965",
+    "ThreadId": "273652",
+    "Html": "\r\n<p>I'm&nbsp;using the OopFactory in my project and I'm consuming a Loop object and I want to find a certain Segment in his Segments.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>acknowledgementCode = <span style=\"color:#a31515\">&quot;Not Found&quot;</span>;\r\n<span style=\"color:blue\">foreach</span> (Segment segment <span style=\"color:blue\">in</span> loop.Segments)\r\n{\r\n\t<span style=\"color:blue\">if</span> (segment.SegmentId == <span style=\"color:#a31515\">&quot;AK5&quot;</span>)  <span style=\"color:green\">//&lt;-Can't really do that because SegmentId is internal in OopFactory.X12</span>\r\n\t{\r\n\t\t<span style=\"color:blue\">if</span> (segment.ElementCount &lt; 1)\r\n\t\t{\r\n\t\t\t<span style=\"color:green\">//TODO</span>\r\n\t\t\t<span style=\"color:green\">//Throw a custom error.</span>\r\n\t\t}\r\n\t\tacknowledgementCode = segment.GetElement((<span style=\"color:blue\">int</span>)TransactionSetResponseHeaderIndex.AcknowledgementCode);\r\n\t}\r\n}\r\n</pre>\r\n</div>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>&nbsp;</pre>\r\n<pre>Is there a better way to find the &quot;AK5&quot; segment I'm looking for?</pre>\r\n</div>\r\n",
+    "PostedDate": "2011-09-23T11:33:49.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676073",
+    "ThreadId": "273652",
+    "Html": "<p>You are welcome to change SegmentId to public now that you are a developer on the project. &nbsp;I had noticed that earlier and never got around to changing it.</p>",
+    "PostedDate": "2011-09-23T17:50:52.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

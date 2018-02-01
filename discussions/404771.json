@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "947888",
+    "ThreadId": "404771",
+    "Html": "\r\n<p>I am running 2.3.1 and unfortunately cannot get it to process my (admittedly huge) EDI file.</p>\r\n<p>I receive the following message:</p>\r\n<p>&lt;tt&gt;C:\\EDI\\Release&gt;X12Parser.exe ..\\incoming.txt&lt;/tt&gt;</p>\r\n<p>&lt;tt&gt;Unhandled Exception: System.ArgumentException: P is not a valid subelement separator in position 105 of the file.<br>\r\n&nbsp;&nbsp; at OopFactory.X12.Parsing.X12DelimiterSet..ctor(Char[] isaSegmentAndTerminator)<br>\r\n&nbsp;&nbsp; at OopFactory.X12.Parsing.X12StreamReader..ctor(Stream stream, Encoding encoding)<br>\r\n&nbsp;&nbsp; at OopFactory.X12.Parsing.X12Parser.ParseMultiple(Stream stream, Encoding encoding)<br>\r\n&nbsp;&nbsp; at OopFactory.X12.X12Parser.Program.Main(String[] args)&lt;/tt&gt;</p>\r\n<p>I have read the previous discussion in which ISA08 was not fully populated and the wrong separator was thus being selected. My file is correctly formed;&nbsp;ISA08 contains 15 characters. The file in question passes validation and my EDI viewer loads it\r\n correctly.</p>\r\n<p>Here is the header (NPI set to 9s):</p>\r\n<pre>ISA*00*          *00*          *ZZ*610442         *ZZ*9999999999     *121121*021\r\n2*|*00501*000000021*0*P*&gt;~</pre>\r\n<p>&nbsp;Anyone have any suggestions on what I might try next?</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-27T11:41:17.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "948132",
+    "ThreadId": "404771",
+    "Html": "\r\n<p>Fixed by stripping 0D 0A. Got some nice XML, thanks for this project.</p>\r\n",
+    "PostedDate": "2012-11-28T00:28:22.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

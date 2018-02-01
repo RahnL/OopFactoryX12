@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "OopFactory.X12.Hipaa",
+      "DisplayName": "OopFactory.X12.Hipaa"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Create a PDF document with a table of contents for the claims existing in the edi file followed by it's contents projected on to industry standard claim forms.",
+    "LastUpdatedDate": "2017-11-27T18:20:55.77-08:00",
+    "PlannedForRelease": "X12 Parser 2.3.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-04-21T16:14:21.857-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Transform 837 XML to CMS-1500, UB-04 and ADA Dental pdf forms",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 4,
+    "Id": 677
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Associated with changeset 7753.",
+      "PostedDate": "2011-04-22T03:11:24.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7839.",
+      "PostedDate": "2011-04-24T19:51:11.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7875.",
+      "PostedDate": "2011-04-27T19:49:38.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7895.",
+      "PostedDate": "2011-04-30T06:35:10.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7899.",
+      "PostedDate": "2011-04-30T09:26:27.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7932.",
+      "PostedDate": "2011-05-01T19:13:36.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-19T06:34:53.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-20T15:07:38.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-20T15:09:13.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-20T15:11:04.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-22T14:15:22.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 11617.",
+      "PostedDate": "2011-10-25T20:11:40.4-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 15600.",
+      "PostedDate": "2012-04-01T09:08:56.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-05-05T11:34:31.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:06.907-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I need help ASAP,\r\n\r\nI am trying to create UB04 pdf form, but I am getting the error msessage \"[System.NullReferenceException] = {\"Object reference not set to an instance of an object.\"}\"\nSource: Source = \"OopFactory.X12.Hipaa\"\nStacktrace: StackTrace = \"   at OopFactory.X12.Hipaa.Claims.Services.InstitutionalClaimToUB04ClaimFormTransformation.TransformClaimToUB04(Claim claim)\\r\\n   at OopFactory.X12.Hipaa.Claims.Services.InstitutionalClaimToUB04ClaimFormTransformation.TransformClaimToClaimFormFoXml(Claim ...\n",
+      "PostedDate": "2013-09-27T06:41:46.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:20:55.77-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

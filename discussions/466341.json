@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1119014",
+    "ThreadId": "466341",
+    "Html": "Is MaxBatchSize in the config file needed for X12 Interchange Model?\r<br />\nAny other config settings used?\r<br />\nAny more detailed doc on using this object model besides the two examples instantiating the X12Parser object?\r<br />\n<br />\nThanks, Dave<br />\n",
+    "PostedDate": "2013-11-06T08:46:45.513-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119756",
+    "ThreadId": "466341",
+    "Html": "The parser can be used without the MaxBatchSize, but it all depends on if the file sizes you receive reach the processing limits of the server that will process the file.  The batch size allows the parser to break up the interchange into transactions and process them in the size specified by the batch size.  This is more of an issue when you are trying to serialize the file into xml because that's were limits are usually breached.  If you are only loading the file into the database or manipulating the Interchange directly with xml serialization, then the batch sizes can be bigger.\r<br />\n<br />\nI would not mess with the MaxBatchSize unless your systems has performance issues with the files you are receiving.<br />\n",
+    "PostedDate": "2013-11-07T06:50:49.343-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1119794",
+    "ThreadId": "466341",
+    "Html": "Thanks. I'm still a bit unclear though if MaxBatchSize (or any other value) is read from the config file by the Interchange object model when used from my application.<br />\n",
+    "PostedDate": "2013-11-07T07:38:54.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

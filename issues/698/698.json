@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-10-20T10:31:08.3-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Think I found (and fixed) a bug and then found another...\n \nI'm not a coder so take the following with a grain of salt. :)\n \nBUG 1\nI've tested a couple 837p files with the x12 parser and get an exception each time.  Exception is something like this:\n \n\"OopFactory.X12.Parsing.Model.TransactionValidationException: Segment 'NM1*DQ*1*DoctorLastName*DoctorFirstName****XX*1234567890' within transaction '000000001' cannot be identified within the supplied specification for transaction set 837.\"\n \nSo I took a look at the source code and in the \"Ansi-837-4010Specification.xml\" file the folllowing appears (in loop id 2010BD):\n \n<EntityIdentifier Code=\"QD\"/>\n \nI think it should be:\n \n<EntityIdentifier Code=\"DQ\"/>\n \nI made that change, built the project and reran the parser.  The error is now gone but...\n \nBUG 2\nNow I consistently get the following error:\n \n\"Unhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException: Segment 'DMG*D8*19991234*M' within transaction '000000001' cannot be identified within the supplied specification for transaction set 837. Parameter name: 837\"\n \nThis new error appears to be related to the 2010BA loop, but I can't see what the issue is.\n \nI'm testing with 837p files that are 4010 specification.\n \nAny ideas as to what would be causing this?\n \nThanks!\n-nth-",
+    "LastUpdatedDate": "2013-05-16T04:34:06.833-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-05-10T14:58:18.29-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "837 parsing errors",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 698
+  },
+  "FileAttachments": [
+    {
+      "FileId": 437,
+      "FileName": "CID5688_OCT_2007_I_DEIDENTIFIED.zip",
+      "DownloadUrl": ".\\437"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Associated with changeset 8197.",
+      "PostedDate": "2011-05-10T19:59:04.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the Catch.  I do need to add DQ (Supervising Physician), but it appears that I had completely left off those loops.  I have checked in the change.  I also added the DMG segment to all the subscriber name loops in case this is your problem.  If changeset 8197doesn't fix your problem, please post your test transaction and I can better identify what loop it thinks it is in when it fails to recognize the DMG segment.  I can also add your test transactions to the Unit Tests so that you can be assured any future releases will not through exceptions on you.\r\n\r\nI will try and do a more thorough review of the 837P specification this week and get another release out by Sunday that will have this fix.",
+      "PostedDate": "2011-05-10T20:01:56.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "8197 build did fix both issues!  837 files process just fine now.  I'll see if I can't get a small 837p file deidentified (not a trivial thing) and upload it to add to your Unit tests.  Thanks again!",
+      "PostedDate": "2011-05-11T06:35:44.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-31T18:41:10.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-04T19:51:54.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-12T13:20:36.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "First, thanks for your an excellent product - I'm really looking forward to the next release!\r\n\r\nEven though this issue has been closed, I find that I'm getting a similar exception while parsing an 837-I file in the 2.2.0 release : \r\n\r\nOopFactory.X12.Parsing.Model.TransactionValidationException was unhandled\r\n  Message=Segment 'N3*XXX 99999' in position 378 within transaction '612951751' cannot be identified within the supplied specification for transaction set 837.\r\nParameter name: 837\r\n  Source=OopFactory.X12\r\n  ParamName=837\r\n  ControlNumber=612951751\r\n  ElementId=\"\"\r\n  TransactionCode=837\r\n  Value=N3*XXX 99999\r\n  StackTrace:\r\n       at OopFactory.X12.Parsing.X12Parser.Parse(Stream stream) in src\\OopFactory.X12\\Parsing\\X12Parser.cs:line 154\r\n       at OopFactory.X12.X12Parser.Program.Main(String[] args) in src\\OopFactory.X12.X12Parser\\Program.cs:line 19\r\n       at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)\r\n       at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)\r\n       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\r\n       at System.Threading.ThreadHelper.ThreadStart_Context(Object state)\r\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)\r\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\r\n       at System.Threading.ThreadHelper.ThreadStart()\r\n  InnerException: \r\n\r\nI've attached the offending (de-identified) file to this message - hope it helps.",
+      "PostedDate": "2011-09-12T13:20:36.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Released in 2.1.6\r\n\r\n\n\n** Closed by dstrubhar 6/4/2011 7:51 PM",
+      "PostedDate": "2011-09-14T14:04:33.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Potential error in 837 specification.",
+      "PostedDate": "2011-09-14T14:04:34.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-14T14:05:03.923-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 11446.",
+      "PostedDate": "2011-10-20T10:31:08.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The problem was with the Other Subscriber loop which is slightly different on a Institutional than a Professional claim.  Release 2.2.1 should fix the problem.  I have tested it against your file.  Because of the size of the file it won't all serialize to xml without running out of memory, but it will unbundle and you can operate on the unbundled files individually.",
+      "PostedDate": "2011-10-20T11:14:21.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-09-05T07:07:50.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:06.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:06.833-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

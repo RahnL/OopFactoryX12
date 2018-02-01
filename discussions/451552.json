@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1073667",
+    "ThreadId": "451552",
+    "Html": "It looks like &quot;DT&quot; is missing from DTPFormatQualifier.cs\r<br />\n<br />\nIt's a required element for situational admissions segment (DTP*435) in both 4010 and 5010\r<br />\n<br />\nD8 was added to 5010 and it's there but DT is missing. <br />\n<pre><code>[EDIFieldValue(&quot;DT&quot;)]\n        CCYYMMDDHHMM,</code></pre>\n\nshould be added to DTPFormatQualifier.cs\r<br />\nAm I missing something?<br />\n",
+    "PostedDate": "2013-07-26T13:43:09.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

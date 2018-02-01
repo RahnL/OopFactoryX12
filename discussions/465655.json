@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1117993",
+    "ThreadId": "465655",
+    "Html": "When installing X12Parser.exe, I receive the following error:\r<br />\n<br />\nUnhandled Exception: System.IndexOutOfRangeException;: Index was outside the bounds of the array.  At OopFactory.X12.X12Parser.Program.Main&lt;String[] args&gt;\r<br />\n<br />\nAny thoughts regarding a fix?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-11-05T11:25:58.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1118235",
+    "ThreadId": "465655",
+    "Html": "You need to give the app some command line arguments.  See examples here: <a href=\"http://x12parser.codeplex.com/documentation\" rel=\"nofollow\">http://x12parser.codeplex.com/documentation</a>.<br />\n",
+    "PostedDate": "2013-11-05T13:50:00.31-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1118359",
+    "ThreadId": "465655",
+    "Html": "\r\n<div>Thank you very much!<br>\r\n<br>\r\n</div>\r\n",
+    "PostedDate": "2013-11-05T15:17:05.953-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1483175",
+    "ThreadId": "465655",
+    "Html": "Hi Atrunnell, were you able to fix the exception? if yes, could you share the steps to start with.<br />\n",
+    "PostedDate": "2016-09-07T12:25:47.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

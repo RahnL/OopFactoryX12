@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1453340",
+    "ThreadId": "647893",
+    "Html": "Hi new to the forum as we are considering OopFactory within our application stack. We host on Azure. Any known issues that would prevent us from deploying the parser there?\r<br />\n<br />\nThanks in advance!<br />\n",
+    "PostedDate": "2015-11-20T10:30:56.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1453709",
+    "ThreadId": "647893",
+    "Html": "I never came across any code that would make me tell you to beware for Azure. That being said the beauty of Azure is spinning up a virtual machine and testing it in a matter of minutes.. Even the database functionality should run fine on Azure assuming SQL access is setup etc.<br />\n",
+    "PostedDate": "2015-11-24T17:16:49.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

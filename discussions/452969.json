@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1078833",
+    "ThreadId": "452969",
+    "Html": "I am getting an error when I try to parse an 837 file, and it gives me an error about Date formatting: &quot;When converting a string to DateTime, parse the string to take the date....&quot;\r<br />\n<br />\nI've looked through the file and can find any invalid formatting.\r<br />\n<br />\nIt fails at ClaimDocument.cs, when it tries to Deserialize:<br />\n<pre><code>   public static ClaimDocument Deserialize(string xml)\n    {\n        XmlSerializer serializer = new XmlSerializer(typeof(ClaimDocument));\n        return (ClaimDocument)serializer.Deserialize(new StringReader(xml));\n    }\n\n</code></pre>\n\nAny ideas how to troubleshoot this further.  I copied the xml string to Notepad++, but I cannot find anything wrong.\r<br />\n<br />\nthx<br />\n",
+    "PostedDate": "2013-08-09T11:26:40.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083906",
+    "ThreadId": "452969",
+    "Html": "You have a field somewhere in your x12 that expected to be a date format but it is not.  This is usually a problem with test data when they might do something like replace a date such as 20130822 with 99999999 which can't be parsed.  I will probably working on changing the xslt so that it will skip these invalid dates, but I need to add another property where you can get the original string from the file in the case that they can't get serialized into one of the DateTime properties on the ClaimDocument object.\r<br />\nThere are x12 validators that should catch these errors and reject the file as invalid so that you don't necessary have to attempt a parse on an invalid file.<br />\n",
+    "PostedDate": "2013-08-22T19:18:04.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

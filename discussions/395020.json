@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "910549",
+    "ThreadId": "395020",
+    "Html": "\r\n<p>If I have an interchange object, that has many functiongroup objects, that has many transaction objects, there's really no way to trim up my interchange object so that he has just one functiongroup object with one transaction object. &nbsp;Am I right? &nbsp;</p>\r\n<p>Interchange, exposes his list of functongroups, so I can clear them and add back one.</p>\r\n<p>FunctionGroup doesn't expose his dictionary of Transactions, so there's no clearing them and adding back one.</p>\r\n",
+    "PostedDate": "2012-09-10T11:16:55.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "910580",
+    "ThreadId": "395020",
+    "Html": "<p>I have checked in changeset 19774 to expose Transactions as a List&lt;Transaction&gt; instead IEnumerable&lt;Transaction&gt;.</p>\r\n<p>Having the dictionary caused other problems when users had transactions with duplicate control numbers.&nbsp; Though this is not a valid X12, test data and sometimes production data would have this problem.</p>\r\n<p>So hopefully this will fix your problem too.</p>",
+    "PostedDate": "2012-09-10T12:25:21.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

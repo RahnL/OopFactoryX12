@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "934158",
+    "ThreadId": "401228",
+    "Html": "\r\n<p><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"></p>\r\n<p>&lt;PLB&gt; <br>\r\n&lt;PLB01&gt;1205896107&lt;/PLB01&gt; <br>\r\n&lt;PLB02&gt;20101231&lt;/PLB02&gt; <br>\r\n&lt;PLB03&gt;L6&lt;/PLB03&gt; <br>\r\n&lt;PLB04&gt;-3.85<br>\r\n&lt;/PLB04&gt;<br>\r\n&lt;/PLB&gt;</p>\r\n</span></span></span>\r\n<p></p>\r\n<p><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\"><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\"><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\"><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\"></p>\r\n<p><span style=\"color:#000000\">I am trying to access the reason code and indentifier as follows</span></p>\r\n</span></span></span></span>\r\n<p></p>\r\n<p><span style=\"font-family:Consolas; color:#dcdcdc; font-size:x-small\"></p>\r\n<p><span style=\"font-family:Consolas; color:#dcdcdc; font-size:x-small\"></p>\r\n<p><span style=\"font-family:Consolas; color:#dcdcdc; font-size:x-small\">&nbsp;</span></p>\r\n</span>\r\n<p></p>\r\n</span>\r\n<p></p>\r\n<p></p>\r\n</span></span></span>\r\n<p></p>\r\n<p><span style=\"color:#000000\">AdjustmentReasonCode = null != <span style=\"color:#ff0000\">\r\nxPlb.PLB03.PLB0301</span>? xPlb.PLB03.PLB0301.ToString():string.Empty;</span><br>\r\n<span style=\"color:#000000\">AdjustmentIdentifier = null != <span style=\"color:#ff0000\">\r\nxPlb.PLB03.PLB0302 </span>? xPlb.PLB03.PLB0302.ToString() : string.Empty;</span></p>\r\n<p><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\"><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\"><font face=\"Consolas\" size=\"2\" color=\"#ffffff\"></p>\r\n<p>&nbsp;</p>\r\n</font></span></span>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n<p><span style=\"color:#000000\">PLB0301 and PLB0302 are not to be found.</span></p>\r\n<p><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\"><span style=\"color:#000000\">&#65279;</span></span></span></span></span></span></span></span><span style=\"color:#000000\">Do\r\n you have any idea why?</span></p>\r\n<p><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\"><span style=\"color:#000000\">&#65279;</span></span></span></span></span></span></span></span><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#608b4e; font-size:x-small\"><span style=\"font-family:Consolas; color:#ffffff; font-size:x-small\">&#65279;</span></span></span></span></span></span></span><span style=\"color:#000000\">Thanks\r\n in advance.</span></p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-10-30T04:47:30.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934192",
+    "ThreadId": "401228",
+    "Html": "<p>Your parsed segment is coming from an EDI segment that looks like:</p>\r\n<p>PLB*1205896107*20101231*L6*-3.85~</p>\r\n<p>Your code is expecting something like:</p>\r\n<p>PLB*1205896107*20101231*L6:999999999*-3.85~</p>\r\n<p>Because there is no sub-element delimiter in PLB03, it is not giving you the PLB301 and PLB302 that you are looking for.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-10-30T06:20:07.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "936035",
+    "ThreadId": "401228",
+    "Html": "<p>Thank you</p>",
+    "PostedDate": "2012-11-03T05:45:25.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

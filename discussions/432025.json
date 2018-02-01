@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "996625",
+    "ThreadId": "432025",
+    "Html": "Please consider adding the support for 852.<br />\n",
+    "PostedDate": "2013-02-05T05:04:22.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "996626",
+    "ThreadId": "432025",
+    "Html": "<a href=\"http://www.hdexchange.com/852ProductActivity.html\" rel=\"nofollow\">http://www.hdexchange.com/852ProductActivity.html</a><br />\n",
+    "PostedDate": "2013-02-05T05:07:40.443-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002464",
+    "ThreadId": "432025",
+    "Html": "This has been added as changeset <a href=\"http://x12parser.codeplex.com/SourceControl/changeset/23147\" rel=\"nofollow\">http://x12parser.codeplex.com/SourceControl/changeset/23147</a>.\r<br />\nI added a few other segments from other specifications also.<br />\n",
+    "PostedDate": "2013-02-17T11:30:56.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

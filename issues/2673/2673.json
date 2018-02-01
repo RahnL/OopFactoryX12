@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n\n We have an ANSI file with multiple ISA-IEA 835's, however the segment separator (position 106) value is different from one 835 to the next.  \n\nIt appears that your parser (ParseMultiple function) is not respecting the changing of the ISA separators in positions 104, 105 and 106.\n\nFor your convenience, here is an example of one file that we are trying to process:\n\nFileName:    1234.DAT\n------------------------\nISA*00*          *00*          *27*12345          *29*123456789      *150303*0022*^*00501*000000680*0*P*:~\n.....\nIEA*1*000000680~\nISA*00*          *00*          *27*12345          *29*123456789      *150303*0108*^*00501*000000672*0*P*:~\n.....\nIEA*1*000000672~\nISA*00*          *00*          *ZZ*123456789      *ZZ*123456789      *150302*1522*U*00401*000435136*0*P*<@\n.....\nIEA*1*000435136@\nISA*00*          *00*          *ZZ*123456789      *ZZ*123456789      *150302*0831*U*00401*000435061*0*P*<@\n.....\nIEA*1*000435061@\n\n\nBest Regards.",
+    "LastUpdatedDate": "2015-05-08T07:28:05.003-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-05-07T12:28:05.317-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "BUG on ParseMultiple",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2673
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2227,
+      "FileName": "example.dat",
+      "DownloadUrl": ".\\2227"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hi,\r\n\r\nWe have an ANSI file with multiple ISA-IEA 835's, however the segment separator (position 106) value is different from one 835 to the next.\r\n\r\nIt appears that your parser (ParseMultiple function) is not respecting the changing of the ISA separators in positions 104, 105 and 106.\r\n\r\nFor your convenience, here is an example of one file that we are trying to process:",
+      "PostedDate": "2015-05-07T12:32:07.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I believe that by you removing \"reader.Delimiters.SegmentTerminator\" from this lines on X12Parser.cs you get the issue resolved.\r\n\r\nswitch (segmentId)\n{\n   case \"ISA\":\n      envelop = new Interchange(_specFinder, segmentString + reader.Delimiters.SegmentTerminator);\n      envelopes.Add(envelop);\n      currentContainer = envelop;\n....",
+      "PostedDate": "2015-05-08T07:28:05.003-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

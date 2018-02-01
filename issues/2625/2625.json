@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "OopFactory.X12",
+      "DisplayName": "OopFactory.X12"
+    },
+    "ClosedComment": "All segments are now present to programitically construct an 837P and 837I document.",
+    "ClosedDate": "2015-04-02T07:44:34.82-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Add segments and loops to be able to generate a 5010 837 from scracth.",
+    "LastUpdatedDate": "2015-04-02T07:44:34.82-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-02-17T10:53:24.64-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "Create 837 Model",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 2625
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "New segments added to support 837 generation:\r\n\r\n        TypedLoopLIN.cs\n        TypedLoopLQ.cs\n        TypedLoopSVD.cs\n        TypedSegmentCAS.cs\n        TypedSegmentCL1.cs\n        TypedSegmentCR1.cs\n        TypedSegmentCR2.cs\n        TypedSegmentCR3.cs\n        TypedSegmentCRC.cs\n        TypedSegmentFRM.cs\n        TypedSegmentK3.cs\n        TypedSegmentLIN.cs\n        TypedSegmentLQ.cs\n        TypedSegmentMEA.cs\n        TypedSegmentQTY.cs\n        TypedSegmentSV2.cs\n        TypedSegmentSV5.cs\n        TypedSegmentSVD.cs\r\n\r\nOther segments/loops modified in support.\r\n\r\nCode posted in branch: branches/837Typed \nfor review.",
+      "PostedDate": "2015-02-17T10:55:36.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-04-02T07:44:34.82-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1279785",
+    "ThreadId": "554782",
+    "Html": "I need to add claim adjustments when I write outbound 837P claims, and am told I need to add a CAS segment. I cannot find this segment in Oopfactory. Before creating my own segment I wanted to ask here if anyone has already done that, or I have missed something. I'm a newbie so any advice is appreciated!<br />\n",
+    "PostedDate": "2014-07-31T17:45:59.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

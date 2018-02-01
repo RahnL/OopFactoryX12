@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Changeset in release 2.3.0",
+    "ClosedDate": "2012-07-29T11:23:33.71-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The sample X12Parser.exe cannot seem to parse the ~N1*BY**02*004 value in my 856 source .X12 file. The parsing library doesn't seem to recognize this segment. When I look at the XML specification the ~N1*BY* loop doesn't appear to be similar to the ~N1*ST* and ~N1*SF loops. I've attached what I'd suppose would be the fix, as well as my source file pasted below. Would this fix make sense?\n \nAlso, any chance that this project could be backwards compatible on Visual Studio 2008 and .NET 3.5? I don't have Visual Studio 2010 yet and otherwise have to rely on the binary executables for doing the job. \n \nGreat project by the way. A godsend!\n \nISA*00*          *00*          *12*2125931122     *12*6143364545     *120515*0851*U*00401*000000005*0*P*>~GS*SH*2125931122*6143364545*20120515*0851*5*X*004010VICS~ST*856*0001~BSN*00*521649209219*20120515*0851*0001~HL*1**S~TD1*CTN25*1****G*1*LB~TD5*B*2*FED2*M*FEDX 2 DAY*CC~REF*BM*521649209219~REF*CN*521649209219~DTM*011*20120510~DTM*067*20120510~N1*ST**92*004~N1*SF*DAVID YURMAN ENTERPR*92*12345~HL*2*1*O~PRF*SO/VINCE1~PID*S**VI*FL~REF*DP*12345~REF*IV*S1429672~N1*BY**92*004~HL*3*2*P~MAN*GM*00007121610006156802~HL*4*3*I~LIN**UP*883932284904*PR*507.5*EN*R08916DSSDDBDI7~SN1**1*EA*1*1*EA~PID*F*08*VI*RY*16X12MM SMALL WHEATON~CTT*4~SE*25*0001~GE*1*5~IEA*1*000000005~",
+    "LastUpdatedDate": "2013-05-16T04:34:01.14-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-05-15T13:15:10.41-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ANSI X12 856 Parsing Issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1231
+  },
+  "FileAttachments": [
+    {
+      "FileId": 507,
+      "FileName": "Ansi-856-4010Specification.xml",
+      "DownloadUrl": ".\\507"
+    },
+    {
+      "FileId": 508,
+      "FileName": "diamcell856.x12",
+      "DownloadUrl": ".\\508"
+    },
+    {
+      "FileId": 509,
+      "FileName": "Ansi-856-4010Specification.xml",
+      "DownloadUrl": ".\\509"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Sorry the X12 source file didn't paste in cleanly. It's attached here.",
+      "PostedDate": "2012-05-15T13:16:22.523-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-05-15T19:18:41.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think I might have fixed the issue with the ASN 856 parsing. Attached is a reworked XML spec for it. Installed VS 2010 Express so I could compile and test. Looked okay.",
+      "PostedDate": "2012-05-15T19:18:41.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 16561.",
+      "PostedDate": "2012-05-20T19:23:42.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've added your spec to the code and added your x12 as a unit test.\r\n\r\nUnfortunately there is some usage in the  System.Collections.Concurrent namespace that doesn't exist in .NET 3.5 that was added to fix some multi-threading issues, so I won't be able to go back to 3.5 with the current implementation.  What I might be able to do is do a second build configuration that doesn't use this feature of 4.0, but won't be thread safe for multi-threading.  I'll update you with the progress.",
+      "PostedDate": "2012-05-20T19:29:57.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-07-29T09:41:23.297-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-07-29T11:23:33.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:59.053-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:01.14-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

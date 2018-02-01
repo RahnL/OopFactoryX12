@@ -1,0 +1,118 @@
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using OopFactory.X12.Parsing;
+using System;
+using System.IO;
+using System.Xml;
+
+namespace EdiConversionTester
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			var edi = "ISA * 00 * *00 * *08 * 6122650000 * 01 * 0130113 * 170130 * 1705 * U * 00401 * 856000361 * 0 * P *> ~GS * SH * 6122650000 * 0130113 * 20170130 * 1705 * 856000361 * X * 004010~ST * 856 * 0001~BSN * 00 * 17063401301700009 * 20170130 * 170528 * 0001~HL * 1 * *S~TD1 * CTN76 * 1 * ***G * 2.4 * LB~TD5 * ****UPS Collect~REF * BM * 0000027747506~DTM * 011 * 20170130~N1 * ST * *92 * 79~HL * 2 * 1 * O~PRF * nbq1 - 79 * **20160802~TD1 * CNT25 * 1 * ***G * 2.4 * LB~HL * 3 * 2 * P~MAN * GM * 00008839053384255627~HL * 4 * 3 * I~LIN * *UP * 190325857165 * VA * W1080BY7 * SZ * 12~SN1 * *1 * EA~CTT * 4~SE * 18 * 0001~GE * 1 * 856000361~IEA * 1 * 856000361~";
+
+			Console.WriteLine("Welcome to the Edi Conversion Tester");
+
+			Console.WriteLine($"Test Edi : {edi}\r\n");
+
+			var xmlEdi = ConvertEdiToXml(edi);
+
+			var jsonEdi = ConvertXmlEdiToJson(xmlEdi);
+
+			var resonstitutedEdi = ConvertEdiJsonToX12(jsonEdi);
+
+			Console.WriteLine("Comparing Test Edi with parsed and reconstituted Edi\r\n");
+
+			if (string.Compare(edi, resonstitutedEdi) == 0)
+			{
+				Console.WriteLine("\r\nEdi Match Success : Conversion and Reconstitution Worked");
+			}
+			else
+			{
+				Console.WriteLine("\r\nEdi Match Failure : Conversion and Reconstitution Failed");
+			}
+
+			Console.WriteLine("End of Line");
+		}
+
+		private static string ConvertEdiJsonToX12(string jsonEdi)
+		{
+			try
+			{
+				// Attempt to parse the string into a JSON Object to ensure it's valid JSON
+				var j = JObject.Parse(jsonEdi);
+
+				var ediXmlAsString = string.Empty;
+				var ediXml = JsonConvert.DeserializeXmlNode(jsonEdi);
+
+				using (var stringWriter = new StringWriter())
+				using (var xmlTextWriter = XmlWriter.Create(stringWriter))
+				{
+					ediXml.WriteTo(xmlTextWriter);
+					xmlTextWriter.Flush();
+					ediXmlAsString = stringWriter.GetStringBuilder().ToString();
+				}
+
+				var edi = new X12Parser().TransformToX12(ediXmlAsString);
+
+				Console.WriteLine($"\r\nEdi Converted from Json to X12\r\n\r\n{edi}");
+
+				return edi;
+			}
+			catch (JsonReaderException jex)
+			{
+				var message = $"Invalid JSON provided : {jex.Message}";
+
+				throw new Exception(message);
+			}
+			catch (Exception ex)
+			{
+				var message = $"An unknown error occurred processing the edi : {ex.Message}";
+
+				throw new Exception(message);
+			}
+		}
+
+		private static string ConvertXmlEdiToJson(XmlDocument xmlEdi)
+		{
+			try
+			{
+				var ediAsJson = JsonConvert.SerializeXmlNode(xmlEdi);
+
+				Console.WriteLine($"\r\nEdi Converted from X12 to JSON\r\n\r\n{ediAsJson}");
+
+				return ediAsJson;
+			}
+			catch (Exception ex)
+			{
+				var message = $"An unknown error occurred processing the edi : {ex.Message}";
+
+				throw new Exception(message);
+			}
+		}
+
+		private static XmlDocument ConvertEdiToXml(string edi)
+		{
+			var ediXmlAsString = string.Empty;
+			var ediReceive = new X12Parser().ParseMultiple(edi);
+			var interchange = ediReceive[0];
+
+			var ediDocument = new XmlDocument();
+			ediDocument.LoadXml(interchange.Serialize());
+
+			using (var stringWriter = new StringWriter())
+			using (var xmlTextWriter = XmlWriter.Create(stringWriter))
+			{
+				ediDocument.WriteTo(xmlTextWriter);
+				xmlTextWriter.Flush();
+				ediXmlAsString = stringWriter.GetStringBuilder().ToString();
+			}
+
+			Console.WriteLine($"\r\nEdi as XML\r\n\r\n{ediXmlAsString}");
+
+			return ediDocument;
+		}
+	}
+}

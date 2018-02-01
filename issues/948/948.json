@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This has been released in 2.3.1.  Use the AcknowledgeX12 as an example of how to use the OopFactory.X12.Validation assembly to create 999 acknowledgement files from any X12 file.",
+    "ClosedDate": "2012-10-13T18:05:03.42-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "First I have to say thanks.  I was about start writing my own parser and you and the dev team have just saved me weeks of work.  Second your design is great. I consider myself a decent programmer but you guys have awesome skills.\nAlong those same lines I spent a few hours trying to find where to start.  I think I have the hang of the parser and now need to make an acknowledgement 997 file for a 5010.  Does the capability exist to make one or can you point me in the right direction if you have already made that module. Thanks, Doug.",
+    "LastUpdatedDate": "2013-05-16T04:34:03.253-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-12-05T22:26:52.417-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Creation of 997",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 948
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I need to work on that part of the documentation, but for now you can look at this discussion http://x12parser.codeplex.com/discussions/265463 to see some code samples for creating a message.  The example uses an 837, but you can specify a 997 and it should pick up the specification for the 997.\r\nI will keep this issue open until I provide that documentation as it's own wiki page.",
+      "PostedDate": "2011-12-06T06:31:00.803-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the update and information.",
+      "PostedDate": "2011-12-06T07:54:41.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi dstrubhar, I looked through the info you gave me and I think I asked the wrong question.  After reading more on the x12 formats and the 5010 i think i need to creat a 999 acknowledgement file.  I need to read in an 837 in the new 5010 format and produce a 999(?) and not a 997.  Would I use a transformation object to do that?  Ca you show me a small code sample that might do that?  Thanks again.",
+      "PostedDate": "2011-12-06T21:14:55.07-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-13T18:05:03.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:01.933-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:03.253-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

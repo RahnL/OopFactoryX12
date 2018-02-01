@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1042555",
+    "ThreadId": "443405",
+    "Html": "I'm getting a NullReferenceException in the ProfessionalClaimToHcfa1500FormTransformation process. In debugging, it appears to be because the incoming 837 has some claims where they pass in a name only for a Service Location. <br />\n<pre><code>NM1*77*2*PATIENTS HOME~</code></pre>\n\nThere is no address line 1, city, state, zip, etc. The source in TransformClaimToHcfa1500 does not seem to handle this. I've tried adding a check:<br />\n<pre><code>if (serviceLocation.Address.Line1 != null)</code></pre>\n\nBut the check itself throws the NullReferenceException. Any idea how to handle this?<br />\n",
+    "PostedDate": "2013-05-12T16:36:47.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1042560",
+    "ThreadId": "443405",
+    "Html": "Nevermind, I saw my problem right after posting. I needed to check for null on serviceLocation.Address not the Address.Line1.<br />\n",
+    "PostedDate": "2013-05-12T16:58:33.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "We have a requirement to split (unbundle) a file that may include multiple ISA's with multiple GS's into multiple files that each contain a single ISA\\GS. There are methods for unbundling by transaction and by loop, but no UnbundleByFunctionGroup(). Any chance we could see that method in a future release?",
+    "LastUpdatedDate": "2013-06-10T08:28:52.83-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-06-10T08:28:52.83-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Feature Request: UnbundleByFunctionGroup()",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1615
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

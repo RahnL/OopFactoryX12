@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1048311",
+    "ThreadId": "444906",
+    "Html": "When I run the command line tool, it only outputs XML for the header part - not the actual data.  Convert to hierarchy only produces 1 line.<br />\nSample:<br />\n<pre><code>ISA*00*          *00*          *ZZ*STFM   SF00014 *ZZ*043028799AU    *130517*135\n5*U*00304*000000038*0*T*:~GS*CI*LIENH811S000000*043028799*130517*1355*380001*X*0\n03041~ST*811*0001~BIG*130517*1~N1*IN*STATE FARM INSURANCE*NI*25178~REF*BF*28~N1*\nSQ*SOME CUSTOMER (AUTO)*FI*043028799~HL*1**1*1~NM1*LM*2*SOME BANK*****F\nI*043028799~HL*2*1*2*1~NM1*AG*2*SOME PERSON*****93*0170~N3*1913 SILAS DE\nANE HWY~N4*ROCKY HILL*CT*060671309~PER*AM**TE*860-563-7283~HL*3*2*4*1~NM1*IL*1*C\nITRO*ANNETTE~N3*125 CAROLINE RD~N4*BOZRAH*CT*06334**RJ*28~IT1**1*IP*0~SI*AD*08*R\nEW~SI*AD*09*CON~REF*NF*25178~REF*IG* 466249B2707A~DTM*007*130227***20~DTM*009*13\n0326***20~HL*4*3*5*1~LX*1~VEH**1C3CCBCG2CN122380*20*12~PID*X**AD*VEHMK*CHRYSLER~\nPID*X**AD*VEHMD*200~PID*X**AD*VEHTY*4DR~III*CV*COMP~AMT*PH*500~III*CV*COLL~AMT*P\nH*500~III*CV*LP~HL*5*4*8*0~SLN*1**I*0*EA~NM1*LM*2*SOME BANK~TDS*1~SE*39\n*0001~ST*811*0002~BIG*130517*1~N1*IN*STATE FARM INSURANCE*NI*25178~REF*BF*22~N1*\nSQ*SOME CUSTOMER (AUTO)*FI*043028799~HL*1**1*1~NM1*LM*2*ANOTHER BANK\n*****FI*043028799~N2*TRUST COMPANY~HL*2*1*2*1~NM1*AG*2*PAT THERIOT INSURANCE AGC\nY INC*****93*1801~N3*400 S MAIN ST STE A~N4*ST MARTINVLLE*LA*705824544~PER*AM**T\nE*337-394-6006~HL*3*2*4*1~NM1*IL*1*PREJEAN*JEREMY*C~N3*1100 NURSERY HWY~N4*BREAU\nX BRIDGE*LA*70517**RJ*22~IT1**1*IP*0~SI*AD*08*CER~SI*AD*09*CON~REF*NF*25178~REF*\nIG*U040635C2018J~DTM*007*130322***20~DTM*009*130326***20~HL*4*3*5*1~LX*1~VEH**3G\nTEC230X9G224079*20*09~PID*X**AD*VEHMK*GMC~PID*X**AD*VEHMD*C1500~PID*X**AD*VEHTY*\nPICKUP~III*CV*COMP~AMT*PH*50~III*CV*COLL~AMT*PH*500~III*CV*LP~HL*5*4*8*0~SLN*1**\nI*0*EA~NM1*LM*2*ANOTHER BANK~TDS*1~CTT*2~SE*41*0002~GE*2*380001~IEA*\n1*000000038~\n</code></pre>\n\nHere is the output:<br />\n<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;\n&lt;Interchange segment-terminator=&quot;:&quot; element-separator=&quot;*&quot; sub-element-separator=&quot;*&quot;&gt;\n  &lt;ISA&gt;\n    &lt;!--Author Information Qualifier--&gt;\n    &lt;ISA01&gt;00&lt;!--No Authorization Information Present--&gt;&lt;/ISA01&gt;\n    &lt;!--Author Information--&gt;\n    &lt;ISA02&gt;          &lt;/ISA02&gt;\n    &lt;!--Security Information Qualifer--&gt;\n    &lt;ISA03&gt;00&lt;!--No Security Information Present--&gt;&lt;/ISA03&gt;\n    &lt;!--Security Information--&gt;\n    &lt;ISA04&gt;          &lt;/ISA04&gt;\n    &lt;!--Interchange ID Qualifier--&gt;\n    &lt;ISA05&gt;ZZ&lt;!--Mutually Defined--&gt;&lt;/ISA05&gt;\n    &lt;!--Interchange Sender ID--&gt;\n    &lt;ISA06&gt;STFM   SF00014 &lt;/ISA06&gt;\n    &lt;!--Interchange ID Qualifier--&gt;\n    &lt;ISA07&gt;ZZ&lt;!--Mutually Defined--&gt;&lt;/ISA07&gt;\n    &lt;!--Interchange Receiver ID--&gt;\n    &lt;ISA08&gt;043028799AU    &lt;/ISA08&gt;\n    &lt;!--Interchange Date--&gt;\n    &lt;ISA09&gt;130517&lt;/ISA09&gt;\n    &lt;!--Interchange Time--&gt;\n    &lt;ISA10&gt;135\n5&lt;/ISA10&gt;\n    &lt;!--Inter Control Standards Identifier--&gt;\n    &lt;ISA11&gt;U&lt;!--U.S. EDI Community of ASC X12, TDCC, and UCS--&gt;&lt;/ISA11&gt;\n    &lt;!--Inter Control Version Number--&gt;\n    &lt;ISA12&gt;00304&lt;/ISA12&gt;\n    &lt;!--Inter Control Number--&gt;\n    &lt;ISA13&gt;000000038&lt;/ISA13&gt;\n    &lt;!--Acknowlegment Requested--&gt;\n    &lt;ISA14&gt;0&lt;!--No Acknowledgment Requested--&gt;&lt;/ISA14&gt;\n    &lt;!--Usage Indicator--&gt;\n    &lt;ISA15&gt;T&lt;!--Test Data--&gt;&lt;/ISA15&gt;\n    &lt;ISA16 /&gt;\n  &lt;/ISA&gt;\n&lt;/Interchange&gt;\n</code></pre>\n\n",
+    "PostedDate": "2013-05-24T09:17:27.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1051427",
+    "ThreadId": "444906",
+    "Html": "Any thoughts, suggestions, etc?<br />\n",
+    "PostedDate": "2013-05-31T18:00:02.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1056875",
+    "ThreadId": "444906",
+    "Html": "bump<br />\n",
+    "PostedDate": "2013-06-14T06:18:22.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1068133",
+    "ThreadId": "444906",
+    "Html": "I was able to parser and reformat your x12 message after I removed the extra endlines from your file:<br />\n<pre><code>ISA*00*          *00*          *ZZ*STFM   SF00014 *ZZ*043028799AU    *130517*1355*U*00304*000000038*0*T*:~\n  GS*CI*LIENH811S000000*043028799*130517*1355*380001*X*003041~\n    ST*811*0001~\n      BIG*130517*1~\n      N1*IN*STATE FARM INSURANCE*NI*25178~\n        REF*BF*28~\n      N1*SQ*SOME CUSTOMER (AUTO)*FI*043028799~\n      TDS*1~\n      HL*1**1*1~\n        NM1*LM*2*SOME BANK*****FI*043028799~\n        HL*2*1*2*1~\n          NM1*AG*2*SOME PERSON*****93*0170~\n            N3*1913 SILAS DEANE HWY~\n            N4*ROCKY HILL*CT*060671309~\n            PER*AM**TE*860-563-7283~\n          HL*3*2*4*1~\n            NM1*IL*1*CITRO*ANNETTE~\n              N3*125 CAROLINE RD~\n              N4*BOZRAH*CT*06334**RJ*28~\n            IT1**1*IP*0~\n              SI*AD*08*REW~\n              SI*AD*09*CON~\n              REF*NF*25178~\n              REF*IG* 466249B2707A~\n              DTM*007*130227***20~\n              DTM*009*130326***20~\n            HL*4*3*5*1~\n              LX*1~\n                VEH**1C3CCBCG2CN122380*20*12~\n                PID*X**AD*VEHMK*CHRYSLER~\n                PID*X**AD*VEHMD*200~\n                PID*X**AD*VEHTY*4DR~\n              III*CV*COMP~\n                AMT*PH*500~\n              III*CV*COLL~\n                AMT*PH*500~\n              III*CV*LP~\n              HL*5*4*8*0~\n                SLN*1**I*0*EA~\n                  NM1*LM*2*SOME BANK~\n    SE*39*0001~\n    ST*811*0002~\n      BIG*130517*1~\n      N1*IN*STATE FARM INSURANCE*NI*25178~\n        REF*BF*22~\n      N1*SQ*SOME CUSTOMER (AUTO)*FI*043028799~\n      TDS*1~\n      HL*1**1*1~\n        NM1*LM*2*ANOTHER BANK*****FI*043028799~\n          N2*TRUST COMPANY~\n        HL*2*1*2*1~\n          NM1*AG*2*PAT THERIOT INSURANCE AGCY INC*****93*1801~\n            N3*400 S MAIN ST STE A~\n            N4*ST MARTINVLLE*LA*705824544~\n            PER*AM**TE*337-394-6006~\n          HL*3*2*4*1~\n            NM1*IL*1*PREJEAN*JEREMY*C~\n              N3*1100 NURSERY HWY~\n              N4*BREAUX BRIDGE*LA*70517**RJ*22~\n            IT1**1*IP*0~\n              SI*AD*08*CER~\n              SI*AD*09*CON~\n              REF*NF*25178~\n              REF*IG*U040635C2018J~\n              DTM*007*130322***20~\n              DTM*009*130326***20~\n            HL*4*3*5*1~\n              LX*1~\n                VEH**3GTEC230X9G224079*20*09~\n                PID*X**AD*VEHMK*GMC~\n                PID*X**AD*VEHMD*C1500~\n                PID*X**AD*VEHTY*PICKUP~\n              III*CV*COMP~\n                AMT*PH*50~\n              III*CV*COLL~\n                AMT*PH*500~\n              III*CV*LP~\n              HL*5*4*8*0~\n                SLN*1**I*0*EA~\n                  NM1*LM*2*ANOTHER BANK~\n      CTT*2~\n    SE*41*0002~\n  GE*2*380001~\nIEA*1*000000038~</code></pre>\n\nI noticed that the way you have pasted the message in the file an end line occurs after every 80 characters.  This is actually not allowed in X12.  The ISA segment is fixed-witdh and must be exactly 126 characters.  It looks for 3 delimiters in 3 precise locations within the first 126 characters.\r<br />\nI have had a few other users report this same problem, but it's because your sender is doing this for some reason as part of the transmission.  You will need to remove these extra end line characters in some kind of pre-processing step.<br />\n",
+    "PostedDate": "2013-07-14T14:32:05.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1068183",
+    "ThreadId": "444906",
+    "Html": "Thanks for answer.\r<br />\nSince these are not allowed, why not just remove all end lines from any file before you process it?<br />\n",
+    "PostedDate": "2013-07-14T19:28:57.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1068360",
+    "ThreadId": "444906",
+    "Html": "End line characters are allowed as delimiters.  But the X12 defines delimiters very specifically.  The end segment delimiter must occur at position 107 in the file.  So valid end line delimiters cannot be removed.\r<br />\n<br />\nWhat is happening to your file is not part of valid X12 so the process of removing these end lines is to correct for some transmission protocol by your sender. \r<br />\n<br />\nBecause the first end-line got inserted within the first 126 characters it has invalidated the file.<br />\n",
+    "PostedDate": "2013-07-15T05:38:48.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

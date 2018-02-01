@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "844445",
+    "ThreadId": "358260",
+    "Html": "\r\n<p>Thanks for this amazing project!</p>\r\n<p>I am currently calling x12parser via command line and when it hits a malformed file it fails, as would be expected.</p>\r\n<p>However, it crashes and I get a 'OopFactory.X12.X12Parser has stopped working' error and am forced to select the 'Close the program' button.</p>\r\n<p>I am currently trying to build out an automated solution and so this is requiring manual intervention.</p>\r\n<p>Using Win7.</p>\r\n<p>Don't suppose anyone has any thoughts?</p>\r\n",
+    "PostedDate": "2012-06-04T08:39:52.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "844481",
+    "ThreadId": "358260",
+    "Html": "<p>Put the relevant code that's in the console app inside your code and put exception handling around it.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-06-04T09:29:49.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "844487",
+    "ThreadId": "358260",
+    "Html": "<p>Thanks, that's a thought.&nbsp;</p>\r\n<p>I was able to work around it by forcing it to run as hidden window with a defined timeout period.</p>\r\n<p><br />Thanks!</p>",
+    "PostedDate": "2012-06-04T09:39:49.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

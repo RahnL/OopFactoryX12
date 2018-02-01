@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "1027295",
+    "ThreadId": "439522",
+    "Html": "Is there an 837P/I/D XSLT already defined to convert to a flat file?<br />\n<br />\nThanx<br />\nJim H<br />\n",
+    "PostedDate": "2013-04-08T08:27:09.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1027300",
+    "ThreadId": "439522",
+    "Html": "There is currently some code in the OopFactory.X12.Hipaa assembly that will convert the x12 to a more user friendly object model for claims.  See here:  <a href=\"http://x12parser.codeplex.com/wikipage?title=837%20Claim%20Parser%20Usage\" rel=\"nofollow\">Claim Parser Usage</a>.\r<br />\n<br />\nTo convert to a flat file you can traverse this object model to pick the elements you need.\r<br />\n<br />\nLook at the code for the console app OopFactory.X12.Hipaa.ClaimParser to see how to use this library.<br />\n",
+    "PostedDate": "2013-04-08T08:36:57.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1027334",
+    "ThreadId": "439522",
+    "Html": "Thanks for the quick response. I downloaded the source and opened it in VS 2012. I am not a C# programmer. I usually can figure things out. I don't see in the code where the transformation is done. Can you point me in the right direction. I apologize for not knowing the language.\r<br />\n<br />\nThanx\r<br />\nJim H<br />\n",
+    "PostedDate": "2013-04-08T09:28:11.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1028061",
+    "ThreadId": "439522",
+    "Html": "Are you familiar with SQL Server?  I have just checked in some code that will import the results to a database.  I still need to add a console app so you don't have to touch any C# code.\r<br />\nWhen I am done I will post the instructions on how to use the console app and a sample query to get at the data you need.<br />\n",
+    "PostedDate": "2013-04-09T12:57:43.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1028427",
+    "ThreadId": "439522",
+    "Html": "Yes, We have SQL Server installed. Thanks for all your help. You are truly going above and beyond anything I expected. I did find the XSLT code and was trying to &quot;figure it out&quot;. I can do that. It probably doesn't help that we don't have VS installed at the office. \r<br />\nThanx\r<br />\nJim H<br />\n",
+    "PostedDate": "2013-04-10T06:46:55.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030800",
+    "ThreadId": "439522",
+    "Html": "I think I figured out the XSLT. However, when I tried to execute I'm not getting the results from my changes. It appears to be using the original x12-837-to-claimdocument.xslt. I did a build on oopfactory.x12.hippa and oopfactory.x12.hipaa.claimparser. I checked that the references are pointing to my xslt. What am I missing?\r<br />\n<br />\nThanx\r<br />\nJim H<br />\n",
+    "PostedDate": "2013-04-15T13:00:04.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031683",
+    "ThreadId": "439522",
+    "Html": "Just to test my changes I added additional elements to the PAT segment and ran my changes. It looks like this PAT/19////D8/20130101/01/125/Y~. Slashes instead of asterisk. My coding looks like this         &lt;Relationship&gt;<br />\n<pre><code>      &lt;xsl:attribute name=&quot;Code&quot;&gt;\n        &lt;xsl:value-of select=&quot;../PAT/PAT01&quot;/&gt;\n      &lt;/xsl:attribute&gt;\n      &lt;xsl:attribute name=&quot;DateofDeath&quot;&gt;\n            &lt;xsl:value-of select=&quot;concat(substring(../PAT/PAT06,1,4),'-',substring(../PAT/PAT06,5,2),'-',substring(../PAT/PAT06,7,2))&quot;/&gt;\n      &lt;/xsl:attribute&gt;\n      &lt;xsl:attribute name=&quot;PatientWeight&quot;&gt;\n           &lt;xsl:value-of select=&quot;../PAT/PAT08&quot;/&gt;\n      &lt;/xsl:attribute&gt;\n        &lt;xsl:attribute name=&quot;PregnancyIndicator&quot;&gt;\n          &lt;xsl:value-of select=&quot;../PAT/PAT09&quot;/&gt;\n        &lt;/xsl:attribute&gt;\n    &lt;/Relationship&gt;\n</code></pre>\n\nThe only output I get is the PAT01 &quot;Code&quot;.<br />\n<br />\nWhy?<br />\n<br />\nI know this isn't an XSLT/XML forum. But I'm figuring the people here know more about the EDI and the X12Parser than anywhere else. <br />\nThanx<br />\nJim H<br />\n",
+    "PostedDate": "2013-04-17T04:20:48.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031753",
+    "ThreadId": "439522",
+    "Html": "Within the Visual Studio IDE, if you have your XSLT in the edit window, you will have an XML menu where you can run your xslt, after you set the Input in the properties window to the XML file created by the raw x12 parser.  This will let you test your XSLT.\r<br />\n<br />\nOther than that you also need to know that Visual Studio spits it's code out to a bin\\Debug or bin\\Release folder depending on what Configuration you compiled in.  Make sure you are running what you really did compile and not the original compilation.  (or just run in the development environment using the command arguments from the Project's property windows).<br />\n",
+    "PostedDate": "2013-04-17T06:01:26.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1031789",
+    "ThreadId": "439522",
+    "Html": "Thanks for the information. I did read online about testing the XSLT in VS IDE. I did figure out the Debug/Release feature. I've made sure i was running my version rather than the one downloaded. I have learned quite a bit in the last few days. Can be frustrating though! I will let you know what I find...or don't.\r<br />\n<br />\nThanx\r<br />\nJim H<br />\n",
+    "PostedDate": "2013-04-17T06:44:07.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1032140",
+    "ThreadId": "439522",
+    "Html": "Ok, I've been at this for awhile. When I run the test stream with x12parser the output XML has my data parsed correctly. When I try to run the oopfactory.x12.hipaa.claimparser, the output XML does NOT have my data parsed. When I Debug my XSLT with the XML from x12parser, the output XML is correct. I'm confused! Again. \r<br />\nThe other issue I have is executing the oopfactory.x12.hipaa.claimparser. I've read the documentation and I still have trouble executing from the command prompt. Example: oopfactory.x12.hipaa.claimparser &quot;h:\\release\\test837p.txt&quot; &quot;<em>.</em>&quot; &quot;h:\\release\\new.xml&quot; I get errors about the path not being correct. If I execute it with no parameters, it will execute but the output XML is not correct. I've been looking at this too long today. Any additional help is appreciated. \r<br />\nThanx\r<br />\nJim H <br />\n",
+    "PostedDate": "2013-04-17T18:19:34.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

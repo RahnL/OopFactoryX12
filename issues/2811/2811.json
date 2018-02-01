@@ -1,0 +1,61 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am really happy to have found this project and am very grateful for the work put in to it.\n\nOne thing I noticed is that whitespace between XML nodes is preserved when using TransformToX12. I believe this is a problem for trading partners that are using CR/LF as the segment terminator as any XML formatted to be human-readable will have many CR/LFs.\n\nOne simple solution is to modify OopFactory.X12.TransformToX12.Program.cs to allow a 3rd command line argument that would affect whether or not whitespace should be preserved during transformation.\n\nI have attached modifications to the Program.cs file mentioned above. Apologies if there is a way to contribute that I have missed here or if I'm missing something else that addresses this issue.\n\nEdit: I have updated the attachment",
+    "LastUpdatedDate": "2016-09-05T08:28:55.18-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2016-09-01T11:24:11.083-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "TransformToX12.exe preserves XML whitespace between nodes",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2811
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3262,
+      "FileName": "Program.cs",
+      "DownloadUrl": ".\\3262"
+    },
+    {
+      "FileId": 3263,
+      "FileName": "Program.cs",
+      "DownloadUrl": ".\\3263"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The original solution I provided relied on Regex to string whitespace, but this also removed whitespace when nodes had only whitespace in them. The new fix relies on XmlDocument's \"preserve whitespace\" property and loads the file using the same filestream that it otherwise used.",
+      "PostedDate": "2016-09-05T08:28:53.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2016-09-05T08:28:55.18-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

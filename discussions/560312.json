@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1287250",
+    "ThreadId": "560312",
+    "Html": "I've been able to process an 830 document with all the segments except 'NTE'. It's is not defined in your supported table segments for the 830. Is there any possibility that it might be added? Or is there a way programmatically around this?<br />\n",
+    "PostedDate": "2014-08-06T10:55:55.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1291399",
+    "ThreadId": "560312",
+    "Html": "I'd like to piggy back on leeman and also ask for segment NTE to be added. In my case, I need it in the 204 specification.  Oddly, it's listed as a valid segment in your doc, but I get the error <br />\n<pre><code>Unhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException: Segment 'NTE*WHI*HUNT' in segment position 8 within transaction '147792703' cannot be identified within the supplied specification for transaction set 204 in any of the expected loops: .  To change this to a warning, pass throwExceptionOn SyntaxErrors = false to the X12Parser constructor. Parameter name: 204   at OopFactory.X12.Parsing.X12Parser.ParseMultiple(Stream stream, Encoding encoding)  at OopFactory.X12.X12Parser.Program.Main(String[] args)</code></pre>\n\nA workaround would be fine for me, too.<br />\n",
+    "PostedDate": "2014-08-19T08:54:09.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

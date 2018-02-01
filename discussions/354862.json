@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "833227",
+    "ThreadId": "354862",
+    "Html": "\r\n<p>I was just wondering how far along the 270/271 models are. I haven't had a chance to examine the work very closely, but it seems like the response is mostly finished.</p>\r\n<p>Are there any plans to finish these models in the near future, or are they on the list of low priorites?</p>\r\n<p>Thanks</p>\r\n",
+    "PostedDate": "2012-05-07T20:27:22.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "833420",
+    "ThreadId": "354862",
+    "Html": "<p>I can start working on these again, just mostly need test data. &nbsp;If you have de-identified test data you can point me to, than I can get something in the next release.</p>\r\n<p>If there is a standard way to present this data on a form or html, I can do a transformation for visualization.</p>",
+    "PostedDate": "2012-05-08T05:38:40.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "833762",
+    "ThreadId": "354862",
+    "Html": "<p>I've collected a number of sample files, but most of it is simplistic 4010 data. Unfortunately, I don't have any de-identified production data available.</p>\r\n<p>If you would like to use what I have, I can send you the data in files, or I can try to locate some of the relevant websites for you.&nbsp;</p>",
+    "PostedDate": "2012-05-08T19:15:23.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "947869",
+    "ThreadId": "354862",
+    "Html": "\r\n<p>Great job so far. I was able to parse using the X12-271-to-BenefitResponce xslt then use the BenefitRespone-to-Html xslt to make it &quot;humanly readable&quot;. The functionality is great! My problem is xslt. I suck at it. In fact, I never even heard of it until\r\n I got involved with this project. My &quot;new&quot; style sheet works great data wise but it won't render correctly in non IE browsers. Do you have any other BenefitRespone-to-????.xslt. I'll take whatever you got rtf, csv, pdf etc. Also, Do you still need production\r\n data? I can send you some de-identified 5010 files from different payers.</p>\r\n",
+    "PostedDate": "2012-11-27T11:07:42.75-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "947993",
+    "ThreadId": "354862",
+    "Html": "\r\n<p>I would love to have more test files, especially for testing rendering to a visual format.</p>\r\n<p>Do you know what the problem in non-IE browsers is?&nbsp; The class names could help you add your own style sheet to format for the other browsers.</p>\r\n<p>If you have a sample layout I might be able to get you something in PDF which won't have the browser problem.&nbsp; It would still do a transformation, but it would be to xsl-fo and use the FoNet.dll in the lib folder to actually create the pdf file.&nbsp; If not\r\n I could try and get it to render just like the html with the boxes around the loops.&nbsp; It won't have any tool tips though.</p>\r\n",
+    "PostedDate": "2012-11-27T15:09:08.767-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "948067",
+    "ThreadId": "354862",
+    "Html": "\r\n<p>I appreciate the help. The rendering problem is mostly due to my lack of familiarity with xslt syntax and semantics. I worked on the style sheet a little more today and now it looks good in IE, Firefox and Safari. Chrome has an issue rendering xslt as a\r\n local file. If I can get this done in xsl.fo I wouldn&rsquo;t care about the browser rendering issues. Ultimately though, the goal is &quot;parse to database&quot;</p>\r\n<p>By the way, today the girls at the office saw the result of me testing my new batch 5010 270 creator and your parser at work. In their words, &ldquo;OMG can we use it now?&quot;</p>\r\n<p>Ok, please let me know how I can get the production 271&rsquo;s to you. As for the pdf samples, are scanned pdf images ok? &nbsp;</p>\r\n<p>Thanks, Julian</p>\r\n<p>Update, I emailed to you a few sample 271's and pdf's.</p>\r\n",
+    "PostedDate": "2012-11-27T19:30:44.603-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

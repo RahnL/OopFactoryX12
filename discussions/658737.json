@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1486165",
+    "ThreadId": "658737",
+    "Html": "Hi,\r<br />\nI am in development of 837 Institutional using OopFactory X12.I am using 3.08 version of this.How to use SV2 - INSTITUTIONAL SERVICE LINE(LOOP 2400 — SERVICE LINE NUMBER) and CL1 Institutional Claim Code (LOOP 2300— CLAIM INFORMATION)\r<br />\nPlease help me how to add above loops in my code using oopfactory x12\r<br />\nThanks in advance<br />\n",
+    "PostedDate": "2016-10-15T06:45:22.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

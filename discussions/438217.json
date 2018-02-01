@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1021956",
+    "ThreadId": "438217",
+    "Html": "I see that your product does not export to a DB. I'm looking to do just that. Do you have any sources of information that might be helpfull to define a DB for the 837 P/I/D formats? I don't want to reinvent the wheel!\r<br />\n<br />\nThanx\r<br />\nJim H<br />\n",
+    "PostedDate": "2013-03-27T11:21:58.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1022284",
+    "ThreadId": "438217",
+    "Html": "Jahrbir,\r<br />\n<br />\nThis is only a framework. Not a software package. Based on the Exapmles provided we need to develop it from Scrach rather writing the whole bunch of parser.\r<br />\n<br />\nHow ever, i can give you an idea you are having some tests already attached in the framework which are allowing us to export to XML file. From that point try to post the XMLfile by using XMLReader to DB File what ever the source you want. From there you can play with data. Let me know if you need any help in this regard.\r<br />\n<br />\nRegards.<br />\n",
+    "PostedDate": "2013-03-28T02:15:36.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1022416",
+    "ThreadId": "438217",
+    "Html": "This is a very good point.  I have seen the reinvention of this wheel again and again.  Perhaps this is because the standard is so huge and most users only look at about 20% of it.  Unless you are doing any coordination of benefit or repricing you probably don't need a full parse.  Many users parse out the elements that correspond to the cms-1500 and ub-04 forms.\r<br />\n<br />\nTo use this parser you can use the claim parser in the OopFactory.X12.hippa assembly that will parse into a more user friendly claim object that you can more directly map to the tables that you need.\r<br />\n<br />\nAlternatively, I may have a prototype for this in a couple of weeks.  I will update the discussion when it is ready.<br />\n",
+    "PostedDate": "2013-03-28T07:18:18.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1022571",
+    "ThreadId": "438217",
+    "Html": "Thanks to both of you and your reponses. \r<br />\n<br />\nUnfortunetly we are doing coordination of benefits and repricing. I was thinking along the lines of storing all the parsed information received from the clearing house  into a DB for reference at a later time. Perhaps I'm over thinking that process. Just using the information from the 1500 Form is a large task. I've seen where BizzTalk server has the capability of EDI. I haven't looked at the cost but I don't think that's the direction I want to go. I too may have a solution in a few weeks that I will share here. Thanks again for your input.\r<br />\n<br />\nJim H<br />\n",
+    "PostedDate": "2013-03-28T11:14:06.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1025458",
+    "ThreadId": "438217",
+    "Html": "Not sure if I should start a new post or just use this one! This question is for dstrubhar. I've been looking into creating a DB as I said before for the 837P data.  I was thinking of two solutions and was wondering if you had any suggestions. First was to create DB definitions for each of the loops and the associated segments within. The second was create DB definitions for each of the segments and link them together. I started down the path of creating a single DB for a loop such as 2000B combining all the segments that only repeated once. Then for the repeating segments(REF Payer Secondary ID and REF Billing Provider Secondary ID) I created a seperate DB for each of them. Loop ID 2300 Claim Information would be one large DB with additional DB's for PWK, DTP, K3, CRC, HI, etc linked together. I'm pretty far into this and if I need to make changes I want to do them up front. Any help/suggestions other ideas would be greatly appreciated.\r<br />\n<br />\nJim H    <br />\n",
+    "PostedDate": "2013-04-04T08:45:34.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1025532",
+    "ThreadId": "438217",
+    "Html": "I think if you transform your 837P spec too literally, you will get a lot of tables that will be very complicated.\r<br />\n<br />\nSome implementations just have a table for Claim and a table ClaimLine with everything flattened to fit, that is probably overly simplistic.\r<br />\n<br />\nApart from Claim and ClaimLine most other entities are Members (subscribers or patients) and Providers (billing, service, physicians).  You could also normalize Diagnosis.\r<br />\n<br />\nI think you should first think about who and how users (people or other systems) will need to query this system and break up your tables for things that are most commonly queried.  (ie. querying provider by NPI so that you only have to look into one provider table).\r<br />\n<br />\nIf the db you are using is really just a staging DB (i.e. for intake of the X12, where it will get imported to another claims processing system), it might not be worth doing detailed transformations.  You could use the unbundle feature to just unbundle each claim into a text field and then use a routine that loads each claim for import into a final system.  You would only need this database for auditability, and some other system would be doing all the claims processing.\r<br />\n<br />\nThis is part of why it is hard to have a standard database model for this, since each use case might be different.  I think the systems that try to be too generic for all use cases end up being excessively complicated.\r<br />\n<br />\nDannie<br />\n",
+    "PostedDate": "2013-04-04T10:19:11.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1025535",
+    "ThreadId": "438217",
+    "Html": "You will have many entities that can have multiple ref segments.  I would probably either have one table for each entity type MemberRef, ProviderRef, ClaimRef, etc.  or you could have a master table that held all the identities and just have one Ref table for all your one-to-many ref relationships.\r<br />\n<br />\nWhat I usually see however, is most systems are expecting particular ref values, (i.e, MemberId, SSN, NPI, TaxId).  So they will just parse out the ones they are expecting into a column in their entity table and ignore all others.\r<br />\n<br />\nHope that helps.<br />\n",
+    "PostedDate": "2013-04-04T10:23:29.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1025563",
+    "ThreadId": "438217",
+    "Html": "Thanks for your reply. Indeed the DB i'm referring to would be for staging. I'm going to take a look at the unbundle function. I'll let you know how it works out.\r<br />\n<br />\nJim H<br />\n",
+    "PostedDate": "2013-04-04T11:20:59.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030263",
+    "ThreadId": "438217",
+    "Html": "Version 3.0.1 now has SQL Server integration.  See <a href=\"https://x12parser.codeplex.com/wikipage?title=Sql%20Server%20Database%20Integration\" rel=\"nofollow\">Sql Server Database Integration</a> for details.<br />\n",
+    "PostedDate": "2013-04-14T10:43:27.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

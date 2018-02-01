@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1032030",
+    "ThreadId": "440661",
+    "Html": "hi, I have been reading allot about WEDI validation levels. \r<br />\n<br />\nReference link:\r<br />\n<a href=\"http://jfs.ohio.gov/ohp/tradingpartners/pdfs/WEDISNIPTestingTypes.pdf\" rel=\"nofollow\">http://jfs.ohio.gov/ohp/tradingpartners/pdfs/WEDISNIPTestingTypes.pdf</a>\r<br />\n<br />\nWhat the best way to support these levels with the X12 Parser.\r<br />\n<br />\nThanks,\r<br />\nWaldo<br />\n",
+    "PostedDate": "2013-04-17T12:50:44.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1032037",
+    "ThreadId": "440661",
+    "Html": "There is an console app in the project called OopFactory.X12.AcknowledgeX12 that will do some of this validation.  It use the OopFactory.X12.X12AcknowledgmentService for creating an x12 999 transactions.  What's in the assembly only covers Type I.\r<br />\nYou can override most of the functions in this service so that you can provide your own custom validation at the business level.\r<br />\n<br />\nThis component doesn't get a lot of usage, but if you end up using it, let me know if you need any improvements to it.<br />\n",
+    "PostedDate": "2013-04-17T13:03:25.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

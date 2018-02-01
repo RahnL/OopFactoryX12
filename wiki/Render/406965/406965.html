@@ -1,0 +1,162 @@
+<div class="wikidoc"><h1>Parsing an 834 Transaction</h1>An 834 is a Benefit Enrollment transaction.  This starts the health care process be specifying the coverage of each subscriber and her dependents.<br />The following example will show you how to:
+<ol><li>Take an 834 file and create X12 XML that shows the hieararchical relationships of the X12 segments with comments related to their values.</li>
+<li>Take an 834 file and format it as X12 to reveal it&#39;s heirarchical relationship.</li></ol>
+<br />A sample 834 file that looks like this:<br /><br /><div style="color:Black;background-color:White;"><pre>
+ISA*00* *00* *01*9012345720000 *01*9088877320000 *020816*1144*U*00401*000000031*1*T*:~
+GS*BE*901234572000*908887732000*20070816*1615*31*X*004010X096A1~
+ST*834*12345~
+BGN*00*123456*19980502*1200****2~
+N1*P5**FI*999888777~
+N1*IN**FI*654456654~
+INS*Y*18*021*20*A***FT~
+REF*0F*123456789~
+REF*1L*123456001~
+DTP*356*D8*19960523~
+NM1*IL*1*DOE*JOHN*P***34*123456789~
+PER*IP**HP*7172343334*WP*7172341240~
+N3*100 MARKET ST*APT 3G~
+N4*CAMP HILL*PA*17011**CY*CUMBERLAND~
+DMG*D8*19400816*M~
+HD*021**HLT~
+DTP*348*D8*19960601~
+COB*P*890111*5~
+N1*IN*ABC INSURANCE CO~
+HD*021**DEN~
+DTP*348*D8*19960601~
+HD*021**VIS~
+DTP*348*D8*19960601~
+SE*22*12345~
+GE*1*31~
+IEA*1*000000031~
+</pre></div><br />This can be parsed with the following lines of C# code:<br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">using</span> System;
+<span style="color:Blue;">using</span> System.IO;
+<span style="color:Blue;">using</span> OopFactory.X12.Parsing;
+<span style="color:Blue;">using</span> OopFactory.X12.Parsing.Model;
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Program
+{
+   FileStream fstream = <span style="color:Blue;">new</span> FileStream(<span style="color:#A31515;">&quot;Sample1.txt&quot;</span>, FileMode.Open, FileAccess.Read);
+   <span style="color:Blue;">var</span> parser = <span style="color:Blue;">new</span> X12Parser();
+   Interchange interchange = parser.Parse(fstream);
+   <span style="color:Blue;">string</span> xml = interchange.Serialize();
+}
+</pre></div><br />The resulting output xml will look like this:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">&lt;?</span><span style="color:#A31515;">xml</span> <span style="color:Red;">version</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">1.0</span><span style="color:Black;">&quot;</span><span style="color:Blue;">?&gt;</span>
+<span style="color:Blue;">&lt;</span><span style="color:#A31515;">Interchange</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Author Information Qualifier--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA01</span><span style="color:Blue;">&gt;</span>00<span style="color:Green;">&lt;!--No Authorization Information Present--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA01</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Author Information--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA02</span><span style="color:Blue;">&gt;</span>          <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA02</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Security Information Qualifer--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA03</span><span style="color:Blue;">&gt;</span>00<span style="color:Green;">&lt;!--No Security Information Present--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA03</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Security Information--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA04</span><span style="color:Blue;">&gt;</span>          <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA04</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Interchange ID Qualifier--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA05</span><span style="color:Blue;">&gt;</span>01<span style="color:Green;">&lt;!--Duns (Dun &amp; Bradstreet)--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA05</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Interchange Sender ID--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA06</span><span style="color:Blue;">&gt;</span>9012345720000  <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA06</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Interchange ID Qualifier--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA07</span><span style="color:Blue;">&gt;</span>01<span style="color:Green;">&lt;!--Duns (Dun &amp; Bradstreet)--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA07</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Interchange Receiver ID--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA08</span><span style="color:Blue;">&gt;</span>9088877320000  <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA08</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Interchange Date--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA09</span><span style="color:Blue;">&gt;</span>020816<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA09</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Interchange Time--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA10</span><span style="color:Blue;">&gt;</span>1144<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA10</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Inter Control Standards Identifier--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA11</span><span style="color:Blue;">&gt;</span>U<span style="color:Green;">&lt;!--U.S. EDI Community of ASC X12, TDCC, and UCS--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA11</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Inter Control Version Number--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA12</span><span style="color:Blue;">&gt;</span>00401<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA12</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Inter Control Number--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA13</span><span style="color:Blue;">&gt;</span>000000031<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA13</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Acknowlegment Requested--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA14</span><span style="color:Blue;">&gt;</span>1<span style="color:Green;">&lt;!--Interchange Acknowledgment Requested--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA14</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Usage Indicator--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA15</span><span style="color:Blue;">&gt;</span>T<span style="color:Green;">&lt;!--Test Data--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA15</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Component Element Separator--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA16</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA1601</span> <span style="color:Blue;">/&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ISA1602</span> <span style="color:Blue;">/&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA16</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ISA</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">FunctionGroup</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Functional Identifier Code--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS01</span><span style="color:Blue;">&gt;</span>BE<span style="color:Green;">&lt;!--Benefit Enrollment--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS01</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Application Sender&#39;s Code--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS02</span><span style="color:Blue;">&gt;</span>901234572000<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS02</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Application Receiver&#39;s Code--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS03</span><span style="color:Blue;">&gt;</span>908887732000<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS03</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Date--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS04</span><span style="color:Blue;">&gt;</span>20070816<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS04</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Time--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS05</span><span style="color:Blue;">&gt;</span>1615<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS05</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Group Control Number--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS06</span><span style="color:Blue;">&gt;</span>31<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS06</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Responsible Agency Code--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS07</span><span style="color:Blue;">&gt;</span>X<span style="color:Green;">&lt;!--Accredited Standards Committee X12--&gt;</span><span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS07</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Version/Release/Industry Identifier Code--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GS08</span><span style="color:Blue;">&gt;</span>004010X096A1<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS08</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GS</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">Transaction</span> <span style="color:Red;">ControlNumber</span><span style="color:Blue;">=</span><span style="color:Black;">&quot;</span><span style="color:Blue;">12345</span><span style="color:Black;">&quot;</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ST</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Green;">&lt;!--Transaction Set Identifier Code--&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ST01</span><span style="color:Blue;">&gt;</span>834<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ST01</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Green;">&lt;!--Transaction Set Control Number--&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">ST02</span><span style="color:Blue;">&gt;</span>12345<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ST02</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">ST</span><span style="color:Blue;">&gt;</span>
+      ... see [834 Sample 1 X12 XML]
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">SE</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">SE01</span><span style="color:Blue;">&gt;</span>22<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">SE01</span><span style="color:Blue;">&gt;</span>
+        <span style="color:Blue;">&lt;</span><span style="color:#A31515;">SE02</span><span style="color:Blue;">&gt;</span>12345<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">SE02</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">SE</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Transaction</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GE</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Number of Transaction Sets Included--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GE01</span><span style="color:Blue;">&gt;</span>1<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GE01</span><span style="color:Blue;">&gt;</span>
+      <span style="color:Green;">&lt;!--Group Control Number--&gt;</span>
+      <span style="color:Blue;">&lt;</span><span style="color:#A31515;">GE02</span><span style="color:Blue;">&gt;</span>31<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GE02</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">GE</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">FunctionGroup</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;</span><span style="color:#A31515;">IEA</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Number of Included Functional Groups--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">IEA01</span><span style="color:Blue;">&gt;</span>1<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">IEA01</span><span style="color:Blue;">&gt;</span>
+    <span style="color:Green;">&lt;!--Interchange Control Number--&gt;</span>
+    <span style="color:Blue;">&lt;</span><span style="color:#A31515;">IEA02</span><span style="color:Blue;">&gt;</span>000000031<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">IEA02</span><span style="color:Blue;">&gt;</span>
+  <span style="color:Blue;">&lt;/</span><span style="color:#A31515;">IEA</span><span style="color:Blue;">&gt;</span>
+<span style="color:Blue;">&lt;/</span><span style="color:#A31515;">Interchange</span><span style="color:Blue;">&gt;</span>
+</pre></div>See full output at <a href="https://x12parser.codeplex.com/wikipage?title=834%20Sample%201%20X12%20XML&referringTitle=Parsing%20an%20834%20Transaction">834 Sample 1 X12 XML</a><br /><br />In some cases you may only want to be able to see the hierarchy in the X12 without the need for it to be xml.  You can use the following code snippet to add whitespace to the stream:<br /><div style="color:Black;background-color:White;"><pre>
+FileStream fstream = <span style="color:Blue;">new</span> FileStream(<span style="color:#A31515;">&quot;Sample1.txt&quot;</span>, FileOpen.Open, FileAccess.Read);
+<span style="color:Blue;">var</span> parser = <span style="color:Blue;">new</span> X12Parser();
+Interchange interchange = parser.Parse(fstream);
+<span style="color:Blue;">string</span> x12 = interchange.SerializeToX12(<span style="color:Blue;">true</span>);
+</pre></div><br />This will produce the following output:<br /><div style="color:Black;background-color:White;"><pre>
+ISA*00* *00* *01*9012345720000 *01*9088877320000 *020816*1144*U*00401*000000031*1*T*:~
+  GS*BE*901234572000*908887732000*20070816*1615*31*X*004010X096A1~
+    ST*834*12345~
+      BGN*00*123456*19980502*1200****2~
+      N1*P5**FI*999888777~
+      N1*IN**FI*654456654~
+      INS*Y*18*021*20*A***FT~
+        REF*0F*123456789~
+        REF*1L*123456001~
+        DTP*356*D8*19960523~
+        NM1*IL*1*DOE*JOHN*P***34*123456789~
+          PER*IP**HP*7172343334*WP*7172341240~
+          N3*100 MARKET ST*APT 3G~
+          N4*CAMP HILL*PA*17011**CY*CUMBERLAND~
+          DMG*D8*19400816*M~
+        HD*021**HLT~
+          DTP*348*D8*19960601~
+          COB*P*890111*5~
+            N1*IN*ABC INSURANCE CO~
+        HD*021**DEN~
+          DTP*348*D8*19960601~
+        HD*021**VIS~
+          DTP*348*D8*19960601~
+    SE*22*12345~
+  GE*1*31~
+IEA*1*000000031~
+</pre></div></div><div class="ClearBoth"></div>

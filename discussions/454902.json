@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1086315",
+    "ThreadId": "454902",
+    "Html": "Is it possible to transform the SqlReadOnlyTransactionRepository back to an X12 Interchange object? Is it advisable?\r<br />\n<br />\nI intend on parsing and processing each file as it comes in on our inbound EDI server and saving to sql as I go. But occasionally I need to reprocess a file from another production server and if I can fetch the object from sql to reprocess it would solve that problem.<br />\n",
+    "PostedDate": "2013-08-29T11:43:49.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1086688",
+    "ThreadId": "454902",
+    "Html": "You can simply pull the data from the [dbo].[Segment] table filtered by the InterchangeId ordered by sequence and concatenate the string and then parse it with the X12Parser to get your interchange object.<br />\n",
+    "PostedDate": "2013-08-30T08:15:09.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1086713",
+    "ThreadId": "454902",
+    "Html": "Very cool. I didn't realize it was flattened to the interchange in the segment table. Thanks<br />\n",
+    "PostedDate": "2013-08-30T08:52:06.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

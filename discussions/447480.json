@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1058447",
+    "ThreadId": "447480",
+    "Html": "I am looking for a good example of creating Invoice X12. <br />\n",
+    "PostedDate": "2013-06-18T16:31:39.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1066247",
+    "ThreadId": "447480",
+    "Html": "Quick Sample of course you will have to modify to use your own source objects.<br />\n<pre><code>var fg = interchange.AddFunctionGroup(&quot;IN&quot;, DateTime.Now,\n                                                  InterchangeBuildHelper.GetNextControlNumber&lt;int&gt;(&quot;FG&quot;), &quot;004010&quot;);\n\n            fg.ApplicationSendersCode = interchange.InterchangeSenderId.Trim();\n            fg.ApplicationReceiversCode = interchange.InterchangeReceiverId.Trim();\n\n            var transaction = fg.AddTransaction(&quot;810&quot;, &quot;0001&quot;);\n\n            var seg = transaction.AddSegment(&quot;BIG&quot;);\n            seg.SetDate8Element(1,result.Header.DOCDATE);\n            seg.SetElement(2,result.Header.SOPNUMBE.Trim());\n            seg.SetDate8Element(3,result.Header.DOCDATE);\n            seg.SetElement(4,result.Header.ORIGNUMB.Trim());\n\n\n            seg = transaction.AddSegment(&quot;REF&quot;);\n            seg.SetElement(1,&quot;VN&quot;);\n            seg.SetElement(2,result.Header.CSTPONBR.Trim());\n            seg.SetElement(3,1);\n\n            seg = transaction.AddLoop(&quot;N1&quot;);\n            seg.SetElement(1, &quot;MF&quot;);\n            seg.SetElement(2, &quot;SOMEMFG&quot;);\n            \n            seg = transaction.AddSegment(&quot;DTM&quot;);\n            seg.SetElement(1, &quot;011&quot;);\n            seg.SetDate8Element(2, result.Header.DOCDATE);\n            \n            foreach (var detail in result.Detail)\n            {\n                seg = transaction.AddLoop(&quot;IT1&quot;);\n                seg.SetElement(1, 1);\n                seg.SetElement(2,decimal.Round(detail.QUANTITY,2));\n                seg.SetElement(3,&quot;EA&quot;);\n                seg.SetElement(4,decimal.Round(detail.UNITPRCE,2));\n                seg.SetElement(6, &quot;PN&quot;);\n                seg.SetElement(7,detail.ITEMNMBR.Trim());\n\n                seg = transaction.AddSegment(&quot;PID&quot;);\n                seg.SetElement(1,&quot;F&quot;);\n                seg.SetElement(5,detail.ITEMDESC.Trim());\n            }\n\n            var total = Convert.ToDecimal(result.Header.SUBTOTAL);\n            \n            seg = transaction.AddSegment(&quot;TDS&quot;);\n            seg.SetElement(1, decimal.Round(total,2).ToString().Replace(&quot;.&quot;,&quot;&quot;));\n\n            seg = transaction.AddSegment(&quot;CTT&quot;);\n            seg.SetElement(1,result.Detail.Count);</code></pre>\n\n",
+    "PostedDate": "2013-07-09T11:29:23.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1070205",
+    "ThreadId": "447480",
+    "Html": "Could you please post a complete code which I can compile and run?\r<br />\n<br />\nThanks in advance.<br />\n",
+    "PostedDate": "2013-07-18T14:20:34.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1070214",
+    "ThreadId": "447480",
+    "Html": "Created a self contained method which you can compile and run. Borrowed the code from two gentlemen who had posted code in 810 and 270 - thanks guys.<br />\n<pre><code>\n        public string GenerateInvoice()\n        {\n            DateTime curDateTime = DateTime.Now;\n            string _senderID = &quot;TestSender&quot;;\n            string _receiverID = &quot;TestReceiver&quot;;\n            int controlNo = 789;\n\n            //Parse the X12 string to XML for processing\n            X12Parser parser = new X12Parser();\n            Interchange ichg810Msg;\n            FunctionGroup ichgFuncGrp;\n            Transaction _810trans;\n\n\n            //Set the ISA Segment\n            ichg810Msg = new Interchange(curDateTime, controlNo, false);\n            ichg810Msg.InterchangeSenderIdQualifier = &quot;ZZ&quot;;\n            ichg810Msg.InterchangeSenderId = _senderID;\n            ichg810Msg.InterchangeReceiverIdQualifier = &quot;ZZ&quot;;\n            ichg810Msg.InterchangeReceiverId = _receiverID;\n            ichg810Msg.SetElement(12, &quot;00501&quot;);                         //EDI Version\n            ichg810Msg.SetElement(15, &quot;T&quot;);\n            ichg810Msg.SetElement(16, &quot;:&quot;);\n            ichgFuncGrp = ichg810Msg.AddFunctionGroup(&quot;IN&quot;, curDateTime, 1, _MsgVersion);\n            ichgFuncGrp.ApplicationSendersCode = _senderID;\n            ichgFuncGrp.ApplicationReceiversCode = _receiverID;\n            ichgFuncGrp.ControlNumber = controlNo;\n\n            //Create new function group for this message\n            _810trans = ichgFuncGrp.AddTransaction(&quot;810&quot;, controlNo.ToString().Length &lt; 4 ? controlNo.ToString().PadLeft(4, '0') : controlNo.ToString());\n\n            var seg = _810trans.AddSegment(&quot;BIG&quot;);\n            seg.SetDate8Element(1, curDateTime);\n            seg.SetElement(2, &quot;3323399&quot;);\n            seg.SetDate8Element(3, curDateTime);\n            seg.SetElement(4, &quot;981903&quot;);\n\n\n            seg = _810trans.AddSegment(&quot;REF&quot;);\n            seg.SetElement(1, &quot;VN&quot;);\n            seg.SetElement(2, &quot;0070861270&quot;);\n            seg.SetElement(3, 1);\n\n            seg = _810trans.AddLoop(&quot;N1&quot;);\n            seg.SetElement(1, &quot;MF&quot;);\n            seg.SetElement(2, &quot;SOMEMFG&quot;);\n\n            seg = _810trans.AddSegment(&quot;DTM&quot;);\n            seg.SetElement(1, &quot;011&quot;);\n            seg.SetDate8Element(2, curDateTime);\n\n            //foreach (var detail in result.Detail)\n            {\n                seg = _810trans.AddLoop(&quot;IT1&quot;);\n                seg.SetElement(1, 1);\n                seg.SetElement(2, decimal.Round(10, 2)); //Qty\n                seg.SetElement(3, &quot;EA&quot;);\n                seg.SetElement(4, decimal.Round(10.10m, 2));//unit price\n                seg.SetElement(6, &quot;PN&quot;);\n                seg.SetElement(7, &quot;65008841AB02A00&quot;);  //Product/Service ID\n\n                seg = _810trans.AddSegment(&quot;PID&quot;);\n                seg.SetElement(1, &quot;F&quot;);\n                seg.SetElement(5, &quot;ACRO,8.0,WIN,AOO,UE,1PK,N/A&quot;);\n            }\n\n            var total = Convert.ToDecimal(true);\n\n            seg = _810trans.AddSegment(&quot;TDS&quot;);\n            seg.SetElement(1, decimal.Round(total, 2).ToString().Replace(&quot;.&quot;, &quot;&quot;));\n\n            seg = _810trans.AddSegment(&quot;CTT&quot;);\n            seg.SetElement(1, 1);\n            string results = ichg810Msg.SerializeToX12(true);\n            System.Diagnostics.Debug.WriteLine(results);\n\n            return results;\n        }\n</code></pre>\n\n",
+    "PostedDate": "2013-07-18T14:44:33.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1070222",
+    "ThreadId": "447480",
+    "Html": "Not that it really matters but I thought I'd mention that <br />\n<pre><code>_810trans = ichgFuncGrp.AddTransaction(&quot;810&quot;, controlNo.ToString().Length &lt; 4 ? controlNo.ToString().PadLeft(4, '0') : controlNo.ToString());</code></pre>\n\ncould be changed to<br />\n<pre><code>_810trans = ichgFuncGrp.AddTransaction(&quot;810&quot;, controlNo.ToString().PadLeft(4, '0'));</code></pre>\n\nThe PadLeft method does nothing if the string length is already equal or greater to the first parameter<br />\n",
+    "PostedDate": "2013-07-18T15:04:51.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1085553",
+    "ThreadId": "447480",
+    "Html": "I'm looking for any code to create a Claim (837P) X12 file. Can anyone help me?\r<br />\n<br />\nThanks in advance<br />\n",
+    "PostedDate": "2013-08-27T14:20:29.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

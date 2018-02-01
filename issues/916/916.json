@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-11-20T19:04:23.983-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Starting 2012/01/01, CMS (The goverment agency responsible for Medicaid and Medicare) will mandate the use of the 5010 version of the 834. \n \nI would like to request implementation of support for this transaction set.",
+    "LastUpdatedDate": "2013-05-16T04:34:03.57-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-11-18T15:06:54.623-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Request for transaction set: 5010 version of 834",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 916
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 12316.",
+      "PostedDate": "2011-11-20T19:04:23.983-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tested this enhancement (using parser version 12316) with a sample file from DHCS (http://www.dhcs.ca.gov/formsandpubs/laws/hipaa/Documents/2.02%20834%205010%20Documents/2.02%20DHCS834-DA20110712-Medical-123-HCP-001.txt) Parsing was successful.\r\n\r\nThe prior version of the parser that I was using (10775) would produce an error: OopFactory.X12.Parsing.Model.TransactionValidationException : Segment 'QTY*TO*6' in position 4 within transaction '0001' cannot be identified within the supplied specification for transaction set 834.\r\n\r\nThank you for implementing!",
+      "PostedDate": "2011-11-25T10:08:13.613-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:02.273-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:03.57-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

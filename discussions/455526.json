@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1088429",
+    "ThreadId": "455526",
+    "Html": "So I download the latest binaries and source.\r<br />\nI copied the sample 834 text directly from the &quot;Parsing an 834 Transaction&quot; help screen.\r<br />\n(<a href=\"https://x12parser.codeplex.com/wikipage?title=Parsing%20an%20834%20Transaction&amp;referringTitle=Documentation\" rel=\"nofollow\">https://x12parser.codeplex.com/wikipage?title=Parsing%20an%20834%20Transaction&referringTitle=Documentation</a>)\r<br />\nI then ran sample C# code.\r<br />\nBut I get error &quot;0 is not a valid subelement separator in position 105 of the file&quot;\r<br />\nWhen I run the file through the source it breaks at line 40 in OopFactory.X12.Parsing.X12DelimiterSet\r<br />\nThe problem is that isaSegmentAndTerminator[105] is invalid.\r<br />\nBasically it combined the ISA which is only 87 characters and the GS together and then read the 105 position which is the &quot;0&quot; from GS02 901234572000\r<br />\n<br />\nI have tried changesets 26069 - 28968 and they are all broken.<br />\n",
+    "PostedDate": "2013-09-04T13:35:48.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091281",
+    "ThreadId": "455526",
+    "Html": "I'm sure I am missing something simple here. I can't parse the sample 834 from this site.<br />\nI also can't seem to parse any of the EDI files I have such as a simple 997.<br />\nThey all fail with error &quot;0 is not a valid subelement separator in position 105 of the file&quot;.<br />\nI know these files are in good format and our BizTalk server is parsing these same files just fine.<br />\nWhat am I doing wrong?<br />\n<br />\nhere is the simple 997<br />\n<pre><code>ISA*00* *00* *01*9012345720000 *01*9088877320000 *020816*1144*U*00401*000000031*1*T*:~\nGS*BE*901234572000*908887732000*20070816*1615*31*X*004010X096A1~\nST*997*0004~ \nAK1*HC*5~ \nAK2*837*0008~ \nAK5*A~ \nAK9*A*1*1*1~ \nSE*6*0004~\nGE*1*31~\nIEA*1*000000031~</code></pre>\n\n",
+    "PostedDate": "2013-09-11T08:42:45.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091341",
+    "ThreadId": "455526",
+    "Html": "The first 106 characters are fixed width.  If you copied and pasted this from another location, sometimes some of the password fields get shrunk as it seems to be case from your sample.  You may need to lookup up the spec for ISA to see where you need to put some spaces back in, or look at some of the test files <a href=\"http://x12parser.codeplex.com/SourceControl/latest#trunk/tests/OopFactory.X12.Tests.Unit/Parsing/_SampleEdiFiles/Acknowledgments/TechnicalAcknowledgment_Sample1.txt\" rel=\"nofollow\">here</a> and see if your ISA segment lines up with the one in the example.<br />\n",
+    "PostedDate": "2013-09-11T10:52:22.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091444",
+    "ThreadId": "455526",
+    "Html": "You were right. The spacing was incorrect on the ISA.\r<br />\nAfter fixing the ISA to the standard X12 00401 spacing the file parsed fine.\r<br />\nThanks for the help.<br />\n",
+    "PostedDate": "2013-09-11T14:19:39.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Has anybody seen this one?\n\nNull Object ---  does not make since..\n             FileStream fstream = new FileStream(\"C:\\\\PROJECTS\\\\\\837\\\\146061446_P.txt\", FileMode.Open, FileAccess.Read);\n            X12Parser parser = new X12Parser();\n            List<Interchange> interchange = new List<Interchange>(parser.ParseMultiple(fstream));\n\n\nError message.\n\nSystem.NullReferenceException was unhandled\n  HResult=-2147467261\n  Message=Object reference not set to an instance of an object.\n  Source=OopFactory.X12\n  StackTrace:\n       at OopFactory.X12.Parsing.X12Parser.ParseMultiple(Stream stream, Encoding encoding)\n       at OopFactory.X12.Parsing.X12Parser.ParseMultiple(Stream stream)\n       at ICD10_CONSOLE.Program.Main(String[] args) in c:\\Users\\Documents\\Visual Studio 2013\\Projects\\ICD10_CONV\\ICD10_CONSOLE\\ICD10_CONSOLE\\Program.cs:line 29\n       at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)\n       at System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)\n       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n       at System.Threading.ThreadHelper.ThreadStart_Context(Object state)\n       at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n       at System.Threading.ThreadHelper.ThreadStart()\n  InnerException:",
+    "LastUpdatedDate": "2014-04-14T12:03:42.87-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-04-14T12:03:42.87-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "837,Open Object reference not set to an instance of an object",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1959
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

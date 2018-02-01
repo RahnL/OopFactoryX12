@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1091115",
+    "ThreadId": "456505",
+    "Html": "I am using this product in an application where I need to import ANSI-837 5010 data and it works great.\r<br />\n<br />\nDoes anyone know where I can get an equivalent product for HL7 files? \r<br />\n<br />\nI need to be able to parse Pathology reports.\r<br />\n<br />\nDannie, thanks for the great product.<br />\n",
+    "PostedDate": "2013-09-11T05:16:36.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1093390",
+    "ThreadId": "456505",
+    "Html": "Try Mirth for HL7. mirthcorp.com<br />\n",
+    "PostedDate": "2013-09-16T23:45:56.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1126145",
+    "ThreadId": "456505",
+    "Html": "I used <a href=\"http://nhapi.sourceforge.net/home.php\" rel=\"nofollow\">http://nhapi.sourceforge.net/home.php</a> and mirth...works well.<br />\n",
+    "PostedDate": "2013-11-18T10:58:58.977-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

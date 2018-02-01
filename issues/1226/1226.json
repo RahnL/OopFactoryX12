@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Changeset in release 2.3.0",
+    "ClosedDate": "2012-07-29T11:23:36.077-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When updated to version 3.2.4, my standard command for unbundling returns the following:\nSecond path fragment must not be a drive or UNC name.\nParameter name: path2\"S:/Payments/ERN Programs/X12/UnbundleX12.exe\" \"S:/Payments/To Process/30610829.ERA.835.edi\" \"1000A\" \"S:/Payments/ERN Programs/X12/Output\" \"{0}/{1}_{2:00}\"",
+    "LastUpdatedDate": "2013-05-16T04:34:01.327-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-05-07T07:20:29.603-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "\"Second path fragment must not be a drive or UNC name.\"",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1226
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The fixed was checked in at 16342. ",
+      "PostedDate": "2012-05-10T12:45:01.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-05-10T12:45:17.64-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-07-29T11:23:36.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:59.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:01.327-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

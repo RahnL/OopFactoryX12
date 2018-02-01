@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1046755",
+    "ThreadId": "444486",
+    "Html": "First, thanks much for this library.  I'm new to it but it looks great so far.\r<br />\n<br />\nSecond, we have a requirement to split (unbundle) a file that may include multiple ISA's with multiple GS's into multiple files that each contain a single ISA\\GS.  There are methods for unbundling by transaction and by loop, but no UnbundleByFunctionGroup().  Any chance we could see that method in a future release?\r<br />\n<br />\nThanks!\r<br />\nTom<br />\n",
+    "PostedDate": "2013-05-21T14:48:07.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

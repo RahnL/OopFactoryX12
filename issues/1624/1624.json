@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The transaction trailer segment \"SE\" is not added during the creation of segments by ReadNextTransaction() in X12StreamReader.cs\nWithout SE segment, transactions are accepted but 999 acknowledgement is created with IK5 indicating the transaction is \"Accepted But Errors Were Noted\" as follows:\n```\nIK5*E*2~\n```\nFollowing changes fixes this error CONDITIONALLY:\n\n```\npublic X12FlatTransaction ReadNextTransaction()\n        {\n            StringBuilder segments = new StringBuilder();\n\n            string segmentString = ReadNextSegment();\n            string segmentId = ReadSegmentId(segmentString);\n+           bool transactionEnd = false;\n            do\n            {\n                switch (segmentId)\n                {\n                    case \"ISA\":\n                        _isaSegment = segmentString + _delimiters.SegmentTerminator;\n                        break;\n                    case \"GS\":\n                        _gsSegment = segmentString + _delimiters.SegmentTerminator;\n                        break;\n                    case \"IEA\":\n                    case \"GE\":\n                        break;\n                    default:\n                        if (segmentId == \"ST\")\n                            _transactionCode = SplitSegment(segmentString)[1];\n+                       if (segmentId == \"SE\")\n+                           transactionEnd = true;\n                        segments.Append(segmentString);\n                        segments.Append(_delimiters.SegmentTerminator);\n                        break;\n                }\n                segmentString = ReadNextSegment();\n                segmentId = ReadSegmentId(segmentString);\n-           } while (!string.IsNullOrEmpty(segmentString) && segmentId != \"SE\"); // transaction trailer segment\n+           } while (!string.IsNullOrEmpty(segmentString) && transactionEnd != true);\n```\n\nAlthough this seems like it fixes the solution but it doesn't. Adding this fix breaks the UnbundleX12; in X12Parser.cs currentContainer.Parent on line 161 becomes ISA which causes to throw the exception.\n\nI don't know what else to do at this point, I'm new to programming (expecially C#) so I can't figure it out. Any help would be greatly appreciated.",
+    "LastUpdatedDate": "2016-02-25T17:03:45.677-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-06-21T12:35:44.06-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SE is not added to segments",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 4,
+    "Id": 1624
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm also experiencing this same issue. The behavior as far as validation is concerned is clearly wrong, but I don't know enough about other parts of the code that rely on this to make a patch.\r\n\r\nPerhaps the AcknowledgementService needs to have special handling to check for the transaction trailers if they can't be included in the segments returned from ReadNextTransaction.",
+      "PostedDate": "2013-12-06T09:05:50.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, so I just tried out a fix for this that is a bit different from Persy's. Instead of adding the extra boolean, I just moved the call to ReadNextSegment to the beginning of the loop (and removed the call before the start of the loop.\r\n\r\n``` C#\npublic X12FlatTransaction ReadNextTransaction()\n{\n    StringBuilder segments = new StringBuilder();\r\n\r\n    string segmentString = \"\";\n    string segmentId = \"\";\n    do\n    {\n        segmentString = ReadNextSegment();\n        segmentId = ReadSegmentId(segmentString);\r\n\r\n        switch (segmentId)\n        {\n            case \"ISA\":\n                _isaSegment = segmentString + _delimiters.SegmentTerminator;\n                break;\n            case \"GS\":\n                _gsSegment = segmentString + _delimiters.SegmentTerminator;\n                break;\n            case \"IEA\":\n            case \"GE\":\n                break;\n            default:\n                if (segmentId == \"ST\")\n                    _transactionCode = SplitSegment(segmentString)[1];\n                segments.Append(segmentString);\n                segments.Append(_delimiters.SegmentTerminator);\n                break;\n        }\n    } while (!string.IsNullOrEmpty(segmentString) && segmentId != \"SE\"); // transaction trailer segment\r\n\r\n    return new X12FlatTransaction(\n        CurrentIsaSegment,\n        CurrentGsSegment,\n        segments.ToString());\n}\n```\r\n\r\nThis seems to cause a problem in the while loop in the AcknowledgeTransactions method:\r\n\r\n```C#\n while (!string.IsNullOrEmpty(trans.Transactions.First()))\n{\n    string[] isaElements = reader.SplitSegment(trans.IsaSegment);\n    string[] gsElements = reader.SplitSegment(trans.GsSegment);\n    string functionalIdentifierCode = gsElements[1];\n    string groupControlNumber = gsElements[6];\n    string versionIdentifierCode = gsElements[8];\r\n\r\n    if (!responses.ContainsKey(groupControlNumber))\n    {\n        responses.Add(groupControlNumber, new FunctionalGroupResponse\n        {\n            SenderIdQualifier = isaElements[5],\n            SenderId = isaElements[6],\n            FunctionalIdCode = functionalIdentifierCode,\n            GroupControlNumber = groupControlNumber,\n            VersionIdentifierCode = versionIdentifierCode\n        });\n    }\n    var groupResponse = responses[groupControlNumber];\n    var response = AcknowledgeTransaction(reader, functionalIdentifierCode, versionIdentifierCode, trans.Transactions[0]);\n    groupResponse.TransactionSetResponses.Add(response);\r\n\r\n    trans = reader.ReadNextTransaction();\n}\n```\r\n\r\nAs best as I can tell, this loop is getting called one extra time if the SE segment when this fix is applied. I'm not sure why this is yet.",
+      "PostedDate": "2013-12-06T12:21:16.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, I understand it now. Moving the `ReadNextSegment()` to the start of the loop causes an empty string to get loaded into `segmentString` when `ReadNextTransaction()` gets to the end of the file (after the IEA segment). With no special handling for null or empty strings, this empty string gets appended to the segments string returned by the method, which then also appends a segment terminator (usually \"~\"). So the method returns the string \"~\", which causes the other problems.\r\n\r\nI'll submit this fix as a patch:\r\n\r\n```C#\npublic X12FlatTransaction ReadNextTransaction()\n{\n    StringBuilder segments = new StringBuilder();\r\n\r\n    string segmentString = \"\";\n    string segmentId = \"\";\n    do\n    {\n        segmentString = ReadNextSegment();\n        segmentId = ReadSegmentId(segmentString);\r\n\r\n        switch (segmentId)\n        {\n            case \"ISA\":\n                _isaSegment = segmentString + _delimiters.SegmentTerminator;\n                break;\n            case \"GS\":\n                _gsSegment = segmentString + _delimiters.SegmentTerminator;\n                break;\n            case \"IEA\":\n            case \"GE\":\n            case \"\":\n            case null:\n                break;\n            default:\n                if (segmentId == \"ST\")\n                    _transactionCode = SplitSegment(segmentString)[1];\n                segments.Append(segmentString);\n                segments.Append(_delimiters.SegmentTerminator);\n                break;\n        }\n    } while (!string.IsNullOrEmpty(segmentString) && segmentId != \"SE\"); // transaction trailer segment\r\n\r\n    return new X12FlatTransaction(\n        CurrentIsaSegment,\n        CurrentGsSegment,\n        segments.ToString());\n}\n```",
+      "PostedDate": "2013-12-06T12:40:09.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For anyone interested, this fix is in patch 15532.",
+      "PostedDate": "2013-12-06T13:44:13.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Do you guys have any plans to integrate this fix?",
+      "PostedDate": "2014-06-04T08:26:30.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can confirm that this fixed X12AcknowledgmentService.AcknowledgeTransactions() in my implementation.",
+      "PostedDate": "2014-08-05T14:42:07.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2016-02-25T17:03:45.677-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

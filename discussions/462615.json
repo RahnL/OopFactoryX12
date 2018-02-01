@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1108847",
+    "ThreadId": "462615",
+    "Html": "I have a known good EDI 834 file, however I cannot seem to fully import segment tables to SQL DB. \r<br />\nSome Tables are created, but it stops after 3 or 4 indexed segemnt tables. Error.log below. \r<br />\nLooks like it a data type error, but I dont see any configuration options to change datatypes, what am I missing?\r<br />\n<br />\n<strong>Column, parameter, or variable #11: Cannot find data type date.</strong><br />\n<pre><code>OopFactory.X12.ImportX12.exe Error: 0 : Error parsing C:\\Temp\\Inbound\\834.EDI: Column, parameter, or variable #11: Cannot find data type date.\n   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)\n   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)\n   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()\n   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)\n   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async)\n   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)\n   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()\n   at OopFactory.X12.Repositories.DbCreation`1.ExecuteCmd(SqlCommand cmd)\n   at OopFactory.X12.Repositories.DbCreation`1.CreateIndexedSegmentTable(SegmentSpecification spec, String commonSchema)\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.EnsureSchema()\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.Save(Interchange interchange, String filename, String userName)\n   at OopFactory.X12.ImportX12.Program.Main(String[] args)\n   DateTime=2013-10-17T15:51:45.6851170Z</code></pre>\n\n",
+    "PostedDate": "2013-10-17T09:02:00.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108850",
+    "ThreadId": "462615",
+    "Html": "You are using a version of SQL Server that does not support the date data type.  It probably needs to be changed to datetime.  I will see if I can work on this this weekend, I should be able to inspect the version of SQL server and make the decision dynamically whether this should be a date or datetime.  Let me know what version of SQL you are using so that I can test for that.<br />\n",
+    "PostedDate": "2013-10-17T09:05:23.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108853",
+    "ThreadId": "462615",
+    "Html": "I am using Microsoft SQL Server Standard Edition 9.00.5069.00 (2005)\r<br />\nThanks for taking a look. <br />\n",
+    "PostedDate": "2013-10-17T09:08:03.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108938",
+    "ThreadId": "462615",
+    "Html": "...................I voted <a href=\"https://x12parser.codeplex.com/workitem/1778\" rel=\"nofollow\">here</a> :)<br />\n",
+    "PostedDate": "2013-10-17T12:23:16.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110048",
+    "ThreadId": "462615",
+    "Html": "I have since imported this on Server 2008, working fine. I can still help you test on 2005 if you like. <br />\n",
+    "PostedDate": "2013-10-21T08:27:26.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1008705",
+    "ThreadId": "434998",
+    "Html": "Hi,\r<br />\n<br />\nMay i know is it possible to transform the object of Claim to 837P file?\r<br />\nIf so, can you please provide some code samples for this?\r<br />\n<br />\nRegards.<br />\n",
+    "PostedDate": "2013-03-01T02:13:49.93-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1015328",
+    "ThreadId": "434998",
+    "Html": "Please see discussion <a href=\"http://x12parser.codeplex.com/discussions/397607\" rel=\"nofollow\">http://x12parser.codeplex.com/discussions/397607</a>.\r<br />\n<br />\nThere is not support for transforming the Claim object back to x12.\r<br />\n<br />\nThis is because X12 is normalized into loops so that provider and patient information isn't repeated.  The Claim object denomalizes all this so that all attributes of the claim appear in that one object.  So even though it is possible to transform the Claim object back to x12, it would take away the decision of how to group all the provider, subscriber and patient loops.\r<br />\n<br />\nFor this reason it is better to leave that decision up to the user and use the Interchange object directly to create the desired X12.  The discussion mentioned above will point the the unit test sample that shows how to do this.<br />\n",
+    "PostedDate": "2013-03-14T08:19:44.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

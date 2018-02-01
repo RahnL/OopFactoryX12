@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1085931",
+    "ThreadId": "454798",
+    "Html": "Hi,\r<br />\n<br />\nPlease check what's wrong with the segment SV107 in SV107_CompDiagCodePoint for the latest version of download. The problem is SV107_CompDiagCodePoint cannot be set as &quot;1:2:3&quot;, which was ok with previous version. The new version 3.0.5 is asking for decimal, like &quot;1&quot; or &quot;2&quot;. But you know that the diag code pointer can be multiple. \r<br />\n<br />\nDim SV1 = NewLoop.AddSegment(New OopFactory.X12.Parsing.Model.Typed.TypedSegmentSV1)<br />\n<pre><code>        SV1.SV101_CompositeMedicalProcedure = &quot;HC:&quot; &amp; Trim(proc_code.Replace(&quot;-&quot;, &quot;:&quot;))\n        SV1.SV102_MonetaryAmount = CDec(charge * units)\n        SV1.SV103_UnitBasisMeasCode = &quot;UN&quot;\n        SV1.SV104_Quantity = units\n        SV1.SV107_CompDiagCodePoint = diag_code_pointer\n</code></pre>\n\nThanks\r<br />\nJinpin<br />\n",
+    "PostedDate": "2013-08-28T13:38:18.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092846",
+    "ThreadId": "454798",
+    "Html": "Thanks for catching this bug.  This should be fixed in version 3.0.7.<br />\n",
+    "PostedDate": "2013-09-15T08:24:35.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In my heavy use (mostly 813), noticed the trailers were not being updated upon conversion.\n\nI'm building an 813 form on-the-fly, converting to XML or X12 .Serialize() or .SerializeToX12() ..they both fail to finalize the respective trailer(s) count.\n\nmy workaround is, for each internal override \"WriteXml\" and \"ToX12String\"\n\n```     \n        internal override string ToX12String(bool addWhitespace)\n        {\n            UpdateTrailerSegmentCount(\"SE\", 1, CountTotalSegments());\n            return base.ToX12String(addWhitespace);\n        }\n        internal override void WriteXml(XmlWriter writer)\n        {\n            UpdateTrailerSegmentCount(\"SE\", 1, CountTotalSegments());\n\n            if (!string.IsNullOrEmpty(SegmentId))\n            {\n                writer.WriteStartElement(\"Transaction\");\n                writer.WriteAttributeString(\"ControlNumber\", ControlNumber);\n\n                base.WriteXml(writer);\n\n                writer.WriteEndElement();\n            }\n        }\n```\n\nAgain, to re-iterate my problem, when converting to X12 or XML using the lib's built-in functionality, the trailer counts are not updated;   These are *big* where we might have 10k+ transactions in a single interchange;",
+    "LastUpdatedDate": "2014-03-11T07:30:44.293-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-03-11T07:30:44.293-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Total Segment Counts",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1920
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

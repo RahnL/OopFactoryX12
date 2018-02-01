@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "636236",
+    "ThreadId": "263624",
+    "Html": "<p>Baby steps... :)</p>\n<p>Here's my first attempt at implementing the \"TransformToX12\" function in an app. If there's a better way to implement the functionality, please let me know. &nbsp;Yes it does work! &nbsp;(However, I couldn't figure out how to get the whitespace option to work...)</p>\n<p>&nbsp;</p>\n<div style=\"color: black; background-color: white;\">\n<pre><span style=\"color: blue;\">using</span> System;\n<span style=\"color: blue;\">using</span> System.Collections.Generic;\n<span style=\"color: blue;\">using</span> System.Linq;\n<span style=\"color: blue;\">using</span> System.Text;\n<span style=\"color: blue;\">using</span> System.IO;\n<span style=\"color: blue;\">using</span> OopFactory.X12.Parsing;\n<span style=\"color: blue;\">using</span> OopFactory.X12.Parsing.Model;\n\n<span style=\"color: blue;\">namespace</span> OopFactory.X12.TransformToX12\n{\n    <span style=\"color: blue;\">class</span> Program\n    {\n        <span style=\"color: blue;\">static</span> <span style=\"color: blue;\">void</span> Main(<span style=\"color: blue;\">string</span>[] args)\n        {\n            <span style=\"color: blue;\">string</span> x12Filename = args[0];\n            <span style=\"color: blue;\">string</span> outputFilename = args.Length &gt; 1 ? args[1] : x12Filename + <span style=\"color: #a31515;\">\".edi\"</span>;\n\n            StreamReader fs = <span style=\"color: blue;\">new</span> StreamReader(x12Filename);\n            <span style=\"color: blue;\">string</span> xmltext = fs.ReadToEnd();\n            OopFactory.X12.Parsing.X12Parser parser = <span style=\"color: blue;\">new</span> Parsing.X12Parser();\n            <span style=\"color: blue;\">string</span> x12 = parser.TransformToX12(xmltext);\n            fs.Close();\n            \n            <span style=\"color: green;\">//**Alternate method that I can't get to work**</span>\n            <span style=\"color: green;\">//FileStream fs = new FileStream(x12Filename, FileMode.Open);</span>\n            <span style=\"color: green;\">//OopFactory.X12.TransformToX12.Program transformer = new TransformToX12.Program();</span>\n            <span style=\"color: green;\">//string x12 = transformer.ToString(fs);</span>\n            <span style=\"color: green;\">//fs.Close();</span>\n            \n\n            FileStream outputFs = <span style=\"color: blue;\">new</span> FileStream(outputFilename, FileMode.Create);\n            StreamWriter writer = <span style=\"color: blue;\">new</span> StreamWriter(outputFs);\n            writer.Write(x12);\n            writer.Close();\n        }\n    }\n}\n\n</pre>\n</div>",
+    "PostedDate": "2011-07-01T14:43:25.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "637714",
+    "ThreadId": "263624",
+    "Html": "<p>You are using code I have not yet released! Kudos to you.</p>\r\n<p>Are you trying to remove white space or add white space?&nbsp; To the XML or X12?</p>\r\n<p>BTW, thanks for all of your other feedback last week.&nbsp; I plan to fix the Unbundle stuff this week and add you sample EDI's.&nbsp; I hope to get a version released this weekend with these changes.</p>\r\n<p>Let me know if you would like to contribute in any other way.&nbsp; You can be added as an \"Editor\" if you want to add discussion pages.&nbsp; I would also like to give you credit as a contributor from the documentation page for the transaction sets that you are helping to improve.&nbsp; I do have a selfish motive in that I want to encourage others to contribute by showing active contributors.&nbsp; Let me know what you think.</p>",
+    "PostedDate": "2011-07-05T12:52:24.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "637730",
+    "ThreadId": "263624",
+    "Html": "<p>Yes, I was trying to configure it so I could turn on &amp; off the white space option, but couldn't figure that out.</p>\r\n<p>Your welcome for the feedback! &nbsp;I do appreciate your responsiveness.</p>\r\n<p>Yes, I'd be honored to contribute in any way I can. I'm probably a bit stronger on the admin side of things (vs. programming) so anything I can help out with in terms of documentation, discussion pages, etc. I'll be happy to help.</p>",
+    "PostedDate": "2011-07-05T13:44:49.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "640150",
+    "ThreadId": "263624",
+    "Html": "<p>I finally had a change to look at this. &nbsp;All the output that I have looked at does not have white space (except the one's needed in the fixed width ISA segment). &nbsp;I think I am missing something. &nbsp;IS it the X12 that you are still seeing white space?</p>\r\n<p>BTW, the method is now in released code. &nbsp;I just put out release 2.1.7.</p>",
+    "PostedDate": "2011-07-10T13:07:21.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "641169",
+    "ThreadId": "263624",
+    "Html": "<p>I'm not sure how to use the method you added in 2.1.7... but the code above still works. &nbsp;(I just added an issue suggesting an additional application \"TransformToX12.exe\" be included in future releases.)</p>\r\n<p>To clarify on the whitespace. &nbsp;I was attempted to figure out how to add whitespace to the resulting X12 file in the TransformToX12 process. &nbsp;</p>",
+    "PostedDate": "2011-07-12T09:47:36.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "641408",
+    "ThreadId": "263624",
+    "Html": "<p>The easiest way to get the white space back in is to use the parser to load it back into the Interchange object, then you can call the interchange.SerializeToX12(true);</p>\r\n<p>I'll add that option to the new TransformToX12 exe that I will add to the next release. &nbsp;The whitespace won't be valid for transmission, but it will be useful for internal storage and troubleshooting.</p>",
+    "PostedDate": "2011-07-12T17:39:24.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1083034",
+    "ThreadId": "454049",
+    "Html": "Hello\r<br />\nIf I use x12parser tool for my project, please let me know the license I need? \r<br />\nDo x12parser tool source code free?\r<br />\n<br />\nKind regards,\r<br />\nMinh<br />\n",
+    "PostedDate": "2013-08-21T02:50:19.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083745",
+    "ThreadId": "454049",
+    "Html": "License info is here: <a href=\"https://x12parser.codeplex.com/license\" rel=\"nofollow\">https://x12parser.codeplex.com/license</a><br />\n",
+    "PostedDate": "2013-08-22T10:06:36.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1083901",
+    "ThreadId": "454049",
+    "Html": "Yes all the source code is available for free per the license.<br />\n",
+    "PostedDate": "2013-08-22T19:05:23.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

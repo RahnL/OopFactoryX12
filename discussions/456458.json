@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1090945",
+    "ThreadId": "456458",
+    "Html": "Hi, I am still trying the vew version and struggling with combdiagnosispointer constrain. Here is the error message I got:\r<br />\n<br />\nElement SV311 cannot contain the value '1:2' because it must be between 1 and 2 characters in length.\r<br />\nParameter name: SV311\r<br />\n<br />\nAlso, please drop a line for SV1 about how to use combdiagnosispointer sv107 when there are two diagnosis code.\r<br />\n<br />\nThanks\r<br />\nJinpin<br />\n",
+    "PostedDate": "2013-09-10T19:04:43.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092844",
+    "ThreadId": "456458",
+    "Html": "I have updated SV107 to be recognized as a string instead of int for composite pointers in version 3.0.7.\r<br />\nI have updated SV311 to have a maxlength of 7 in changset 30923.  I will try and release this soon.\r<br />\nThanks for catching these errors.  The definitions are defining the individual components, but I am nor parsing those out when I write it to the database.\r<br />\n<br />\nYou will be able to consistently parse these along as you use the component separator in the ISA segment.  Usually it is the colon, but could be something else.<br />\n",
+    "PostedDate": "2013-09-15T08:22:03.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

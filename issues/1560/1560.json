@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2013-09-15T06:25:50.78-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am getting error while i am trying to push back the 837 professional file to DB.\n\nError :- {\"There is an error in XML document (83, 31).\"}\nMessgae :- The string '2000-00-00' is not a valid AllXsd value.\n\nStack Trace:-    at System.Xml.Schema.XsdDateTime..ctor(String text, XsdDateTimeFlags kinds)\n   at System.Xml.XmlConvert.ToDateTime(String s, XmlDateTimeSerializationMode dateTimeOption)\n   at System.Xml.Serialization.XmlCustomFormatter.ToDateTime(String value)\n   at System.Xml.Serialization.XmlSerializationReader.ToDateTime(String value)\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read3_QualifiedDate(Boolean isNullable, Boolean checkType)\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read37_LineAdjustmentInformation(Boolean isNullable, Boolean checkType)\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read39_ServiceLine(Boolean isNullable, Boolean checkType)\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read40_Claim(Boolean isNullable, Boolean checkType)\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read41_ClaimDocument(Boolean isNullable, Boolean checkType)\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read42_ClaimDocument()\n\nTarget Site:- {System.Object Deserialize(System.Xml.XmlReader, System.String, System.Xml.Serialization.XmlDeserializationEvents)}",
+    "LastUpdatedDate": "2013-09-15T06:25:50.78-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-04-23T01:47:32.437-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error in Parsing 837 file back to DB",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1560
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Your code is trying to deserialize '2000-00-00' into a date field.  But that string is not a valid date.  IS this just a test file?",
+      "PostedDate": "2013-04-23T05:11:37.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No Actually, it is a live file. I am using Import X12 module of this which i am getting error.",
+      "PostedDate": "2013-04-23T21:14:02.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 25572.",
+      "PostedDate": "2013-04-24T06:06:19.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The stack trace appears to be from the OopFactory.X12.Hipaa assembly where it deserializes the xml created from an xslt to transform from X12 to the ClaimDocument.\r\n\r\nThis assembly isn't referenced by the ImportX12 console app.\r\n\r\nIf you are now using the records from the import to rehydrate a ClaimDocument, this is probably how the error is getting introduced.  I have checked in a change to the xslt that will force the date to be 2000-01-01 so it can load into the date attribute of the LineAdjustmentInformation object.  So it will actually be the OopFactory.X12.Hipaa.dll that you will need to update.",
+      "PostedDate": "2013-04-24T06:11:18.26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-15T06:25:50.78-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

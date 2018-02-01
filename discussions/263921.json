@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "637388",
+    "ThreadId": "263921",
+    "Html": "\r\n<p>I am trying to create a module with C# 2008 GUI works with the following way.</p>\r\n<p>&nbsp;</p>\r\n<p>1) User Selects ERA file can be .835 or .txt file.</p>\r\n<p>2) User Will select a transform of .XSLT template to parse based on the rules implemented in that .XSLT&nbsp; This can be changes based on the payer wise. Which means User will create 1 .XSLT for each of the payer and save it on his PC.</p>\r\n<p>3) .XSLT should be read dynamically rather than added to the project as static.</p>\r\n<p>4) After transforming the data should be loaded to DataTable or Dataset to export to database.</p>\r\n<p>&nbsp;</p>\r\n<p>Where as i am failing in step 2 and 4. XSLT is shwoing as null if i am tryign to read it runtime and how to load the .XSLT into stream rather than static.</p>\r\n<p>How to write the read data to DS or DT rather then text file.</p>\r\n<p>Thank you.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-07-05T03:20:07.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "637709",
+    "ThreadId": "263921",
+    "Html": "<p>You can use code very similar to what is show here:&nbsp; <a href=\"http://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform\">http://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform</a>.</p>\r\n<p>In step 5 of the discussion, instead of calling Assembly.GetExecutingAssembly().GetManifestResourceStream(), you just need to create a FileStream against the filepath of the xslt file.</p>\r\n<p>Thank you for all your complements in <a href=\"http://x12parser.codeplex.com/workitem/753\">http://x12parser.codeplex.com/workitem/753</a>.&nbsp; I will look into adding that feature.&nbsp; I will be creating a new release soon, so be on the lookout for 2.1.7 release this month.</p>",
+    "PostedDate": "2011-07-05T12:42:30.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "638013",
+    "ThreadId": "263921",
+    "Html": "<p>Done.</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you dstrhbhar.</p>",
+    "PostedDate": "2011-07-06T03:51:29.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

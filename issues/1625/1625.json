@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-09-13T18:19:59.2-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Loop 2300 in hierarchical loop 2000B should be situational. The 837I has this correctly but it's incorrect in 837P. Acknowledgements fail due to this loop being required and missing from the transmitted file. The 837P guide explains:\n> Claim information is positioned in the same hierarchical level that describes its owner-participant, either the subscriber or the dependent. In other words, the claim information, Loop ID-2300, is placed following Loop ID-2010BB in the Subscriber Hierarchical Level (HL) when patient information is sent in Loop ID-2010BA of the Subscriber HL. Claim information is placed in the Patient HL when the patient information is sent in Loop ID-2010CA of the Patient HL. When the patient is the subscriber or is considered to be the subscriber,\nLoop ID-2000C and Loop ID-2010CA are not sent.",
+    "LastUpdatedDate": "2013-09-13T18:19:59.2-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-06-24T05:20:14.12-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Loop 2300 in Ansi-837-5010Specification should be situational",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1625
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I agree their are some inconsistencies between the 837I and 837P.  The default specification used for 837 is a compromise between the two.\nThere are two more specific specifications in the assembly which you can access by using InstitutionalClaimSpecificationFinder and ProfessionalClaimSpecificationFinder instead of the default SpecificationFinder.  You would have to write code for these, there isn't any settings in the x12parser to configure the use of these.",
+      "PostedDate": "2013-09-13T18:17:22.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 30897.",
+      "PostedDate": "2013-09-13T18:19:59.2-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

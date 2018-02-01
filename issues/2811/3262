@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace OopFactory.X12.TransformToX12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string x12Filename = args[0];
+            string outputFilename = args.Length > 1 ? args[1] : x12Filename + ".edi";
+            if (x12Filename.Length == 0)
+            {
+                Console.WriteLine("There was an error reading the input file argument. Please check the path and filename.");
+                return;
+            }
+            var fs = new StreamReader(x12Filename);
+            string xmltext = fs.ReadToEnd();
+            var parser = new Parsing.X12Parser();
+            string x12 = string.Empty;
+            if (ShouldStripWhitespaceBetweenXmlNodes(args))
+            {
+                xmltext = StripWhitespaceBetweenNodesOfXmlText(xmltext);
+            }
+            try
+            {
+                x12 = parser.TransformToX12(xmltext);            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("The transformation encountered a problem: " + ex.Message + " -> " +ex.InnerException);
+            }
+            finally
+            {
+                fs.Close();
+            }
+
+            var outputFs = new FileStream(outputFilename, FileMode.Create);
+            var writer = new StreamWriter(outputFs);
+            writer.Write(x12);
+            writer.Close();
+        }
+
+        private static bool ShouldStripWhitespaceBetweenXmlNodes(string[] args)
+        {
+            if (args.Length > 2)
+            {
+                List<string> yesValues = new List<string>() { "Y", "1", "T" };
+                if (!String.IsNullOrWhiteSpace(args[2]) && yesValues.Any(str => args[2].IndexOf(str, StringComparison.InvariantCultureIgnoreCase) == 0))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static string StripWhitespaceBetweenNodesOfXmlText(string xmltext)
+        {
+            return Regex.Replace(xmltext, @"(>\s+<)", "><");
+        }
+    }
+}

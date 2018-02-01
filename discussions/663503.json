@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1497546",
+    "ThreadId": "663503",
+    "Html": "A little help please if possible.\r<br />\nUsing build 3.0.8.1 in asp.net web page.\r<br />\n<br />\nI am sending a 270. The 271 response has an error on the DMG line for the Subscriber.\r<br />\nThey are sending back DMG<em>D8</em>*M for the subscriber loop (no date).\r<br />\n<br />\nWhen I try to load the response into an EligibilityBenefitDocument, it throws and error and won't load the document.\r<br />\n<br />\nError: There is an error in XML document (14, 31). \r<br />\n<br />\nMy code is:\r<br />\nDim EBService = New Eligibility.Services.EligibilityTransformationService()\r<br />\nTry<br />\n<pre><code>Dim EBDocument As Eligibility.EligibilityBenefitDocument = EBService.Transform271ToBenefitResponse(stream)\nEBDocument.EligibilityBenefitResponses = EBDocument.EligibilityBenefitResponses\n</code></pre>\n\nIs there a method/parameter where I can continue to load the document even if it contains an error like this (or other errors)?\r<br />\n<br />\nThanks in advance.\r<br />\nJohn<br />\n",
+    "PostedDate": "2017-07-28T05:53:05.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

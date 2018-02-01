@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Due to the large number of implicit transactions that can be created with the default value of 1000 for the batch size this will result in degraded performance for SQL Server.  Suggested fix is below.\n\nWithin the AddSqlToBatch method add a check for _batchCount == 0, if true append a line prior to inserting any text of \"BEGIN TRAN\\r\\n\".  Within the _batchCount >= _batchSize check append the text \"\\r\\nCOMMIT TRAN\".  This will result in only explicit transactions occurring for this method.",
+    "LastUpdatedDate": "2014-07-07T10:10:11.5-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-07-07T10:10:11.5-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SqlTransactionRepository supports batching but does not properly implement",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2236
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

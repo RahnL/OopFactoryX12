@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I downloaded 3.0.8 and tried X12 to XML for an 856 ASN. I ran into Issue 1508. This was supposedly fixed way back when as indicated in this comment: \n\ndstrubhar wrote Feb 17, 2013 at 1:35 PM\n\nYou are correct. I have fixed this serialization to keep the segments with Trailer=\"true\" at the bottom. It is in changeset http://x12parser.codeplex.com/SourceControl/changeset/23145 and I will be doing a release within the next few weeks.\n\nIs this code fix in v3.0.8? Thanks.",
+    "LastUpdatedDate": "2015-05-08T12:48:36.387-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-05-08T12:47:50.163-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Issue in the 856 (ASN) Transformation with CTT Segment",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2677
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

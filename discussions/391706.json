@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "899542",
+    "ThreadId": "391706",
+    "Html": "\r\n<p>Hello I am getting the following error when I execute ParseMultiple on any 837 Professional 5010 formatted files.</p>\r\n<p>Segment 'LX*1' in position [position&nbsp;number here] within transaction '0001' cannot be identified within the supplied specification for transaction set 837.</p>\r\n",
+    "PostedDate": "2012-08-15T07:47:49.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "899598",
+    "ThreadId": "391706",
+    "Html": "\r\n<p>I found something else that is an issue. &nbsp;I'm testing it now but it might have to do with Ansi-837-5010-Specification.xml Loop 2330G</p>\r\n<p>The EntityIdentifier is &quot;DQ&quot; but our X222A1_Consolidated specifies &quot;85&quot; Billing Provider.</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">Loop</span> <span style=\"color:red\">LoopId</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">2330G</span><span style=\"color:black\">&quot;</span> <span style=\"color:red\">Usage</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">Situational</span><span style=\"color:black\">&quot;</span> <span style=\"color:red\">LoopRepeat</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">1</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">&gt;</span>\n          <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">Name</span><span style=\"color:blue\">&gt;</span>OTHER PAYER BILLING PROVIDER<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">Name</span><span style=\"color:blue\">&gt;</span>\n          <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">StartingSegment</span> <span style=\"color:red\">SegmentId</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">NM1</span><span style=\"color:black\">&quot;</span> <span style=\"color:red\">Usage</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">Situational</span><span style=\"color:black\">&quot;</span> <span style=\"color:red\">Repeat</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">1</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">&gt;</span>\n            <span style=\"white-space:pre\">\t</span><span style=\"color:green\">&lt;!--&lt;EntityIdentifier Code=&quot;DQ&quot;/&gt;--&gt;</span>\n\t\t<span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">EntityIdentifier</span> <span style=\"color:red\">Code</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">85</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">/&gt;</span>\n          <span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">StartingSegment</span><span style=\"color:blue\">&gt;</span>\n          <span style=\"color:blue\">&lt;</span><span style=\"color:#a31515\">Segment</span> <span style=\"color:red\">SegmentId</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">REF</span><span style=\"color:black\">&quot;</span> <span style=\"color:red\">Usage</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">Required</span><span style=\"color:black\">&quot;</span> <span style=\"color:red\">Repeat</span><span style=\"color:blue\">=</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">2</span><span style=\"color:black\">&quot;</span><span style=\"color:blue\">/&gt;</span>\n<span style=\"color:blue\">&lt;/</span><span style=\"color:#a31515\">Loop</span><span style=\"color:blue\">&gt;</span>\n</pre>\r\n</div>\r\n",
+    "PostedDate": "2012-08-15T09:39:28.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "899672",
+    "ThreadId": "391706",
+    "Html": "\r\n<p>Solved it. &nbsp;That was my issue. &nbsp;<br>\r\nOTHER PAYER BILLING PROVIDER should be 85 not DQ. &nbsp;<br>\r\nSince it couldn't validate the child loop the function kept bubbling up the parents until it hit the root. &nbsp;</p>\r\n",
+    "PostedDate": "2012-08-15T12:53:00.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "900195",
+    "ThreadId": "391706",
+    "Html": "<p>&nbsp;</p>\r\n<p>Thanks for the catch, changes saved in changeset 19215.</p>",
+    "PostedDate": "2012-08-16T16:28:18.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1347163",
+    "ThreadId": "391706",
+    "Html": "I have the same error for \r<br />\n<br />\nNM1<em>71</em>1~\r<br />\nREF<em>G2<em>001443456~\r<br />\nNM1</em>72</em>1~\r<br />\nREF<em>G2</em>001443456~\r<br />\n<br />\nI modified the Ansi-837-5010-Specification.xml  2330c and 2330D to add 71 and 72 and compile the dll but I am still geting same error.<br />\n<pre><code>&lt;Loop LoopId=&quot;2330C&quot; Usage=&quot;Situational&quot; LoopRepeat=&quot;1&quot;&gt;\n      &lt;Name&gt;OTHER PAYER REFERRING PROVIDER&lt;/Name&gt;\n      &lt;StartingSegment SegmentId=&quot;NM1&quot; Usage=&quot;Situational&quot; Repeat=&quot;1&quot;&gt;\n        &lt;EntityIdentifier Code=&quot;DN&quot;/&gt;\n        &lt;!--&lt;EntityIdentifier Code=&quot;P3&quot;/&gt;--&gt;\n        &lt;EntityIdentifier Code=&quot;71&quot;/&gt;\n      &lt;/StartingSegment&gt;\n      &lt;Segment SegmentId=&quot;REF&quot; Usage=&quot;Required&quot; Repeat=&quot;3&quot;/&gt;\n    &lt;/Loop&gt;\n    &lt;Loop LoopId=&quot;2330D&quot; Usage=&quot;Situational&quot; LoopRepeat=&quot;1&quot;&gt;\n      &lt;Name&gt;OTHER PAYER RENDERING PROVIDER&lt;/Name&gt;\n      &lt;StartingSegment SegmentId=&quot;NM1&quot; Usage=&quot;Situational&quot; Repeat=&quot;1&quot;&gt;\n        &lt;!--&lt;EntityIdentifier Code=&quot;82&quot;/&gt;--&gt;\n        &lt;EntityIdentifier Code=&quot;72&quot;/&gt;\n      &lt;/StartingSegment&gt;\n      &lt;Segment SegmentId=&quot;REF&quot; Usage=&quot;Required&quot; Repeat=&quot;3&quot;/&gt;\n    &lt;/Loop&gt;</code></pre>\n\n",
+    "PostedDate": "2015-01-29T08:13:37.833-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1347197",
+    "ThreadId": "391706",
+    "Html": "I fixed the issues\r<br />\n<br />\nvalues for  Ansi-837-5010-Specification.xml 2330c and 2330D <br />\n<pre><code>   &lt;Loop LoopId=&quot;2330C&quot; Usage=&quot;Situational&quot; LoopRepeat=&quot;1&quot;&gt;\n      &lt;Name&gt;OTHER PAYER REFERRING PROVIDER&lt;/Name&gt;\n      &lt;StartingSegment SegmentId=&quot;NM1&quot; Usage=&quot;Situational&quot; Repeat=&quot;1&quot;&gt;\n        &lt;!--&lt;EntityIdentifier Code=&quot;DN&quot;/&gt;\n        &lt;EntityIdentifier Code=&quot;P3&quot;/&gt;--&gt;\n        &lt;EntityIdentifier Code=&quot;71&quot;/&gt;\n      &lt;/StartingSegment&gt;\n      &lt;Segment SegmentId=&quot;REF&quot; Usage=&quot;Required&quot; Repeat=&quot;3&quot;/&gt;\n    &lt;/Loop&gt;\n    &lt;Loop LoopId=&quot;2330D&quot; Usage=&quot;Situational&quot; LoopRepeat=&quot;1&quot;&gt;\n      &lt;Name&gt;OTHER PAYER RENDERING PROVIDER&lt;/Name&gt;\n      &lt;StartingSegment SegmentId=&quot;NM1&quot; Usage=&quot;Situational&quot; Repeat=&quot;1&quot;&gt;\n        &lt;!--&lt;EntityIdentifier Code=&quot;82&quot;/&gt;--&gt;\n        &lt;EntityIdentifier Code=&quot;72&quot;/&gt;\n      &lt;/StartingSegment&gt;\n      &lt;Segment SegmentId=&quot;REF&quot; Usage=&quot;Required&quot; Repeat=&quot;3&quot;/&gt;\n    &lt;/Loop&gt;</code></pre>\n\n",
+    "PostedDate": "2015-01-29T09:23:31.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

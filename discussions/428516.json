@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "983089",
+    "ThreadId": "428516",
+    "Html": "\r\n<p>Everything works great. The following is a minor wrinkle</p>\r\n<p>After unbundling, there is only one item in the product, but the 133 is kept from the orginal document which had 133 items.</p>\r\n<div>\r\n<div style=\"text-indent:-2em; margin-left:1em\"><a href=\"file:///C:/Users/shanthu/AppData/Local/Temp/VSD1.tmp.XML#\">-</a>\r\n<span>&lt;</span><span>CTT</span><span>&gt;</span></div>\r\n<div>\r\n<div>\r\n<div style=\"text-indent:-2em; margin-left:1em\"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CTT01</span><span>&gt;</span><span>133</span><span>&lt;/</span><span>CTT01</span><span>&gt;</span></div>\r\n</div>\r\n<div><span>&lt;/</span><span>CTT</span><span>&gt;</span></div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2013-01-04T08:53:02.827-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002471",
+    "ThreadId": "428516",
+    "Html": "There really isn't an automated way that I can fix this since the transaction total is defined differently for each specification.\r<br />\n<br />\nThe SE, GE and IEA segment totals are updated automatically when unbundling because these always behave the same way.\r<br />\n<br />\nThe CTT can have item and dollar amount totals which the parser will not attempt to recalculate.  These would need to be a feature of the application that is unbundling.<br />\n",
+    "PostedDate": "2013-02-17T11:45:23.21-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

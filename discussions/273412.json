@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "675049",
+    "ThreadId": "273412",
+    "Html": "\r\n<p>How does one generate X12 from the Model?&nbsp; I would like to create a ClaimsDocument and transform that into an 837.&nbsp; Is this doable?</p>\r\n",
+    "PostedDate": "2011-09-21T19:45:03.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "675261",
+    "ThreadId": "273412",
+    "Html": "<p>Creating X12 is currently done by using the Interchange class.&nbsp; See this discussion for example syntax:&nbsp; <a href=\"http://x12parser.codeplex.com/discussions/265463\">http://x12parser.codeplex.com/discussions/265463</a>.</p>\r\n<p>The ClaimsDocument is meant to be a very user-friendly model for defining business logic on incoming claims that are for the most part read-only.</p>\r\n<p>A future release may include a transformation from the ClaimsDocument to an 837 message, but this is not on the immediate road-map.&nbsp; If you would like this, add this as a feature request on the \"Issue Tracker\" page.</p>",
+    "PostedDate": "2011-09-22T06:17:52.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "675266",
+    "ThreadId": "273412",
+    "Html": "<p>Thanks for the reply.&nbsp; I will add as a feature request and will build using the Interchange Class as you suggested.</p>",
+    "PostedDate": "2011-09-22T06:20:51.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

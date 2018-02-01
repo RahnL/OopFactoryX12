@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi Friends,\n              I convert EDI to XML using OopFactory X12 Parser dll, and i need to convert that  XML to XL so i need XSLT code for that.i searched in yahoo,google no use of that anybody know means pls solve this problem\ni struck on this last two days.\nThanks",
+    "LastUpdatedDate": "2014-05-24T01:43:48.993-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-05-24T01:42:11.903-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NEED XSLT CODE FOR 856 EDI",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2064
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

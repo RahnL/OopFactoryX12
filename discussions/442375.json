@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1038678",
+    "ThreadId": "442375",
+    "Html": "Please verify the specification of SV107 in V3.0.1 above. When I run it using the new version, it gave me the error: Element SV107 cannot contain the value '1:2:3' because it must be between 1 and 2 characters in length.\r<br />\n<br />\nThis is for 837 professional claims.\r<br />\n<br />\nThanks\r<br />\nJinpin<br />\n",
+    "PostedDate": "2013-05-02T10:19:30.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038799",
+    "ThreadId": "442375",
+    "Html": "It looks like the previous versions did not have a spec for SV1 so it wasn't doing any syntax checking before.  I have added <a href=\"http://x12parser.codeplex.com/SourceControl/changeset/25777\" rel=\"nofollow\">changeset 25777</a> that will change the max length to 35 to accommodate up to 12 pointers and it's sub-element delimiters.  This should be in a release within the next week.<br />\n",
+    "PostedDate": "2013-05-02T15:13:22.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1038831",
+    "ThreadId": "442375",
+    "Html": "Wow. That was quick. Thanks a lot.<br />\n",
+    "PostedDate": "2013-05-02T18:17:40.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The existing file handles Quantity but only when the value comes from EB09/EB10. There is an alternative way to specify this quantity in the form of the HSD segment. The HSD segment is represented in the TypedSegmentHSD.cs file but that same handling was not translated by the XSLT in used by EligibilityTransformationService to create an EligibilityBenefitDocument record. \n\nFile to be updated is: X12-271-To-BenefitResponse.xslt\n\nThere is a decision to be made how the HSD is represented. It could be mapped directly to the existing Quantity element or it could be a new extension on the EligibilityBenefitDocument class to include HSD specific properties. This changes how the data is consumed. \n\nThe argument for mapping to Quantity is that it doesn't require a change for consumers, they just get the value that was previously ignored. \n\nThe argument for a new property is that this field might mean something slightly different in a particular context and therefore the two values can't be conflated.",
+    "LastUpdatedDate": "2016-12-01T11:07:36.163-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2016-12-01T11:07:36.163-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "X12.HIPAA: HSD segment is ignored in Translation to Eligibility Response Format.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2819
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The 814 EDI document is sent by a trading partner making a general request, or in response to or confirmation of a request. After the 814 General Request, Response or Confirmation is received, a 997 Functional Acknowledgment is sent back from the receiver indicating that the 814 General Request, Response or Confirmation was successfully received.",
+    "LastUpdatedDate": "2013-07-09T14:24:48.057-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-03-21T14:24:33.08-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "EDI 814 General Request, Response or Confirmation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1536
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "There is a project called OopFactory.X12.AcknowledgeX12\r\n\r\nThis will generate 999 acknowledgements but it is not hard modify this to be able to generate 997s.\r\n\r\nI remember having to create a few typed segments that were different between the 999 and 997 but it was pretty much copy/paste/rename.\r\n\r\nI also added a method to the OopFactory.X12.Validation.X12Extensions that was almost a copy and paste of the Add999Transaction but named Add997Transaction with the specific TypedSegments/Loops i created.\r\n\r\nObviously you will have to do a little legwork since i didn't give you a complete solution but it should be simple enough to start you off.\r\n\r\n```\n        public static Interchange GenerateInterchangeAck(Interchange receivedInterchange)\n        {\n            var isaControlNumber = GetNextControlNumber<int>(\"ISA\");\n            var prodflag = receivedInterchange.GetElement(15).Equals(\"P\");\r\n\r\n            var interchange =  new Interchange(DateTime.Now, isaControlNumber, prodflag) { InterchangeSenderId = receivedInterchange.InterchangeReceiverId, InterchangeSenderIdQualifier = receivedInterchange.InterchangeReceiverIdQualifier, InterchangeReceiverId = receivedInterchange.InterchangeSenderId, InterchangeReceiverIdQualifier = receivedInterchange.InterchangeSenderIdQualifier };\n            interchange.SetElement(14, 0);\r\n\r\n\n            var group = interchange.AddFunctionGroup(\"FA\", DateTime.Now, GetNextControlNumber<int>(\"FG\"));\n            group.ApplicationSendersCode = interchange.InterchangeSenderId.Trim();\n            group.ApplicationReceiversCode = interchange.InterchangeReceiverId.Trim();\n            group.VersionIdentifierCode = \"004010\";\r\n\r\n\n            var service = new X12AcknowledgmentService();\n            var responses = service.AcknowledgeTransactions(receivedInterchange.SerializeToX12(false));\r\n\r\n            if (responses == null)\n            {\n                return null;\n            }\r\n\r\n            var wasSuccess = true;\n            foreach (var response in responses)\n            {\n                if (response.SyntaxErrorCodes.Any())\n                {\n                    wasSuccess = false;\n                    break;\n                }\n                if (response.TransactionSetResponses.Any(o => o.AcknowledgmentCode != AcknowledgmentCodeEnum.A_Accepted))\n                {\n                    wasSuccess = false;\n                    break;\n                }\n            }\r\n\r\n            group.Add997Transaction(responses);\r\n\r\n            if (!wasSuccess)\n            {\n               //my alert trigger\n            }\r\n\r\n            return interchange;\n        }\n```",
+      "PostedDate": "2013-07-09T14:24:48.057-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-09-13T18:22:44.77-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When parsing an 835 file that has more than one data interchange only the first interchange is parsed and then the XslCompiledTransform crashes. How can this be corrected? I assume the transformation is having a hard time combining the two interchanges into one csv file. I am using the same transformation code listed in the transformation steps @:\n https://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform\n\nBut using ParseMultiple\n```\n Stream transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(\"_835_Batch_Parser.EDI-835-To-CSV.xslt\");\n                Stream inputStream = new FileStream(inputFilename, FileMode.Open, FileAccess.Read);\n\n                X12Parser parser = new X12Parser();\n                int index = 1;\n                foreach (Interchange interchange in parser.ParseMultiple(inputStream))\n                {\n                    string xml = interchange.Serialize();\n\n                    var transform = new XslCompiledTransform();\n                    transform.Load(XmlReader.Create(transformStream));\n\n                    string outputFilename = index == 1 ? string.Format(\"{0}.csv\", inputFilename) : string.Format(\"{0}_{1}.csv\", inputFilename, index++);\n                    Stream outputFile = new FileStream(outputFilename, FileMode.Create, FileAccess.Write);\n                    transform.Transform(XmlReader.Create(new StringReader(xml)), new XsltArgumentList(), outputFile);\n```\n\nIncluded is the exception error.\n```\nSystem.Xml.Xsl.XslLoadException: XSLT compile error. An error occurred at (0,0). ---> System.Xml.XmlException: Root element is missing.\n   at System.Xml.XmlTextReaderImpl.ThrowWithoutLineInfo(String res)\n   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()\n   at System.Xml.Xsl.Xslt.XsltInput.ReadNextSibling()\n   at System.Xml.Xsl.Xslt.XsltInput.FindStylesheetElement()\n   at System.Xml.Xsl.Xslt.XsltLoader.LoadDocument()\n   at System.Xml.Xsl.Xslt.XsltLoader.LoadStylesheet(XmlReader reader, Boolean include)\n   --- End of inner exception stack trace ---\n   at System.Xml.Xsl.Xslt.XsltLoader.LoadStylesheet(XmlReader reader, Boolean include)\n   at System.Xml.Xsl.Xslt.XsltLoader.Load(Compiler compiler, Object stylesheet, XmlResolver xmlResolver)\n   at System.Xml.Xsl.Xslt.Compiler.Compile(Object stylesheet, XmlResolver xmlResolver, QilExpression& qil)\n   at System.Xml.Xsl.XslCompiledTransform.LoadInternal(Object stylesheet, XsltSettings settings, XmlResolver stylesheetResolver)\n   at _835_Batch_Parser.BatchParser.button1_Click(Object sender, EventArgs e)\n   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\n   at System.Windows.Forms.Control.WndProc(Message& m)\n   at System.Windows.Forms.ButtonBase.WndProc(Message& m)\n   at System.Windows.Forms.Button.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n\n```\n\nThanks\nPhil",
+    "LastUpdatedDate": "2013-09-13T18:22:44.77-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-06-05T18:16:48.11-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "ParseMultiple crashing XslCompiledTransform",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1609
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The error is not occurring when calling the X12 Parser.  It is happening when you load your xslt file before it even attempts a the Transform statement.  I would guess that your xslt is not well-formed.  The Visual Studio IDE will allow you to trouble-shoot your xslt directly so you can see what the syntax error is.  If you open up the xslt, there should be a \"XML\" menu that will allow you to choose \"Start XSLT Debugging\".  YOu will need to choose an Input File from the properties window.  Create a file that will output the raw xml variable from your code above, and this will be your test file.\r\n\r\nThe ParseMultiple will return a list of Interchanges if there are more than one interchange.  The X12Parser out of the box will write each of these to a separate xml file.  I do not think the fact that you have multiple interchanges in a file is causing this exception since the exception is occurring before the Transform statement.",
+      "PostedDate": "2013-06-06T07:14:48.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\nThanks for all your help.\nI used the transformation in the project listed below which has not been updated to include the ParseMultiple. I ran a MS Word XML file through the XSLT debugging and it did not return error messages. It took a very long time to transform the xml version of an 835 file that had two Interchanges but no error messages. \r\n\r\nThe transformation seems to work for the first interchange of a multiple interchange file but errors loading the transformation again for the second interchange in the same file.\r\n\r\nThe error message I am getting at:\n transform.Load(XmlReader.Create(transformStream));\n(XSLT compile error.\"Root element is missing\".)\r\n\r\nHow do I code this to allow the stream to continue to the next Interchange. From my research it appears the stream is empty and causing the error. How do I reset the reader to include the multiple interchanges?\r\n\r\n\r\n\r\n```\n      Stream transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(\"_835_Batch_Parser.EDI-835-To-CSV.xslt\");\n                \n                FileStream inputStream = new FileStream(inputFilename, FileMode.Open, FileAccess.Read);\r\n\r\n                X12Parser parser = new X12Parser();\n                int index = 1;\n                foreach (Interchange interchange in parser.ParseMultiple(inputStream))\n                {\n                    string xml = interchange.Serialize();\r\n\r\n                    var transform = new XslCompiledTransform();\n                    transform.Load(XmlReader.Create(transformStream));\r\n\r\n                    string outputFilename = index == 1 ? string.Format(\"{0}.csv\", inputFilename) : string.Format(\"{0}_{1}.csv\", inputFilename, index++);\n                    Stream outputFile = new FileStream(outputFilename, FileMode.Create, FileAccess.Write);\n                    transform.Transform(XmlReader.Create(new StringReader(xml)), new XsltArgumentList(), outputFile);\n                    \n                    progressBar1.PerformStep();\n                    outputFile.Close();\n```\r\n\r\n[http://download.codeplex.com/download?ProjectName=x12parser&DownloadId=242069)](http://download.codeplex.com/download?ProjectName=x12parser&DownloadId=242069)",
+      "PostedDate": "2013-06-25T08:19:07.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have attempted to include the transformation code into the current available source code. The transformation creates and populates the first CSV file for the first interchange. It also creates the second CSV file for the second interchange but then I receive a \r\n\r\ntransform.Load(XmlReader.Create(transformStream));\n(XSLT compile error.\"Root element is missing\".) \r\n\r\nI am unsure how to deal with this transformation stream issue for the second interchange.\r\n\r\nI have included the complete code.\r\n\r\n```\n    Stream transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(\"_835_Parser.EDI-835-To-CSV.xslt\");\n          // FileStream inputStream = new FileStream(inputFilename, FileMode.Open, FileAccess.Read);\n          string outputFilename = inputFilename + \".csv\";\n          // Stream outputFile = new FileStream(outputFilename, FileMode.Create, FileAccess.Write);\r\n\r\n            X12Parser parser = new X12Parser();\r\n\r\n            byte[] header = new byte[6];\n            using (FileStream fs = new FileStream(inputFilename, FileMode.Open, FileAccess.Read))\n            {\n                // peak at first 6 characters to determine if this is a unicode file\n                fs.Read(header, 0, 6);\n                fs.Close();\n            }\n            Encoding encoding = (header[1] == 0 && header[3] == 0 && header[5] == 0) ? Encoding.Unicode : Encoding.UTF8;\r\n\r\n            using (FileStream fs = new FileStream(inputFilename, FileMode.Open, FileAccess.Read))\n            {\n                var interchange = parser.ParseMultiple(fs, encoding);\n                if (interchange.Count >= 1)\n                {\n                    using (FileStream outputFs = new FileStream(outputFilename, FileMode.Create))\n                    {\r\n\r\n                        string xml =interchange.First().Serialize();\r\n\r\n                        var transform = new XslCompiledTransform();\n                        transform.Load(XmlReader.Create(transformStream));\r\n\r\n                        transform.Transform(XmlReader.Create(new StringReader(xml)), new XsltArgumentList(), outputFs);\r\n\r\n                        outputFs.Close();\n                    }\n                }\n                 if (interchange.Count > 1)\n                 {\n                        for (int i = 1; i < interchange.Count; i++)\n                        {\n                            outputFilename =  string.Format(\"{0}_{1}.csv\", inputFilename,i+1);\n                            using (FileStream outputFs = new FileStream(outputFilename, FileMode.Create))\n                            {\n                             string xml=interchange[i].Serialize();\r\n\r\n                             var transform = new XslCompiledTransform();\n                             transform.Load(XmlReader.Create(transformStream));\r\n\r\n                             transform.Transform(XmlReader.Create(new StringReader(xml)), new XsltArgumentList(), outputFs);\r\n\r\n                             outputFs.Close();\r\n\r\n```",
+      "PostedDate": "2013-07-08T07:10:54.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am confused how I can be getting a \"root element missing\"  error for the second interchange transformation but not the first? I validated the two xml files that are created within the parsing program and they have no errors and are well formed.  I ran them also through the xslt XML Debugging without any syntax errors.",
+      "PostedDate": "2013-07-08T11:48:57.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\nThe transformStream position needed to be reset to transform the second interchange.\n transformStream.Position = 0;",
+      "PostedDate": "2013-07-09T11:17:13.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-13T18:22:44.77-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

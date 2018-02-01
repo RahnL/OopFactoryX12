@@ -1,0 +1,606 @@
+[
+  {
+    "Id": 127,
+    "Title": "Add the ability to unbundle the EDI into individual claims or transactions"
+  },
+  {
+    "Id": 129,
+    "Title": "Change parsing to use Stream instead of string"
+  },
+  {
+    "Id": 130,
+    "Title": "Create corresponding claim model to deserialize xml into"
+  },
+  {
+    "Id": 643,
+    "Title": "Add 856 Specification for Ship Notice/Manifest"
+  },
+  {
+    "Id": 656,
+    "Title": "Allow client app to override with custom specifications."
+  },
+  {
+    "Id": 657,
+    "Title": "Create a transformation to html with tool tips on element definitions"
+  },
+  {
+    "Id": 668,
+    "Title": "270/271 4010 Spec"
+  },
+  {
+    "Id": 676,
+    "Title": "Some little bugs I found"
+  },
+  {
+    "Id": 677,
+    "Title": "Transform 837 XML to CMS-1500, UB-04 and ADA Dental pdf forms"
+  },
+  {
+    "Id": 680,
+    "Title": "EDI 820"
+  },
+  {
+    "Id": 685,
+    "Title": "820 EDI"
+  },
+  {
+    "Id": 686,
+    "Title": "Create acknowledgement file from any x12 file."
+  },
+  {
+    "Id": 698,
+    "Title": "837 parsing errors"
+  },
+  {
+    "Id": 724,
+    "Title": "Add 835 version 5010"
+  },
+  {
+    "Id": 736,
+    "Title": "Transform XML back into X12 so that changes can be made on the XML directly"
+  },
+  {
+    "Id": 745,
+    "Title": "Commodity Movement Services - 873, Commodity Movement Services Response - 874"
+  },
+  {
+    "Id": 750,
+    "Title": "Feedback on UnbundleX12"
+  },
+  {
+    "Id": 753,
+    "Title": "Create XSLT creator"
+  },
+  {
+    "Id": 762,
+    "Title": "Add TransformToX12 console application to project"
+  },
+  {
+    "Id": 764,
+    "Title": "Exception handling for console apps"
+  },
+  {
+    "Id": 772,
+    "Title": "unbundle issue with 835 loops 2100 and 2110"
+  },
+  {
+    "Id": 795,
+    "Title": "Add support for 110 & 210 transaction set"
+  },
+  {
+    "Id": 809,
+    "Title": "UnbundleX12 tweak"
+  },
+  {
+    "Id": 810,
+    "Title": "Unbundle bug in changeset 9439"
+  },
+  {
+    "Id": 828,
+    "Title": "Unbundle loop duplication issue still exists with 835 files"
+  },
+  {
+    "Id": 858,
+    "Title": "999 Acknowledgment Transaction Support"
+  },
+  {
+    "Id": 860,
+    "Title": "Support for 866"
+  },
+  {
+    "Id": 862,
+    "Title": "x12 parser"
+  },
+  {
+    "Id": 869,
+    "Title": "271 Parsing issue with Benefit hoops (4010)"
+  },
+  {
+    "Id": 879,
+    "Title": "Crashes on startup"
+  },
+  {
+    "Id": 883,
+    "Title": "837i/p 5010 parsing errors"
+  },
+  {
+    "Id": 889,
+    "Title": "277 Claim Acknowlegment support."
+  },
+  {
+    "Id": 902,
+    "Title": "x12.852 \"Product Activity Data\" transaction set"
+  },
+  {
+    "Id": 912,
+    "Title": "Unable to open"
+  },
+  {
+    "Id": 916,
+    "Title": "Request for transaction set: 5010 version of 834"
+  },
+  {
+    "Id": 920,
+    "Title": "Unable to Parse above 150 KB"
+  },
+  {
+    "Id": 948,
+    "Title": "Creation of 997"
+  },
+  {
+    "Id": 949,
+    "Title": "Creation of 997"
+  },
+  {
+    "Id": 955,
+    "Title": "Transaction Code 417 and 322"
+  },
+  {
+    "Id": 973,
+    "Title": "Missing items in the Claim object."
+  },
+  {
+    "Id": 974,
+    "Title": "XML Spec Documentation"
+  },
+  {
+    "Id": 980,
+    "Title": "X12 277 error"
+  },
+  {
+    "Id": 984,
+    "Title": "Can't use OopFactory.X12.dll in VS 2005"
+  },
+  {
+    "Id": 999,
+    "Title": "835 Error"
+  },
+  {
+    "Id": 1101,
+    "Title": "Please add support for 278 transactions"
+  },
+  {
+    "Id": 1111,
+    "Title": "Can't create 5010 Interchange"
+  },
+  {
+    "Id": 1135,
+    "Title": "Suggestion: Createa NuGet package for the parser"
+  },
+  {
+    "Id": 1137,
+    "Title": "Loop Specification is public get, but HierchicalLoop is private?"
+  },
+  {
+    "Id": 1153,
+    "Title": "SpecificationFinder contains race hazards"
+  },
+  {
+    "Id": 1168,
+    "Title": "Req 811 transaction set"
+  },
+  {
+    "Id": 1226,
+    "Title": "\"Second path fragment must not be a drive or UNC name.\""
+  },
+  {
+    "Id": 1231,
+    "Title": "ANSI X12 856 Parsing Issue"
+  },
+  {
+    "Id": 1237,
+    "Title": "864 Text Message Specification"
+  },
+  {
+    "Id": 1238,
+    "Title": "824 Specification"
+  },
+  {
+    "Id": 1240,
+    "Title": "Time in segments should be HHmm not hhmm"
+  },
+  {
+    "Id": 1241,
+    "Title": "Whitespace lost when converting X12 to XML to X12 again"
+  },
+  {
+    "Id": 1271,
+    "Title": "277ca REF before QTY error"
+  },
+  {
+    "Id": 1272,
+    "Title": "Parser does not support Unicode files"
+  },
+  {
+    "Id": 1284,
+    "Title": "Can you please add support for 873 and 874 transaction sets"
+  },
+  {
+    "Id": 1286,
+    "Title": "277ca REF before QTY error"
+  },
+  {
+    "Id": 1304,
+    "Title": "Bug in printing multiple Diagnosis in HCFA generation"
+  },
+  {
+    "Id": 1305,
+    "Title": "HIPAA 5010 271 Multi ServiceType"
+  },
+  {
+    "Id": 1383,
+    "Title": "Creation of 875"
+  },
+  {
+    "Id": 1388,
+    "Title": "OopFactory X12 Parser not working on VS 2012"
+  },
+  {
+    "Id": 1389,
+    "Title": "Create Object Model Remittance Advise (835)"
+  },
+  {
+    "Id": 1397,
+    "Title": "837 parser missing prior payments"
+  },
+  {
+    "Id": 1405,
+    "Title": "How to get the information from 2000A loop in 837"
+  },
+  {
+    "Id": 1421,
+    "Title": "837P need DTPQualifier for DateOfAccident"
+  },
+  {
+    "Id": 1456,
+    "Title": "Request for Transaction Set 940/945"
+  },
+  {
+    "Id": 1464,
+    "Title": "Error while parsing 856 (ASN) file"
+  },
+  {
+    "Id": 1488,
+    "Title": "ISA11 repetition support"
+  },
+  {
+    "Id": 1508,
+    "Title": "Issue in the 856 (ASN) Transformation with CTT Segment"
+  },
+  {
+    "Id": 1532,
+    "Title": "837P Loop 2330G — OTHER PAYER BILLING PROVIDER"
+  },
+  {
+    "Id": 1536,
+    "Title": "EDI 814 General Request, Response or Confirmation"
+  },
+  {
+    "Id": 1560,
+    "Title": "Error in Parsing 837 file back to DB"
+  },
+  {
+    "Id": 1563,
+    "Title": "Claim Parser - ClaimDocument and Claim should provide the function group and transaction details"
+  },
+  {
+    "Id": 1577,
+    "Title": "837 i and p - HCP Segments"
+  },
+  {
+    "Id": 1579,
+    "Title": "Editing parser.Parse to parser.ParseMultiple"
+  },
+  {
+    "Id": 1585,
+    "Title": "Error in X12Extensions.cs while creating acknowledgments for 837P"
+  },
+  {
+    "Id": 1597,
+    "Title": "Cannot process EDI documents"
+  },
+  {
+    "Id": 1609,
+    "Title": "ParseMultiple crashing XslCompiledTransform"
+  },
+  {
+    "Id": 1615,
+    "Title": "Feature Request: UnbundleByFunctionGroup()"
+  },
+  {
+    "Id": 1624,
+    "Title": "SE is not added to segments"
+  },
+  {
+    "Id": 1625,
+    "Title": "Loop 2300 in Ansi-837-5010Specification should be situational"
+  },
+  {
+    "Id": 1636,
+    "Title": "X12parser.exe"
+  },
+  {
+    "Id": 1639,
+    "Title": "} in X12 document will prevent DB import using OopFactory.X12.ImportX12.exe"
+  },
+  {
+    "Id": 1640,
+    "Title": "Qualifier Set has -- will malform the XML"
+  },
+  {
+    "Id": 1642,
+    "Title": "Error when creating 270 eligibility request"
+  },
+  {
+    "Id": 1645,
+    "Title": "Sql Server Database Integration and 835 version 5010"
+  },
+  {
+    "Id": 1646,
+    "Title": "error when checking if CreateFlatElementsFunction and CreateSplitSegmentFunction exist."
+  },
+  {
+    "Id": 1659,
+    "Title": "How to install"
+  },
+  {
+    "Id": 1678,
+    "Title": "Unable to retrieve graphic from HCFA1500_Red.gif"
+  },
+  {
+    "Id": 1681,
+    "Title": "Adding more 276 sample X12 files"
+  },
+  {
+    "Id": 1709,
+    "Title": "Segment.GetDate8Element not using requested element"
+  },
+  {
+    "Id": 1737,
+    "Title": "Request to add support for 4010 version of 278"
+  },
+  {
+    "Id": 1770,
+    "Title": "Transaction Set 240"
+  },
+  {
+    "Id": 1778,
+    "Title": "Data type DATE is not available in SQL Server 2005"
+  },
+  {
+    "Id": 1782,
+    "Title": "5010 850 specification"
+  },
+  {
+    "Id": 1788,
+    "Title": "I have sample 271 EDI file, but I am getting \"0 is not a valid subelement separator in position 105 of the file\""
+  },
+  {
+    "Id": 1794,
+    "Title": "Tax id for Hospital in 5010 837 `REF*EI*123456789~` not showing up correctly in UB04Claim object."
+  },
+  {
+    "Id": 1812,
+    "Title": "Import 835 files to SQL Server"
+  },
+  {
+    "Id": 1813,
+    "Title": "Multiple Typed N1 loops not supported in single EDI file"
+  },
+  {
+    "Id": 1865,
+    "Title": "TransactionSetIdentifierCode needs correction in 271 specifications."
+  },
+  {
+    "Id": 1870,
+    "Title": "Add documentation and a related test for creating a 270 file"
+  },
+  {
+    "Id": 1875,
+    "Title": "Generate 5010 834 file from scratch."
+  },
+  {
+    "Id": 1876,
+    "Title": "834 Transformation File"
+  },
+  {
+    "Id": 1920,
+    "Title": "Total Segment Counts"
+  },
+  {
+    "Id": 1927,
+    "Title": "837 Parsing Error for file > 2.5 MB"
+  },
+  {
+    "Id": 1929,
+    "Title": "Problem in exporting data from Database to 837 format"
+  },
+  {
+    "Id": 1938,
+    "Title": "Problem in parsing More than 10 MB file."
+  },
+  {
+    "Id": 1946,
+    "Title": "HCFA 1500 Version (02-12) format"
+  },
+  {
+    "Id": 1953,
+    "Title": "837P Hipaa OtherSubscriberInformation.OtherPayer Missing Address"
+  },
+  {
+    "Id": 1959,
+    "Title": "837,Open Object reference not set to an instance of an object"
+  },
+  {
+    "Id": 1962,
+    "Title": "Add N2, N3, N4 Loop Segments to N1 in 850"
+  },
+  {
+    "Id": 1985,
+    "Title": "Missing Trailers"
+  },
+  {
+    "Id": 2028,
+    "Title": "Error Parsing 856 EDI to XML"
+  },
+  {
+    "Id": 2042,
+    "Title": "Error Parsing 856 EDI to HTML"
+  },
+  {
+    "Id": 2047,
+    "Title": "Generate x12 file from SQL Database"
+  },
+  {
+    "Id": 2064,
+    "Title": "NEED XSLT CODE FOR 856 EDI"
+  },
+  {
+    "Id": 2092,
+    "Title": "Add NCPDP format"
+  },
+  {
+    "Id": 2236,
+    "Title": "SqlTransactionRepository supports batching but does not properly implement"
+  },
+  {
+    "Id": 2294,
+    "Title": "TypedSegmentCTP.CTIP04_Quantity - Typo?"
+  },
+  {
+    "Id": 2357,
+    "Title": "Please add a 277ca Claim Ack"
+  },
+  {
+    "Id": 2407,
+    "Title": "Failed DB Import on Recycled Interchange Control Number"
+  },
+  {
+    "Id": 2576,
+    "Title": "X12 997 Acknowledge"
+  },
+  {
+    "Id": 2601,
+    "Title": "Not able to parse the following ASN 856 file"
+  },
+  {
+    "Id": 2609,
+    "Title": "TransactionValidationException"
+  },
+  {
+    "Id": 2619,
+    "Title": "Getting Exception while building 835"
+  },
+  {
+    "Id": 2625,
+    "Title": "Create 837 Model"
+  },
+  {
+    "Id": 2635,
+    "Title": "Patient Date of Death and Patient Pregnancy Indicator are missing Claim Document for 837 claim file"
+  },
+  {
+    "Id": 2673,
+    "Title": "BUG on ParseMultiple"
+  },
+  {
+    "Id": 2677,
+    "Title": "Issue in the 856 (ASN) Transformation with CTT Segment"
+  },
+  {
+    "Id": 2698,
+    "Title": "Which class is trying to add end segments?How do we make sure that end segments are as per SPEC?"
+  },
+  {
+    "Id": 2700,
+    "Title": "810 - (4010/5010) TDS/ISS out of order?"
+  },
+  {
+    "Id": 2716,
+    "Title": "FormattedCode() doesn't work correctly for ICD-10"
+  },
+  {
+    "Id": 2717,
+    "Title": "EligibilityBenefitInquiry is still with TO DO code"
+  },
+  {
+    "Id": 2728,
+    "Title": "Unable To Export CAS In 835"
+  },
+  {
+    "Id": 2753,
+    "Title": "X12 Version 5010"
+  },
+  {
+    "Id": 2761,
+    "Title": "Memory exception parsing 820 to XML"
+  },
+  {
+    "Id": 2765,
+    "Title": "while deserializing 271 response to EligibilityBenefitResponse type information is not available for Entity"
+  },
+  {
+    "Id": 2785,
+    "Title": "problem in parsing 10 gb edi file"
+  },
+  {
+    "Id": 2807,
+    "Title": "Multiple HL1 loops in 811 causes Out of Memory Exception"
+  },
+  {
+    "Id": 2811,
+    "Title": "TransformToX12.exe preserves XML whitespace between nodes"
+  },
+  {
+    "Id": 2812,
+    "Title": "ANSI 856-4010 Specification"
+  },
+  {
+    "Id": 2819,
+    "Title": "X12.HIPAA: HSD segment is ignored in Translation to Eligibility Response Format."
+  },
+  {
+    "Id": 2822,
+    "Title": "Development of 837 Institutional(837I)"
+  },
+  {
+    "Id": 2827,
+    "Title": "Parsing EDI crashes with null delimiters when running under mono"
+  },
+  {
+    "Id": 2832,
+    "Title": "862 specification"
+  },
+  {
+    "Id": 2835,
+    "Title": "Parsing Edi to Json and back to X12"
+  },
+  {
+    "Id": 2836,
+    "Title": "REF elements attributes are not getting exported in xml file"
+  },
+  {
+    "Id": 2839,
+    "Title": "Sql Save Exception"
+  }
+]

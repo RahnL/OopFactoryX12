@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1258283",
+    "ThreadId": "549230",
+    "Html": "Dear Dstrubhar.\r<br />\n<br />\nWe have been using the X12 Parser to Unbundle and Parse 837 and 835s for couple years now without any issues. Thank you again for to you and the entire Team for this great product and your continued support. \r<br />\n<br />\nWe are running into a problem with the unbundling function for a set of 4010 Institutional Claims. For some reason, the unbundle function just hangs our process (running in a windows service). There is no error at that point. Its only after we stop the Service, I see this error: &quot;Thread was being aborted&quot;. The code reaches the catch block only when after onStop( ) function of the Windows Service gets executed. Up until that point, the X12 parser doesn't respond. I also dont see any files in the unbundled directory.\r<br />\n<br />\nI don't have any logs I can provide. How would you recommend I troubleshoot this issue? \r<br />\n<br />\nYour help, as always, is greatly appreciated..<br />\n",
+    "PostedDate": "2014-06-20T07:24:15.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1258534",
+    "ThreadId": "549230",
+    "Html": "Thiis is usually due to the size of the file being too large and the server not having enough memory to pull the whole Interchange object into memory.  Usually though when that is the problem users will report that they get a OutOfMemoryException.\r<br />\n<br />\nPlease let me know the size of the largest file that you successfully processed on this server and let me know the size of the file that is failing.\r<br />\n<br />\nIf the size is the problem, then you may trying a two step unbundle where you unbundle by the transaction or the provider loops first and then unbundle by the claim loop.  Another option would be to use the maxBatchSize setting that is available in the console app's config settings.  This will limit  the amount of the file that is parsed at one time in case there are memory issues, I'm not sure if that will apply to your case if you are only using it to Unbundle.\r<br />\n<br />\nThe reason the Unbundle can be very memory intensive is that you are taking an normalized x12 file and repeating all the header, and provider information as you unbundle it into individual files.\r<br />\n<br />\nSince you are running it through a windows server, another possible technique for troubleshooting is to unbundle with the console app directly and see if that will report an exception that might be more useful to troubleshoot.\r<br />\n<br />\nThough the initial release kept the parsing decoupled from any database, last year I did release a feature that would allow you to parse directly into a sql server database.   This is an alternative to unbundling the file directly in that it doesn't require as much memory because it streams everything to the database.  Once in a SQL Server database there is a table-returning UDF call GetTransactionSegments that has the same effect as unbundling in that if you send in the Id of any claim loop it will give you all the segments of that claim similar to the unbundle feature.  I would consider this a last resort for you since it would require a rewrite of your process, but the technique is there for scalability when the parsing of the file directly can't be done because of file size.<br />\n",
+    "PostedDate": "2014-06-21T08:03:22.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1258548",
+    "ThreadId": "549230",
+    "Html": "Dear Sir,\r<br />\nThank you so much for your detailed response. I wasn't aware of the new feature you introduced recently that writes to a SQL server. That's really good to know.\r<br />\n<br />\nIn the current issue, the file size is significantly smaller ~200-300 kb.  We have had no issue unbundling claims ~20-30MB in the past using the current release.\r<br />\n<br />\nWhen running in the debugger, it hangs when running this loop:\r<br />\n<br />\n// hangs in this loop<br />\n<pre><code>                List&lt;Interchange&gt; list = new List&lt;Interchange&gt;();\n                X12StreamReader reader = new X12StreamReader(fs, Encoding.UTF8);\n                X12FlatTransaction transaction = reader.ReadNextTransaction();\n                while (!string.IsNullOrEmpty(transaction.Transactions.First()))\n                {\n                    string x12 = transaction.ToString();\n                    var interchange = parser.ParseMultiple(x12).First();\n                    transaction = reader.ReadNextTransaction();\n                }\n</code></pre>\n\nThere's no exception caught until after the Windows Service is stopped. Any suggestions on how we can diagnose the problem?\r<br />\n<br />\nThanks a bunch for all your help, \r<br />\nNiitn<br />\n",
+    "PostedDate": "2014-06-21T10:09:28.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1258549",
+    "ThreadId": "549230",
+    "Html": "There was a typo in the code snippet. I missed a line. Here's the code again:<br />\n<pre><code>  .....\n  .....\n  .....\n            OopFactory.X12.Parsing.X12Parser parser = new OopFactory.X12.Parsing.X12Parser();\n            string unbundledOutputFilename;\n            string fileName = Path.GetFileName(origX12FileName);\n\n            System.IO.Directory.CreateDirectory(unbundleDir);\n\n            fs = new FileStream(origX12FileName, FileMode.Open);\n            List&lt;Interchange&gt; list = new List&lt;Interchange&gt;();\n\n                X12StreamReader reader = new X12StreamReader(fs, Encoding.UTF8);\n                X12FlatTransaction transaction = reader.ReadNextTransaction();\n                while (!string.IsNullOrEmpty(transaction.Transactions.First()))\n                {\n                    string x12 = transaction.ToString();\n                    var interchange = parser.ParseMultiple(x12).First();\n                    list.AddRange(parser.UnbundleByLoop(interchange, &quot;2300&quot;));\n                    transaction = reader.ReadNextTransaction();\n                }\n\n  .....\n  .....\n  .....</code></pre>\n\n",
+    "PostedDate": "2014-06-21T10:11:43.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1261277",
+    "ThreadId": "549230",
+    "Html": "Dear Dstrubhar,\r<br />\nI ran the claim through the debugger and the program just hangs in this function in X12Parser.cs.\r<br />\n<br />\npublic List&lt;Interchange&gt; UnbundleByLoop(Interchange interchange, string loopId)<br />\n<pre><code>    {\n        char terminator = interchange._delimiters.SegmentTerminator;\n        var service = new UnbundlingService(interchange._delimiters.SegmentTerminator);\n        string isa = interchange.SegmentString;\n        string iea = interchange.TrailerSegments.First().SegmentString;\n        List&lt;string&gt; list = new List&lt;string&gt;();\n        foreach (FunctionGroup group in interchange.FunctionGroups)\n            foreach (Transaction transaction in group.Transactions)\n            {\n                service.UnbundleHLoops(list, transaction, loopId);\n            }\n\n        List&lt;Interchange&gt; interchanges = new List&lt;Interchange&gt;();\n        foreach (var item in list)\n        {\n            StringBuilder x12 = new StringBuilder();\n            x12.AppendFormat(&quot;{0}{1}&quot;, isa, terminator);\n            x12.Append(item);\n            x12.AppendFormat(&quot;{0}{1}&quot;, iea, terminator);\n            using (MemoryStream mstream = new MemoryStream(Encoding.ASCII.GetBytes(x12.ToString())))\n            {\n                interchanges.AddRange(ParseMultiple(mstream));\n            }\n        }\n        return interchanges;\n    }\n</code></pre>\n\nSome of the failed claims don't appear to have the ~IEA<em>1</em>000277599~ text. They seem to end abruptly. Do you think that could cause the Unbundle routine to just hang? Or fall into an infinite loop? Would really appreciate any help.\r<br />\n<br />\nThanks in advance for all your help.\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-06-30T11:02:00.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1261754",
+    "ThreadId": "549230",
+    "Html": "I would need to either get an exception message or a test file to reproduce the error.\r<br />\n<br />\nIf you are able to de-identify your file with a tool such as the one here: (<a href=\"http://etasoft.com/ot.htm\" rel=\"nofollow\">http://etasoft.com/ot.htm</a>), then I can try to reproduce your problem.\r<br />\n<br />\nI might be able to add a tool that will de-identify everything but the structure of your X12 message, but it might be a few more weeks before I can produce that.<br />\n",
+    "PostedDate": "2014-07-01T14:55:50.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

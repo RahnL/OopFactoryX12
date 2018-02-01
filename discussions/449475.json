@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1066207",
+    "ThreadId": "449475",
+    "Html": "While parsing an 856 I noticed that the HL validation in OopFactory.X12.Parsing.X12Parser.ParseMultiple fails to validate the initial HL with a parent id of 0\r<br />\n<br />\nI changed line 166 to <br />\n<pre><code>                        if (parentId != &quot;&quot; &amp;&amp; parentId!=&quot;0&quot;)</code></pre>\n\nfrom<br />\n<pre><code>                        if (parentId != &quot;&quot;)\n</code></pre>\n\nThis works as I would expect but I wonder if this will cause issues with other documents.<br />\n",
+    "PostedDate": "2013-07-09T09:41:11.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

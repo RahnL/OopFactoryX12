@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-07-10T12:16:02.433-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "A couple things I found when testing the new unbundlex12 exe:\n1. When compiling the exe's associated with change set 8959 the unbundle application builds as \"OopFactory.X12.UnbundleX12.exe\".  Probably should just be \"UnbundleX12.exe\".\n2. I think arguement 4 should \"{0}\\\\{1}_{2:000}{3}\" instead of \"{0}\\\\{1}_{2:000}.{3}\".  (It puts 2 periods at the end of the file name instead of one)\n3. I tested several 837p files with success.  I ended up unbundling at the \"2000A\" level instead of \"2300\" because it resulted in fewer files per provider (group NPI). So that looks good.\n4. I tested several 835 files without success (see attached deidentified samples - both 835 - 4010 spec).  I first attempted to unbundle them at the \"2000\" level. It produces twice the number of files needed. So if there's only one \"2000\" level loop, I get 2 files out exactly the same.  I'll test at a different loop level and see if it works correctly.  In studying the 835 structure of the sample files, it looks like it could be advantageous to unbundle at the transaction level, because each is associated with a separate provider (at least in my samples). I don't see how I can specify the Transaction level as the loopid though.\nI'll provide more details as I have them.",
+    "LastUpdatedDate": "2013-05-16T04:34:06.18-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-07-01T06:47:39.853-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Feedback on UnbundleX12",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 750
+  },
+  "FileAttachments": [
+    {
+      "FileId": 384,
+      "FileName": "835Samples.zip",
+      "DownloadUrl": ".\\384"
+    },
+    {
+      "FileId": 385,
+      "FileName": "837Samples.zip",
+      "DownloadUrl": ".\\385"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hmm... for some reason, when I deidentified the sample 2 file, X12 won't parse it any longer.  I'll have tweak that file and send it to you again. The error I get is:\r\n\r\nUnhandled Exception: System.ArgumentException: An item with the same key has already been added.\r\n   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)\r\n   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)\r\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\r\n   at OopFactory.X12.Parsing.Model.FunctionGroup.AddTransaction(String segmentString) in OopFactory.X12\\Parsing\\Model\\FunctionGroup.cs:line 117\r\n   at OopFactory.X12.Parsing.X12Parser.Parse(Stream stream) in OopFactory.X12\\Parsing\\X12Parser.cs:line 98\r\n   at OopFactory.X12.UnbundleX12.Program.Main(String[] args) in OopFactory.X12.UnbundleX12\\Program.cs:line 46",
+      "PostedDate": "2011-07-01T09:03:22.387-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You have the same transaction code appearing more than once.  I'll change the exception message to be more domain specific.",
+      "PostedDate": "2011-07-01T10:08:26.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It sounds like that error was most likely caused because the deidentifier app stripped out the transaction numbers...",
+      "PostedDate": "2011-07-01T10:59:57.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-01T12:00:23.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here are 5 deidentified 837p (4010) files each destined for a different payer, so they're structure may vary slightly (though I haven't exhaustively examined them).  They process just fine in x12, but if you'd like to add them for for future testing, that's fine with me!",
+      "PostedDate": "2011-07-01T12:00:24.063-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Re: Item 4 in the original list.  I've tested more 835 files and when specifying loop \"2000\" I do indeed get duplicate files for each loop and within each file duplicate \"2000\" loops.  I noticed too that for 835's the SE and GE segment as well as the number of transactions in the function group don't get updated.  If I try to unbundle at loop \"2100\" the app exits, no console error or file output.",
+      "PostedDate": "2011-07-01T12:38:47.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 9125.",
+      "PostedDate": "2011-07-10T11:42:29.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 9126.",
+      "PostedDate": "2011-07-10T12:16:02.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:05.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:06.18-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

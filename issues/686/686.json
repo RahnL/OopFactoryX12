@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This has been released in 2.3.1.  Use the AcknowledgeX12 as an example of how to use the OopFactory.X12.Validation assembly to create 999 acknowledgement files from any X12 file.",
+    "ClosedDate": "2012-10-13T18:04:18.483-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Create a response acknowledgement file with 997 transaction sets to be sent back to the sender switching the position of the receiver and sender.",
+    "LastUpdatedDate": "2013-05-16T04:34:07.023-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-04-28T18:41:10.743-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Create acknowledgement file from any x12 file.",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 3,
+    "Id": 686
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

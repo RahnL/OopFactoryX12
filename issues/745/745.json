@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Cannot find example of 874 specification.",
+    "ClosedDate": "2011-10-20T11:17:56.35-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am very interested in a specification for the X12 873 transaction set which is the Commodity movement Services as well as the Quick response for this, the 874.  I will look into it on my end.  Do you all have the 'specification' xml format documented anywhere?",
+    "LastUpdatedDate": "2013-05-16T04:34:06.36-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-06-20T10:35:59.207-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Commodity Movement Services - 873, Commodity Movement Services Response - 874",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 745
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The xsd for the specification xml can be fuond in the download at \"Specifications\\X12ParserSpecification.xsd\".\r\nIt is also in souce code here: http://x12parser.codeplex.com/SourceControl/changeset/view/8796#137074.\r\n\r\nIf you point me to a link to either the implementation guide or a companion guide for the 873 and 874 then it takes me 2-5 business days to get it added to the assembly.  Pointing me to some sample EDI files will also help me add some unit tests before I do a release on it.",
+      "PostedDate": "2011-06-20T12:27:11.4-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 8938.",
+      "PostedDate": "2011-06-23T19:22:17.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have checked in the 873 specification here http://x12parser.codeplex.com/SourceControl/changeset/view/8938#148158.\r\n\r\nI was only able to find an 873 specification here http://www.northernnaturalgas.com/Document%20Postings/873NMST_1.9_NNG.pdf\r\n\r\nThe funny thing is when I typed \"commodity movement services 873 specification\" into google, the first link that appeared was this issue on this site, the second link was the specification pdf.\r\n\r\nPlease let me know if this represents the full specification or if there is another specification that is more complete.\r\nI will leave this \"Active\" until I get confirmation from you.",
+      "PostedDate": "2011-06-23T19:28:06.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-20T11:17:56.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:05.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:06.36-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1498036",
+    "ThreadId": "663767",
+    "Html": "Hi all,\r<br />\nI have been doing EDI for many years and recently developed an EDI parser for the company I work for. I had to create a lot of classes, one per EDI doc segment. The parser I created handles the 850, 860, 856, and 810. The OopFactory.X12 dll was included in an app provided to our DBA to parse a medical document. Unfortunately the app did not work, but I noticed the use of this dll. Going through some of the source code provided to the DBA, I noticed the use of the &quot;X12Parser.TransformToX12&quot; and I was like... wow! I asked my self... how does it transform it? There has to be a schema somewhere. So, I googled it and that's how I arrived to this page. I downloaded the source code and I found this project really amazing. It looks like one simply needs to provide the XML with the EDI segment identifiers and it will use the proper transformation file. \r<br />\n<br />\nKudos to all contributors! This is really cool!\r<br />\n<br />\nIs the project still being maintained via GitHub?\r<br />\n<br />\nJose.<br />\n",
+    "PostedDate": "2017-09-14T12:06:13.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1498126",
+    "ThreadId": "663767",
+    "Html": "We are in the process of migrating it to github.  More soon.<br />\n",
+    "PostedDate": "2017-09-26T07:16:44.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

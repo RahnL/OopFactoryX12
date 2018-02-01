@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "694044",
+    "ThreadId": "278387",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I am new to healthcare billing and would like to know if i can rely on x12 parser to generate institutional claims (837i)? I am planning to generate XML structure from my healthcare application and then use x12 parser to generate 837i to send it to clearinghouse.\r\n Am i on right track?</p>\r\n<p>&nbsp;</p>\r\n<p>Best Regards,</p>\r\n<p>&nbsp;</p>\r\n<p>Rohan</p>\r\n",
+    "PostedDate": "2011-11-04T12:12:22.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "694166",
+    "ThreadId": "278387",
+    "Html": "<p>Yes, you can use this for that. &nbsp;There is some discussion about that here:&nbsp;<a href=\"http://x12parser.codeplex.com/discussions/265463\">http://x12parser.codeplex.com/discussions/265463</a></p>\r\n<p>The other use had given me quite a bit of feedback to make sure the x12 parser would work for the 5010 versions of the 837, so you won't be the first to use it for this purpose.</p>",
+    "PostedDate": "2011-11-04T17:18:30.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1286492",
+    "ThreadId": "278387",
+    "Html": "Hi,\r<br />\n<br />\n<br />\nPlease provide a sample code to generate 837 P EDI fro 5010<br />\n",
+    "PostedDate": "2014-08-05T06:06:33.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1425345",
+    "ThreadId": "278387",
+    "Html": "Hi,\r<br />\n<br />\nVery good morning,\r<br />\n<br />\nhave any one have 837 creation in C#\r<br />\n<br />\nthanks &amp; regards,\r<br />\nkarthikc<br />\n",
+    "PostedDate": "2015-05-14T00:24:57.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486166",
+    "ThreadId": "278387",
+    "Html": "Hi,\r<br />\nI am in development of 837 Institutional using OopFactory X12.I am using 3.08 version of this.How to use SV2 - INSTITUTIONAL SERVICE LINE(LOOP 2400 — SERVICE LINE NUMBER) and CL1 Institutional Claim Code (LOOP 2300— CLAIM INFORMATION)\r<br />\nPlease help me how to add above loops in my code using oopfactory x12\r<br />\nThanks in advance<br />\n",
+    "PostedDate": "2016-10-15T06:51:15.173-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1135689",
+    "ThreadId": "473548",
+    "Html": "The documentation has great examples for 837's but I can't figure out how to make my own for 834's. I also can't find any examples. has anyone here ever gone through the tutorial and made 834's output to excel?<br />\n",
+    "PostedDate": "2013-12-13T18:31:49.823-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135694",
+    "ThreadId": "473548",
+    "Html": "My brain hurts from trying to do this. So, I know a list of fields that I'm trying to &quot;retrieve&quot; from the 834's. I assume this simply means I need to write a transformation that can &quot;extract&quot; those out. The issue is, I have no idea how to do that. I've done a raw parse of an 834 just to see the various XML &quot;sections&quot; using Excel. Looking at the data, I can start to map the 834 to the field names that I need. I have to just look at the data though and do a bit of guess work.<br />\n<br />\n<strong>Quick Edit</strong><br />\nI wanted you all to have an example. So after I've run an 834 through the X12Parser, I've opened it in Excel and can see that the column header ISA08 matches &quot;Partner ID&quot;. How do I tell the transformation file this information.<br />\n",
+    "PostedDate": "2013-12-13T19:14:40.093-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1144401",
+    "ThreadId": "473548",
+    "Html": "I agree.  The 837 are well documented and I am able to generate a valid 837 message.  I'm having trouble figuring out how to generate the 834 5010 spec.  <br />\n",
+    "PostedDate": "2014-01-01T07:27:35.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1144525",
+    "ThreadId": "473548",
+    "Html": "Are you guys trying to do the same thing? Austin looks like he wants to output an existing X12 file into a flat format/excel. EdiGuy, it looks like you are trying to populate the X12 data model to output a new file from scratch. \r<br />\n<br />\nAnyway, Austin, per the instructions here: <a href=\"https://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform\" rel=\"nofollow\">Creating a flat file or Excel file from the X12 xml using XSLT and XslCompiledTransform</a> state that you can use xslt to transform the parsed xml file into any format you want. This page has a download link to the sample project that loads and applys the xslt. I have an interest in flattening an 834 myself, so if I ever get around to it I'll let you know. <br />\n",
+    "PostedDate": "2014-01-02T00:22:59.967-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1193204",
+    "ThreadId": "473548",
+    "Html": "This discussion has been copied to a work item. Click <a href=\"https://x12parser.codeplex.com/workitem/1876\" rel=\"nofollow\">here</a> to go to the work item and continue the discussion.<br />\n",
+    "PostedDate": "2014-01-23T07:02:33.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

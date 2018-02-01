@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1107333",
+    "ThreadId": "462137",
+    "Html": "I have a company submitting data with an &quot;RISA&quot; for the first four characters of the file. They say they can't change it, because that is the way they submit their claims to their clearinghouse.\r<br />\n<br />\nBefore I modify the program to strip the &quot;R&quot; is anyone familiar with why this would be reasonable?<br />\n",
+    "PostedDate": "2013-10-14T13:17:20.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108285",
+    "ThreadId": "462137",
+    "Html": "Reasonable?!?!?  LOL, that's a good one ;)<br />\n<br />\nI've heard that excuse from so many different EPM vendors, its not even funny.<br />\nSo, their time to develop a correctly formatted file is worth more than your time to fix their files??<br />\n<br />\nWhat would be cool, is if we made it so to write a Parser, you just 'extended' the existing X12 Parser.<br />\nAnd, when you ran the Parse() method, it would do two things:<br />\n<ol>\n<li>Call a PreProcess() method (which is blank by default), but you could override it with your own code to strip the &quot;R&quot; (or any other fixes/processing you need to do)</li>\n<li>\nThen it would call the main Parse() method.<br />\n</li>\n</ol>\n",
+    "PostedDate": "2013-10-16T06:26:08.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

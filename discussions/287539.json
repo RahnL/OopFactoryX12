@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "731327",
+    "ThreadId": "287539",
+    "Html": "<p>I am receiving an X12 message (270 and 271 in x12 5010) over a socket and it contains the binary character 0x1D in it to separate the fields. This is apparently choking up the X12HtmlTransformationService.Transform() function.</p>\n<p>Here is my code doing this:</p>\n<pre style=\"font-family: Consolas; font-size: 13; color: black; background: white;\"><span style=\"color: #2b91af;\"><pre><pre style=\"font-family: Consolas; font-size: 13px; color: black; background: none repeat scroll 0% 0% white;\"><span style=\"color: #2b91af;\">Stream</span>&nbsp;ediFile&nbsp;=&nbsp;<span style=\"color: blue;\">new</span>&nbsp;<span style=\"color: #2b91af;\">FileStream</span>(args[0],&nbsp;<span style=\"color: #2b91af;\">FileMode</span>.Open,&nbsp;<span style=\"color: #2b91af;\">FileAccess</span>.Read);\n<span style=\"color: blue;\">var</span>&nbsp;htmlService&nbsp;=&nbsp;<span style=\"color: blue;\">new</span>&nbsp;<span style=\"color: #2b91af;\">X12HtmlTransformationService</span>(<span style=\"color: blue;\">new</span>&nbsp;<span style=\"color: #2b91af;\">X12EdiParsingService</span>(suppressComments:&nbsp;<span style=\"color: blue;\">false</span>));\n<span style=\"color: blue;\">var</span>&nbsp;Parser&nbsp;=&nbsp;<span style=\"color: blue;\">new</span>&nbsp;<span style=\"color: #2b91af;\">X12Parser</span>();\n<span style=\"color: #2b91af;\">Interchange</span>&nbsp;interchange&nbsp;=&nbsp;Parser.Parse(ediFile);\n<span style=\"color: green;\">//String&nbsp;X12XML&nbsp;=&nbsp;interchange.Serialize();</span>\n<span style=\"color: #2b91af;\">String</span>&nbsp;X12&nbsp;=&nbsp;interchange.SerializeToX12(<span style=\"color: blue;\">true</span>);\n<span style=\"color: blue;\">string</span>&nbsp;html&nbsp;=&nbsp;htmlService.Transform(X12);\n<span style=\"color: green;\">//string&nbsp;html&nbsp;=&nbsp;htmlService.Transform(X12XML);</span>\n<span style=\"color: #2b91af;\">File</span>.WriteAllText(args[1],&nbsp;html);</pre>\n</pre>\n</span></pre>\n<p>It is tossing the following XmlException on the htmlService.Transform(X12) line:<br /> ' ', hexadecimal value 0x1D, is an invalid character. Line 2, position 63.</p>\n<p>I have traced down into the code and it is happening because the XSLT does not understand the binary character in the stream yet it is parsed just fine by the X12 Parser. That part it is talking about it segment-terminator attribute in the Interchange tag.</p>\n<p>This is a valid X12 transaction and we do tens of thousands of these a day so I am not sure why it is failing here and not supporting. Is there a workaround I can use in the meantime for this to generate good HTML?</p>\n<p>Thanks guys and keep up the good work!</p>",
+    "PostedDate": "2012-01-26T13:27:18.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "731375",
+    "ThreadId": "287539",
+    "Html": "<p>This probably needs to be xml encoded. &nbsp;I'll look at it tonight and see I can check-in a fix. &nbsp;Do you have a test file that I can use? Preferrably de-identified?</p>",
+    "PostedDate": "2012-01-26T15:02:12.1-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "731379",
+    "ThreadId": "287539",
+    "Html": "\r\n<div>I can get you one tomorrow. I am gone from the office for the day so it would be tomorrow morning at the earliest.</div>\r\n<div><br>\r\n</div>\r\n<div>Sayle<br>\r\n<br>\r\nSent from my iPad</div>\r\n<div><br>\r\nOn Jan 26, 2012, at 5:02 PM, &quot;dstrubhar&quot; &lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt; wrote:<br>\r\n<br>\r\n</div>\r\n<div></div>\r\n<blockquote type=\"cite\">\r\n<div>\r\n<p>From: dstrubhar</p>\r\n<div id=\"ThreadNotificationPostBody\">\r\n<p>This probably needs to be xml encoded. I'll look at it tonight and see I can check-in a fix. Do you have a test file that I can use? Preferrably de-identified?</p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n",
+    "PostedDate": "2012-01-26T15:26:03.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "731712",
+    "ThreadId": "287539",
+    "Html": "I have attached a sample X12 271 I am trying to do this with. I garbled a lot of data to obscure any PHI so I hope I didn't kill something important in it.<br>\r\n<br>\r\nSayle<br>\r\n<br>\r\n<div>On Thu, Jan 26, 2012 at 5:25 PM, A. Sayle Matthews <span dir=\"ltr\">&lt;<a href=\"mailto:khirok@gmail.com\">khirok@gmail.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"margin:0 0 0 .8ex; border-left:1px #ccc solid; padding-left:1ex\">\r\n<div bgcolor=\"#FFFFFF\">\r\n<div>I can get you one tomorrow. I am gone from the office for the day so it would be tomorrow morning at the earliest.</div>\r\n<div><br>\r\n</div>\r\n<div>Sayle<br>\r\n<br>\r\nSent from my iPad</div>\r\n<div>\r\n<div>\r\n<div><br>\r\nOn Jan 26, 2012, at 5:02 PM, &quot;dstrubhar&quot; &lt;<a href=\"mailto:notifications@codeplex.com\" target=\"_blank\">notifications@codeplex.com</a>&gt; wrote:<br>\r\n<br>\r\n</div>\r\n<div></div>\r\n<blockquote type=\"cite\">\r\n<div>\r\n<p>From: dstrubhar</p>\r\n<div>\r\n<p>This probably needs to be xml encoded. I'll look at it tonight and see I can check-in a fix. Do you have a test file that I can use? Preferrably de-identified?</p>\r\n</div>\r\n<div>\r\n<p>Read the <a href=\"http://x12parser.codeplex.com/discussions/287539#post731375\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:x12parser@discussions.codeplex.com?subject=[x12parser:287539]\" target=\"_blank\">x12parser@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:x12parser@discussions.codeplex.com\" target=\"_blank\">\r\nx12parser@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://x12parser.codeplex.com/discussions/287539/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on <a href=\"http://CodePlex.com\" target=\"_blank\">CodePlex.com</a>.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at\r\n<a href=\"http://CodePlex.com\" target=\"_blank\">CodePlex.com</a></p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n",
+    "PostedDate": "2012-01-27T08:10:23.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "734788",
+    "ThreadId": "287539",
+    "Html": "<p>I did not find the attachment.</p>\r\n<p>I was not able to reproduce a file, because windows doesn't recognize the 0x1D as a displayable character.</p>\r\n<p>I was able to get it to work with other displayable characters that were greater 0x1E.</p>\r\n<p>My suggestion to you is to write a small routine before you run the x12parser that will replace the 0x1D characters with another delimiter character before it transforms to XML.</p>\r\n<p>Let me know if that works for you, or try again to attach your sample file.&nbsp;</p>",
+    "PostedDate": "2012-02-01T07:50:11.637-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "737188",
+    "ThreadId": "287539",
+    "Html": "I have attached a scrubbed X12 270 in 5010 format. You may want to open this in an editor such as vi or notepad&#43; as if you open and save in notepad Windows will scrub the non-printable characters. Plus in the other editors it will give you a representation\r\n of the non-displayable characters.<br>\r\n<br>\r\nIn the meantime I will write a script that will replace the characters to printable ones before processing as you suggested.<br>\r\n<br>\r\n<div>On Wed, Feb 1, 2012 at 9:50 AM, dstrubhar <span dir=\"ltr\">&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"margin:0 0 0 .8ex; border-left:1px #ccc solid; padding-left:1ex\">\r\n<div>\r\n<p>From: dstrubhar</p>\r\n<div>\r\n<p>I did not find the attachment.</p>\r\n<p>I was not able to reproduce a file, because windows doesn't recognize the 0x1D as a displayable character.</p>\r\n<p>I was able to get it to work with other displayable characters that were greater 0x1E.</p>\r\n<p>My suggestion to you is to write a small routine before you run the x12parser that will replace the 0x1D characters with another delimiter character before it transforms to XML.</p>\r\n<p>Let me know if that works for you, or try again to attach your sample file. </p>\r\n</div>\r\n<div>\r\n<div>\r\n<p>Read the <a href=\"http://x12parser.codeplex.com/discussions/287539#post734788\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:x12parser@discussions.codeplex.com?subject=[x12parser:287539]\" target=\"_blank\">x12parser@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:x12parser@discussions.codeplex.com\" target=\"_blank\">\r\nx12parser@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://x12parser.codeplex.com/discussions/287539/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p>\r\n</div>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n",
+    "PostedDate": "2012-02-02T12:00:33.48-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "810606",
+    "ThreadId": "287539",
+    "Html": "<p>This is now fixed in release 2.2.3</p>",
+    "PostedDate": "2012-03-14T18:28:36.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,150 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "OopFactory.X12.Hipaa",
+      "DisplayName": "OopFactory.X12.Hipaa"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This will allow for easier coding against the generated xml",
+    "LastUpdatedDate": "2017-11-27T18:20:55.387-08:00",
+    "PlannedForRelease": "X12 Parser 2.3.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2010-08-19T06:05:47.807-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Create corresponding claim model to deserialize xml into",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 2,
+    "Id": 130
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Associated with changeset 7729.",
+      "PostedDate": "2011-04-19T19:48:58.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 7899.",
+      "PostedDate": "2011-04-30T09:26:27.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Greetings everyone.  I'm starting to create this model this week.  Look for something here soon.",
+      "PostedDate": "2011-08-15T06:41:26.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-15T17:48:44.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Added skeleton of data model.  Will begin testing tomorrow.  This is file 1 of 2.",
+      "PostedDate": "2011-08-15T17:48:45.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-15T17:49:02.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Added skeleton of data model.  Will begin testing tomorrow.  This is file 2 of 2.",
+      "PostedDate": "2011-08-15T17:49:02.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T07:12:44.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T07:12:47.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T07:14:46.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T07:15:04.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T07:43:02.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T07:43:22.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T13:34:14.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T13:34:18.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you wish to check out these data models to get an idea of what we are doing with this, look in the new project within the solutions:\r\n\r\n   \\\\x12parser\\trunk\\src\\OopFactory.X12.Hipaa\\Claims\\Forms\\\r\n\r\nThere are institutional files there now.  I will be adding professional tomorrow and Dental very soon.",
+      "PostedDate": "2011-08-16T17:36:49.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-20T15:10:29.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-20T15:11:46.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 15600.",
+      "PostedDate": "2012-04-01T09:08:52.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-05-05T11:35:35.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:07.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:20:55.387-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

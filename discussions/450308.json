@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1069455",
+    "ThreadId": "450308",
+    "Html": "Hello,<br />\n<br />\nHow to generate EDI 270 file using the OopFactory.X12.Hipaa.Eligibility? Looks like implemented only parser part for this 270 File. But most of the time we need to create EDI 270 file and need to parse the received 271.<br />\n<br />\nIs there any sample code available for this???<br />\n<br />\nThanks In advance.<br />\n<br />\nThanks &amp; Regards.<br />\n",
+    "PostedDate": "2013-07-17T03:30:32.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1166559",
+    "ThreadId": "450308",
+    "Html": "Have you ever figured out how to accomplish this? I need to do the very same thing.<br />\n",
+    "PostedDate": "2014-01-14T15:00:02.25-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1175695",
+    "ThreadId": "450308",
+    "Html": "The path I took to creating a 270 was look at the test for <strong>Create837_5010Version</strong> (In  OopFactory.X12.Tests.Unit.Creation namespace) and reverse engineer the concepts back to a 270.<br />\n<br />\nYou can see an outline of the process for creating a 270 on this <a href=\"https://x12parser.codeplex.com/wikipage?title=X12%20Interchange%20Model\" rel=\"nofollow\">page</a><br />\n",
+    "PostedDate": "2014-01-17T18:33:21.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

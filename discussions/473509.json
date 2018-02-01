@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1135572",
+    "ThreadId": "473509",
+    "Html": "Can someone explain what these terms mean?\r<br />\n<br />\nI asked one company to send me an EDI file and the data in the file was formatted as NSF.\r<br />\n<br />\nI know an EDI file can be 4010 or 5010, but how does this relate to 837P and EDI?<br />\n<ul>\n<li>X12</li>\n<li>EDI</li>\n<li>5010</li>\n<li>\n837P<br />\n</li>\n</ul>\nI just want some clarification so I can speak the lingo correctly.<br />\n",
+    "PostedDate": "2013-12-13T08:45:58.597-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1135585",
+    "ThreadId": "473509",
+    "Html": "EDI just stands for Electronic Data Interchange and is the most general of all your terms.  It can mean any electronic submission between trading partners.  This is usually in a plain text format, but not necessary.  Though X12 is a standard for EDI, a CSV file would also be EDI.\r<br />\n<br />\nX12 is a standard messaging format (kind of like SMTP or HTTP).  It defines the syntax of how a message is composed and how the syntax of the control segments that give meta data about the file that is being interchanged.  There are X12 committees that define X12 standards for over 300 transaction sets.  I think the latest they are working on is the 6020.\r<br />\n<br />\nThe x12 standard of an 837 is a generic structural standard for what types of loops and segments a health care claim X12 can contain.  This is represent well here: <a href=\"https://www.disa.org/apps/workbook/X12_October_2012/ts/837.htm\" rel=\"nofollow\">https://www.disa.org/apps/workbook/X12_October_2012/ts/837.htm</a>.\r<br />\n<br />\nThere are 3 &quot;implementations&quot; of the 837 which dictate more details about how the 837 is expected to be used and the allowed qualifiers that translate into specific business meaning.  These are Dental, Professional (equivalent of HCFA1500 form) and Institutional (equivalent of UB04 form).  Some of these implementations contradict each other, but they all meet the generic X12 837 standard.  Anyone can create an &quot;implementation&quot; of an X12 standard as long as their trading partners agree to use it.  Many businesses were using or are still using the 4010 version of the 837 implementation guide.\r<br />\n<br />\nAs part of mandates in HIPPA for portability, a new standard was proposed and adopted called the X12 837 5010.  Everyone was required to switch over to this as of last year who wants to do business with the federal government.  The two main reasons for this new standard is to support the migration from ICD-9 to ICD-10 which is immanent, and to require all providers to use their NPI as their identifier.  Some trading partners met this my upgrading their systems to create 5010, others still submit 4010 to their Clearinghouses and ask that they do the conversion before sending to their trading partners.  This technique will be less meaningful once ICD-10 becomes a requirement.\r<br />\n<br />\n837's are typically the standard for transactions when someone is expecting payment from someone else.  But there are still plenty of proprietary formats for exchanging smaller subsets of claim data for other purposes, especially business intelligence use cases.  This is even more true when clearinghouses are not involved.<br />\n",
+    "PostedDate": "2013-12-13T09:14:47.517-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1142330",
+    "ThreadId": "473509",
+    "Html": "What a great answer.  Thanks!<br />\n",
+    "PostedDate": "2013-12-26T06:00:20.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

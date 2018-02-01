@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1203790",
+    "ThreadId": "529345",
+    "Html": "Is there a way for me to load an X12 into an Interchange Object and then modify the contents via the Object rather than serializing it as XML and then converting it back to X12?<br />\n",
+    "PostedDate": "2014-02-06T14:10:46.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1203800",
+    "ThreadId": "529345",
+    "Html": "You can traverse to the Segment you want to change and call SetElement to make changes to existing segments.\r<br />\nYou can also call AddLoop on any LoopContainer or AddSegment on any Container.\r<br />\n<br />\nWhen you are done you call ToX12String on the Interchange to serialize it back to X12.<br />\n",
+    "PostedDate": "2014-02-06T14:28:34.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-02-06T14:37:15.463-08:00"
+  },
+  {
+    "Id": "1204305",
+    "ThreadId": "529345",
+    "Html": "Is there a way to use xpath-style syntax? Currently my statements look something like this:<br />\n<pre><code> interchange.FunctionGroups.First().Transactions.First().\n                  HLoops.First().HLoops.First().HLoops.First().\n                  Segments.ElementAt(1).SetElement(9, cin);</code></pre>\n\n",
+    "PostedDate": "2014-02-07T06:36:18.253-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1204340",
+    "ThreadId": "529345",
+    "Html": "If you want to use XPATH like syntax.  You can serialize to XML, load it into an XmlDocument, make your changes. Then use the SerializeToX12 method to change the xml back to X12.  The code snippet below is from the ParseAndTransformToX12 unit test that demonstrates that they should produce the exact same x12 as the original.  You would just need to do your transformation to the xml variable in between.\r<br />\nThis works best if you are just changing existing elements.  If you are adding and removing elements it is better to use the object model because some validation against the transaction set's specification will occur.<br />\n<pre><code>                var parser = new X12Parser();\n                Interchange interchange = parser.ParseMultiple(stream).First();\n                string originalX12 = interchange.SerializeToX12(true);\n\n                string xml = interchange.Serialize();\n                string x12 = parser.TransformToX12(xml);\n\n                Interchange newInterchange = parser.ParseMultiple(x12).First();\n                string newX12 = newInterchange.SerializeToX12(true);\n\n                Assert.AreEqual(originalX12, newX12);\n</code></pre>\n\n",
+    "PostedDate": "2014-02-07T07:22:17.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1206541",
+    "ThreadId": "529345",
+    "Html": "The transaction type I'm currently working with is a 271. Since the parser clearly has the specification for this, shouldn't I be able to construct something like a '271Transaction' type and then access, say, the subsciber name like this: 271Transaction.subscriber rather than via Xpath?<br />\n",
+    "PostedDate": "2014-02-10T13:46:13.543-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

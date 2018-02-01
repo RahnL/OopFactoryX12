@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "682405",
+    "ThreadId": "275387",
+    "Html": "\r\n<p>We need to add support for the 5010 format to our software. I'm wondering about the viability of an XSL stylesheet to take the X12Parser output for a 4010 message, translate it to 5010, parse it, then produce an X12 text string.</p>\r\n<p>Feedback/thoughts would be greatly appreciated.</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you.</p>\r\n",
+    "PostedDate": "2011-10-10T20:52:17.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "682527",
+    "ThreadId": "275387",
+    "Html": "<div>You can do this and I'm quite sure others will need this. There are however loops that got removed and added so you may need some validation to identify when that occurs. The main loops that translate to the standard forms are for the most part untouched.  It would be harder to do it the other way, only because there would be no translation of ICD-10 diagnosis codes once those start getting transmitted.</div>\n<div>Do you want to make this open source? I can add you as a developer if you want to add that to the OopFaxtory.X12.Hipaa assembly.</div>\n<div>Before you do this work, you may want to ask if you clearinghouse will already do this, most of them are already prepared to do the conversions both ways. Your local system doesn't necessarily need to handle 5010, you just need an interface (such as a  clearinghouse) that will.</div>",
+    "PostedDate": "2011-10-11T04:38:18.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "684026",
+    "ThreadId": "275387",
+    "Html": "<p>Thanks for the suggestion. We investigated it and our clearing houses will in fact already do this...so although it's an attractive and interesting venture, I think for now, we'll take the easier way out :)</p>",
+    "PostedDate": "2011-10-13T15:59:24.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

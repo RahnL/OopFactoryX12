@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Good afternoon,\n\nI am coming across an error when trying to save X12 into SQL Server 2005 for post processing.\nThe error is \"Column, parameter, or variable #12: Cannot find data type date\". It is related to the fact that SQL Server 2005 doesn't support datatype DATE. It looks like the code in CreateIndexedSegmentTable (DbCreation.cs, line 296) is using sql query with [date].\n```\nsql.AppendFormat(\"  [{0}] [date] NULL,\\n\", element.Reference);\n```\nIs there a possibility to use DATETIME instead of DATE in OopFactory.X12 for broader compatibility?",
+    "LastUpdatedDate": "2015-05-14T00:06:38.087-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-09-24T14:10:03.673-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Data type DATE is not available in SQL Server 2005",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 1778
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi ,\r\n\r\nVery good morning,\r\n\r\nI have seen your description is that you can able to convert/upoad the X12 file to sql database, please help me to share if you have code for convert/upoad the X12 file to sql database.. please help me, i am a beginner i need a code for assignment...\r\n\r\nthanks & regards,\nkarthikc",
+      "PostedDate": "2015-05-14T00:06:38.087-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

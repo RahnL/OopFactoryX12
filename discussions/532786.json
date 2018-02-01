@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1210459",
+    "ThreadId": "532786",
+    "Html": "While transforming 271 as html the format i am getting is ok.\r<br />\nBut how I can get the translations as tool-tips instead of values individually?\r<br />\nis there any method defined in this?\r<br />\n<br />\nThe expected format I want is like this\r<br />\n<br />\n___Beginning of Hierarchical Transaction:  \r<br />\n<pre><code> Hierarchical Structure Code : Information Source, Information Receiver, Subscriber, Dependent  \n Transaction Set Purpose Code : Response  \n Reference Identification : 2486369502  \n Date : 02/18/2014  \n Time : 6:21:00 AM  \n</code></pre>\n\n<hr />\nIndividual or Organizational Name:  \r<br />\n<pre><code> Entity Identifier Code : Payer  \n Entity Type Qualifier : Non-Person Entity  \n Name Last or Organization Name : BCBSF  \n Identification Code Qualifier : Payor Identification  \n Identification Code : 00590  </code></pre>\n\n<hr />\n",
+    "PostedDate": "2014-02-19T04:28:56.88-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1210633",
+    "ThreadId": "532786",
+    "Html": "You would just create a new xslt file to do the transform. Look at the X12-XML-to-HTML.xslt file in the OopFactory.X12/Parsing/Transformations directory and alter it to your needs. (You can create your own custom X12HtmlTransformationService, which you can find in the same directory)<br />\n",
+    "PostedDate": "2014-02-19T08:58:53.893-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

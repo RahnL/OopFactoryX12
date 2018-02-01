@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1490726",
+    "ThreadId": "660530",
+    "Html": "In looking through the various threads and the code involved in running the project it seems like modifying existing files wasn't an intended use case.\r<br />\nHowever, in trying to use the code tools to work with the files I'm running into a bit of a snag, and it might just be that I'm missing something.\r<br />\n<br />\nSo, we're trying to bill a state organisation with an 837, however our databases and their databases disagree on what Identifier goes in a specific segment. I know exactly how to check and fix the codes in a logical sense, but I'm uncertain if it's possible to use this library of tools to get just a specific loop without extraneous data.\r<br />\n<br />\nThe specific issue I'm trying to fix is that data in loop 2330B's NM109 element, which may or may not need to be changed based on the value of loop 2010BA's NM109 element.\r<br />\n<br />\nKnowing whether or not a value needs to be changed is easy enough to handle, however I'm having a fairly significant amount of trouble finding a way to get to a specific loop or segment aside from the ISA or GS segments.\r<br />\n<br />\nI've tried using X12Parser.UnbundleByLoop(interchange,&quot;2330B&quot;) but it seems to be giving me a full interchange but creating a new envelope for every 2330B loop.\r<br />\n<br />\nAny help or pointers to a useful method would be appreciated.<br />\n",
+    "PostedDate": "2017-01-06T12:42:26.1-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1490868",
+    "ThreadId": "660530",
+    "Html": "Nevermind, I used the Serialize method on Interchange to convert the files to XML, then used XPath queries to isolate the 2000B loops and a foreach to find all the related elements I needed to change before transforming it back to x12. If there is demand I'll post the code, but this forum is pretty dead.<br />\n",
+    "PostedDate": "2017-01-09T13:29:56.037-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

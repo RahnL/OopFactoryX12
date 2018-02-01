@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "891332",
+    "ThreadId": "389042",
+    "Html": "\r\n<p>Hi All,</p>\r\n<p>I downloaded the OOpFactory X12 Parser, and it's a great program for generating XML from our 835 files. &nbsp;I've been tasked with creating an xslt to&nbsp;transform&nbsp;the xml to look something like our old paper statements for archival in our document\r\n imaging system. &nbsp;The problem is I've never dealt with XSLT before and writing a transform of this complexity from scratch seems like a fairly daunting task.</p>\r\n<p>Has anyone had any experience creating XLSTs for 835s or know of a resource where I may find and/or purchase a pre-built template? &nbsp;I've searched everywhere I can think and have come up empty.</p>\r\n<p>Thanks!</p>\r\n",
+    "PostedDate": "2012-07-25T13:52:43.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "892753",
+    "ThreadId": "389042",
+    "Html": "<p>I have not done this for the 835, but I have done this for the 837 into the standardized claim forms. &nbsp;That is part of the OopFactory.X12.Hipaa.dll assembly and the ClaimParser.exe.</p>\r\n<p>Did you want the final format to be pdf or tiff?</p>\r\n<p>If you post a blank form of the paper statement I can get you started with a documentation page on how to do this.</p>",
+    "PostedDate": "2012-07-29T09:19:34.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

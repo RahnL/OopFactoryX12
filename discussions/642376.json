@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1437384",
+    "ThreadId": "642376",
+    "Html": "I have a good number parsing errors related to the format dates are being submitted to me in.  Here's an example of the message:\r<br />\n<br />\n<em>&quot;Element FST04 in position 11 of interchange 1 cannot be indexed because '150722' could not be parsed into a date.&quot;</em>\r<br />\n<br />\nThis is all related to the Individual Segment tables that are being built, in this case I'm receiving an 830, so when the FST Segment is being indexed, it fails when trying to parse my date format of '150722'.\r<br />\n<br />\nBefore I start digging into the source code and trying to modify this, has anyone else run into this before and come up with a way to traverse it?  I can see if the vendor can modify their date format, but their spec document is from 2004, so I'm not sure its a change easily made.<br />\n",
+    "PostedDate": "2015-08-05T07:36:18.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1437386",
+    "ThreadId": "642376",
+    "Html": "The parser attempts to infer the datatype to use for each element from the spec, but this only happens the first time the import is run against the database.  Once the FST table is created you can manually change the data type of [04] to be a varchar so that this error won't occur.\r<br />\nThis will allow you to parse the date manually when you query that field.\r<br />\nThe definition of FST04 is a date with min and max length of 8, though I can understand it might be difficult to get some partners to change their code to conform to the standard.\r<br />\n<a href=\"https://www.disa.org/apps/workbook/X12_October_2014/se/se_FST.htm\" rel=\"nofollow\">https://www.disa.org/apps/workbook/X12_October_2014/se/se_FST.htm</a><br />\n",
+    "PostedDate": "2015-08-05T08:01:19.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2015-08-05T09:56:41.293-07:00"
+  },
+  {
+    "Id": "1437399",
+    "ThreadId": "642376",
+    "Html": "Thanks for the reply.  I didn't even consider that this was failing on the database side, I figured the application was trying to parse the date before the insert.\r<br />\n<br />\nI went ahead and updated the spec to generate the date fields as nvarchar data types to I don't have to drop and recreate the tables after the initial import.\r<br />\n<br />\nThanks again for the quick response!<br />\n",
+    "PostedDate": "2015-08-05T09:07:58.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

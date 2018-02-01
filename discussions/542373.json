@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1234577",
+    "ThreadId": "542373",
+    "Html": "Hi dstrubhar,\r<br />\n<br />\nIm using your OppFactory for parsing EDI 837 files. That file size is more than 10 MB. When i parsing the file, Im getting the Memory out of Exception . Please guide me to solve the issue and also i have seen some other threads regarding this issue. You replied like &quot;There is a batch size setting in the app.config &quot; to solve this issue. But i dont have Appconfig file to resolve. Please advise me to use appconfig and solve the issue.\r<br />\n<br />\n<br />\nThanks,\r<br />\nGnanadesigan K<br />\n",
+    "PostedDate": "2014-04-15T23:39:42.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234710",
+    "ThreadId": "542373",
+    "Html": "If you are parsing 837s out of the box you are either using the X12Parser.exe or the OopFactory.X12.Hipaa.ClaimParser.exe.  By convention in .NET when we refer to app.config it really means the config with the same name as the exe.\r<br />\n<br />\nIf you are using X12Parser.exe the the config file would be X12Parser.exe.config.  Your windows explorer should identify it as an XML Configuration File rather than an Application.  The app setting is MAxBatchSize.\r<br />\n<br />\nIt appears that I have not added that app setting to the ClaimParser.exe, so this would require a code change if this is where you need to be able to batch.\r<br />\n<br />\nAnother way to solve your problem would be to use the UnbundleX12.exe and break the file into smaller files (probably by ST transaction), than you can run the individual files through the ClaimParser.exe without waiting for a change.\r<br />\n<br />\nI personally use SQL Server so most of my parses go into a SQL Server database using the OopFactory.X12.ImportX12.exe described here (<a href=\"https://x12parser.codeplex.com/wikipage?title=Sql%20Server%20Database%20Integration\" rel=\"nofollow\">https://x12parser.codeplex.com/wikipage?title=Sql%20Server%20Database%20Integration</a>).  The out of memory exception occurs when it loads the xslt to transform to XML and has to render the entire file as XML.  Loading into SQL directly avoids needing that transformation at all.  This might not be an option for you if all if your code already expects the XML or the ClaimDocument object.<br />\n",
+    "PostedDate": "2014-04-16T07:08:10.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1236047",
+    "ThreadId": "542373",
+    "Html": "Hi dstrubhar,\r<br />\n<br />\nDo you have code that included of appconfig in your code, if So please share. I will try to sort it out either Unbundle and sqlserver Mode. Can you explain how to configure the sqlserver ?<br />\n",
+    "PostedDate": "2014-04-20T23:52:14.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

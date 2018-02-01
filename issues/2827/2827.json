@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When running on Linux using mono I get a crash trying to parse any EDI document.  For example the below results in the attached error.log.\n\nmono --debug src/OopFactory.X12.X12Parser/bin/Debug/X12Parser.exe tests/OopFactory.X12.Tests.Unit/Parsing/_SampleEdiFiles/FIN/_811/WayneBrantley.txt\n\nThis is caused by the no argument Interchange constructor not providing a X12DelimiterSet and then DetachedSegment trying to use the delimiters.  This can be fixed in two ways, both attached.  Either provide some dummy delimiters or check to see if we have delimiters before trying to use them.",
+    "LastUpdatedDate": "2017-02-09T16:06:33.937-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2017-02-09T16:04:29.673-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Parsing EDI crashes with null delimiters when running under mono",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2827
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3268,
+      "FileName": "error.log",
+      "DownloadUrl": ".\\3268"
+    },
+    {
+      "FileId": 3269,
+      "FileName": "null-delimiters-option1.patch",
+      "DownloadUrl": ".\\3269"
+    },
+    {
+      "FileId": 3270,
+      "FileName": "null-delimiters-option2.patch",
+      "DownloadUrl": ".\\3270"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Patch option 1: provide dummy delimiters.",
+      "PostedDate": "2017-02-09T16:06:04.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-02-09T16:06:33.623-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Patch option 2: check for delimiters before using.",
+      "PostedDate": "2017-02-09T16:06:33.937-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

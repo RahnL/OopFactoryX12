@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-02-22T12:52:23.693-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Ran across an error that seems pretty consistent in a certain partner's 835 ERA files. The position seems to change a bit from file to file but it causes the fillowing error:\n \nUnhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException: Segment 'ISA*00*          *00*          *ZZ*MMISNEBR       *ZZ*WWWWW          *120130*1637*^*00501*000000032*0*P*>' in position 291 within transaction '8001' cannot be identified within the supplied specification for transaction set 835.\nParameter name: 835\n   at OopFactory.X12.Parsing.X12Parser.Parse(Stream stream)\n   at OopFactory.X12.X12Parser.Program.Main(String[] args)\n \nHere's a deidentified sample.\n \nThanks!",
+    "LastUpdatedDate": "2013-05-16T04:34:02.353-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-02-01T11:44:07.93-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "835 Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 999
+  },
+  "FileAttachments": [
+    {
+      "FileId": 478,
+      "FileName": "835error1.edi",
+      "DownloadUrl": ".\\478"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I always assumed that each file would only have one interchange, but I guess that was an incorrect assumption.  Since my root element of the output is the Interchange element, and xml file can only have one root, this problem would require a pre-processing step to split the file per interchange before the existing implementation of the parser will work.\r\nWould that be an acceptable solution if the output were to produce more than one file?",
+      "PostedDate": "2012-02-01T14:26:04.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yep, multiple file output would be fine with me.  Thanks!",
+      "PostedDate": "2012-02-04T15:28:44.033-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, I'll try and get something updated tonight.",
+      "PostedDate": "2012-02-06T07:35:04.727-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just checking to see if there's been any progress made on this... :)",
+      "PostedDate": "2012-02-22T08:44:35.557-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 14543.",
+      "PostedDate": "2012-02-22T12:52:23.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just checked in the fix at changeset 14543, thanks for the reminder.\r\nI had to keep the interface the same for existing users, so I added a ParseMultiple method.  The app will spit out multiple files if that's how you're calling it.",
+      "PostedDate": "2012-02-22T12:55:13.38-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:00.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:02.353-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

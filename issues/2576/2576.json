@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It's possible to create an X12 997 Acknowledge as the same base of X12 999. I tried to program, but I'm facing problems to make AK5 response.",
+    "LastUpdatedDate": "2015-01-07T14:54:56.04-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-11-17T11:49:33.907-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "X12 997 Acknowledge",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 2576
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Oopfactory build 34755, dot net 4.0\r\n\r\nI also need to create a 997 for an 810 file, with AK5's per ST.\nHowever i noticed some issues once i made these additions. The issues are: Not real EDI errors.  Missing SE and all segments are required. AK5* E * 2* 5\r\n\r\nHere are my additions: a new Class TypedSegmentAK5.cs\r\n\r\nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\r\n\r\nnamespace OopFactory.X12.Parsing.Model.Typed\n{\n    public class TypedSegmentAK5 : TypedSegment\n    {\n        public TypedSegmentAK5() : base(\"AK5\") { }\r\n\r\n        public string AK501_TransactionSetAcknowledgmentCode\n        {\n            get { return _segment.GetElement(1); }\n            set { _segment.SetElement(1, value); }\n        }\r\n\r\n        public string AK502_SyntaxErrorCode\n        {\n            get { return _segment.GetElement(2); }\n            set { _segment.SetElement(2, value); }\n        }\r\n\r\n        public string AK503_SyntaxErrorCode\n        {\n            get { return _segment.GetElement(3); }\n            set { _segment.SetElement(3, value); }\n        }\n        public string AK504_SyntaxErrorCode\n        {\n            get { return _segment.GetElement(4); }\n            set { _segment.SetElement(4, value); }\n        }\n        public string AK505_SyntaxErrorCode\n        {\n            get { return _segment.GetElement(5); }\n            set { _segment.SetElement(5, value); }\n        }\n        public string AK506_SyntaxErrorCode\n        {\n            get { return _segment.GetElement(6); }\n            set { _segment.SetElement(6, value); }\n        }\n    }\n}\r\n\r\n\nIn the file X12Extensions.cs I copied Add999Transaction to Add997Transaction and made these changes.\r\n\r\npublic static void Add997Transaction(this FunctionGroup group, IEnumerable<FunctionalGroupResponse> groupResponses)\n        {\n            int transactionId = 0;\n            \n            foreach (var groupResponse in groupResponses)\n            {\n                var trans = group.AddTransaction(\"997\", string.Format(\"{0:0000}\", ++transactionId));\n                if (group.VersionIdentifierCode.Contains(\"5010\"))\n                    trans.SetElement(3, group.VersionIdentifierCode);\r\n\r\n                // Functional group response header\n                var ak1 = trans.AddSegment<TypedSegmentAK1>(new TypedSegmentAK1());\n                ak1.AK101_FunctionalIdCode = groupResponse.FunctionalIdCode;\n                ak1.AK102_GroupControlNumber = groupResponse.GroupControlNumber;\n                ak1.AK103_VersionIdentifierCode = groupResponse.VersionIdentifierCode;\r\n\r\n                foreach (var response in groupResponse.TransactionSetResponses)\n                {\n                    // Transaction Set Response Header\n                    var ak2 = trans.AddLoop<TypedLoopAK2>(new TypedLoopAK2());\n                    ak2.AK201_TransactionSetIdentifierCode = response.TransactionSetIdentifierCode;\n                    ak2.AK202_TransactionSetControlNumber = response.TransactionSetControlNumber;\n                    if (!string.IsNullOrEmpty(response.ImplementationConventionReference))\n                        ak2.AK203_ImplementationConventionReference = response.ImplementationConventionReference;\r\n\r\n\t\t    // currently ignoring AK3, and AK4\r\n\r\n\t\t    // Transaction Set Response trailer\n\t\t    var ak5 = ak2.AddSegment<TypedSegmentAK5>(new TypedSegmentAK5());\n                    ak5.AK501_TransactionSetAcknowledgmentCode = response.AcknowledgmentCode.ToString().Substring(0, 1);\r\n\r\n                    if (response.SyntaxErrorCodes.Count > 0)\n                        ak5.AK502_SyntaxErrorCode = response.SyntaxErrorCodes[0];\n                    if (response.SyntaxErrorCodes.Count > 1)\n                        ak5.AK503_SyntaxErrorCode = response.SyntaxErrorCodes[1];\n                    if (response.SyntaxErrorCodes.Count > 2)\n                        ak5.AK504_SyntaxErrorCode = response.SyntaxErrorCodes[2];\n                    if (response.SyntaxErrorCodes.Count > 3)\n                        ak5.AK505_SyntaxErrorCode = response.SyntaxErrorCodes[3];\n                    if (response.SyntaxErrorCodes.Count > 4)\n                        ak5.AK506_SyntaxErrorCode = response.SyntaxErrorCodes[4];\n                }\r\n\r\n                // Functional group response trailer\n                var ak9 = trans.AddSegment<TypedSegmentAK9>(new TypedSegmentAK9());\n                ak9.AK901_FunctionalGroupAcknowledgeCode = groupResponse.AcknowledgmentCode.ToString().Substring(0, 1);\n                ak9.AK902_NumberOfTransactionSetsIncluded = groupResponse.TransactionSetResponses.Count;\n                ak9.AK903_NumberOfReceivedTransactionSets = groupResponse.TransactionSetResponses.Count;\n                ak9.AK904_NumberOfAcceptedTransactionSets = groupResponse.TransactionSetResponses.Where(tsr => tsr.AcknowledgmentCode == AcknowledgmentCodeEnum.A_Accepted || tsr.AcknowledgmentCode == AcknowledgmentCodeEnum.E_Accepted_ButErrorsWereNoted).Count();\r\n\r\n                if (groupResponse.SyntaxErrorCodes.Count > 0)\n                    ak9.AK905_FunctionalGroupSyntaxErrorCode = groupResponse.SyntaxErrorCodes[0];\n                if (groupResponse.SyntaxErrorCodes.Count > 1)\n                    ak9.AK906_FunctionalGroupSyntaxErrorCode = groupResponse.SyntaxErrorCodes[1];\n                if (groupResponse.SyntaxErrorCodes.Count > 2)\n                    ak9.AK907_FunctionalGroupSyntaxErrorCode = groupResponse.SyntaxErrorCodes[2];\n                if (groupResponse.SyntaxErrorCodes.Count > 3)\n                    ak9.AK908_FunctionalGroupSyntaxErrorCode = groupResponse.SyntaxErrorCodes[3];\n                if (groupResponse.SyntaxErrorCodes.Count > 4)\n                    ak9.AK909_FunctionalGroupSyntaxErrorCode = groupResponse.SyntaxErrorCodes[4];\r\n\r\n            }\n        }\r\n\r\nand in the Program.cs of OopFactory.X12.AcknowledgeX12 i changed the Add999Transaction to Add997Transaction For testing...\r\n\r\n\nHere are my findings on the issues.\r\n\r\nIssue 1 \r\n\r\nThe AcknowledgeTransaction in X12AcknowledgmentService.cs expects that the SE segment will be present in the string passed to the function, but the X12StreamReader.cs does not send it......\nI do not have enough experience with the project to know if the X12StreamReader.cs can / should return the SE, I assume that it cannot as it will break other things.\nTo get around the issue, I created a new X12StreamReaderXXX.cs class and added these lines below line 153.  I made reference to the new class in X12AcknowledgmentService.cs line 40 (and fixed all references)\nIt appears to correct my issue; however i have not done a lot of testing. Maybe there is a better way to address this, and the programmers of the project have a lot more knowledge of how the classes work together.\r\n\r\nX12StreamReaderXXX.cs (a copy of X12StreamReader.cs with these additions)\nwhile (!string.IsNullOrEmpty(segmentString) && segmentId != \"SE\"); // transaction trailer segment\nif(segmentId == \"SE\") //added\n{//added\n\tsegments.Append(segmentString); //added\n\tsegments.Append(_delimiters.SegmentTerminator); //added\n}//added\r\n\r\nThese are the lines that are affected by not having a SE in the string transaction, it causes trailerSegment to always be null.\nX12AcknowledgmentService.cs (Line 212)\r\n\r\n            var trailerSegment = segmentInfos.FirstOrDefault(si => si.SegmentId == \"SE\");\n            if (trailerSegment == null)\n            {\n                response.SyntaxErrorCodes.Add(\"2\"); //Transaction Set Trailer Missing\n            }\r\n\r\n\nIssue 2\r\n\r\nThe UsageEnum defaults to UsageEnum.Required, causing every segment to be required if there is not a valid UsageEnum on each segment in the speciation xml files.\nRather than adding a Usage to every segment in every speciation xml file, i added a new UsageEnum, at the first location so that it will be the default value and\nwill cause X12AcknowledgmentService.cs(Line 244) to function the way intended.\r\n\r\n\nHere is a line affected by the default value of UsageEnum.\nX12AcknowledgmentService.cs(Line 244)\r\n\r\nforeach (var segmentSpec in container.Spec.SegmentSpecifications.Where(ss => ss.Usage == UsageEnum.Required))\r\n\r\n\nEnumerations.cs (the line added to Enumerations.cs)\n    [XmlType(AnonymousType = true)]\n    public enum UsageEnum\n    {\n\tNotRequired, /* added to prevent Required being the default value  */\n        Required,\n        Situational,\n        [XmlEnum(\"Not Used\")]\n        NotUsed\n    }\r\n\r\nI want to thank you all for the hard work that you have put into this project",
+      "PostedDate": "2014-11-21T10:48:41.723-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-01-07T14:54:56.04-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

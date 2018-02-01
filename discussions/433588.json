@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1003067",
+    "ThreadId": "433588",
+    "Html": "I have read the other discussion that was held on this topic and have tried to incorporate the suggestions into my project but cannot seem to get it to work.  I have no experience with C# so that doesn't help.  How do I incorporate the transform XML to CSV stream code into a batch process?  The main issue I am running into is I get an error saying &quot;Index was outside the bounds of the array.&quot;  It is also unable to validate parser.ParseMultiple.  Thanks ahead of time.<br />\n<br />\nThis is my Program.cs file.<br />\n<br />\nusing System.Text;<br />\nusing System.Collections.Generic;<br />\nusing System.IO;<br />\nusing System.Reflection;<br />\nusing System;<br />\nusing System.Xml;<br />\nusing System.Xml.Xsl;<br />\nusing OopFactory.X12.Parsing;<br />\nusing OopFactory.X12.Parsing.Model;<br />\n<br />\nnamespace OopFactory.Edi835Parser<br />\n{<br />\n<pre><code>class Program\n{\n    static void Main(string[] args)\n    {\n       string inputPath = args[0];\n\n       foreach (string inputFilename in Directory.GetFiles(@&quot;C:\\SCANNING\\NEWFOLDER\\&quot;, &quot;*.rmt&quot;))\n        {\n            Stream transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(&quot;OopFactory.Edi835Parser.Transformations.X12-835-LineItems-XML-to-CSV.xslt&quot;);\n            Stream inputStream = new FileStream(inputFilename, FileMode.Open, FileAccess.Read);\n\n            X12Parser parser = new X12Parser();\n            int index = 1;\n            foreach (Interchange interchange in  parser.ParseMultiple(inputStream))\n            {\n                string xml = interchange.Serialize();\n\n                var transform = new XslCompiledTransform();\n                transform.Load(XmlReader.Create(transformStream));\n\n                string outputFilename = index == 1 ? string.Format(&quot;{0}.csv&quot;, inputFilename) : string.Format(&quot;{0}_{1}.csv&quot;, inputFilename, index++);\n                Stream outputFile = new FileStream(outputFilename, FileMode.Create, FileAccess.Write);\n                transform.Transform(XmlReader.Create(new StringReader(xml)), new XsltArgumentList(), outputFile);\n            }\n        }\n    }\n\n    public static string inputPath { get; set; }\n}</code></pre>\n\n}<br />\n",
+    "PostedDate": "2013-02-18T14:32:34.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1022729",
+    "ThreadId": "433588",
+    "Html": "Were you able to get this to work?\r<br />\n<br />\nBTW, when you work with Xslt files.  I would first make sure the xslt can work in the Visual Studio IDE, by using the XML menu when you are in your xslt file to do test transforms.  The properties window for the xslt (when your cursor is in the text editor of the xslt file) should allow to specify input and output files.\r<br />\n<br />\nIf you know the problem is not with your xslt than I would also check that you have set the BuildAction to Embedded Resource on the xslt properties (when selecting the file in solution explorer).\r<br />\n<br />\nIt is not apparent to me from the code where you index out of bound error is happening.  The only array I see is your args[0].  This might be the error if in your debug you have not set any command line arguments.\r<br />\n<br />\nLet me know if any of that helps.<br />\n",
+    "PostedDate": "2013-03-28T18:34:38.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

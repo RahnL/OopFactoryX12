@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-07-29T09:33:50.747-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n \nI am using this awesome project. It is missing 873 and 874 transaction sets. \n873 Commodity Movement Services\n874 Commodity Movement Services Response\n \nI would appreciate your support for these transaction types.\n \n-LZ",
+    "LastUpdatedDate": "2013-05-16T04:33:59.96-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-07-23T13:37:34.29-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Can you please add support for 873 and 874 transaction sets",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1284
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Please let me know if you have a preferred implementation guide.\r\nI noticed at http://www.northernnaturalgas.com/Document%20Postings/873NMST_1.9_NNG.pdf and http://www.naesb.org/pdf/r98040_r98050_r01018_rec_a3.pdf.",
+      "PostedDate": "2012-07-23T14:31:41.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 18588.",
+      "PostedDate": "2012-07-29T09:33:50.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:57.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:33:59.96-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

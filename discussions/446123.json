@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1053257",
+    "ThreadId": "446123",
+    "Html": "Dannie:\r<br />\n<br />\nFor the sake of handling &quot;chunkified&quot; files, it would be very useful for me to have an overload of ParseMultiple that accepts (String,Text.Encoding). The current overloads do not include that combination.\r<br />\n<br />\nMy question is, is this something that you can/will add to a release soon?\r<br />\n<br />\nShould I implement this change in the source?\r<br />\n<br />\nIf the latter, would you like for me to provide you with the source, for inclusion in future releases?<br />\n",
+    "PostedDate": "2013-06-05T12:45:03.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1053325",
+    "ThreadId": "446123",
+    "Html": "Never mind, I went to change your code, and in so doing figured out how to do what I needed with a memory stream.<br />\n",
+    "PostedDate": "2013-06-05T15:18:02.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

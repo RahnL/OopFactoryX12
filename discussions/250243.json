@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "582546",
+    "ThreadId": "250243",
+    "Html": "\r\n<p>Anyone has already implemented the 856 specification and would share the xml file?</p>\r\n<p>TIA, Marco</p>\r\n",
+    "PostedDate": "2011-03-18T04:09:23.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "582577",
+    "ThreadId": "250243",
+    "Html": "<p>I have added the 856 spec at changeset 6988.&nbsp; I will have the domain defined for it in a few more days.&nbsp;</p>\r\n<p>There is a unit test with a sample EDI and I have copied what the raw xml will look like at OopFactory.X12.Tests.Unit in Parsing/Suppliers/SAMPLE_1.xml.</p>\r\n<p>Please report any bugs so we can improve the parser.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-03-18T05:39:27.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "582625",
+    "ThreadId": "250243",
+    "Html": "<p>I have added the transformation to domain elements in changeset 6989.</p>\r\n<p>Still need to work out a bug on the CTT element not coming across.&nbsp; Let me know if you have any other issues.</p>",
+    "PostedDate": "2011-03-18T07:11:15.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

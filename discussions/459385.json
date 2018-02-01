@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1099814",
+    "ThreadId": "459385",
+    "Html": "Hello,\r<br />\n<br />\nI'm trying to create an xsd schema based on the xml output of the parser.  The problem is the xml can have multiple Loop elements of different types on the same level, which is common in a lot of X12 EDI transaction sets.  An xsd won't allow two elements of the same name with different types.<br />\n\r<br />\nIs there anyway to make the outputted xml adopt different names for the &lt;Loop&gt; element when using a custom xsd?<br />\n",
+    "PostedDate": "2013-09-26T13:02:09.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

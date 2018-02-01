@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Close as duplicate of &#35;948.",
+    "ClosedDate": "2011-12-06T06:31:40.593-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "First I have to say thanks.  I was about start writing my own parser and you and the dev team have just saved me weeks of work.  Second your design is great. I consider myself a decent programmer but you guys have awesome skills.\nAlong those same lines I spent a few hours trying to find where to start.  I think I have the hang of the parser and now need to make an acknowledgement 997 file for a 5010.  Does the capability exist to make one or can you point me in the right direction if you have already made that module. Thanks, Doug.",
+    "LastUpdatedDate": "2013-05-16T04:34:03.083-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-12-05T22:26:54.357-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Creation of 997",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 949
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

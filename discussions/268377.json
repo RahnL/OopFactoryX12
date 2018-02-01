@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "655196",
+    "ThreadId": "268377",
+    "Html": "\r\n<p>I'm using the interchange model to retrieve various segments from an 835 file, but I can't seem to obtain starting segments. Specifically, I've been trying to obtain elements in the CLP segment of the 2100 loop. The CLP segment is not in the loop's Segments\r\n collection, however, as it is never added with the AddSegment method in the Container class; this seems to be true for other segments labeled as StartingSegments in the spec, but I have not verified this. The loop also has a Specification property with a StartingSegment\r\n property, but I've been unable to use this either for obtaining the CLP elements.</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you for spending time on this great project. Any help with this matter would be very much appreciated.</p>\r\n",
+    "PostedDate": "2011-08-09T07:12:06.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "655390",
+    "ThreadId": "268377",
+    "Html": "<p>Please review this example for extracting information from an 835: <a href=\"http://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform\">http://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform</a>.</p>\r\n<p>The Interchange model is used directly to create and modify existing files, if you are looking to parse out specific elements, the more natural way to do this is using an xslt.&nbsp; The example will show you how to create the entire project to do this and it includes the CLP segments in the example.</p>\r\n<p>If this does not solve your problem, please let me know and I can suggest a different solution.&nbsp; The StartingSegment in the specification is different than in the Interchange model which is why you are getting confused.</p>",
+    "PostedDate": "2011-08-09T10:55:07.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "655556",
+    "ThreadId": "268377",
+    "Html": "<p>Ah, I didn't realize that the StartingSegments were different and that the Interchange model wasn't meant for reading files - the documentation page for it seems to indicate that it can be used to avoid having to do XML transformations. I really need an object model to work with directly for my particular application, so using XSLT isn't my ideal option. The Interchange model has been working well so far, but I just can't seem to get the segment that immediately follows a loop - it seems strange that the Segments collection contains all of a Loop object's segments except for the first one.</p>\r\n<p>If I'm trying to do something with the Interchange model that simply is not supported, I apologize. Thank you for your help so far.</p>",
+    "PostedDate": "2011-08-09T16:43:37.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "655601",
+    "ThreadId": "268377",
+    "Html": "<p>Okay, I understand your question better now. &nbsp;The Loop class inherits from Segment, so your starting segment is actually represented by the Loop object. &nbsp;You should be able to call GetElement on your Loop class to inspect the starting segment of the loop.</p>",
+    "PostedDate": "2011-08-09T19:02:09.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "655946",
+    "ThreadId": "268377",
+    "Html": "<p>This resolves my issue - I somehow missed that the Loop class inherits from Segment.</p>\r\n<p>Again, thank you very much for your help.</p>",
+    "PostedDate": "2011-08-10T09:20:12.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

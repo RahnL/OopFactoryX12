@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1291780",
+    "ThreadId": "561703",
+    "Html": "Greetings!\r<br />\n<br />\nIn DetachedSegments.cs, the SetElement(string) method throws an exception if the input string contains either of the two edi delimiters. Is there a way to just filter out the delimiter characters from the value before they are set in the element instead of throwing an error? Obviously I could run every value through a filter before I set properties on the x12 model classes, but that would be hundreds of updates to my code, and very repetitive. I could also modify the DetachedSegment class to do this, but I'd prefer not to modify the library so I can maintain an upgrade path.\r<br />\n<br />\nHas anyone found a way to do this through other means?\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2014-08-20T10:55:27.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1292448",
+    "ThreadId": "561703",
+    "Html": "FYI - we ended up forking our own version of the library and adding the functionality we needed. I've submitted a patch to this project with the new functionality in case you would like to include it. It's patch id 16720.<br />\n",
+    "PostedDate": "2014-08-22T07:26:24.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

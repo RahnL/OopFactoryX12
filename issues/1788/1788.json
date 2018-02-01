@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Below is the sample 271 response EDI file content:\n\nISA*00* *00* *33*95216 *ZZ*TPUniqueID *110409*1547*^*00501*003123853*0*P*:~\nGS*HB*95216*UPMCELIG*20110409*154732*100*X~\nST*271*100001*005010X279A1~\nBHT*0022*13*PATMGMT #00020110326191152*20110409*1547~\nHL*1**20~\nNM1*PR*2*UPMC HEALTH PLAN*****NI*95216~\nPER*IC*UPMC HEALTH PLAN MEMBER SERVICES*TE*4124341200~\nHL*2*1*21*1~\nNM1*1P*1*LINE*WILLIAM*J***XX*2222222222~\nREF*HPI*2222222222~\nHL*3*2*22*0~\nTRN*2*EDI_CONTROL_002484370*9999999999*9999999999~\nTRN*2*RE 0198214631085*9999999999*9999999999~\nNM1*IL*1*KENT*CLARK*S***MI*00044444404~\nREF*SY*555555555~\nPER*IC*CLARK KENT~\nDMG*D8*19770704*M~\nDTP*472*D8*20110506~\nDTP*356*D8*20110101~\nEB*1*FAM*98*HM*13H-HVHS PREFERRED PLAN******U*U~\nEB*1*FAM*99*HM*13H-HVHS PREFERRED PLAN******U*U~\nEB*1*FAM*30*HM*13H-HVHS PREFERRED PLAN******U*U~\nEB*B*FAM*AC*HM*O/P CD - Extended*32*25****U*U~\nEB*B*FAM*AC*HM*O/P CD - Full*32*25****U*U~\nEB*B*FAM*AC*HM*O/P CD - Half*32*25****U*U~\nEB*B*FAM*33*HM*Chiro Exm/Manip Under 13 Yearly Quantity 25*22*25**VS*25*U*U~\nEB*B*FAM*33*HM*Chiro exam/manipulations Yearly Quantity 25*22*25**VS*25*U*U~\nEB*B*FAM*51*HM*ER Facility -autopay*32*50****U*U~\nEB*B*FAM*52*HM*ER Facility-NonAutopay*32*50****U*U~\nEB*B*FAM*9*HM*Home Infusion Thrp CM/MC Daily Quantity 1*7*0**VS*1*U*U~\nEB*B*FAM*A8*HM*O/P MH -ACT 150-EXTENDED*32*25****U*U~\nEB*B*FAM*A8*HM*O/P MH - ACT 150 - Full*32*25****U*U~\nEB*B*FAM*A8*HM*O/P MH - ACT 150 - Half*32*25****U*U~\nEB*B*FAM*A8*HM*O/P MH - Extended*32*25****U*U~\nEB*B*FAM*A8*HM*O/P MH - Full*32*25****U*U~\nEB*B*FAM*A8*HM*O/P MH - Half*32*25****U*U~\nEB*B*FAM*93*HM*Rtn Foot Care Med Nec Dx*32*25****U*U~\nEB*B*FAM*9*HM*Specialist Off/Outpt Vst*32*25****U*U~\nEB*B*FAM*AD*HM*PT/OT/ST Yearly Quantity 60*22*15**VS*60*U*U~\nEB*B*FAM*98*HM*PCP Office Visit-BH Prov*32*15****U*U~\nEB*B*FAM*98*HM*Pain Management-HVHS*32*25****U*U~\nEB*B*FAM*93*HM*Podiatrist*32*25****U*U~\nEB*B*FAM*98*HM*PCP Physician visit*32*15****U*U~\nEB*B*FAM*A8*HM*Psych Test BH Diag*32*25****U*U~\nEB*B*FAM*A8*HM*Psych Test Med Diag*32*25****U*U~\nEB*B*FAM*BF*HM*Pulmonary Rehab Yearly Quantity 24*22*15**VS*24*U*U~\nEB*B*FAM*AG*HM*213D ELIG EXPENSES (HRA)*32*0****U*U~\nEB*B*FAM*98*HM*Vision Exam Med Nec*32*25****U*U~\nEB*L****PRIMARY CARE PHYSICIAN~\nLS*2120~\nNM1*P3*1*PRIMARY CARE DOCTOR*****SV*579F~\nN3*918 THIRD AVENUE~\nN4*BEAVER FALLS*PA*15010~\nPER*IC*7245550000~\nLE*2120~\nEB*C*IND*30**IND Deductible Amount*27*500*****N~\nEB*C*IND*30**IND Deductible Amount Applied*24*0*****N~\nEB*C*IND*30**IND Deductible Amount Remaining*29*500*****N~\nEB*C*FAM*30**FAM Deductible Amount*27*1000*****N~\nEB*C*FAM*30**FAM Deductible Amount Applied*24*0*****N~\nEB*C*FAM*30**FAM Deductible Amount Remaining*29*1000*****N~\nEB*G*IND*30**IND OOP Amount*27*10000*****N~\nEB*G*IND*30**IND OOP Amount Applied*24*0*****N~\nEB*G*IND*30**IND OOP Amount Remaining*29*10000*****N~\nEB*G*FAM*30**FAM OOP Amount*27*20000*****N~\nEB*G*FAM*30**FAM OOP Amount Applied*24*0*****N~\nEB*G*FAM*30**FAM OOP Amount Remaining*29*20000*****N~\nEB*F*IND*30**Lifetime Amount*32*1000000~\nEB*F*IND*30**Lifetime Amount Remaining*33*999522.24~\nGE*1*100~\nIEA*1*003123853~",
+    "LastUpdatedDate": "2014-02-19T00:48:57.187-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-10-15T22:36:11.497-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "I have sample 271 EDI file, but I am getting \"0 is not a valid subelement separator in position 105 of the file\"",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 1788
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "There are too many characters in your ISA segment.  This is a fixed width segment, each element is expected to be fixed width.  See the specification [here](https://www.disa.org/apps/workbook/X12_October_2012/se/se_ISA.htm).\r\n\r\nIf you post the first line as a code snippet then it will retain your whitespace and we can identify which element is incorrect.",
+      "PostedDate": "2013-10-16T06:08:54.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-02-19T00:48:57.187-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

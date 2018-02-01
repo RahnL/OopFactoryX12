@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "820412",
+    "ThreadId": "351325",
+    "Html": "<p>I am trying to Parse stream Response using OopFactory X12 Parse<br /> here is my Code</p>\n<pre><code><span><div style=\"color: black; background-color: white;\"><pre><span style=\"color: blue;\">var</span> parser = <span style=\"color: blue;\">new</span> X12Parser();\n            <span style=\"color: blue;\">var</span> _response = response.GetResponseStream();\n Interchange interchange = parser.Parse(_response);\n            <span style=\"color: blue;\">string</span> value = interchange.Serialize();\n            response.Close();\n</pre>\n</div>\n</span></code></pre>\n<p>it throws an error here&nbsp;<strong>parser.Parse(_response);</strong>&nbsp;<br /> <br /> Error:<br /> <strong>1 is not a valid subelement separator in position 105 of the file.</strong></p>\n<p>My Response File:</p>\n<p><strong>ISA*00* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*01*NOPASS &nbsp; &nbsp;*ZZ*S00000000000001*ZZ**120405*1000*\u001f*00501*021539342*0*T*&gt;~TA1*17049371*120405*1000*R*018~IEA*0*021539342~</strong></p>\n<p>Note:</p>\n<p>This only happens in my dev server, if i run my application on local this will work with no problem.</p>\n<p>I wonder if response on dev is same as on local. How can capture stream response on dev and compare to my local?</p>\n<p>&nbsp;</p>\n<p>I have also posted this question at <a href=\"http://stackoverflow.com/questions/9946459/oopfactory-x12-parser-breaks\" target=\"_blank\">stackoverflow</a></p>",
+    "PostedDate": "2012-04-05T08:07:02.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "821633",
+    "ThreadId": "351325",
+    "Html": "<p>ISA08 should contain 15 characters. In your response file, ISA08 does not have any data. Because of this, part of the TA1 segment is being parsed as part of the fixed-width ISA segment.</p>",
+    "PostedDate": "2012-04-09T10:56:21.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

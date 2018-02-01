@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi dstrubhar,\n\nIm using your OppFactory for parsing EDI 837 files. That file size is more than 10 MB. When i parsing the file, Im getting the __Memory out of Exception__ . Please guide me to solve the issue and also i have seen some other threads regarding this issue. You replied like \"There is a batch size setting in the app.config \" to solve this issue. But i dont have Appconfig file to resolve. Please advise me to use appconfig and solve the issue.\n\n\nThanks,\nGnanadesigan K",
+    "LastUpdatedDate": "2014-03-31T22:44:24.497-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-03-31T05:00:28.503-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Problem in parsing More than 10 MB file.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1938
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi dstrubhar,\r\n\r\nKindly advise me to solve the above __Memory Exception__. \r\n\r\nThanks,\nGnanadesigan K",
+      "PostedDate": "2014-03-31T22:44:24.497-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

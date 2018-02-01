@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I ran the command to create the PDF, it gives me the error: \"Unable to retrieve graphic from HCFA1500_Red.gif\".\n\nI don't think it is looking for the image files in the same directory as the EXEs, by default.\n\nWhen I write code to do this and pass the exact location of the GIFs, it works fine.",
+    "LastUpdatedDate": "2013-08-01T08:00:58.103-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-08-01T08:00:58.103-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unable to retrieve graphic from HCFA1500_Red.gif",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1678
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

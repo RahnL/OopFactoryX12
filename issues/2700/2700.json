@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Are these two fields swapped?  Several EDI validators are complaining.  We are doing an integration with Walmart and the sample found below has ISS BEFORE TDS:\nhttps://x12parser.codeplex.com/SourceControl/latest#trunk/tests/OopFactory.X12.Tests.Unit/Parsing/_SampleEdiFiles/ORD/_810/Example5_Walmart.txt\n\nThanks!",
+    "LastUpdatedDate": "2015-11-04T19:04:06.083-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-06-10T08:01:52.143-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "810 - (4010/5010) TDS/ISS out of order?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 2700
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

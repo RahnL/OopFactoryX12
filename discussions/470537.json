@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1126901",
+    "ThreadId": "470537",
+    "Html": "I'm looking at using this library to potentially replace our existing implementation.  However, we need to import and export files from our system.\r<br />\n<br />\nI've been playing with this a little bit.  I've tried a few options to map transactions to our database schema for importing, but I'm not sure how to reconstitute an x12 file for export.\r<br />\n<br />\nHas anyone used this library for exporting files?\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2013-11-19T22:29:49.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-04-04T06:28:57.407-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In a parallel environment, creating several Interchange objects leads to race hazards\n \nTo reproduce use the snippet below but note it doesn't always happen with this - try adding some more code to the interchange object if it doesn't. Race hazards are complex like that. What would happen is that Dictionary operations would throw \"already added\" exceptions so I replaced the spec dictionary with a ConcurrentDictionary and GetOrAdd() and then a lock for the 4010/5010 methods.\n \nParallel.For(0, 5, (i) => {\n\tInterchange interchange = new Interchange(DateTime.UtcNow, 1, true)\n\t{\n\t\tAuthorInfoQualifier = \"03\",\n\t\tAuthorInfo = \"foo\",\n\t\tSecurityInfoQualifier = \"01\",\n\t\tSecurityInfo = string.Empty,\n\t\tInterchangeSenderIdQualifier = \"ZZ\",\n\t\tInterchangeSenderId = string.Empty,\n\t\tInterchangeReceiverIdQualifier = \"ZZ\",\n\t\tInterchangeReceiverId = string.Empty,\n\t};\n});\n \n \nPatch:\n \nusing System;\nusing System.Collections.Concurrent;\nusing System.Collections.Generic;\nusing System.IO;\nusing System.Linq;\nusing System.Reflection;\nusing System.Text;\nusing System.Xml;\nusing System.Xml.Xsl;\nusing OopFactory.X12.Parsing;\nusing OopFactory.X12.Parsing.Specification;\n \nnamespace OopFactory.X12.Parsing\n{\n    public class SpecificationFinder : ISpecificationFinder\n    {\n        private static readonly object syncObject = new object();\n \n        public virtual TransactionSpecification FindTransactionSpec(string functionalCode, string versionCode, string transactionSetCode)\n        {\n            switch (transactionSetCode)\n            {\n                case \"110\":\n                    return GetSpecification(\"110-4010\");\n                case \"210\":\n                    return GetSpecification(\"210-4010\");\n                case \"270\":\n                    if (versionCode.Contains(\"5010\"))\n                        return GetSpecification(\"270-5010\");\n                    else\n                        return GetSpecification(\"270-4010\");\n                case \"271\":\n                    if (versionCode.Contains(\"5010\"))\n                        return GetSpecification(\"271-5010\");\n                    else\n                        return GetSpecification(\"271-4010\");\n                case \"276\":\n                case \"277\":\n                    return GetSpecification(\"276-5010\");\n                case \"278\":\n                    return GetSpecification(\"278-5010\");\n                case \"322\":\n                    return GetSpecification(\"322\");\n                case \"417\":\n                    return GetSpecification(\"417\");\n                case \"810\":\n                    return GetSpecification(\"810-4010\");\n                case \"820\":\n                    return GetSpecification(\"820-4010\");\n                case \"832\":\n                    return GetSpecification(\"832-4010\");\n                case \"834\":\n                    if (versionCode.Contains(\"5010\"))\n                        return GetSpecification(\"834-5010\");\n                    else\n                        return GetSpecification(\"834-4010\");\n                case \"835\":\n                    if (versionCode.Contains(\"5010\"))\n                        return GetSpecification(\"835-5010\");\n                    else\n                        return GetSpecification(\"835-4010\");\n                case \"837\":\n                    if (versionCode.Contains(\"5010\"))\n                        return GetSpecification(\"837-5010\");\n                    else\n                        return GetSpecification(\"837-4010\");\n                case \"846\":\n                    return GetSpecification(\"846-4010\");\n                case \"850\":\n                    return GetSpecification(\"850-4010\");\n                case \"855\":\n                    return GetSpecification(\"855-4010\");\n                case \"856\":\n                    return GetSpecification(\"856-4010\");\n                case \"860\":\n                    return GetSpecification(\"860-4010\");\n                case \"866\":\n                    return GetSpecification(\"866-4010\");\n                case \"873\":\n                    return GetSpecification(\"873-4010\");\n                case \"997\":\n                    return GetSpecification(\"997-4010\");\n                case \"999\":\n                    return GetSpecification(\"999-5010\");\n                default:\n                    throw new NotSupportedException(String.Format(\"Transaction Set {0} is not supported.\", transactionSetCode));\n            }\n        }\n \n        public virtual SegmentSpecification FindSegmentSpec(string versionCode, string segmentId)\n        {\n            if (versionCode.Contains(\"5010\"))\n            {\n                var idMap5010 = Get5010Spec();\n                if (idMap5010.ContainsKey(segmentId))\n                    return idMap5010[segmentId];\n            }\n \n            var idMap4010 = Get4010Spec();\n            if (idMap4010.ContainsKey(segmentId))\n                return idMap4010[segmentId];\n            else\n                return null;\n        }\n \n        private static Dictionary<string, SegmentSpecification> _4010Specification;\n        private static Dictionary<string, SegmentSpecification> Get4010Spec()\n        {\n            lock (syncObject)\n                if (_4010Specification == null)\n                {\n                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(\"OopFactory.X12.Specifications.Ansi-4010Specification.xml\");\n                    StreamReader reader = new StreamReader(specStream);\n                    SegmentSet set = SegmentSet.Deserialize(reader.ReadToEnd());\n                    _4010Specification = new Dictionary<string, SegmentSpecification>();\n                    foreach (var segment in set.Segments)\n                    {\n                        foreach (var element in segment.Elements)\n                        {\n                            if (element.Type == ElementDataTypeEnum.Identifier && !string.IsNullOrEmpty(element.QualifierSetRef))\n                            {\n                                var qualifierSet = set.QualifierSets.FirstOrDefault(qs => qs.Name == element.QualifierSetRef);\n                                if (qualifierSet != null)\n                                    element.AllowedIdentifiers.AddRange(qualifierSet.AllowedIdentifiers);\n                            }\n                        }\n                        _4010Specification.Add(segment.SegmentId, segment);\n                    }\n                }\n            return _4010Specification;\n        }\n \n        private static Dictionary<string, SegmentSpecification> _5010Specification;\n        private static Dictionary<string, SegmentSpecification> Get5010Spec()\n        {\n            lock (syncObject)\n                if (_5010Specification == null)\n                {\n                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(\"OopFactory.X12.Specifications.Ansi-5010Specification.xml\");\n                    StreamReader reader = new StreamReader(specStream);\n                    SegmentSet set = SegmentSet.Deserialize(reader.ReadToEnd());\n                    _5010Specification = new Dictionary<string, SegmentSpecification>();\n                    foreach (var segment in set.Segments)\n                    {\n                        foreach (var element in segment.Elements)\n                        {\n                            if (element.Type == ElementDataTypeEnum.Identifier && !string.IsNullOrEmpty(element.QualifierSetRef))\n                            {\n                                var qualifierSet = set.QualifierSets.FirstOrDefault(qs => qs.Name == element.QualifierSetRef);\n                                if (qualifierSet != null)\n                                    element.AllowedIdentifiers.AddRange(qualifierSet.AllowedIdentifiers);\n                            }\n                        }\n \n                        _5010Specification.Add(segment.SegmentId, segment);\n                    }\n                }\n            return _5010Specification;\n        }\n \n        private static readonly ConcurrentDictionary<string, TransactionSpecification> _specifications;\n \n        static SpecificationFinder()\n        {\n            _specifications = new ConcurrentDictionary<string, TransactionSpecification>();\n        }\n \n        internal static TransactionSpecification GetSpecification(string specKey)\n        {\n            return _specifications.GetOrAdd(specKey, key =>\n            {\n                Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format(\"OopFactory.X12.Specifications.Ansi-{0}Specification.xml\", key));\n                return TransactionSpecification.Deserialize(new StreamReader(specStream).ReadToEnd());\n            });\n        }\n    }\n}",
+    "LastUpdatedDate": "2013-05-16T04:34:01.66-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-04-04T04:10:40.67-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SpecificationFinder contains race hazards",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1153
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 15642.",
+      "PostedDate": "2012-04-04T06:28:57.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:59.72-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:01.66-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

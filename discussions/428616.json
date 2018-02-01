@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "983391",
+    "ThreadId": "428616",
+    "Html": "\r\n<p>I would like to know the loop ids for the following x12 files to use <em><strong>UnbundleX12.exe.</strong></em></p>\r\n<p>270, 271, 276, 277, 278, 824, 997, 999<strong></strong><em><strong></strong></em></p>\r\n<p>I know the loop id for 837 as 2300 and for 835 as 2100. Please help.<strong><em><br>\r\n</em></strong></p>\r\n",
+    "PostedDate": "2013-01-05T13:23:10.493-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002467",
+    "ThreadId": "428616",
+    "Html": "YOu can inspect the xml spefications in the code to findout all the loopIds that you can use.\r<br />\nThe one for the 270 is here:\r<br />\n<a href=\"http://x12parser.codeplex.com/SourceControl/changeset/view/23147#140712\" rel=\"nofollow\">http://x12parser.codeplex.com/SourceControl/changeset/view/23147#140712</a>.<br />\n",
+    "PostedDate": "2013-02-17T11:35:13.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

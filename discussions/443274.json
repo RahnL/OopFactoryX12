@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1042005",
+    "ThreadId": "443274",
+    "Html": "We receive claims data (ansi 837/5010)from providers for the purpose of extracting meaningful use type data. The providers will sometimes send the same file/data twice, with/or without corrections. In order to create a reasonable data warehouse we would like to remove duplicates.\r<br />\n<br />\nIs there any way to uniquely identify a claim?\r<br />\n<br />\nIf we can't uniquely identify a claim, is there a way that we can, with reasonable certainty, match two duplicate claims for the purpose of deduplication?\r<br />\n<br />\nObviously if either is possible, a pointer in where to look would be great.\r<br />\n<br />\nPaul<br />\n",
+    "PostedDate": "2013-05-10T10:43:17.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1043483",
+    "ThreadId": "443274",
+    "Html": "If you are only looking to see if you are not reloading the same file, this can be done by looking at the NPI of the billing provider and the patient control number of the claim.<br />\n\r<br />\nWith version 5010, the providers are now required to use NPI as their primary identifier in MN109 of Loop 2010AA.  The patient control number is CLM01 and should be unique within each provider.  From the spec for CLM01:  Identifier used to track a claim from the health care provider through payment.\r<br />\n<br />\nOn an institutional claim, this can be further specified with a medical record number that will show up as REF<em>EA</em>9999999~.\r<br />\n<br />\nThis is only helpful to identify the original claim.  If you are also getting corrections than these values could be duplicated.  An institutional claim actual has bill type codes that specify when the claim is a correction. To be able to unique identify between these instances you should introduce the control numbers and dates of the interchange control segments (ISA, GS, and ST segments) to know which instance you are looking at.\r<br />\n<br />\nIt is difficult to look at multiple submissions of a claim by the data alone and determine which one to keep.  This is general the job of a claims processing system.  The CPS may accept and pay the first claim and deny all following instances as duplicates.  But it could also happen that the CPS denied the first claim based on administrative criteria, upon denial, the provider resubmits a corrected claim for the same encounter and the subsequent submission it accepted and paid.  In some scenarios, providers may resubmit because the payer has not responded within a timely manner, and the provider wants to make sure they got the claim.\r<br />\n<br />\nThe reason I mention all the above, is that from a reporting standpoint, if you don't want to report on the same &quot;encounter&quot; again, it is better to receive your claim data after it's been adjudicated so that you are not also reporting on data that a CPS has identified as invalid.<br />\n",
+    "PostedDate": "2013-05-14T10:35:02.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1043533",
+    "ThreadId": "443274",
+    "Html": "Thanks for the reply.\r<br />\n<br />\nWe receive only professional claims at present. I believe that you are familiar with the application that we run. What is the best way for me to be able to &quot;map&quot; between ansi 837 nomenclature and the data structures that we currently use. For example you indicate that the primary identifier is MN109 of Loop 2010A, I would assume that this would map to the provider structure where the name_type_identifier is 85. The field CLM01 would then refer to the claim structure - claim_patientcontrolnumber.\r<br />\n<br />\nI would suspect that in addition to the duplicates mentioned above there could also be duplicates caused by Primary and Secondary insurance claims. We should be getting all data, irrespective of the carrier the claim was sent to.  Should the same logic hold true for matching duplicates based on Primary/Secondary insured that you suggest above?\r<br />\n<br />\nUnfortunately, we have limited rules that we can impose on the providers, regarding when and what data they send, as our mission is to gather diagnosis and treatment data, and there is no financial incentive for providers to tailor their systems to our needs.\r<br />\n<br />\nBased on what you have said, and for our needs I will take only the first record sent, and disregard the rest.\r<br />\n<br />\nShould I decide to let the data age, and take the last record (of duplicates) sent, what do you believe would be a reasonable amount of time to wait? I understand that there will probably be outliers, but hopefully there would be a Bell curve where I could get 90% of the duplicates. Would 1 month be adequate?<br />\n",
+    "PostedDate": "2013-05-14T13:08:54.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1043567",
+    "ThreadId": "443274",
+    "Html": "Due to the nature of your data source,  I would probably try and uniquely identify using the following:<br />\n<ul>\n<li>service provider's NPI (Loop 2310C, where name_type_identifier=&quot;77&quot;, this is the bill to provider NPI when Loop 2310C does not exist)</li>\n<li>patient number</li>\n<li>first from service date</li>\n<li>primary diagnosis</li>\n<li>\nplace of service<br />\n</li>\n</ul>\nThis is similar to what many claims processing systems start with (and possible proprietary logic), though their solutions will also involve work queues for staff to make decisions on claims that are suspicious but cannot be automatically ruled as duplicate.  Since you are only looking at an automated solution, I would start with the above and then do a QA on a sample of your data so see if the one's identified truly look like duplicates OR may contain other valid reasons for submitting the 2nd instance.  Sorry I can't give you a better answer, but most companies are very protective of their solution.\r<br />\n<br />\nIf the claim is submitted to multiple payers it would still retain the same patient number.<br />\n",
+    "PostedDate": "2013-05-14T14:53:25.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1050771",
+    "ThreadId": "443274",
+    "Html": "In looking at the data, I believe I may also need to look at the procedure code, as a person may have multiple procedures for the same diagnosis on the same day. \r<br />\n<br />\nDoes this seem reasonable to you? \r<br />\n<br />\nIf so, can you think of any additional criteria I should use to weed out duplicates?\r<br />\n<br />\nShould I look at the &quot;claim_BillTypeCode?&quot; Will this indicate primary vs secondary billing?<br />\n",
+    "PostedDate": "2013-05-30T11:03:21.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

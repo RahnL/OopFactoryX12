@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "945339",
+    "ThreadId": "404145",
+    "Html": "\r\n<p>My current project calls for one 835 file&nbsp;to be broken down into 5 or 6 provider-specifc files, and the value that the records need to be sorted/grouped by is in the CLP01 field.</p>\r\n<p>So my question is - is&nbsp;it possible to unbundle an 835 file by a value in the CLP01 field?&nbsp; Basically I want to pull out all claims that match a value mask, and store them in their own 835 file.&nbsp; I can unbundle it by the 2100 loop, but then\r\n I get 3,000 separate files, and that seems excessive.&nbsp;</p>\r\n<p>Or should I take this on from the other direction and try to merge the files that got unbundled, back into 1 file(After sorting into distinct folders)&nbsp;?</p>\r\n<p>Anyones thoughts on this would be appreciated.</p>\r\n<p>- Thanks</p>\r\n",
+    "PostedDate": "2012-11-21T12:53:20.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "945674",
+    "ThreadId": "404145",
+    "Html": "\r\n<p>The problem with merging files is that you have to identify how to merge loops back which can be pretty complicated.&nbsp; The purpose of the unbundling is to break-up the file into individual units for processing.&nbsp; I would only attempt a rebundle if you are\r\n truely trying to maintain the integrety of the file with all possible segements (even ones you are not concerned with).</p>\r\n<p>The easier method would be to just parse your file into a flattened format and then reproduce files by looping through your parsed data format.&nbsp; The files you create would only include the elements that you parsed (any extra segments might be lost), but\r\n if you are doing this just for internal processing.</p>\r\n<p>The attempt to rebundle would be most valuable if you have downstream processes that might need more segments than what you are immediately concerned with.</p>\r\n<p>Just be careful, there really isn't a single identifier that let's you know two loops were originally the same loop (this only exists at the ISA, FG, and ST segments), so you really need to compare the entire loop header to ensure that it's the same loop\r\n that can be merged back.</p>\r\n",
+    "PostedDate": "2012-11-22T06:42:06.443-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, I was wondering if you could post some documentation on how to create your own X12 document spec, specifically regarding the creation of the XML file, for example, what attributes are expected on each element, what do the attributes mean and do, etc.\n \nI saw that you have some documentation on how to inject your own spec but this didn't answer my question on how to create the actual XML file.  I also saw the XSD file but again I'm not sure what all the attributes really mean - I'm an X12 newbie.\n \nOne of the things I want to do is be able to specify which segments and elements are required and which are optional.  I saw an attribute named \"Required\" on the ElementSpecification that is either true/false.  But I also saw a UsageEnum with values Required or Situational and I'm not sure what situational would mean or how to use it.  This is an example of some of the information I would love to learn.\n \nThanks for your help.  Really appreciate the project and I think you've done a great job.",
+    "LastUpdatedDate": "2013-02-21T16:47:01.233-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-01-05T10:54:17.817-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "XML Spec Documentation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 974
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

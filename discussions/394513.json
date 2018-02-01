@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "908778",
+    "ThreadId": "394513",
+    "Html": "\r\n<p>Respected Sir,</p>\r\n<p>I get the following error when trying to parse an EDI 837 (5010 format). I am using the latest API.</p>\r\n<p><span style=\"color:#ff00ff\">Segment 'NM1**1*JEWELL*ARAGON*H***XX*' in position 936 within transaction '201240' cannot be identified within the supplied specification for transaction set 837.</span></p>\r\n<p>I don't have any trouble processing other 5010 data from the same batch, just that few files are failing because of the aforementioned issues.</p>\r\n<p>Do one or more segments not adhere to the 837 5010 spec in the failed files?</p>\r\n<p>Thank you for your help,<br>\r\nNitin&nbsp;</p>\r\n",
+    "PostedDate": "2012-09-05T10:01:38.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "908785",
+    "ThreadId": "394513",
+    "Html": "<p>The segment you are showing me is missing an Entity Type Identifier after the NM1*.</p>\r\n<p>Usually this is two characters (i.e. IL means subscriber, QC means patient).&nbsp; For most specifications this is not a problem, but since the 837 identifies multiple loops that start with NM1, it uses the Entity Type Identifier to resolve the Name loop that it is attempting to parse.</p>\r\n<p>Have other systems you work with been able to parse this X12?</p>\r\n<p>Do you know which Loop this should be representing?</p>\r\n<p>I could modify the spec so that this won't cause an error, but it would basically be an unidentifed loop.</p>",
+    "PostedDate": "2012-09-05T10:10:14.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "908913",
+    "ThreadId": "394513",
+    "Html": "<p>Dear Sir,</p>\r\n<p>Sorry for the delay in my response. It took me a little time to test it on a different system. Not surprising, it fails there as well. It appears to be in the Service loop (2400) and only occurs for some entries in a given claim. Other segments have the 1L identifier.</p>\r\n<p>Here's a broader snippet of that particular segment:<br />LX*1~SV1*HC:00740:QZ*1120.00*UN*16***1~DTP*472*RD8*20120607-20120607~HL*74**20*1~NM1*85*1*LI*TEST123*****~N3*123 ST SUITE A~N4*MyCity*ST*12222247~HL*75*74*22*0~SBR*P*18*******MC~NM1*IL*1*FIRST*LAST*H***MI*0000111124~N3*123 ABC ST #11~N4*MyCity*ST*12345~DMG*D8*19000101*F~NM1*PR*2*ABCD*****PI*99999~N3*123 HEALTH*123 ST~N4*City*ST*895222242~CLM*018422221*12.00***41:B:1*Y*A*Y*Y~CR1*****DH*~CRC*07**~HI*BK:95919*BF:8471*BF:8472*BF:E9179*BF:E8499~<strong>NM1**1*First</strong>*LAST*<br />H***XX*~NM1*82*1*LI*NAME****XX*1692222229~LX*1~SV1*HC:A0425:SH*30.00*UN****1~&nbsp;</p>\r\n<p>Your advice on how I can best handle this would be <span style=\"text-decoration: underline;\">greatly </span>appreciated.</p>\r\n<p>Many thanks.</p>",
+    "PostedDate": "2012-09-05T16:56:26.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "909118",
+    "ThreadId": "394513",
+    "Html": "<p>See changeset 19670.&nbsp; I have added an \"UNIDENTIFIED\" loop under the Claim \"2300\" loop so that it can parse this segment.&nbsp; There is a test added to verify it will fix this in the Claim loop.&nbsp; Let me know if there are other occurrences that are unaccounted for.</p>\r\n<p>If your data source was intending to send you something in this loop they will need to fix it on their end so you know what that data was intended for.</p>",
+    "PostedDate": "2012-09-06T05:43:40.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "909409",
+    "ThreadId": "394513",
+    "Html": "<p>Dear Sir,</p>\r\n<p>THANK YOU SO MUCH!!! This is simply awesome. I still haven't had a chance to test the change but I am going to shortly. <br /><br />Honestly, I&nbsp;don't&nbsp;have words to thank you for your timely help, and that too on more than one occasion. My best wishes to you and your team for continued success.</p>\r\n<p>Thanks again.<br />Sincerely,<br />Nitin&nbsp;</p>",
+    "PostedDate": "2012-09-06T17:36:18.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

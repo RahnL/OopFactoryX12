@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1230580",
+    "ThreadId": "541271",
+    "Html": "I've noticed while generating an 810, that the SAC segment appears above TDS segment.  Our vendor has requested the SAC to appear below the TDS, but no matter what I do, the SerializeToX12 places SAC first.<br />\n\r<br />\nHow can I override this?\r<br />\n<br />\nHere is an example 810:<br />\n<pre><code>ST*810*000005167~\n  BIG*20140205*01587933*20140131*10989962***DI~\n  N1*RE*Remit to**1112223333~\n  N3*Company~\n  N4*Pasadena*CA*91189-005~\n  N1*BT*Bill To~\n  N3*AP~\n  N4*City*SC*29602~\n  N1*ST*Ship To~\n  N3*Address~\n  N4*Denver*CO*80222~\n  ITD*01*03**********Net 30 Days~\n  IT1*1*1*EA*100.00**VC*MRB~\n  PID*F****Annual Subscription for Monthly Monitoring Ring Med Lt~\n  IT1*2*1*EA*100.00**VC*MRB~\n  PID*F****Annual Subscription for Monthly Monitoring Ring Sm Lt~\n  SAC*C*D240***2000**********Shipping and Handling~\n  TDS*22000~\n  CTT*2~\nSE*20*000005167~\n</code></pre>\n\nNotice SAC should be below TDS.\r<br />\n<br />\n<br />\nThe snippet from my Invoice Generator:<br />\n<pre><code>        ...\n        // TDS\n        seg = _810trans.AddSegment(&quot;TDS&quot;);\n        seg.SetElement(1, convertMoney(inv.TotalInvoiceAmount));\n\n        // SAC\n        foreach (var sac in inv.InvoiceCharges)\n        {\n            seg = _810trans.AddLoop(&quot;SAC&quot;);\n            seg.SetElement(1, sac.ChargeIndicator);\n            seg.SetElement(2, sac.ChargeCode);\n            seg.SetElement(5, convertMoney(sac.ChargeAmount));\n            seg.SetElement(15, sac.InvoiceChargeDesc);\n        }\n\n        // CCT\n        seg = _810trans.AddSegment(&quot;CTT&quot;);\n        seg.SetElement(1, lineCounter);\n\n        return ichg810Msg.SerializeToX12(true);</code></pre>\n\n",
+    "PostedDate": "2014-04-04T16:46:44.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1235683",
+    "ThreadId": "541271",
+    "Html": "This is actually being controlled by the specification.  All segments are rendered before their sibling loops unless they are marked with the trailer flag.  You can override this by injecting your own copy of the specification and removing the trailer flag from the TDS segment specification.  See here <a href=\"https://x12parser.codeplex.com/wikipage?title=Injecting%20your%20own%20X12%20Specification\" rel=\"nofollow\">https://x12parser.codeplex.com/wikipage?title=Injecting%20your%20own%20X12%20Specification</a>.\r<br />\nThe specs are embedded in the project, you can find the 810 here: <a href=\"https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-810-4010Specification.xml\" rel=\"nofollow\">https://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-810-4010Specification.xml</a><br />\n",
+    "PostedDate": "2014-04-19T05:24:53.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

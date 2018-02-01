@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "912845",
+    "ThreadId": "395596",
+    "Html": "\r\n<p>Is there an easy way to separate a batch file into separate batches? &nbsp;I have a situation where I need to parse one file into several files based on the values in loop 2010BB. &nbsp;My assumption is that I'll have to create a new interchange, as well\r\n as loop1000 and then add each loop 2000 I want to the new file.</p>\r\n",
+    "PostedDate": "2012-09-14T13:04:40.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "912850",
+    "ThreadId": "395596",
+    "Html": "<p>You can use the UnbundleByX12 console to unbundle by transaction or by LoopId.</p>\r\n<p>Unbundling by LoopID can be done with the UnbundleByLoop method on the X12Parser class if you don't necessary need to save them out as files.</p>\r\n<p>Instructions are here:</p>\r\n<p><a href=\"http://x12parser.codeplex.com/wikipage?title=Unbundling%20an%20X12%20file%20by%20Loop%20ID&amp;referringTitle=Home\">http://x12parser.codeplex.com/wikipage?title=Unbundling%20an%20X12%20file%20by%20Loop%20ID&amp;referringTitle=Home</a></p>",
+    "PostedDate": "2012-09-14T13:17:20.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

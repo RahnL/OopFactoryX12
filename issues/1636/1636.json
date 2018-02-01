@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am using the x12parser.exe utility and there does not seem to be a way via command line or config file to set the throwExceptionOnSyntaxErrors = false.  I even tried adding it to the x12parser.exe.config, but it does not seem to take the setting.  Am I doing something wrong?  \n\n<?xml version=\"1.0\"?>\n<configuration>\n<startup><supportedRuntime version=\"v4.0\" sku=\".NETFramework,Version=v4.0\"/></startup>\n  <appSettings>\n    <add key=\"MaxBatchSize\" value=\"10000000\"/>\n\t<add key=\"throwExceptionOnSyntaxErrors\" value=\"false\"/>\n  </appSettings>\n</configuration>\n\nBelow is the error I received from the command line.\n\nUnhandled Exception: OopFactory.X12.Parsing.Model.TransactionValidationException\n: Segment 'NTE**DEMAND TRANSFER. MUST DELIVER ON REQUESTED DATE.' in segment pos\nition 7 within transaction '0001' cannot be identified within the supplied speci\nfication for transaction set 204 in any of the expected loops: .  To change this\n to a warning, pass throwExceptionOnSyntaxErrors = false to the X12Parser constr\nuctor.\nParameter name: 204\n   at OopFactory.X12.Parsing.X12Parser.ParseMultiple(Stream stream, Encoding enc\noding)\n   at OopFactory.X12.X12Parser.Program.Main(String[] args)",
+    "LastUpdatedDate": "2015-03-13T12:08:40.413-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-07-08T10:13:06.853-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "X12parser.exe",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1636
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The current X12Parser.exe does not allow for this param to be used.\r\n\r\nTo allow for your configuration setting to be used you need to modify the source for OopFactory.X12.X12Parser's Program.cs on line 22 change it from \r\n\r\n```\nOopFactory.X12.Parsing.X12Parser parser = new Parsing.X12Parser();\n```\nto \r\n\r\n```\nOopFactory.X12.Parsing.X12Parser parser = new Parsing.X12Parser(Convert.ToBoolean(ConfigurationManager.AppSettings[\"throwExceptionOnSyntaxErrors\"]));\n```\n",
+      "PostedDate": "2013-07-09T12:38:26.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That worked perfect!  Thank you very much for the code exact excerpt.  I'd suggest to work that into project build.",
+      "PostedDate": "2013-07-10T05:47:01.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Great to hear! Perhaps the dev team on this project will think about your suggestion to add that as an option for folks who wish to use it.\r\n\r\nWith that said however,  I do want to at least say I do not personally recommend using this setting. It hides the fact that it may not be properly parsing documents causing data loss. Your trading partners may not be aware they are sending invalid data and if you cannot provide them this information quickly a lot of bad data can be passed before it is ever noticed. When this happens it makes everyone look bad.",
+      "PostedDate": "2013-07-10T07:50:11.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Would there be a version of X12Parser.exe that has a command line parameter that sets the \"throwExcetionOnSyntaxErrors\" to false.  Or a version that reads the X12Parser.exe.config file with that parameter?   I tried this, but it had no effect:\n  <appSettings>\n    <add key=\"MaxBatchSize\" value=\"10000000\"/>\n    <add key=\"throwExceptionOnSyntaxErrors\" value=\"false\"/>\n  </appSettings>\n",
+      "PostedDate": "2015-03-13T12:08:40.413-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

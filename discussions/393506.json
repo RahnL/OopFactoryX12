@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "905625",
+    "ThreadId": "393506",
+    "Html": "\r\n<p>I've been using your library to process some 837P messages. &nbsp;Converting the message to XML and changing or adding fields is a breeze. &nbsp;However, when I transform the XML back to X12 (I'm using the Parser.TransformToX12 method) the counts in the\r\n SE segment are not correct. I looked at the Interchange.SerializeToX12 method but that doesn't look like it will take the XML and serialize it back like the Parser method.</p>\r\n<p>I've found a work around but I have seen posts indicating that the segment counts should be automatically updated. &nbsp;Also, I'm seeing the that fields in the trailers are also being updated, specifically the GE02 (Group Control Number) which should match\r\n GS06 and IEA02 (Interchange Control Number) which should match ISA13.</p>\r\n<p>Thanks.</p>\r\n",
+    "PostedDate": "2012-08-29T05:20:39.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "907497",
+    "ThreadId": "393506",
+    "Html": "<p>When you use the Interchange object to create the X12 from scratch the appropriate trailing segments will be created with matching control numbers and the segment counts, transaction counts, functional group counts will all be dynamically calculated with you serialize to x12.</p>\r\n<p>The behaviour is slightly different when you parse a file or deserialize the file, because we want to capture the X12 as-is even if the sender sent an invalid file.</p>\r\n<p>In the scenario you are describing, I am assuming you have added or removed some segments via the XML and then transformed back into X12.</p>\r\n<p>Since the TransformToX12 method does not pass through the Interchange object, it is only doing a literal transform of your XML, this will not have the counts corrected.&nbsp; If you then run the resulting X12 back through the parser into the Interchange object and then serializeToX12 again, than the counts will be corrected.</p>\r\n<p>I am assuming the same issue might be happening with the control numbers.&nbsp; If you are modify the XML's control numbers you would need to do it for both the header segment and the trailing segment, since this would only be done for you if you created it through the Interchange object.</p>\r\n<p>I have added a unit test at <span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">OopFactory.X12.Tests.Unit.Parsing.ParsingTester.</span></span><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">ParseModifyAndTransformBackToX12 which parses an X12 into XML, loads the XML into an XmlDocument and removes a segment, than Transforms it back into X12.&nbsp; It then runs the X12 back through the parser and serializes to correct the segment counts.</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">Let me know if this solves your problem.</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">&nbsp;</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">&nbsp;</span></span></p>",
+    "PostedDate": "2012-09-02T11:10:56.4-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "910621",
+    "ThreadId": "393506",
+    "Html": "\r\n<p>Yes, this worked. &nbsp;One thing though, I still have to set the batch number into GE02 and IEA02 on the footers as you indicated - no big deal.</p>\r\n<p>Thanks.</p>\r\n",
+    "PostedDate": "2012-09-10T14:01:26.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

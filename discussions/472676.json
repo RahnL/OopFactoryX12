@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1133952",
+    "ThreadId": "472676",
+    "Html": "Is there an example of how to convert a 837 5010 to 837 4010.<br />\nWe have a need of doing this so we can cut out the clearing house and have our providers submit direct.  Thank you in advance. It may sound dumb being that our clearing house does this for us, however we get charged 6 cents for each claim and we have 1/2 mill members so.... $$$<br />\n<br />\nOur system only loads 837 4010 so we would have to convert from 5010 to the 4010 format.<br />\n<br />\nAlso when sending out information we have to use the 5010 format which in looking at the code I see we can build something based off your product.<br />\n<br />\nThanks in advance.<br />\n",
+    "PostedDate": "2013-12-10T14:27:37.423-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

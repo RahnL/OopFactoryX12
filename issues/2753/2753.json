@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm currently using version 4010. Where do I download the schemas for 5010 and what do I need to do to upgrade?\n\nAny pointers are appreciated.",
+    "LastUpdatedDate": "2015-11-24T17:12:10.203-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-11-02T08:49:18.85-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "X12 Version 5010",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 2753
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The 5010 is already included and in the same location as the 4010 files. \r\n\r\nhttps://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/\n",
+      "PostedDate": "2015-11-24T17:12:10.203-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

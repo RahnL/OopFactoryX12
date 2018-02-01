@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1127122",
+    "ThreadId": "470604",
+    "Html": "Hi guys,\r<br />\n<br />\nThis is a really great set of tools! We're looking at this project as a potential replacement for some homegrown measures that we've been using for processing EDI files and generating acknowledgements. It looks like this should be pretty simple to back-port to .Net 3.5 (mostly writing overloads to mimic the defaults that are in use and a few other basic changes) but I was wondering if anyone has done this before and the degree of success / pain points you've encountered.<br />\n",
+    "PostedDate": "2013-11-20T08:18:47.743-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1127239",
+    "ThreadId": "470604",
+    "Html": "There are only 2 things that will break that you will need to resolve.\r<br />\n<br />\nThere are a few usages of string.IsNullOrWhitespace and there is some code that was added so the loading of the specifications for the assembly is multi-threaded.\r<br />\n<br />\nIf you rewrite those to areas you should be able to get a version that compiles to .NET 3.5.<br />\n",
+    "PostedDate": "2013-11-20T13:07:47.033-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1127325",
+    "ThreadId": "470604",
+    "Html": "The IsNullOrWhitespace was pretty easy to work around, just ran a regex replace. \r<br />\n<br />\nstring.IsNullOrWhiteSpace(([^)]*))\r<br />\n(String.IsNullOrEmpty($1) || $1.Trim().Length == 0)\r<br />\n<br />\nThe concurrency was trickier but in this context of use replacing the concurrent dictionary with a regular dictionary and using the existing synclock object works well since the only exposure of the ConcurrentDictionary can be emulated with a dictionary in a threadsafe way. I made the changes below to the appropriate section of SpecificationFinder.cs<br />\n<pre><code>        private static readonly Dictionary&lt;string, TransactionSpecification&gt; _specifications;\n\n        static SpecificationFinder()\n        {\n            lock (syncObject)\n                _specifications = new Dictionary&lt;string, TransactionSpecification&gt;();\n        }\n\n        internal static TransactionSpecification GetSpecification(string specKey)\n        {\n            lock (syncObject)\n            {\n                if (!_specifications.ContainsKey(specKey))\n                {\n                    Stream specStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(String.Format(&quot;OopFactory.X12.Specifications.Ansi-{0}Specification.xml&quot;, specKey));\n                    _specifications.Add(specKey, TransactionSpecification.Deserialize(new StreamReader(specStream).ReadToEnd()));\n                }\n                return _specifications[specKey];\n            }\n        }\n    }</code></pre>\n\n",
+    "PostedDate": "2013-11-20T16:30:27.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2013-11-20T16:36:00.383-08:00"
+  }
+]

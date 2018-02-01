@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi dstrubhar, \n\nI am using oopfactory for parsing my edi file of 10gb to xml. I tried two approaches both are giving memory exceptions\na) unbundle option to break in smaller components.\nb) With BatchSize option.\n\nCould you please provide a sample to process.\n\nThanks,\nRamen",
+    "LastUpdatedDate": "2016-03-13T07:25:07.68-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2016-03-10T21:02:47.147-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "problem in parsing 10 gb edi file",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2785
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The in memory parse to xml is not designed to handle large files.\r\n\r\nYou will need to use the feature that can stream the file into a SQL database.\r\n\r\nIf you tell me more about what happened when you attempted to break up the file into smaller components than I can give you suggestions.\r\n\r\nIf the problem was with the xslt that turns it into xml, then the only solution is to switch to streaming it into the database, the problem happened before that I might be able to offer suggestions depending on which transaction set type you are parsing.",
+      "PostedDate": "2016-03-11T06:02:06.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the reply.\nIf the approach is for SQL database. Could you please provide the sample or test code from direct edi to sql database.",
+      "PostedDate": "2016-03-13T07:25:07.68-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

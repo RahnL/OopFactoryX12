@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "908654",
+    "ThreadId": "394484",
+    "Html": "\r\n<p>I noticed TypedSegmentDTP class is only for debug mode.&nbsp; Why does it have this restriction?</p>\r\n<p>Also for the &quot;DateTimeQualifier&quot; there should be an enum : 102 - &quot;Issue&quot;, 291 - &quot;Plan&quot;.</p>\r\n<p>Also in general with the enums I would create extension methods on the them to parse to the actual string number rather than putting in the setter of the property.&nbsp; This way the enum parsing can be re-used.</p>\r\n<p>Can I contribute to this project also?</p>\r\n",
+    "PostedDate": "2012-09-05T06:07:32.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "908683",
+    "ThreadId": "394484",
+    "Html": "<p>I have the DEBUG directive around things I haven't had a chance to test or things that I'm not quite satisfied with the design.</p>\r\n<p>I have added you as a developer. &nbsp;Feel free to make the changes you described or add any other TypedSegments you might need. &nbsp;I can review it for consistency before releasing it into a build. &nbsp;I will be doing another release soon, so I can get your changes in it.</p>",
+    "PostedDate": "2012-09-05T07:12:01.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

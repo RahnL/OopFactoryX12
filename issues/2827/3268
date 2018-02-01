@@ -1,0 +1,44 @@
+
+Unhandled Exception:
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.NullReferenceException: Object reference not set to an instance of an object
+  at OopFactory.X12.Parsing.Model.DetachedSegment.Initialize (System.String segment) [0x0001d] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/DetachedSegment.cs:53 
+  at OopFactory.X12.Parsing.Model.Container.Initialize (System.String segment) [0x00003] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Container.cs:22 
+  at OopFactory.X12.Parsing.Model.DetachedSegment..ctor (OopFactory.X12.Parsing.X12DelimiterSet delimiters, System.String segment) [0x00010] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/DetachedSegment.cs:16 
+  at OopFactory.X12.Parsing.Model.Segment..ctor (OopFactory.X12.Parsing.Model.Container parent, OopFactory.X12.Parsing.X12DelimiterSet delimiters, System.String segment) [0x00000] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Segment.cs:17 
+  at OopFactory.X12.Parsing.Model.Container..ctor (OopFactory.X12.Parsing.Model.Container parent, OopFactory.X12.Parsing.X12DelimiterSet delimiters, System.String segment) [0x00000] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Container.cs:16 
+  at OopFactory.X12.Parsing.Model.Interchange..ctor () [0x00000] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Interchange.cs:17 
+  at (wrapper managed-to-native) System.Reflection.MonoCMethod:InternalInvoke (System.Reflection.MonoCMethod,object,object[],System.Exception&)
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  --- End of inner exception stack trace ---
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at System.Activator.CreateInstance (System.Type type, Boolean nonPublic) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlSerializableMapping..ctor (System.Xml.Serialization.XmlRootAttribute root, System.String elementName, System.String ns, System.Xml.Serialization.TypeData typeData, System.String xmlType, System.String xmlTypeNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlReflectionImporter.CreateTypeMapping (System.Xml.Serialization.TypeData typeData, System.Xml.Serialization.XmlRootAttribute root, System.String defaultXmlType, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlReflectionImporter.ImportXmlSerializableMapping (System.Xml.Serialization.TypeData typeData, System.Xml.Serialization.XmlRootAttribute root, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping (System.Xml.Serialization.TypeData typeData, System.Xml.Serialization.XmlRootAttribute root, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping (System.Type type, System.Xml.Serialization.XmlRootAttribute root, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlSerializer..ctor (System.Type type, System.Xml.Serialization.XmlAttributeOverrides overrides, System.Type[] extraTypes, System.Xml.Serialization.XmlRootAttribute root, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlSerializer..ctor (System.Type type) [0x00000] in <filename unknown>:0 
+  at OopFactory.X12.Parsing.Model.Interchange.Serialize (System.IO.Stream stream) [0x00007] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Interchange.cs:250 
+  at OopFactory.X12.X12Parser.Program.Main (System.String[] args) [0x00134] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12.X12Parser/Program.cs:45 
+[ERROR] FATAL UNHANDLED EXCEPTION: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.NullReferenceException: Object reference not set to an instance of an object
+  at OopFactory.X12.Parsing.Model.DetachedSegment.Initialize (System.String segment) [0x0001d] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/DetachedSegment.cs:53 
+  at OopFactory.X12.Parsing.Model.Container.Initialize (System.String segment) [0x00003] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Container.cs:22 
+  at OopFactory.X12.Parsing.Model.DetachedSegment..ctor (OopFactory.X12.Parsing.X12DelimiterSet delimiters, System.String segment) [0x00010] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/DetachedSegment.cs:16 
+  at OopFactory.X12.Parsing.Model.Segment..ctor (OopFactory.X12.Parsing.Model.Container parent, OopFactory.X12.Parsing.X12DelimiterSet delimiters, System.String segment) [0x00000] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Segment.cs:17 
+  at OopFactory.X12.Parsing.Model.Container..ctor (OopFactory.X12.Parsing.Model.Container parent, OopFactory.X12.Parsing.X12DelimiterSet delimiters, System.String segment) [0x00000] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Container.cs:16 
+  at OopFactory.X12.Parsing.Model.Interchange..ctor () [0x00000] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Interchange.cs:17 
+  at (wrapper managed-to-native) System.Reflection.MonoCMethod:InternalInvoke (System.Reflection.MonoCMethod,object,object[],System.Exception&)
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  --- End of inner exception stack trace ---
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at System.Activator.CreateInstance (System.Type type, Boolean nonPublic) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlSerializableMapping..ctor (System.Xml.Serialization.XmlRootAttribute root, System.String elementName, System.String ns, System.Xml.Serialization.TypeData typeData, System.String xmlType, System.String xmlTypeNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlReflectionImporter.CreateTypeMapping (System.Xml.Serialization.TypeData typeData, System.Xml.Serialization.XmlRootAttribute root, System.String defaultXmlType, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlReflectionImporter.ImportXmlSerializableMapping (System.Xml.Serialization.TypeData typeData, System.Xml.Serialization.XmlRootAttribute root, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping (System.Xml.Serialization.TypeData typeData, System.Xml.Serialization.XmlRootAttribute root, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping (System.Type type, System.Xml.Serialization.XmlRootAttribute root, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlSerializer..ctor (System.Type type, System.Xml.Serialization.XmlAttributeOverrides overrides, System.Type[] extraTypes, System.Xml.Serialization.XmlRootAttribute root, System.String defaultNamespace) [0x00000] in <filename unknown>:0 
+  at System.Xml.Serialization.XmlSerializer..ctor (System.Type type) [0x00000] in <filename unknown>:0 
+  at OopFactory.X12.Parsing.Model.Interchange.Serialize (System.IO.Stream stream) [0x00007] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12/Parsing/Model/Interchange.cs:250 
+  at OopFactory.X12.X12Parser.Program.Main (System.String[] args) [0x00134] in /cahome/kjurka/verisk/oop/rsvn/oopf/src/OopFactory.X12.X12Parser/Program.cs:45 

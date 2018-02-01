@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Released in 2.2.1",
+    "ClosedDate": "2011-10-20T11:17:20.03-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "To make use of the new transform to X12 functionality, consider creating an additional exe to be distributed.  Code would be something like below (or whatever the most efficient method is for doing the transform)\n \nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\nusing System.IO;\nusing OopFactory.X12.Parsing;\nusing OopFactory.X12.Parsing.Model;\n \nnamespace OopFactory.X12.TransformToX12\n{\n    class Program\n    {\n        static void Main(string[] args)\n        {\n            string x12Filename = args[0];\n            string outputFilename = args.Length > 1 ? args[1] : x12Filename + \".edi\";\n \n            StreamReader fs = new StreamReader(x12Filename);\n            string xmltext = fs.ReadToEnd();\n            OopFactory.X12.Parsing.X12Parser parser = new Parsing.X12Parser();\n            string x12 = parser.TransformToX12(xmltext);\n            fs.Close();\n            \n            FileStream outputFs = new FileStream(outputFilename, FileMode.Create);\n            StreamWriter writer = new StreamWriter(outputFs);\n            writer.Write(x12);\n            writer.Close();\n        }\n    }\n}",
+    "LastUpdatedDate": "2013-05-16T04:34:06.023-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-07-12T09:52:09.173-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Add TransformToX12 console application to project",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 762
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

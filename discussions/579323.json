@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1348491",
+    "ThreadId": "579323",
+    "Html": "Hi guys,<br />\nI am new to 837/835 parser builder.<br />\n<br />\nI have two questions<br />\n<ol>\n<li><strong>Can OopFactory provide support for building 835 Claim Payment/Advice file?</strong></li>\n<li><strong>Can we build 387 file from ClaimDocument Object?</strong><br />\nUsing below code we can parse 837 file into ClaimDocument Object.</li>\n</ol>\n<pre><code>  FileStream my837File = new FileStream(AppDomain.CurrentDomain.BaseDirectory + &quot;..\\\\..\\\\TestFile\\\\837.txt&quot;, FileMode.Open, FileAccess.Read);\n                //X12Parser parser = new X12Parser();\n\n                ClaimTransformationService claimTransformationService =\n                new ClaimTransformationService();\n                \n                ClaimDocument claimDocument = claimTransformationService.Transform837ToClaimDocument(my837File);</code></pre>\n\nSame way can we build 387 file from ClaimDocument Object?<br />\n",
+    "PostedDate": "2015-02-02T21:44:57.25-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1355344",
+    "ThreadId": "579323",
+    "Html": "Question 1 - Yes<br />\nQuestion 2 - No<br />\n<br />\nHowever you can create your own function to do that. You have to be good in xslt.<br />\n",
+    "PostedDate": "2015-02-24T11:12:34.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

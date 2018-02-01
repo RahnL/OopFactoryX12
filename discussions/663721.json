@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1497949",
+    "ThreadId": "663721",
+    "Html": "Anyway I can get a list of all possible field names that are generated from a 837 to xml. I use this to split and generate xml but I’m needing to get this in a database and was going to work on a XSLT file but I want to make sure I have all available fields in the DB.\r<br />\n<br />\nAppreciate any help..<br />\n",
+    "PostedDate": "2017-09-06T10:55:26.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

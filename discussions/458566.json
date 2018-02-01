@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1097003",
+    "ThreadId": "458566",
+    "Html": "Hi,\r<br />\n<br />\nToday I just found new bug in service: TransformClaimDocumentToFoXml. When you have a dental claim and want to transform 837 into dental claim form for printing purpose, the patient's gender on the dental form is mis-labeled. \r<br />\n<br />\nFor example, I have claim 837D with patient's gender as &quot;F&quot;. When I use Transform837ToClaimDocument, the gender remains the same, which is good. But when you try next TransformClaimDocumentToFoXml, the PDF comes out as &quot;M&quot;.\r<br />\n<br />\nPlease check. \r<br />\n<br />\nThanks\r<br />\nJinpin<br />\n",
+    "PostedDate": "2013-09-20T08:35:59.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

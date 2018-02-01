@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "675939",
+    "ThreadId": "273644",
+    "Html": "\r\n<p>It sure would be cool if I could get latest of source with Team Explorer.&nbsp; Should I be able to (read only)&nbsp;with the url and my username and password?&nbsp;</p>\r\n",
+    "PostedDate": "2011-09-23T10:54:36.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676044",
+    "ThreadId": "273644",
+    "Html": "<p>I have added you as a developer so you can do this and also check in the changes you made to the 855-4010 specification.</p>\r\n<p>Are there any other transactions sets that you have been working with? &nbsp;How long have you been using the x12 parser?</p>",
+    "PostedDate": "2011-09-23T16:04:05.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676066",
+    "ThreadId": "273644",
+    "Html": "<p>I made some changes to the 856-4010 as well. &nbsp;I'm pretty sure the changes are good, but I'm going to learn the&nbsp;hierarchical&nbsp;loop concept before I check it in. &nbsp;</p>\r\n<p>I learned the there was such thing as \"EDI\" on the 6th. &nbsp;I downloaded source on the 7th. &nbsp;I investigated for a few days. &nbsp;I&nbsp;committed&nbsp;to adding it to my project on the 13th. &nbsp;</p>\r\n<p>It's groovy. &nbsp;Your naming conventions and coding style is so much like mine, sometimes I think I'm looking at my stuff. &nbsp;The unit tests are top&nbsp;notch&nbsp;and were a huge help for learning about EDI and the x12parser.</p>",
+    "PostedDate": "2011-09-23T17:17:57.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "676165",
+    "ThreadId": "273644",
+    "Html": "<p>Thank you for confirming that I am meeting goals 1 and 2 at&nbsp;<a href=\"http://x12parser.codeplex.com/wikipage?title=About%20the%20X12%20Parser\">http://x12parser.codeplex.com/wikipage?title=About%20the%20X12%20Parser</a></p>",
+    "PostedDate": "2011-09-24T07:41:55.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1246964",
+    "ThreadId": "545833",
+    "Html": "This question may not be appropriate here, but, if not perhaps someone can point me to some forum for an IT person and handling 837P transactions. It appears to me that many providers don't adhere to the 837P specifications when it comes to supplying member/patient information. We receive patient information in the insured segment, insured and patient segments containing the same information and various other data that has to be massaged in order to process the claim. This is particularly frustrating to me as I have to write code to handle these scenarios. How do other TPO's handle identifying the proper individual as a member and/or a patient? We've come up with at least seven scenarios that we can use to identify the correct insured/patient using Insured ID #, birth date, sex, and finally the first name. Unfortunately for us the Insured ID is a social security number. Any insight anyone might have or be able to point me somewhere would be appreciated.\r<br />\nThanx\r<br />\nJim H <br />\n",
+    "PostedDate": "2014-05-19T08:17:15.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

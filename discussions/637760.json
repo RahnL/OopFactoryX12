@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1424789",
+    "ThreadId": "637760",
+    "Html": "Would it be possible to use this parser in a simple WPF interface, where it only needs the needed code for open file dialog prompt, and save file dialog? \r<br />\n<br />\nWe currently pay for something similar, but we are basically only using it for reading 271 files, which the employee then exports to excel, then edits the rows, then sends it out to email. \r<br />\n<br />\nI think i could manage the UI if someone might help me identify the input arguments. Im a very new developer, so viewing the 835parser is not easy for me to digest. If i can attach the input file arg[0] and output file args[1] to file open and save dialog prompts, then i think all that would be left, is to somehow edit the column headers in the xml response. So instead of the loop segment name, it would have the human readable version instead. <br />\n",
+    "PostedDate": "2015-05-11T12:19:39.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

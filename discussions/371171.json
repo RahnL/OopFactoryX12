@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "870329",
+    "ThreadId": "371171",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I am using the X12Parser to parse out a bunch of 5010 837i files.</p>\r\n<p>I am running:</p>\r\n<p>var claims =&nbsp;parser.UnbundleByLoop(interchange, &quot;2300&quot;);</p>\r\n<p>and then iterating over the claims cherry picking fields</p>\r\n<p>The problem I have is that in some of these claims, often the ones having to do with child births, they have a 2300 in the 2000B as well as the 2000C loop after unbundling.</p>\r\n<p>Here is an image of the data a unbundled claim Serialized():&nbsp;http://i46.tinypic.com/2cdcrcj.png that illustrated the issue.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-07-16T15:26:14.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "On parsing 837 claim file, we are not getting patient pregnancy indicator and patient date of death are not available in ClaimDocument C# object.",
+    "LastUpdatedDate": "2015-03-20T09:01:20.917-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-03-05T04:17:13.013-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Patient Date of Death and Patient Pregnancy Indicator are missing Claim Document for 837 claim file",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2635
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "David,\r\n\r\nCan you identify the 837 segment/element positions that contain these to items?",
+      "PostedDate": "2015-03-20T09:01:20.917-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

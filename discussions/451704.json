@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1074157",
+    "ThreadId": "451704",
+    "Html": "According to specifications it should be called &quot;CLAIM SUBMITTER TRACE NUMBER&quot;.\r<br />\n<br />\nIn the XML name has a value of &quot;Information Receiver Trace&quot;\r<br />\n<br />\nI am pasting 'partial' xml data here for illustration purpose.\r<br />\n<br />\n  &lt;Loop LoopId=&quot;2100A&quot; Name=&quot;Payer Name&quot;&gt;<br />\n<pre><code>      &lt;NM1&gt;\n        &lt;!--Entity Identifier Code--&gt;\n        &lt;NM101&gt;PR&lt;!--Payer--&gt;&lt;/NM101&gt;\n        &lt;!--Entity Type Qualifier--&gt;\n        &lt;NM102&gt;2&lt;!--Non-Person Entity--&gt;&lt;/NM102&gt;\n        &lt;!--Name Last or Organization Name--&gt;\n        &lt;NM103&gt;rtrtrtr rtrtrtr rtrtrt&lt;/NM103&gt;\n        &lt;NM104 /&gt;\n        &lt;NM105 /&gt;\n        &lt;NM106 /&gt;\n        &lt;NM107 /&gt;\n        &lt;!--Identification Code Qualifier--&gt;\n        &lt;NM108&gt;46&lt;!--Electronic Transmitter Identification Number (ETIN)--&gt;&lt;/NM108&gt;\n        &lt;!--Identification Code--&gt;\n        &lt;NM109&gt;4343434GH&lt;/NM109&gt;\n      &lt;/NM1&gt;\n    &lt;/Loop&gt;\n    &lt;Loop LoopId=&quot;2200A&quot; Name=&quot;Information Receiver Trace&quot;&gt;\n      &lt;TRN&gt;\n        &lt;!--Trace Type Code--&gt;\n        &lt;TRN01&gt;1&lt;!--Current Transaction Trace Numbers--&gt;&lt;/TRN01&gt;\n        &lt;!--Reference Identification--&gt;\n        &lt;TRN02&gt;20120524132154&lt;/TRN02&gt;\n      &lt;/TRN&gt;\n      &lt;DTP&gt;\n        &lt;!--Data/Time Qualifier--&gt;\n        &lt;DTP01&gt;040&lt;/DTP01&gt;\n        &lt;!--Date Time Period Format Qualifier--&gt;\n        &lt;DTP02&gt;D8&lt;!--Date Expression in Format CCYYMMDD--&gt;&lt;/DTP02&gt;\n        &lt;!--Date Time Period--&gt;\n        &lt;DTP03&gt;201254545&lt;/DTP03&gt;\n      &lt;/DTP&gt;\n      &lt;DTP&gt;\n        &lt;!--Data/Time Qualifier--&gt;\n        &lt;DTP01&gt;006&lt;/DTP01&gt;\n        &lt;!--Date Time Period Format Qualifier--&gt;\n        &lt;DTP02&gt;D8&lt;!--Date Expression in Format CCYYMMDD--&gt;&lt;/DTP02&gt;\n        &lt;!--Date Time Period--&gt;\n        &lt;DTP03&gt;201245454&lt;/DTP03&gt;\n      &lt;/DTP&gt;\n    &lt;/Loop&gt;\n    &lt;HierarchicalLoop LoopId=&quot;2000B&quot; LoopName=&quot;INFORMATION RECEIVER LEVEL&quot; Id=&quot;2&quot; ParentId=&quot;1&quot;&gt;</code></pre>\n\n",
+    "PostedDate": "2013-07-28T18:18:29.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092851",
+    "ThreadId": "451704",
+    "Html": "Thank you for pointing this out.\r<br />\nI have made the correction in changset <a href=\"https://x12parser.codeplex.com/SourceControl/changeset/30925\" rel=\"nofollow\">30925</a>,<br />\n",
+    "PostedDate": "2013-09-15T08:41:14.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "635025",
+    "ThreadId": "263319",
+    "Html": "\r\n<p>It's great to see progress in X12Parser. &nbsp;</p>\r\n<p>I've got a project with a requirement to &quot;unbundle&quot; both 835 and 837 files into valid individual x12 provider files. &nbsp;I ran across this page:&nbsp;<a href=\"http://x12parser.codeplex.com/wikipage?title=Unbundling%20an%20X12%20file%20by%20Loop%20ID\">http://x12parser.codeplex.com/wikipage?title=Unbundling%20an%20X12%20file%20by%20Loop%20ID</a>&nbsp;which\r\n provides instructions to do so... however I'm not proficient enough in VS to understand exactly what I need to do to build this functionality. &nbsp;</p>\r\n<p>Ideally I'd like to implement a command line switch in the x12parser.exe that would turn on unbundling and pass the interchange loopid (in my case 2300). &nbsp;Because it could possibly generate multiple output files a simple increment on the end of the\r\n specified output file would suffice. &nbsp;I'm willing to role up my sleeves and learn, but I just need a nudge in the right direction.</p>\r\n<p>BTW, I recently ran across an x12 &quot;deidentifier&quot; (<a href=\"http://etasoft.com/ot.htm\">http://etasoft.com/ot.htm</a>) which would make it easy to provide you with sample data files. &nbsp;If you need any, let me know!</p>\r\n<p>Thanks,</p>\r\n<p>-nth-</p>\r\n",
+    "PostedDate": "2011-06-29T13:26:36.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "635126",
+    "ThreadId": "263319",
+    "Html": "<p>OK. After kicking around VS for awhile, here's what I've come up with that appears to work. I just used the main X12Parser project and modified it accordingly. &nbsp;It takes only 1 argument from the command line - the input file.</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre><span style=\"color: blue;\">using</span> System;\r\n<span style=\"color: blue;\">using</span> System.Collections.Generic;\r\n<span style=\"color: blue;\">using</span> System.Linq;\r\n<span style=\"color: blue;\">using</span> System.Text;\r\n<span style=\"color: blue;\">using</span> System.IO;\r\n<span style=\"color: blue;\">using</span> OopFactory.X12.Parsing;\r\n\r\n<span style=\"color: blue;\">namespace</span> OopFactory.X12.X12Parser\r\n{\r\n    <span style=\"color: blue;\">class</span> Program\r\n    {\r\n        <span style=\"color: blue;\">static</span> <span style=\"color: blue;\">void</span> Main(<span style=\"color: blue;\">string</span>[] args)\r\n        {\r\n            \r\n            <span style=\"color: blue;\">string</span> x12Filename = args[0];\r\n            <span style=\"color: blue;\">string</span> outputFilename = args.Length &gt; 1 ? args[1] : x12Filename;\r\n            <span style=\"color: green;\">//string outputFilename = args.Length &gt; 1 ? args[1] : x12Filename + \".xml\";</span>\r\n\r\n            FileStream fs = <span style=\"color: blue;\">new</span> FileStream(x12Filename, FileMode.Open);\r\n            <span style=\"color: green;\">//OopFactory.X12.Parsing.X12Parser parser = new Parsing.X12Parser();</span>\r\n            <span style=\"color: green;\">//string xml = parser.Parse(fs).Serialize();</span>\r\n            <span style=\"color: green;\">//fs.Close();</span>\r\n            \r\n            <span style=\"color: green;\">//X12Parser parser = new X12Parser();</span>\r\n            OopFactory.X12.Parsing.X12Parser parser = <span style=\"color: blue;\">new</span> Parsing.X12Parser();\r\n            <span style=\"color: green;\">//Interchange interchange = parser.Parse(fs);</span>\r\n            Parsing.Model.Interchange interchange = parser.Parse(fs);\r\n            \r\n            <span style=\"color: blue;\">var</span> list = parser.UnbundleByLoop(interchange, <span style=\"color: #a31515;\">\"2300\"</span>);\r\n            <span style=\"color: blue;\">int</span> i = 1;\r\n            <span style=\"color: blue;\">foreach</span> (<span style=\"color: blue;\">var</span> item <span style=\"color: blue;\">in</span> list)\r\n            {\r\n                <span style=\"color: blue;\">string</span> ubundle = item.SerializeToX12(<span style=\"color: blue;\">true</span>);\r\n                FileStream outputFs = <span style=\"color: blue;\">new</span> FileStream(outputFilename + Convert.ToString(i) + <span style=\"color: #a31515;\">\".edi\"</span>, FileMode.Create);\r\n                StreamWriter writer = <span style=\"color: blue;\">new</span> StreamWriter(outputFs);\r\n                writer.Write(ubundle);\r\n                writer.Close();\r\n                i++;\r\n            }\r\n            fs.Close();                       \r\n        }\r\n    }\r\n}\r\n\r\n</pre>\r\n</div>\r\n</p>\r\n<p>It generates the correct number of \"2300\" loop EDI files. &nbsp;I have yet to test the output, but assume they are valid. &nbsp;I'll post any additional progress I've made. &nbsp;If there's any glaring issues with how I've constructed it, I'd appreciate feedback.</p>\r\n<p>Thanks,</p>\r\n<p>-nth-</p>",
+    "PostedDate": "2011-06-29T18:59:05.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "635129",
+    "ThreadId": "263319",
+    "Html": "<p>You've beat me to it, and I thought you said you were unfamiliar with VS 2010!</p>\r\n<p>I have also checked in a separate console app \"UnbundleX12\" that will perform what you have described.</p>\r\n<p>You can see the program.cs file here:&nbsp;<a href=\"http://x12parser.codeplex.com/SourceControl/changeset/view/8959#148453\">http://x12parser.codeplex.com/SourceControl/changeset/view/8959#148453</a></p>\r\n<p>It is basically using the same algorithm that you have done. &nbsp;I have added some error handling and help to the command line if the correct arguments are not recieved.</p>\r\n<p>I also allow you to supply the loopid as an argument and override the default format string so that you can add leading zeros to to appended suffix.</p>\r\n<p>I will include it as part of release 2.1.7 and update the document page on unbundling to include this.</p>\r\n<p>I noticed that you had done some work identifying some of the errors in the 837 specification. &nbsp;I have done some clean up on it after reviewing the 837D, 837P and 837I specifications (pretty mind numbing). &nbsp;Let me know if you experience any adverse affects to the changes I have made (not yet released). &nbsp;I was hoping to release it this weekend. &nbsp;Next month I was going to try and update all three on the 5010 version (I can only numb my mind so much in one month). &nbsp;</p>\r\n<p>Thanks for being an active participant, I always love feedback from real users of the tool and will incorporate suggestions as quickly as I am able to.</p>",
+    "PostedDate": "2011-06-29T19:12:37.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "635138",
+    "ThreadId": "263319",
+    "Html": "<p>I'm getting a bit more familiar with VS 2010... but I feel like I'm 5 steps into a marathon in terms of understanding how the app is constructed. (My brain works better as an analyst vs. a programmer) :)</p>\r\n<p>I see the unbundle version you just checked in. &nbsp;Thanks for that. &nbsp;I'll check it out tomorrow. Your intention then it to add the unbundle capability to the main parser exe? (Rather than maintain a separate version?)</p>\r\n<p>Yes, I tested the parser a while back but ended up running into issues with several of test 835/837 files. (Some type of issue with a segment missing as I recall) &nbsp;BUT in testing with build 8953 today it ran wonderfully. &nbsp;I decided to really put it through it's paces and pushed 400 or so 835 &amp; 837 files without a hitch so whatever the issue was, it has been fixed.</p>\r\n<p>I really appreciate your responsiveness! &nbsp;If there's anything I can help with, just ask!</p>",
+    "PostedDate": "2011-06-29T19:52:41.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "635550",
+    "ThreadId": "263319",
+    "Html": "<p>I have created a seperate exe for unbundling.&nbsp; I don't wany anyone else who already uses the parser to have to change their command line configuration, and unbundling is a more distinct action that I&nbsp;think needs&nbsp;a separate command line&nbsp;verb.</p>\r\n<p>I am glad I was able to clear up your parsing issues.&nbsp; I had meant to do a through review of the spec for a while, but just now got around to it because no one was screaming to me that it was broken.&nbsp; Unfortunately, people may have already moved onto other solutions&nbsp;instead of asking me to fix the spec.</p>\r\n<p>I do like that de-identifier tool that you linked me to.&nbsp; If you have specific test samples, I would be happy to include it in the unit test so that you can be assured that any additional changes will always be able to parse your specific data requirements.&nbsp; Either way, any problems you have with parsing I would greatly appreciate if you report right away and I will get the fix incorporated quickly.&nbsp; People are hesitant to report errors, but that is the only way that I can stabilize the product and it can gain more widespread adoption.&nbsp; It's already the first result when you search google for x12 parser.&nbsp; But I have a little higher standards than that.&nbsp; I wouldn't mind if certain expensive tools lost market share because developer's don't have to ask their IT department to buy them anymore, because the open source solution offers a better value proposition.</p>\r\n<p>Thanks for coming back to the site even though you had problems with the solution before!</p>",
+    "PostedDate": "2011-06-30T11:31:52.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "635987",
+    "ThreadId": "263319",
+    "Html": "<p>Creating the separate exe for unbundling makes sense.</p>\r\n<p>I'll plan on providing at least one de-identified 837p file from each of the different payers so that you can test with them. &nbsp;I'll probably just create an issue and attach them to it.</p>\r\n<p>Yes, I'll definitely plan on reporting back any issues I have with the parser. &nbsp;With the unbundling function, it's exactly what I needed for a current project so I'll be putting it to good use.</p>\r\n<p>The next step I want to learn how to do with it is transform from XML to X12 formats...</p>",
+    "PostedDate": "2011-07-01T06:11:03.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "640149",
+    "ThreadId": "263319",
+    "Html": "<p>I have fixed the bug you identified where the unbunding was creating duplicates. &nbsp;It has been released in version 2.1.7.</p>",
+    "PostedDate": "2011-07-10T12:57:19.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

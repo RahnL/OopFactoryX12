@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, \nI am in development of 837 Institutional using OopFactory X12.I am using 3.08 version of this.How to use SV2 - INSTITUTIONAL SERVICE LINE(LOOP 2400 — SERVICE LINE NUMBER) and CL1 Institutional Claim Code (LOOP 2300— CLAIM INFORMATION) \nPlease help me how to add above loops in my code using oopfactory x12 \nThanks in advance",
+    "LastUpdatedDate": "2017-07-17T09:40:16.92-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2017-01-19T07:12:44.907-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Development of 837 Institutional(837I)",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2822
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi Did you ever get any feedback?  How did it go?",
+      "PostedDate": "2017-07-17T09:40:16.92-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

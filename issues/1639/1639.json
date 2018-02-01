@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fix released in 3.0.7",
+    "ClosedDate": "2013-09-15T06:23:50.88-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When a } is used as a separator and you try to use the OopFactory.X12.ImportX12.exe to import the X12 into a database, the following code fails when it try to insert the interchange to the DB.  The specific piece of code that fails is \"_batchSql.AppendFormat(sql, args);\".  I am relatively new to C# and I'm not sure what needs to be done to fix it.  I have a workaround, but I wanted to report the issue.\n\n```\n        protected void AddSqlToBatch(string sql, params object[] args)\n        {\n            _batchCount++;\n            _batchSql.AppendFormat(sql, args);\n            if (_batchCount >= _batchSize)\n                ExecuteBatch();                \n        }\n```\n\nThe error message recoreded in error.log is below.\n\nOopFactory.X12.ImportX12.exe Error: 0 : Error parsing C:\\Temp\\Import\\204: Input string was not in a correct format.\n   at System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.AddSqlToBatch(String sql, Object[] args)\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.SaveSegment(SqlTransaction tran, DetachedSegment segment, Int32 positionInInterchange, T interchangeId, Nullable`1 functionalGroupId, Nullable`1 transactionSetId, Nullable`1 parentLoopId, Nullable`1 loopId, Nullable`1 revisionId, Nullable`1 previousRevisionId, Boolean deleted)\n   at OopFactory.X12.Repositories.SqlTransactionRepository`1.Save(Interchange interchange, String filename, String userName)\n   at OopFactory.X12.ImportX12.Program.Main(String[] args)\n   DateTime=2013-07-10T19:44:02.9046324Z",
+    "LastUpdatedDate": "2013-09-15T06:23:50.88-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-07-10T14:33:50.89-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "} in X12 document will prevent DB import using OopFactory.X12.ImportX12.exe",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1639
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I figured out that those were special characters for the AppendFormat method.  You can escape them by doubling them up.  I've modified the below code to do that.\r\n\r\nThis is in OopFactory.X12.Repositories.SqlTransactionRepository.cs\r\n\r\n\n```\n        protected void AddSqlToBatch(string sql, params object[] args)\n        {\n            _batchCount++;\n            // This is a bug fix to escape the { and } characters.\n            sql = sql.Replace(\"}\",\"}}\");\n            sql = sql.Replace(\"{\",\"{{\");\n            _batchSql.AppendFormat(sql, args);\n            if (_batchCount >= _batchSize)\n                ExecuteBatch();                \n        }\n```",
+      "PostedDate": "2013-07-11T05:56:01.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What is happening here I would assume is this:\r\n\r\nAppendFormat works like \r\n\r\n```\n_batchSql.AppendFormat(\"My name is {0} and this is a {1}\",\"Daniel\",\"Sample\")\n```\r\n\r\nIt accepts placeholders in the string you are appending and then replaces them with your given values. The output from this sample would produce:\r\n\r\n```\nMy name is Daniel and this is a Sample\n```\r\n\r\nThe issue for you is because as soon as it sees your delimiter it wants to do this. You should be able to escape these characters though with another curly brace.\r\n\r\nThis is not valid because the values passed are unused but it should help explain further.\r\n\r\n```\n_batchSql.AppendFormat(\"My name is {{0}} and this is a {{1}}\",\"Daniel\",\"Sample\")\r\n\r\nShould output \"My name is {0} and this is a {1}\"\n```\r\n\r\nWhat you will want to do is add some code above _batchSql.AppendFormat that will escape your braces. I'm sure there are better ways to do this but basically you need something like (untested)\r\n\r\n```\nsql = sql.Replace(\"{\",\"{{\").Replace(\"}\",\"}}\");\n```\r\n\r\n",
+      "PostedDate": "2013-07-11T06:09:16.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you again for all your help.  I appreciate your williness to help me.",
+      "PostedDate": "2013-07-11T06:27:52.667-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just ran into this problem myself. Some of the 5010 835 files I am working with have an \" { \" at  ISA11 Interchange Control Standard ID. The standard value should be  \" U \".  I replaced the { with the letter U in my test files and the 835 file imported into SQL Server. Can I apply what is indicated above as the solution to my issue also? \r\n\r\nThanks",
+      "PostedDate": "2013-07-17T11:48:01.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I would try it.  It certainly won't break it.  I've run 40,000 EDI docs against it without issue.",
+      "PostedDate": "2013-07-17T12:03:05.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 28968.",
+      "PostedDate": "2013-07-17T21:24:05.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I checked in your suggested change for all the non-parameterized queries that I could find.  Let me know if this fixes it for you and I will do a build in next week.",
+      "PostedDate": "2013-07-17T21:28:58.897-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-15T06:23:50.88-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

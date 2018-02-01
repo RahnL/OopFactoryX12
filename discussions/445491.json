@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1050788",
+    "ThreadId": "445491",
+    "Html": "I have a hierarchical database structure which was constructed from your tools. What would be useful is a mapping that describes/translates the 5010 nomenclature such as Loop 1000A - NM103 to the DB table/field name such as CLAIMS.PATIENT_NAME_LASTNAME.\r<br />\n<br />\nMy reason for needing this is that when I need to research a particular field in the database, what it contains, how/why and with what it gets populated, I need to identify what I am looking for using the common terminology.\r<br />\n<br />\nIs there any way to generate this sort of map/translation?<br />\n",
+    "PostedDate": "2013-05-30T11:38:08.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1050794",
+    "ThreadId": "445491",
+    "Html": "There isn't an &quot;easy&quot; way to do this.  But the way to do this would be to reverse engineer the xslt that does this mapping:\r<br />\n<br />\n<a href=\"https://x12parser.codeplex.com/SourceControl/latest#154136\" rel=\"nofollow\">https://x12parser.codeplex.com/SourceControl/latest#154136</a><br />\n",
+    "PostedDate": "2013-05-30T12:08:18.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "Id": "1091215",
+    "ThreadId": "456544",
+    "Html": "Dannie:\r<br />\n<br />\nHow can I troubleshoot this kind of error?\r<br />\n<br />\nMessage: There is an error in XML document (826, 142)\r<br />\n<br />\nI assume the numbers 826 &amp; 142 are significant. But I have no idea what they mean.<br />\n",
+    "PostedDate": "2013-09-11T07:35:29.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091222",
+    "ThreadId": "456544",
+    "Html": "Do you have the full stack trace?\r<br />\n<br />\nThis is most likely using the claim parser which transforms the raw X12 into a ClaimDocument.\r<br />\nAnd it is most likely happening when you are trying to deserialize it into the ClaimDocument object model.\r<br />\nWhen you break on the the line that throws this error you should be able to inspect the xml.  The 826 and 142 are the row and column where the error is occurring.\r<br />\n<br />\nMany times this will happen because of illegal characters that need to be escaped, or a date field that is an invalid date value.<br />\n",
+    "PostedDate": "2013-09-11T07:40:52.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091280",
+    "ThreadId": "456544",
+    "Html": "I have run the program in visual studio with the debugger. The program execution &quot;broke&quot; at the line \r<br />\n<br />\ndocument = transformationService.Transform837ToClaimDocument(interchange)\r<br />\n<br />\nThe full error is;\r<br />\n<br />\nSystem.InvalidOperationException occurred\r<br />\n  Message=There is an error in XML document (826, 142).\r<br />\n  Source=System.Xml\r<br />\n  StackTrace:<br />\n<pre><code>   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)\n   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)\n   at OopFactory.X12.Hipaa.Claims.ClaimDocument.Deserialize(String xml)\n   at OopFactory.X12.Hipaa.Claims.Services.ClaimTransformationService.Transform837ToClaimDocument(Interchange interchange)\n   at ImportClaimsToDB.Main.Main(String[] args) in I:\\FCDSApps\\ClaimsProcessor\\ImportClaimsToDB\\ImportClaimsToDB\\Main.vb:line 169</code></pre>\n\nInnerException: System.FormatException<br />\n<pre><code>   Message=Input string was not in a correct format.\n   Source=mscorlib\n   StackTrace:\n        at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer&amp; number, NumberFormatInfo info, Boolean parseDecimal)\n        at System.Number.ParseDecimal(String value, NumberStyles options, NumberFormatInfo numfmt)\n        at System.Xml.XmlConvert.ToDecimal(String s)\n        at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read40_Claim(Boolean isNullable, Boolean checkType)\n        at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read41_ClaimDocument(Boolean isNullable, Boolean checkType)\n        at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderClaimDocument.Read42_ClaimDocument()\n   InnerException: \n</code></pre>\n\nI cannot find anything in the variables that looks like a traditional XML structure to inspect.\r<br />\n<br />\nHow do I proceed?<br />\n",
+    "PostedDate": "2013-09-11T08:41:53.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091339",
+    "ThreadId": "456544",
+    "Html": "<pre><code>public ClaimDocument Transform837ToClaimDocument(Interchange interchange)\n        {\n            var xml = interchange.Serialize();\n\n            var transformStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(&quot;OopFactory.X12.Hipaa.Claims.Services.Xsl.X12-837-To-ClaimDocument.xslt&quot;);\n\n            var transform = new XslCompiledTransform();\n            if (transformStream != null) transform.Load(XmlReader.Create(transformStream));\n\n            var outputStream = new MemoryStream();\n\n            transform.Transform(XmlReader.Create(new StringReader(xml)), new XsltArgumentList(), outputStream);\n            outputStream.Position = 0;\n            xml = new StreamReader(outputStream).ReadToEnd();\n\n            return ClaimDocument.Deserialize(xml);\n        }\nIn the code above the xml variable that passes into the Deserialize method at the last step is where you can expect for a wrong data type.</code></pre>\n\n",
+    "PostedDate": "2013-09-11T10:48:03.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091459",
+    "ThreadId": "456544",
+    "Html": "Took me a while, but I did get some xml out. May not be the right xml. The beginning of the xml is;<br />\n<pre><code>&lt;?xml version=\\&quot;1.0\\&quot;?&gt;\n&lt;Interchange segment-terminator=\\&quot;~\\&quot; element-separator=\\&quot;*\\&quot; sub-element-separator=\\&quot;:\\&quot;&gt;\n  &lt;ISA&gt;\n    &lt;!--Author Information Qualifier--&gt;\n    &lt;ISA01&gt;00&lt;!--No Authorization Information Present--&gt;&lt;/ISA01&gt;\n    &lt;!--Author Information--&gt;\n    &lt;ISA02&gt;          &lt;/ISA02&gt;\n    &lt;!--Security Information Qualifer--&gt;\n    &lt;ISA03&gt;00&lt;!--No Security Information Present--&gt;&lt;/ISA03&gt;\n    &lt;!--Security Information--&gt;\n    &lt;ISA04&gt;          &lt;/ISA04&gt;\n    &lt;!--Interchange ID Qualifier--&gt;\n    &lt;ISA05&gt;ZZ&lt;!--Mutually Defined--&gt;&lt;/ISA05&gt;\n    &lt;!--Interchange Sender ID--&gt;\n    &lt;ISA06&gt;800222771      &lt;/ISA06&gt;\n    &lt;!--Interchange ID Qualifier--&gt;\n    &lt;ISA07&gt;ZZ&lt;!--Mutually Defined--&gt;&lt;/ISA07&gt;\n    &lt;!--Interchange Receiver ID--&gt;\n    &lt;ISA08&gt;133052274      &lt;/ISA08&gt;\n    &lt;!--Interchange Date--&gt;\n    &lt;ISA09&gt;130705&lt;/ISA09&gt;\n    &lt;!--Interchange Time--&gt;\n    &lt;ISA10&gt;0701&lt;/ISA10&gt;\n    &lt;!--Inter Control Standards Identifier--&gt;\n    &lt;ISA11&gt;|&lt;/ISA11&gt;\n    &lt;!--Inter Control Version Number--&gt;\n    &lt;ISA12&gt;00501&lt;/ISA12&gt;\n    &lt;!--Inter Control Number--&gt;\n    &lt;ISA13&gt;000000362&lt;/ISA13&gt;\n    &lt;!--Acknowlegment Requested--&gt;\n    &lt;ISA14&gt;0&lt;!--No Acknowledgment Requested--&gt;&lt;/ISA14&gt;\n    &lt;!--Usage Indicator--&gt;\n    &lt;ISA15&gt;P&lt;!--Production Data--&gt;&lt;/ISA15&gt;\n    &lt;!--Component Element Separator--&gt;\n    &lt;ISA16&gt;\n      &lt;ISA1601 /&gt;\n      &lt;ISA1602 /&gt;\n    &lt;/ISA16&gt;\n  &lt;/ISA&gt;\n</code></pre>\n\nWhen I get to around line 826 of that xml, it does not have any lines that are close to 142 bytes long.\r<br />\n<br />\nThe xml above came from the routine;<br />\n<pre><code>        public virtual string Serialize(bool suppressComments)\n        {\n            MemoryStream memoryStream = new MemoryStream();\n\n            Serialize(memoryStream);\n            memoryStream.Seek(0, System.IO.SeekOrigin.Begin);\n            StreamReader streamReader = new StreamReader(memoryStream);\n            string xml = streamReader.ReadToEnd();\n\n            if (suppressComments)\n            {\n                XmlDocument doc = new XmlDocument();\n                doc.PreserveWhitespace = true;\n                doc.LoadXml(xml);\n                RemoveComments((XmlElement)doc.SelectSingleNode(&quot;Interchange&quot;));\n\n                xml = doc.OuterXml;\n            }\n            return xml;\n        }\n</code></pre>\n\nin the module Interchange.cs.\r<br />\n<br />\nWhere do I go from here? I can't seem to get the debugger to go into the module you mentioned.<br />\n",
+    "PostedDate": "2013-09-11T14:51:51.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091471",
+    "ThreadId": "456544",
+    "Html": "OK, I figured out that I needed to compile the .Hippaa module and put the dll &amp; pdb file in the lib folder as well.\r<br />\n<br />\nOK lines around 826 look like this;<br />\n<pre><code>    &lt;Identification Qualifier=\\&quot;FY\\&quot; Id=\\&quot;NOCD\\&quot;&gt;Claim Office Number&lt;/Identification&gt;\n  &lt;/Provider&gt;\n  &lt;Claim Version=\\&quot;005010X222A1\\&quot; Type=\\&quot;Professional\\&quot; TransactionCode=\\&quot;0001\\&quot; ClaimNumber=\\&quot;\\&quot; BillTypeCode=\\&quot;111\\&quot; PatientControlNumber=\\&quot;99536CVD\\&quot; TotalClaimChargeAmount=\\&quot;\\&quot; ProviderSignatureOnFile=\\&quot;Y\\&quot; ProviderAcceptAssignmentCode=\\&quot;A\\&quot; BenefitsAssignmentCertificationIndicator=\\&quot;Y\\&quot; ReleaseOfInformationCode=\\&quot;Y\\&quot; MedicalRecordNumber=\\&quot;99536\\&quot;&gt;\n    &lt;ServiceLocationInfo FacilityCode=\\&quot;11\\&quot; Qualifier=\\&quot;B\\&quot; FrequencyTypeCode=\\&quot;1\\&quot; /&gt;\n    &lt;BillingInfo&gt;\n</code></pre>\n\nThe long line is of course line 826. I cannot see an issue at position 142 irrespective of the &quot;\\&quot;s but maybe you recognize something I don't.<br />\n",
+    "PostedDate": "2013-09-11T15:21:57.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091724",
+    "ThreadId": "456544",
+    "Html": "Dannie:\r<br />\n<br />\nThis error is happening on all files from a specific vendor, and I need to tell them what the issue is. Unfortunately I don't see the issue. Hopefully you can spot it. I will be happy to get you any additional info you may require.\r<br />\n<br />\nThere may be some fits &amp; starts as I work in 3 (at least) different development environments, and .NET is not my most frequent.<br />\n",
+    "PostedDate": "2013-09-12T06:43:35.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091727",
+    "ThreadId": "456544",
+    "Html": "The line you copied is not the problem, it only has text fields.  The problem is usually with a date, integer or decimal field.  Try the line before and after or perhaps I got it swapped and it's line 142 at column 826.\r<br />\nI see it happen most often with Date fields.  If you figure out what the problem is, I am thinking of having the xslt suppress bad dates and write to another string attribute so you can still get to it and report on it.<br />\n",
+    "PostedDate": "2013-09-12T06:47:26.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091740",
+    "ThreadId": "456544",
+    "Html": "Should dates be yyyy-mm-dd?<br />\n",
+    "PostedDate": "2013-09-12T07:12:03.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091754",
+    "ThreadId": "456544",
+    "Html": "In the raw x12 file there are no dashes.\r<br />\nEach date field will indicate the format expected.  Most places it is YYYYMMDD, but a few might be YYMMDD.\r<br />\nSome place have a date range YYYYMMDDYYYYMMDD.<br />\n",
+    "PostedDate": "2013-09-12T07:45:28.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091764",
+    "ThreadId": "456544",
+    "Html": "The dates in the XML do have dashes, though.\r<br />\n<br />\nI saved the xml captured from the breakpoint, after replacing all &quot;\\r\\n&quot; with real returns, and replacing all &quot;\\&quot; with &quot;&quot;.\r<br />\n<br />\nI then downloaded CAM Template Editor (<a href=\"http://www.cameditor.org\" rel=\"nofollow\">http://www.cameditor.org</a>) and when I try to open the xml file I created it gives the following error;<br />\n<blockquote>\norg.jdom.input.JDOMParseException: Error on line 891 of document file:/I:/FCDSApps/ClaimsProcessor/test-file.xml: The element type &quot;BillingInfo&quot; must be terminated by the matching end-tag &quot;&lt;/BillingInfo&gt;&quot;.<br />\n</blockquote>\nAnd when I look in the original file, it does not have the close BillingInfo tag that is opened at 891.\r<br />\n<br />\nIs this a potential problem with the code, or did I do something wrong in extracting the xml?<br />\n",
+    "PostedDate": "2013-09-12T08:02:20.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091767",
+    "ThreadId": "456544",
+    "Html": "You should not have to do it that way.  When you click on the magnifying glass next to the xml variable it should present it as xml.  The closing tag should be &lt;/ClaimDocument&gt;.\r<br />\nKnowing that the dates have dashes in your raw X12 file is probably the problem.  Has this vendor sent these through a clearinghouse or are they sending them to you as test files directly?  Any clearinghouse would have rejected these files for the same reason for not following x12 specifications.<br />\n",
+    "PostedDate": "2013-09-12T08:06:42.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091783",
+    "ThreadId": "456544",
+    "Html": "Thanks for that tip. It made the false error above go away. It will also help me in the future.\r<br />\n<br />\nI believe I <em>may</em> know what the problem is. Is it possible that your xml structure requires that &quot;TotalClaimChargeAmount&quot; <strong>must</strong> contain a value. On the line in question , at position 142, that attribute has a value of &quot;&quot;, and every other one in the file has a number.<br />\n",
+    "PostedDate": "2013-09-12T08:27:56.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1091784",
+    "ThreadId": "456544",
+    "Html": "Okay cool, I will check the 837 to see if that's a required field, if so then that would be reason.  If not then I'll modify so that this can sum up from the lines.<br />\n",
+    "PostedDate": "2013-09-12T08:29:45.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092292",
+    "ThreadId": "456544",
+    "Html": "Please let me know if I need to tell the vendor to fix their data. \r<br />\n<br />\nIf possible, especially since I do not care about financial stuff, I would like to be able to default these line items to 0 when null. My program actually wipes out all financial data when we store it because we are only interested in diagnosis and treatment data.<br />\n",
+    "PostedDate": "2013-09-13T06:26:09.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092599",
+    "ThreadId": "456544",
+    "Html": "I just double checkd the 837P and 837I implementation guides and both list CLM02 as a required field.\r<br />\nThe generic X12 837 spec list it as optional.  I think it is within your bounds to tell your vender they are expected to follow the 837P/837I guides, but in case you don't get that change in a timely manner, I will change the xslt to turn blank CLM02 values into zero.<br />\n",
+    "PostedDate": "2013-09-13T18:38:38.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1092601",
+    "ThreadId": "456544",
+    "Html": "I have released version 3.0.6 which will compensate for the CLM02 being blank.<br />\n",
+    "PostedDate": "2013-09-13T18:57:21.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1094127",
+    "ThreadId": "456544",
+    "Html": "Dannie:\r<br />\n<br />\nSorry for taking a few days to get back to you. The new version allowed all of this vendor's data to be imported properly. Thank you for the quick fix.\r<br />\n<br />\nWhen asked why they put nulls in that field they said that the insurance company provides certain drugs to them directly, and they cannot charge for them. When I asked why couldn't they put in a 0, they said it would be a PITA to get their software developer to make the change.\r<br />\n<br />\nUs evil software developers, are always the problem.<br />\n",
+    "PostedDate": "2013-09-18T10:00:53.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

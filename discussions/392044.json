@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "900645",
+    "ThreadId": "392044",
+    "Html": "\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'; color:black; font-size:10pt\">To make parsing simpler for Complex Elements I think a small change needs to be made.\r\n</span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'; color:black; font-size:10pt\">In particular adding a publically accessible property of SubElement to the segment class as following</span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'; color:black; font-size:10pt\">public char SubElement{</span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'; color:black; font-size:10pt\">get { return _delimiters.SubElement; }</span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'; color:black; font-size:10pt\">}</span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'; color:black; font-size:10pt\">I have never contributed to an open source project before so don't know the rules, can i just download the code make the change and upload?</span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'; color:black; font-size:10pt\">Is there already a way to do this and I am just not seeing it?</span></p>\r\n",
+    "PostedDate": "2012-08-17T06:51:36.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "900671",
+    "ThreadId": "392044",
+    "Html": "<p>I have exposed the delimiters in changeset 19222:</p>\r\n<p>public X12DelimiterSet Delimiters&nbsp; &nbsp; &nbsp; &nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; get { return _delimiters; }&nbsp; &nbsp; &nbsp; &nbsp; }</p>\r\n<p>so you should be able to access segment.Delimiters.SubElementSeparator.</p>\r\n<p>Each open source site works differently. &nbsp;Some sites allow everyone to do check-ins and then a configuration manager accepts branches into the trunk. &nbsp;The codeplex site lets you upload patches and the coordinator reviews them and manually integrates them into the source.</p>",
+    "PostedDate": "2012-08-17T07:36:25.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

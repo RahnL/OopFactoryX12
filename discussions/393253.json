@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "904751",
+    "ThreadId": "393253",
+    "Html": "\r\n<p>Are there samples on</p>\r\n<p>(1) How to generate a 270 edi file using only the OopFactory.X12.Hipaa.Eligibility objects.</p>\r\n<p>(2) How to parse a 271 in edi format to the OopFactory.X12.Hipaa.Eligibility objects.</p>\r\n",
+    "PostedDate": "2012-08-27T13:39:59.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "905402",
+    "ThreadId": "393253",
+    "Html": "<p>I don't have any code to do #1.</p>\r\n<p>You can look in the unit test assembly OopFactory.X12.Hipaa.Tests.Unit and look at the Eligibiity.BenefitResponseTester clasee to see how to turn the 271 into the objects.</p>",
+    "PostedDate": "2012-08-28T17:01:46.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

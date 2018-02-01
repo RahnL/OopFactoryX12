@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am trying to get Billing providerID using your parser. \n\nI want to keep the document in X12 format instead of switching to XML. I was able to access the ISA and GS values but now the values below ST loop. \n\nIs there a way to do this?",
+    "LastUpdatedDate": "2013-02-21T16:46:55.587-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-11-13T15:54:01.513-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "How to get the information from 2000A loop in 837",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1405
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Never mind got this working.\r\n\r\n",
+      "PostedDate": "2012-11-14T23:32:00.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:55.587-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

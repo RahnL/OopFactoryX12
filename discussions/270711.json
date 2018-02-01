@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "664609",
+    "ThreadId": "270711",
+    "Html": "\r\n<p>Anyone know any good EDI/X12 file viewers components (as in an embeddable C# component/control)?</p>\r\n<p>Ideally, it should be customizable so as to simply the file structure so it's human readable by an end user.</p>\r\n<p>Thanks.</p>\r\n",
+    "PostedDate": "2011-08-28T16:09:30.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "666551",
+    "ThreadId": "270711",
+    "Html": "<p>You could write your own app using the Interchange object SerializeToX12 method with addWhitespace=true to write out the x12 with indents such as:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>ISA*00*          *01*SECRET    *ZZ*SUBMITTERS.ID  *ZZ*RECEIVERS.ID   *030101*1253*^*00501*000000905*1*T*:~\r\n  GS*HC*SENDER CODE*RECEIVER CODE*19991231*0802*1*X*005010X222~\r\n    ST*837*0021*005010X222~\r\n      BHT*0019*00*244579*20061015*1023*CH~\r\n      NM1*41*2*PREMIER BILLING SERVICE*****46*TGJ23~\r\n        PER*IC*JERRY*TE*3055552222*EX*231~\r\n      NM1*40*2*KEY INSURANCE COMPANY*****46*66783JJT~\r\n      HL*1**20*1~\r\n        PRV*BI*PXC*203BF0100Y~\r\n        NM1*85*2*BEN KILDARE SERVICE*****XX*9876543210~\r\n          N3*234 SEAWAY ST~\r\n          N4*MIAMI*FL*33111~\r\n          REF*EI*587654321~\r\n        NM1*87*2~\r\n          N3*2345 OCEAN BLVD~\r\n          N4*MAIMI*FL*33111~\r\n        HL*2*1*22*1~\r\n          SBR*P**2222-SJ******CI~\r\n          NM1*IL*1*SMITH*JANE****MI*JS00111223333~\r\n            DMG*D8*19430501*F~\r\n          NM1*PR*2*KEY INSURANCE COMPANY*****PI*999996666~\r\n            REF*G2*KA6663~\r\n          HL*3*2*23*0~\r\n            PAT*19~\r\n            NM1*QC*1*SMITH*TED~\r\n              N3*236 N MAIN ST~\r\n              N4*MIAMI*FL*33413~\r\n              DMG*D8*19730501*M~\r\n            CLM*26463774*100***11:B:1*Y*A*Y*I~\r\n              REF*D9*17312345600006351~\r\n              HI*BK:0340*BF:V7389~\r\n              LX*1~\r\n                SV1*HC:99213*40*UN*1***1~\r\n                DTP*472*D8*20061003~\r\n              LX*2~\r\n                SV1*HC:87070*15*UN*1***1~\r\n                DTP*472*D8*20061003~\r\n              LX*3~\r\n                SV1*HC:99214*35*UN*1***2~\r\n                DTP*472*D8*20061010~\r\n              LX*4~\r\n                SV1*HC:86663*10*UN*1***2~\r\n                DTP*472*D8*20061010~\r\n    SE*42*0021~\r\n  GE*1*1~\r\nIEA*1*000000905~\r\n</pre>\r\n</div>\r\nOtherwise if there are only a few transaction sets that you need, I could write some xslts for you that give you a catalog of what's contained in the file. &nbsp;If that's what you would like, suggest it as a Feature and we will get that work prioritized.</p>",
+    "PostedDate": "2011-09-01T16:19:42.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "674321",
+    "ThreadId": "270711",
+    "Html": "<p>Hello,</p>\r\n<p>i am trying to parse an x12&nbsp;file to XML by this code</p>\r\n<p><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\"><span style=\"font-family: Consolas; color: #0000ff; font-size: x-small;\">Dim</span></span></span><span style=\"font-family: Consolas; font-size: x-small;\"> </span><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">interchange = parser.Parse(msgString).Serialize()</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">﻿And it wors fine in most cases exept this one:</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">﻿ISA*00* *00* *28*PPPPP *28*XXXXXX *100915*1002*^*00501*091536298*0*T*:~GS*HN*PPPPP*0*20100915*100208*26*X*005010X214~ST*277*000000001*005010X214~BHT*0085*08*091536332*20100915*09153600*TH~HL*1**20*1~NM1*PR*2*CARRIER NAME*****PI*PPPPP~TRN*1*PPPPP20100915000003~DTP*050*D8*20100915~DTP*009*D8*20100915~HL*2*1*21*1~NM1*41*2*TEST SUBMITTER*****46*XXXXXX~TRN*2*000008~STC*A1:19:PR*20100915*WQ*4500~QTY*90*1~AMT*YU*4500~HL*3*2*19*1~NM1*85*2*PROVIDER NAME*****XX*1234567890~TRN*1*IA92330H1..0001~STC*A1:19:PR**WQ*4500~QTY*QA*1~AMT*YU*4500~HL*4*3*PT~NM1*QC*1*TEST**PART**A*MI*111111111F~TRN*2*IA92330H1..0001~STC*A2:20:PR*20100915*WQ*4500~REF*1K*21025800000107TST~REF*BLT*131~DTP*472*RD8*20090701-20090701~SVC*HC:22305:22*350*****1~STC*A3:122**U*******A3:153:82~REF*FJ*11SE*27*000000001~GE*1*26~IEA*1*091536298~<br /></span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">error says:</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">X is not a valid subelement separator in position 105 of the file.</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">What seems to be wrong?</span></span></p>\r\n<p><span style=\"font-family: Consolas; font-size: x-small;\"><span style=\"font-family: Consolas; font-size: x-small;\">&nbsp;</span></span></p>",
+    "PostedDate": "2011-09-20T11:36:44.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "674367",
+    "ThreadId": "270711",
+    "Html": "<p>and another example taken from <span style=\"font-size: small;\"><a href=\"http://www.ngscedi.com/5010/5010.htm\">http://www.ngscedi.com/5010/5010.htm</a></span></p>\r\n<p>test file is:</p>\r\n<p>ISA*00*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *00*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *ZZ*EMEDNYBAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *ZZ*ETIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *110311*0512*^*00501*000001120*0*T*|~GS*HN*EMEDNYBAT*ABCD*20110311*051225*1120*X*005010X214~ST*277*000001120*005010X214~BHT*0085*08*3920394930203*20110311*051225*TH~HL*1**20*1~NM1*PR*2*NYSDOH*****FI*141797357~TRN*1*000001120~DTP*050*D8*20110311~DTP*009*D8*20110311~HL*2*1*21*1~NM1*41*1*TEST*TEST****46*ETIN~TRN*2*11200001~STC*A1|20*20110311*WQ*199.14~QTY*90*1~AMT*YU*199.14~HL*3*2*19*1~NM1*85*2*PROVLNAME*****XX*123456789~TRN*1*1107000000000001FF~HL*4*3*PT~NM1*QC*1*CLILNAME*CLIFNAME*CLIMI***MI*XX99999X~TRN*2*3920394930203~STC*A7|562|85*20110311*WQ*199.14~REF*1K*1107000000001120~REF*BLT*731~DTP*472*D8*20090311~SE*24*000001120~GE*1*1120~IEA*1*000001120~&nbsp;</p>\r\n<p>error says:</p>\r\n<p>Segment 'TRN*1*000001120' in position 6 within transaction '000001120' cannot be identified within the supplied specification for transaction set 277.<br />Parameter name: 277</p>",
+    "PostedDate": "2011-09-20T12:40:41.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "674449",
+    "ThreadId": "270711",
+    "Html": "<p>Please disregard first exemple. Error was found.</p>\r\n<p>thank you</p>",
+    "PostedDate": "2011-09-20T15:25:59.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "718082",
+    "ThreadId": "270711",
+    "Html": "<p>Hello!</p>\r\n<p>I'm also receiving the same \"Segment 'TRN....' in position 6 within transaction\" error as alex above. Does anyone know how to resolve this error?</p>\r\n<p>Thanks!</p>\r\n<p>Nick</p>",
+    "PostedDate": "2011-12-28T15:21:30.443-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "718085",
+    "ThreadId": "270711",
+    "Html": "I got a Segment error on a test 837 file I got from a client but it actually was a malformed claim with control loops out of order.\r\n<div>I had to find that by going to the 837 spec. I found the record in error by debugging until the 'throw' statement. Examined the data in error and then used that information to search into my x12 file. The physical line in error was one below the line stated\r\n in the throw statement. ie in the throw stated position 1136 and it was line/segment 1137. I say line because my file has a line feed after every ~ so each segment is it's own line.</div>\r\n<div><br>\r\n</div>\r\n<div>I don't know anything about the 277 format but I hope the above information helps you find the spot in error.</div>\r\n<div><br>\r\n</div>\r\n<div>Doug<br>\r\n<div><br>\r\n<br>\r\n<div>On Wed, Dec 28, 2011 at 4:21 PM, nzacca <span dir=\"ltr\">&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"margin:0 0 0 .8ex; border-left:1px #ccc solid; padding-left:1ex\">\r\n<div>\r\n<p>From: nzacca</p>\r\n<div>\r\n<p>Hello!</p>\r\n<p>I'm also receiving the same &quot;Segment 'TRN....' in position 6 within transaction&quot; error as alex above. Does anyone know how to resolve this error?</p>\r\n<p>Thanks!</p>\r\n<p>Nick</p>\r\n</div>\r\n<div>\r\n<p>Read the <a href=\"http://x12parser.codeplex.com/discussions/270711#post718082\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:x12parser@discussions.codeplex.com?subject=[x12parser:270711]\" target=\"_blank\">x12parser@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:x12parser@discussions.codeplex.com\" target=\"_blank\">\r\nx12parser@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://x12parser.codeplex.com/subscriptions/thread/project/edit\" target=\"_blank\">\r\nunsubscribe or change your settings</a> on codePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at\r\n<a href=\"http://codeplex.com\" target=\"_blank\">codeplex.com</a></p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2011-12-28T15:50:22.93-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "844633",
+    "ThreadId": "270711",
+    "Html": "<p>I am getting the same&nbsp;277 as alexbrodsky above, has the error been identified / resolved?</p>\r\n<p>\"Segment 'TRN*1*000001120' in position 6 within transaction '000001120' cannot be identified within the supplied specification for transaction set 277.\"&nbsp;</p>\r\n<p>I am getting this (with my identifiers)&nbsp;when trying to parse a 277 file that passes other validation checks.&nbsp; Here are the first few lines in the file for reference:</p>\r\n<p>ISA*00*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *00*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *30*590909099&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *ZZ*590909000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *120127*0355*^*00501*000203263*0*T*:~<br />GS*HN*590909099*590909000*20120127*035502*203263*X*005010X214~<br />ST*277*0001*005010X214~<br />BHT*0085*08*203263.1*20120127*035502*TH~<br />HL*1**20*1~<br />NM1*AY*2*AMERISYS*****FI*2323232323~<br />TRN*1*20060831001~<br />DTP*050*D8*20120127~<br />DTP*009*D8*20120127~<br />HL*2*1*21*1~</p>\r\n<p>.......</p>\r\n<p>Thanks!</p>\r\n<p>CS</p>",
+    "PostedDate": "2012-06-04T13:36:43.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "844784",
+    "ThreadId": "270711",
+    "Html": "<p>I have added the file from alexbrodsky and bogeyone to the unit tests and was not able to reproduce the error.</p>\r\n<p>There are multiple versions of the 277 and some fixes were added on 1/13/2012 for the 5010X214.</p>\r\n<p>If you have the first few segments of the transaction that matches the error message instead of the first transaction in the file, I can continue to troubleshoot.</p>",
+    "PostedDate": "2012-06-04T20:26:33.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "845065",
+    "ThreadId": "270711",
+    "Html": "\r\n<div dir=\"ltr\">Thank you for your quick response. We were using an older release and after downloading the current release I can't duplicate the problem. I apologize for my lack of diligence. We appreciate the X12 project, it has made our development much more\r\n efficient.<br>\r\n<br>\r\n<font face=\"Lucida Handwriting, Cursive\"><em>Creston Swaim </em></font><br>\r\n<br>\r\n<div>\r\n<div id=\"SkyDrivePlaceholder\"></div>\r\n<hr id=\"stopSpelling\">\r\nFrom: [email removed]<br>\r\nTo: [email removed]<br>\r\nDate: Mon, 4 Jun 2012 20:26:39 -0700<br>\r\nSubject: Re: File Viewer [x12parser:270711]<br>\r\n<br>\r\nFrom: dstrubhar<br>\r\n<div id=\"ecxThreadNotificationPostBody\">I have added the file from alexbrodsky and bogeyone to the unit tests and was not able to reproduce the error.<br>\r\nThere are multiple versions of the 277 and some fixes were added on 1/13/2012 for the 5010X214.<br>\r\nIf you have the first few segments of the transaction that matches the error message instead of the first transaction in the file, I can continue to troubleshoot.<br>\r\n</div>\r\n<div id=\"ecxThreadNotificationFooter\">Read the <a href=\"http://x12parser.codeplex.com/discussions/270711#post844784\" target=\"_blank\">\r\nfull discussion online</a>.<br>\r\nTo add a post to this discussion, reply to this email (<a href=\"mailto:x12parser@discussions.codeplex.com?subject=[x12parser:270711]\">x12parser@discussions.codeplex.com</a>)<br>\r\nTo start a new discussion for this project, email <a href=\"mailto:x12parser@discussions.codeplex.com\">\r\nx12parser@discussions.codeplex.com</a><br>\r\nYou are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://x12parser.codeplex.com/discussions/270711/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.<br>\r\nPlease note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com<br>\r\n</div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2012-06-05T09:24:48.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

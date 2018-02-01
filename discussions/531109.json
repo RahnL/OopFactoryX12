@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1206183",
+    "ThreadId": "531109",
+    "Html": "Hi, I'm trying to load an edi 810 (invoice) file into mssql. The connection is working because the tables are created, but none of my files are getting through, here is the entire error message:\r<br />\n<br />\nOopFactory.X12.ImportX12.exe Error: 0 : Error parsing C:\\Release\\EDI\\cust.inv: Object reference not set to an instance of an object.\r<br />\n   at OopFactory.X12.Repositories.SqlTransactionRepository<code>1.EnsureSchema()\r<br />   at OopFactory.X12.Repositories.SqlTransactionRepository</code>1.Save(Interchange interchange, String filename, String userName)\r<br />\n   at OopFactory.X12.ImportX12.Program.Main(String[] args)\r<br />\n   DateTime=2014-02-10T08:08:27.8368267Z\r<br />\n<br />\nAny suggestions? \r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-02-10T00:21:59.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

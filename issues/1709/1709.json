@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-09-13T17:37:57.06-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "public DateTime? GetDate8Element(int elementNumber)\n        {\n            string element = this.GetElement(1);\n            if (element.Length == 8)\n            {\n                return new DateTime?(DateTime.ParseExact(element, \"yyyyMMdd\", null));\n            }\n            return null;\n        }\n\nneeds to be:\n\n        public DateTime? GetDate8Element(int elementNumber)\n        {\n            string element = this.GetElement(elementNumber);\n            if (element.Length == 8)\n            {\n                return new DateTime?(DateTime.ParseExact(element, \"yyyyMMdd\", null));\n            }\n            return null;\n        }",
+    "LastUpdatedDate": "2013-09-13T17:37:57.06-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-08-16T14:11:49.59-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Segment.GetDate8Element not using requested element",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 1709
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Agreed, I just discovered this too. Not really sure how patch files work so I didn't do it myself.\r\n\r\nOopFactory.X12 / Parsing / Model / DetachedSegment.cs: line 125",
+      "PostedDate": "2013-09-06T10:50:17.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-06T10:52:41.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 30895.",
+      "PostedDate": "2013-09-13T17:37:57.06-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

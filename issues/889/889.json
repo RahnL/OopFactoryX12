@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Sorry I was not able to resolve this when you reported this, but I did find the 277CA specification when working with another user, and this was resolved in changeset 13847 which is now released in 2.2.3.",
+    "ClosedDate": "2012-03-14T18:50:52.413-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Please add support for the 5010 277CA Claim Acknowlegment transaction.\n \nBest Regards",
+    "LastUpdatedDate": "2013-05-16T04:34:03.89-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-10-26T08:53:20.167-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "277 Claim Acknowlegment support.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 889
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Do you have a link to this specification?  I only have the one's published from WPC.",
+      "PostedDate": "2011-10-26T09:36:33.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only one i found was the one published by WPC. I Guess I'll have to buy it and created the XML. Do you have any links to the documentation on the patterns, nodes, attributes I can use to create the specification?\r\n\r\nThanks for the fast response.\r\n\r\nAriel Rosado ",
+      "PostedDate": "2011-11-03T06:49:21.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Have you already tried the current implementation?  It already has the 277 from the WPC.  The fact that you can re-purpose that format for Claim Acknowledgement instead of Claim Status Response may be irrelevant to the format.  If you were to give me a sample de-identifed message, than I can help you determine how to get the parser to support your messages.\r\nAlso, the XSD for the specification is part of the download in the Specifications folder.  The is a documentation page that will show you how to inject your own specification.  You can probably use the one in the assembly as a starting place http://x12parser.codeplex.com/SourceControl/changeset/view/11859.  The parser uses this specification for both 276 and 277.\r\nIt may be that you have discovered a bug if this one specification does not work for both.",
+      "PostedDate": "2011-11-03T08:19:00.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well i guess it is a bug. Or maybe a feature :)... The specification finder does select the 276 xml map, yet it throws an exception because there seems to be an invalid element inside a loop. I think that the specification might be different from 277/276 to 277CA since the WPC site has two different implementation guides for each one of them. I'll buy the implementation guide and let you know the results. Thanks for your fast response, and for the links provided.\r\n\r\nBest regards,\r\n\r\nAriel Rosado",
+      "PostedDate": "2011-11-03T08:34:41.64-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-03-14T18:50:52.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:02.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:03.89-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

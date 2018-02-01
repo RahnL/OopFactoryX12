@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "GE segment (End of Funtional Group Loop) GE02 doesn't have control number 789 and instead has 1. How can we add control number in GE02? Below piece of 270 output should have GE*1*789 instead.\n\nISA*00*          *00*          *ZZ*V139534        *ZZ*89070          *150604*1704*U*00501*000000789*1*P*:~\n  GS*HS*V139534        *89070*20150604*1704*789*X*005010X279A1~\n    ST*270*0789*005010X279A1~\n      BHT*0022*13*789*20150604*1704~\n      HL*1**20*1~\n        NM1*PR*2*UNITED CONCORDIA*****PI*89070~\n        HL*2*1*21*1~\n          NM1*1P*1*Walnut Creek Dental Group and Orthodontics, LLP*Rodgers****XX*1487891305~\n            REF*TJ*262948041~\n          HL*3*2*22*1~\n            TRN*1*171107529*1234567890~\n            NM1*IL*1*STRITZEL*CHELSEA****MI*117702881001~\n              N3*9098 W 88TH CIR~\n              N4*WESTMINSTER*CO*80021~\n              DMG*D8*19900215~\n              DTP*291*D8*20141006~\n              EQ*35~\n    SE*16*0789~\n  GE*1*1~\nIEA*1*000000789~",
+    "LastUpdatedDate": "2015-06-04T15:38:33.15-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-06-04T15:25:24.25-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Which class is trying to add end segments?How do we make sure that end segments are as per SPEC?",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2698
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": " It is i guess UpdateTrailerSegmentCount(\"GE\", 1, _transactions.Count()) which is adding the transactions count but as per SPEC it should have the control number (same as used in GS segment) as by below example in spec example. Can some of the developers make this clear why is it so and how it can be handled to make it work as spec?\r\n\r\nISA*00**00**ZZ*SUBMITTERID*ZZ*CMS*140831*0734*^*00501*000005014*1*P*|~\nGS*HS*SUBMITTERID*CMS*20140831*073411*5014*X*005010X279A1~\nST*270*000000001*005010X279A1~\nBHT*0022*13*TRANSA*20140831*073411~\nHL*1**20*1~\nNM1*PR*2*CMS*****PI*CMS~\nHL*2*1*21*1~\nNM1*1P*2*IRNAME*****XX*1234567893~\nHL*3*2*22*0~\nTRN*1*TRACKNUM*ABCDEFGHIJ~\nNM1*IL*1*LNAME*FNAME****MI*123456789A~\nDMG*D8*19400401~\nDTP*291*RD8*20140201-20141031~\nEQ*10^14^30^42^45^48^67^A7^AD^AE^AG^BF^BG~\nEQ**HC|80061~\nEQ**HC|G0117~\nSE*15*000000001~\nGE*1*5014~\nIEA*1*000005014~",
+      "PostedDate": "2015-06-04T15:38:33.15-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

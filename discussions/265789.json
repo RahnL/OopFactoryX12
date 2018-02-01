@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "644614",
+    "ThreadId": "265789",
+    "Html": "<p>Can you shed some light on the usage of the 4th command line argument for unbundlex12.exe? It's the optional output filename string format...&nbsp;{0}\\{1}_{2:000}{3}. &nbsp;I've not been able to figure out how to successfully pass it a filename. &nbsp;I see that it uses  C# string format which is kinda regex*ish*, but I've not been able to decode how the braced groups ({0},{1},{2}) play into it.</p>\n<p>Thanks!</p>",
+    "PostedDate": "2011-07-19T13:29:29.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "644752",
+    "ThreadId": "265789",
+    "Html": "<p>It is indeed an optional argument. &nbsp;If you don't supply it well use the default value in the following statement:</p>\r\n<p>\r\n<div style=\"color: black; background-color: white;\">\r\n<pre>                <span style=\"color: blue;\">string</span> outputFilename = String.Format(formatString, outputDirectory, inputFile.Name, i + 1, inputFile.Extension);\r\n\r\n</pre>\r\n</div>\r\n</p>\r\n<p>The intent is to write the unbundled files into the output directory with the same file name as the original but with sequence numbers after the filename. &nbsp;Example command line:</p>\r\n<p>UnbundleX12 c:\\MyEdiFile.txt 2300 c:\\Output {0}\\{1}_{2:000}{3}</p>\r\n<p>This will take the original file and supposing it has 3 claims inside it will create:</p>\r\n<p>c:\\Output\\MyEdiFile_001.txt</p>\r\n<p>c:\\Output\\MyEdiFile_002.txt</p>\r\n<p>c:\\Output\\MyEdiFile_003.txt</p>\r\n<p>The format string uses {0} to indicate that this should be replaced with the 0 index argument that comes after the format string in the call to String.Format.</p>\r\n<p>&nbsp;</p>\r\n<p>The only reason that I make this optional is because I think in general people will want to zero pad their sequence number so alphabetical sorting will sort the sequence and I think other people may choose to pad their sequence number with more than 3 zeros. &nbsp;So I added as a quick and dirty way to override the default format string.</p>\r\n<p>IF you want to specify the naming convention of the output files you can modify the format string like the following: \"{0}\\{1}_Output_{2:000}{3}\" will produce</p>\r\n<p>c:\\Output\\MyEdiFile_Output_001.txt</p>\r\n<p>c:\\Output\\MyEdiFile_Output_002.txt</p>\r\n<p>c:\\Output\\MyEdiFile_Output_003.txt</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-07-19T19:57:01.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "644981",
+    "ThreadId": "265789",
+    "Html": "<p>OK, that helps me. &nbsp;One thing to note; the 2nd token, {1}, inputfile.name, includes the extension.</p>\r\n<p>So&nbsp;UnbundleX12 c:\\MyEdiFile.txt 2300 c:\\Output {0}\\{1}_{2:000}{3}</p>\r\n<p>Would result in:</p>\r\n<p>c:\\Output\\MyEdiFile<span style=\"color: #ff0000;\"><strong>.txt</strong></span>_001.txt</p>\r\n<p>c:\\Output\\MyEdiFile<span style=\"color: #ff0000;\"><strong>.txt</strong></span>_002.txt</p>\r\n<p>c:\\Output\\MyEdiFile<span style=\"color: #ff0000;\"><strong>.txt</strong></span>_003.txt</p>\r\n<p><span style=\"color: #000000;\">At least that's how it works when I run it.</span></p>",
+    "PostedDate": "2011-07-20T07:16:32.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

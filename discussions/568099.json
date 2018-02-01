@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1307179",
+    "ThreadId": "568099",
+    "Html": "I have a large number of 837 files for a client that I'm attempting to parse using OopFactory's DLLs.   Overall I'm very impressed, but I have one issue that I'm not sure how best to resolve.   I have hundreds of instances of NTE segments that look like this:\r<br />\n<br />\nNTE&gt;ADD&gt;1234567890123:ABC:123   ~\r<br />\n<br />\nIt's a valid segment as I interpret the HIPAA spec, but the problem arises from the colons imbedded in the text of the note.   The colon is the sub-element delimiter for my file and the parser is interpreting it as such in this segment and choking when trying to convert to a claim document. <br />\n\r<br />\nI'm not sure how best to address this - update the raw file to get rid of the colons?   Update the parser to ignore sub-element delimiters in segments that don't support subelements?   Anyone else encountered this?  How did you resolve it?\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2014-09-22T15:09:29.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1307349",
+    "ThreadId": "568099",
+    "Html": "please post what you mean by choking, I will see if I can fix in the claim document transformation.<br />\n",
+    "PostedDate": "2014-09-23T04:41:07.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1307368",
+    "ThreadId": "568099",
+    "Html": "I actually fixed it about 10 minutes later.   It produced the XML file but then failed trying to transform it into a claim document.   I resolved the problem by making the following change In the Parsing.Model dll, file Segment.cs.\r<br />\n<br />\nI changed this if statement:<br />\n<pre><code>                if (_dataElements[i].IndexOf(_delimiters.SubElementSeparator) &lt; 0 || SegmentId == &quot;BIN&quot; || SegmentId == &quot;BDS&quot;)\n                {\n\n</code></pre>\n\nTo this:<br />\n<pre><code>                if (_dataElements[i].IndexOf(_delimiters.SubElementSeparator) &lt; 0 || SegmentId == &quot;BIN&quot; || SegmentId == &quot;BDS&quot; || SegmentId == &quot;NTE&quot;)\n                {</code></pre>\n\n",
+    "PostedDate": "2014-09-23T05:12:51.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

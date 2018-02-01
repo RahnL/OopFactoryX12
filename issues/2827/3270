@@ -1,0 +1,17 @@
+Index: src/OopFactory.X12/Parsing/Model/DetachedSegment.cs
+===================================================================
+--- src/OopFactory.X12/Parsing/Model/DetachedSegment.cs	(revision 43639)
++++ src/OopFactory.X12/Parsing/Model/DetachedSegment.cs	(working copy)
+@@ -50,7 +50,11 @@
+             if (segment == null)
+                 throw new ArgumentNullException("segment");
+             _dataElements = new List<string>();
+-            int separatorIndex = segment.IndexOf(_delimiters.ElementSeparator);
++
++            int separatorIndex = -1;
++            if (_delimiters != null)
++                separatorIndex = segment.IndexOf(_delimiters.ElementSeparator);
++
+             if (separatorIndex >= 0)
+             {
+                 SegmentId = segment.Substring(0, separatorIndex);

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-07-17T21:10:20.49-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "ON OopFactory.X12 on DBCreation.cs file, the \"CreateSplitSegmentFunction\" and \"CreateFlatElementsFunction\" are missing the _schema argument and it is creating the function on dbo. Then, the function exist fails to find the function because the function was created on different schema (\"dbo\")...\n\nThanks,\nYosel",
+    "LastUpdatedDate": "2013-07-17T21:10:20.49-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-07-17T19:47:51.787-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "error when checking if CreateFlatElementsFunction and CreateSplitSegmentFunction exist.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1646
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 28967.",
+      "PostedDate": "2013-07-17T21:10:20.49-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

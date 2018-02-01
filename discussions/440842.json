@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1032735",
+    "ThreadId": "440842",
+    "Html": "I can't find the OopFactory.X12.ImportX12 available for download. Also, is there sample .NET code on using it to save to and retrieve from SQL database?<br />\n",
+    "PostedDate": "2013-04-18T15:45:17.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1032766",
+    "ThreadId": "440842",
+    "Html": "Sorry for the oversite.  I just published binaries for 3.0.2 which will include them now.\r<br />\n<br />\nYou can look at the program.cs code for now until I get more of the documentation completed:  <a href=\"https://x12parser.codeplex.com/SourceControl/changeset/view/25438#389228\" rel=\"nofollow\">Program.cs</a>\r<br />\n<br />\nI will add some sample code to [SqlTransactionRepository](<a href=\"https://x12parser.codeplex.com/wikipage?title=SqlTransactionRepository\" rel=\"nofollow\">https://x12parser.codeplex.com/wikipage?title=SqlTransactionRepository</a> Class) over the next week.<br />\n",
+    "PostedDate": "2013-04-18T17:59:27.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

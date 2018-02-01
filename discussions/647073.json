@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1451215",
+    "ThreadId": "647073",
+    "Html": "I need to write a program that can compare two fairly large 834 files for some parallel testing we are doing.  I was thinking about just diffing the EDI files but, of course, there will be small variations in the files for some of the names/id's so a simple diff would cause too many differences to research.   so.... i was thinking of writing a program using this library to diff the two files and programatically account for differences that are valid in the files. \r<br />\n<br />\nJust looking for any thoughts/ideas on how best to accomplish that type of comparison using this library.  (already working examples would be even better!)<br />\n",
+    "PostedDate": "2015-11-06T11:47:38.383-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1451256",
+    "ThreadId": "647073",
+    "Html": "The fastest way to do this, especially if this is throw away code, is to use the ImportX12 utility to load it into a database, then you can use sql queries to identify differences with very exact results.\r<br />\n<br />\nI wouldn't necessarily rule out your idea of doing a file diff, if you are only looking for a few differences.  You can use the parser to load the file into the Interchange object and then write it back with whitespace so that each segment is in an indented line.  This would be very useful if you only a few lines to identify and you are going to do the research yourself.  It is less useful if you are trying to provide this to a non-developer to do the research.\r<br />\n<br />\nYou can do this in code, but I have found that though that makes it db agnostic it doesn't scale very well when your files start to get large.  With 834 files maintenance files tend to be small, but monthly audit files tend to get VERY large.<br />\n",
+    "PostedDate": "2015-11-07T06:50:20.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1451258",
+    "ThreadId": "647073",
+    "Html": "Good point, loading to a DB might make it easier to do the comparisons and also get other people involved in the research.  I will give that a try and see how it works out.\r<br />\n<br />\nOn your point about large files, I thought there was a way to stream through the edi files so it does not need to load the whole document into memory at the same time.  If that is the case it seems that the large files would not be an issue.  Is there some other limitation to how the streaming works that I should watch out for if I decide to write some code for this?\r<br />\n<br />\nBTW - these libraries are pretty awesom.  Thanks for all the hard work on these.<br />\n",
+    "PostedDate": "2015-11-07T07:09:27.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

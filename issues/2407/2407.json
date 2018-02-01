@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "We are using X12Parser to import X12 417 documents from a rail carrier into database form.  This works great, except the rail carrier recycles Interchange Control Numbers every 2 months and we retain the X12 table data for 60 days.  The issue comes in when the X12parser DB import fails due to an existing Control Number and SenderID combo already in the database.  It seems like it tries merging the data onto the old record.\n\nThere are three solutions to this.\n      1.  Append unique data onto the Control Number on the Interchange table after import in order for any future 417 X12 Documents to create new Interchange Records.  I don't like this solution since it messes with a key field and can cause confusion during historical lookups.\n      2.  Purge/archive documents faster than the carrier recycles Control Numbers.  This would work as well, however it would increase complexity if adding an archive database or loose historical information in a purge.\n      3.  Only attempt to match up documents with existing entries in the database if the Interchange Dates are the same.  If it comes from the same document, the Control Number AND SenderID AND Interchange Date should match.  Otherwise, assume it is a recycled Control Number.",
+    "LastUpdatedDate": "2014-09-12T08:23:00.62-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-09-12T08:23:00.62-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Failed DB Import on Recycled Interchange Control Number",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2407
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

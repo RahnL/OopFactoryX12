@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Closed with sample edi added to unit tests.",
+    "ClosedDate": "2011-04-27T16:57:40.307-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "refer the format in this url http://en.wikiversity.org/wiki/Ansi_x12_standard_format  . This  url has a sample in it which has Delimiter between segments and has Fixed length format. In the Class X12DelimiterSet we have other private variable _segmentSeperator. Do we need to set any value for that variable to make processing.",
+    "LastUpdatedDate": "2013-05-16T04:34:07.193-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-04-27T12:27:41.967-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "820 EDI",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 685
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Many times the sample edi that you find in the format will loose the fixed width correctness of the ISA segment.  This segment is expected to be exactly 106 characters when you include the segment delimiter.  I have taken this segment and formatted it with the correct raw representation here:\r\n\r\nhttp://x12parser.codeplex.com/SourceControl/changeset/view/7872#142085\r\n\r\nThe real edi file of course will not have any carrier returns and tabs, this has been added for clarity.\r\n\r\nAs for the private _segmentSeparator variable, this is determined when parsing the first 106 characters since each delimiter is always expected at the same character position.\r\nWhen creating your own edi files by creating a new instance of the Interchange class, the delimiters can be passed into the constructor when you want to specify your own.",
+      "PostedDate": "2011-04-27T16:57:13.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-27T16:57:40.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:06.567-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:07.193-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

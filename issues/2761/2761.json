@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Getting a memory exception parsing an 820 to XML. The input file is approx 28 mb. \n\nHere is the code that does the parsing(the exception occurs at when it attempts to serialize):\n    Function Parse820toXML(strEDI820 As String) As String\n        Dim fstream = New FileStream(strEDI820, FileMode.Open, FileAccess.Read)\n        Dim parser = New X12Parser()\n        Dim interchange = parser.ParseMultiple(fstream).First() \n        Dim x12Xml = interchange.Serialize() 'exception thrown here\n        Parse820toXML = x12Xml\n    End Function\n\nHere's the exception details:\n\nSystem.InvalidOperationException was caught \nHResult=-2146233079 \nMessage=There was an error generating the XML document. \nSource=System.Xml \nStackTrace:\n   at System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter xmlWriter, Object o, XmlSerializerNamespaces namespaces, String encodingStyle, String id)\n   at System.Xml.Serialization.XmlSerializer.Serialize(Stream stream, Object o, XmlSerializerNamespaces namespaces)\n   at System.Xml.Serialization.XmlSerializer.Serialize(Stream stream, Object o)\n   at OopFactory.X12.Parsing.Model.Interchange.Serialize(Stream stream)\n   at OopFactory.X12.Parsing.Model.Interchange.Serialize(Boolean suppressComments)\n   at OopFactory.X12.Parsing.Model.Interchange.Serialize()\n   at FW102W01.BCBSTSHOP820.Parse820toXML(String strEDI820) in C:\\Users\\j71631a\\Documents\\Visual Studio 2012\\Projects\\BCBST SHOP 820\\BCBST SHOP 820\\BCBSTSHOP820.vb:line 125\n   at FW102W01.BCBSTSHOP820.MainProcess() in C:\\Users\\j71631a\\Documents\\Visual Studio 2012\\Projects\\BCBST SHOP 820\\BCBST SHOP 820\\BCBSTSHOP820.vb:line 73\nInnerException: System.OutOfMemoryException\n   HResult=-2147024882\n   Message=Exception of type 'System.OutOfMemoryException' was thrown.\n   Source=mscorlib\n   StackTrace:\n        at System.IO.MemoryStream.set_Capacity(Int32 value)\n        at System.IO.MemoryStream.EnsureCapacity(Int32 value)\n        at System.IO.MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)\n        at System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder)\n        at System.IO.StreamWriter.Write(String value)\n        at System.Xml.XmlTextEncoder.WriteRawWithSurrogateChecking(String text)\n        at System.Xml.XmlTextWriter.WriteComment(String text)\n        at OopFactory.X12.Parsing.Model.Segment.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.HierarchicalLoopContainer.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.Loop.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.HierarchicalLoopContainer.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.Loop.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.HierarchicalLoopContainer.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.Transaction.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.FunctionGroup.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.Interchange.WriteXml(XmlWriter writer)\n        at OopFactory.X12.Parsing.Model.Segment.System.Xml.Serialization.IXmlSerializable.WriteXml(XmlWriter writer)\n        at System.Xml.Serialization.XmlSerializationWriter.WriteSerializable(IXmlSerializable serializable, String name, String ns, Boolean isNullable, Boolean wrapped)\n        at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriterInterchange.Write1_Interchange(Object o)\n   InnerException:",
+    "LastUpdatedDate": "2015-12-03T07:55:03.163-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-12-03T07:55:03.163-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Memory exception parsing 820 to XML",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2761
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

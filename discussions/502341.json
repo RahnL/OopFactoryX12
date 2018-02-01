@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1171548",
+    "ThreadId": "502341",
+    "Html": "Dear dstrubhar,\r<br />\n<br />\nI am using the X12Parser release 2.3.4.\r<br />\n<br />\nI get the following error when processing a 4010 professional EDI X12 837 claim:\r<br />\n<strong>Segment 'DMG<em>D8<em>19521106</em>F' in position 28 within transaction '0001' cannot be identified within the supplied specification for transaction set 837</strong>\r<br />\n<br />\nWe did some investigation and found that the issue appears to be with the 'QD' qualifier in the NM segment\r<br />\n<br />\nThe claim is parsed by the X12 parser successfully if we delete the following text in the Claim:\r<br />\n<br />\n<strong>~NM1<em>QD</em>1</em>lastname<em>firstname~N3</em>street address~N4<em>BROOKLYN PARK<em>FL</em>12345~DMG</em>D8<em>19521106</em>F</strong>\r<br />\n<br />\nCan you please advise what are our options?\r<br />\n<br />\nYour kind help will be greatly appreciated.\r<br />\n<br />\nThanks,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-01-16T15:19:54.963-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1191969",
+    "ThreadId": "502341",
+    "Html": "Can someone on the X12Parser team please help with this issue? How do we workaround these issues a 4010 837 claim? \r<br />\n<br />\nThank you, in advance, for all your help. \r<br />\n<br />\nnk5491<br />\n",
+    "PostedDate": "2014-01-22T15:00:31.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1192150",
+    "ThreadId": "502341",
+    "Html": "I need a little more of the your failing transaction to troubleshoot.\r<br />\nQD stands for Responsible Party which is usually a child of the Subscriber Loop in the 4010 version.  Is this an institutional claim?\r<br />\n<br />\nThis may be happening if you are encountering the NM1*QD segment in a patient loop instead of a subscriber loop which won't expect that loop.\r<br />\n<br />\nTo fix it just for you, you can over write the build in 837-4010 specification by implementing your own SpecificationFinder.\r<br />\n<br />\nThe DMG segment only appears in the subscriber name or the patient name loops.\r<br />\n<br />\nIf I had to guess with what you have given me, I would say it is probably a bug where they meant to use QC which is a patient loop instead of QD.\r<br />\n<br />\nIf this is a bug from the sender, it is better that they fix it, if you change your specification so that this won't throw an exception, you may end up taking in invalid data.<br />\n",
+    "PostedDate": "2014-01-22T16:14:13.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1193271",
+    "ThreadId": "502341",
+    "Html": "Dear dstrubhar,\r<br />\nThank you so much for your response and help in this matter. Indeed, this is a 4010 Institutional Claim. Here's a little more information of the failing transaction. The failing segment is in BOLD text:\r<br />\n<br />\nISA<em>00</em>          <em>01</em>SOMENAME  <em>ZZ</em>PROD           <em>ZZ<em>CLAIMSCH       <em>130110</em>0141</em>U<em>00401</em>000009089</em>1<em>P</em>&gt;~GS<em>HC<em>P392096</em>ABCCLAIMS</em>20130110<em>0141</em>000000<em>X<em>004010X098A1~ST</em>837<em>0001~BHT<em>0019</em>00</em>000000000<em>20130110</em>0141<em>CH~REF<em>87</em>004010X098A1~NM1<em>41<em>2</em>ABCDEFG HEALTH CARE</em></em></em><em><em>46<em>123456392111~PER</em>IC<em>FNAME  LNAME<em>TE</em>1111111111</em>EX<em>7026</em>FX<em>111111111~NM1<em>40</em>2<em>SOMENAME<em><strong><em><em>46</em>CLAIMSCH~HL</em>1</strong>20</em>1~NM1</em>85<em>2</em>ABCDEFG HEALTH CARE</em><strong><em><em>XX<em>1982737185~N3</em>1234 STREET~N4<em>CITY<em>ST</em>123451111~REF</em>G2<em>123456789~REF</em>0B<em>330905~REF<em>EI</em>123456789~PER<em>IC<em>ABCDEFG HEALTH CARE</em>TE</em>7635205473~HL<em>2</em>1</em>22<em>0~SBR</em>P<em>18<strong><em><em><em><em><em>AM~NM1</em>IL</em>1</em>LNAME</em>FNAME</em></strong></em>MI<em>123456789~N3</em>1234 STREET AVE N~N4</em>CITY PARK<em>ST</em>12345~DMG<em>D8<em>19000114</em>M~NM1</em>PR<em>2</em>MY INS CO STATE<strong><em><em><em>PI<em>5861~N3</em>X.X. XXX 123456<em>ABC DEF PROCESSING CENTER~N4<em>CITY</em>ST</em>12345~REF<em>2U</em>WS081__~NM1</em>QD<em>1</em>LNAME<em>FNAME~N3<em>1234 ST N~N4</em>CITY</em>ST<em>55443~DMG</em>D8</em>19000114<em>M__~NM1</em>84<em>2<em>MY HOTEL</em></em></em></strong>EI<em>000-00-0000~CLM</em>123456789<em>482<em><em><em>23&gt;&gt;1</em>Y</em>A</em>Y</em>Y<em>B</em>AA&gt;&gt;&gt;MN~DTP</em>439<em>D8</em>20130101~DTP<em>435<em>D8</em>20130101~DTP</em>096<em>D8</em>20130101~REF<em>EA<em>2639672~HI</em>BK&gt;920<em>BF&gt;72885<em>BF&gt;\r<br />\n<br />\nIf you still think it is probably a bug from the sender, we will contact them to fix it.\r<br />\n<br />\nHere's another issue we are seeing:\r<br />\n<br />\nerror = Segment 'NM1</em>84</em>2<em>JACK AND JILL</em></em></strong></em>EI<em>123-45-6789' in position 26 within transaction '0001' cannot be identified within the supplied specification for transaction set 837.\r<br />\n<br />\nHere's more information about this failed claim:\r<br />\n<br />\nISA</em>00</em>          <em>01</em>CYCTRANS  <em>ZZ</em>PROD           <em>ZZ</em>CLAIMSCH       <em>130111<em>0141</em>U<em>00401<em>000009092</em>1</em>P</em>&gt;~GS<em>HC</em>P392096<em>ABCCLAIMS<em>20130111</em>0141</em>159903<em>X</em>004010X098A1~ST<em>837<em>0001~BHT</em>0019<em>00<em>012345678</em>20130111</em>0141<em>CH~REF</em>87<em>004010X098A1~NM1<em>41</em>2<em>ABC HEALTH<em><em><em><em><em>46</em>01234567891234~PER</em>IC</em>FNAME LNAME</em>TE</em>0123456789</em>EX<em>7026</em>FX</em>0123456789~NM1<em>40</em>2<em>XXXX<em><strong><em><em>46</em>CLAIMSCH~HL</em>1</strong>20</em>1~NM1</em>85<em>2</em>ABC HEALTH</em>***<em>XX<em>111111111~N3</em>1234 STREET NO~N4<em>CITY<em>ST</em>012345679~REF</em>G2<em>123456789~REF</em>0B<em>330905~REF<em>EI</em>123456789~PER<em>IC<em>ABC DEF HEALTH</em>TE</em>1234567890~HL<em>2</em>1</em>22<em>0~SBR</em>P<em>18<strong><em><em><em><em><em>AM~NM1</em>IL</em>1</em>LNAME</em>FNAME</em>R</strong></em>MI<em>1234567800000000~N3</em>1234 STREET AVE N~N4<em>MY CENTER<em>MN</em>55429~DMG<em>D8<em>19000921</em>M~NM1</em>PR<em>2</em>ABC DEF</em></em><strong><em>PI<em>5861~N3</em>ONE TWO THREE~N4<em>CITY<em>ST</em>12345~REF</em>2U<em>WCG01~__NM1</em>84</em>2<em>JACK AND JILL</em></strong><em><em>EI<em>123-45-6789__~CLM</em>123456789</em>746<em><em><em>23&gt;&gt;1</em>Y</em>A</em>Y</em>Y<em>B</em>AA&gt;&gt;&gt;\r<br />\n<br />\nCan you please comment if the 2nd issue has anything in common? Is it because of an unexpected qualifier in a specific loop?\r<br />\n<br />\nOur entire team remains grateful to you for all your prompt help in the past couple years. This open source project deserves all the KUDOS out there!\r<br />\n<br />\nKind Regards,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-01-23T08:13:44.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1193299",
+    "ThreadId": "502341",
+    "Html": "Here is a breakdown of your transaction:<br />\n<pre><code>ISA00 01SOMENAME ZZPROD ZZCLAIMSCH 1301100141U004010000090891P&gt;~\n  GSHCP392096ABCCLAIMS201301100141000000X004010X098A1~\n    ST8370001~\n      BHT001900000000000201301100141CH~\n      REF87004010X098A1~\n      NM1412ABCDEFG HEALTH CARE46123456392111~\n        PERICFNAME LNAMETE1111111111EX7026FX111111111~\n      NM1402SOMENAME46CLAIMSCH~\n      HL1201~                            HL Loop 1, No Parent, Level Code = Information Source (Billing Provider)\n        NM1852ABCDEFG HEALTH CAREXX1982737185~\n          N31234 STREET~\n          N4CITYST123451111~\n          REFG2123456789~\n          REF0B330905~\n          REFEI123456789~\n          PERICABCDEFG HEALTH CARETE7635205473~\n        HL21220~                        HL Loop 2, Parent Loop 1, Level Code = Subscriber, Loop ID 2000B\n          SBRP18AM~                                \n          NM1IL1LNAMEFNAMEMI123456789~                      LOOP ID - 2010BA Subscriber Name\n            N31234 STREET AVE N~\n            N4CITY PARKST12345~\n            DMGD819000114M~\n          NM1PR2MY INS CO STATEPI5861~                      LOOP ID - 2010BC Payer Name\n            N3X.X. XXX 123456ABC DEF PROCESSING CENTER~\n            N4CITYST12345~\n            REF2UWS081__~\n          NM1QD1LNAMEFNAME~                                 LOOP ID - 2010BD Responsible Party Name\n            N31234 ST N~\n            N4CITYST55443~\n            DMGD819000114M__~                              ** THIS IS THE PROBLEM, Loop 2010BD does not allow DMG in the 4010 Implementation guide, however the generic x12 standard does allow DMG int he 2010 loop.\n          NM1842MY HOTELEI000-00-0000~                     ** ODD, 84 is the code for Subscriber's Employer, this might me some custom implementation not in the standard Implementation Guide\n          CLM12345678948223&gt;&gt;1YAYYBAA&gt;&gt;&gt;MN~                LOOP ID - 2300 CLAIM Information\n            DTP439D820130101~\n            DTP435D820130101~\n            DTP096D820130101~\n            REFEA2639672~\n            HIBK&gt;920BF&gt;72885BF&gt; \n</code></pre>\n\nThe problem is that your sender is sending you something that is X12 compliant, but is not in the 4010 Institutional Implementation Guide issued by WPC.  Since the message isn't invalid I went ahead and updated the embedded 837 spec for 4010 so that it can handle your message.  I also had to add a loop for your NM1<em>84</em> segment which is also not in the Implementation Guide.  The changes are in <a href=\"https://x12parser.codeplex.com/SourceControl/changeset/34117\" rel=\"nofollow\">changeset 34117</a>.<br />\n",
+    "PostedDate": "2014-01-23T08:46:15.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1193555",
+    "ThreadId": "502341",
+    "Html": "Dear dstrubhar,\r<br />\nI can't thank you enough for all your prompt help with these issues! I can't tell you how much time &amp; effort you have saved us, not to mention this will tremendously help meet our project deadline. \r<br />\n<br />\nIn regards to implementing changeset 34117 at our end... we are currently using Release 2.3.4 of the X12Parser DLLs (including unbundlex12 functionality). We first call the parser.UnbundleByLoop( ) function to unbundle the claim, followed by running each unbundled X12 through an XSLT to generate an XML representation of the claim. How do I go about implementing the change you helped us here?\r<br />\n<br />\nThank you again for everything! We really appreciate it.\r<br />\nKind Regards,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-01-23T13:05:19.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1193574",
+    "ThreadId": "502341",
+    "Html": "I will be doing a new release by the end of the month.\r<br />\nUntil then you can grab the latest code from the Source Code tab and rebuild the OopFactory.X12.dll, that's the only one you will need to update.<br />\n",
+    "PostedDate": "2014-01-23T13:23:57.237-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1202288",
+    "ThreadId": "502341",
+    "Html": "Dear dstrubhar,\r<br />\nAre you planning to release a new version of the x12 parser anytime soon?<br />\n\r<br />\nMany thanks, in advance, for all your help.\r<br />\nKind Regards,\r<br />\nnk5491<br />\n",
+    "PostedDate": "2014-02-03T16:26:01.257-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1203465",
+    "ThreadId": "502341",
+    "Html": "\r\n<div dir=\"ltr\">I will do a release this weekend after I finish some regression testing.</div>\r\n<div><br>\r\n<br>\r\n<div></div>\r\n</div>\r\n",
+    "PostedDate": "2014-02-06T07:28:56.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

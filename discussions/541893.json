@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1232882",
+    "ThreadId": "541893",
+    "Html": "I'm working on an application that needs to turn 837 into flat files, For ease of transfomation, I'd like to unbundle by loop id 2400, however, calling UnbundleByLoop and passing 2400 doesn't seem to work (it runs, and runs, and runs).  I know my code works, because it is able to successfully unbundle by loop id 2300.\r<br />\n<br />\nBefore I delve in deeper, is it even possible to unbundle by loop 2400?\r<br />\n<br />\nThanks,\r<br />\nKen<br />\n",
+    "PostedDate": "2014-04-10T09:59:16.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1232884",
+    "ThreadId": "541893",
+    "Html": "This is not a very efficient way to transform to flat files, you are created a lot of duplicated data by trying to unbundle by loop 2400 which is the claim service line level.  This would mean for every line in your flat file you are going to repeat a lot of the claim information, subscriber information, provider information over and over again in every file and create a file for every line that you need in your flat file.\r<br />\n<br />\nThe unbundle feature is really so that you can break out a &quot;transaction&quot; and easily focus on just that one or store it away or show it as single entity instead of the whole file.\r<br />\n<br />\nYou should be able to do a transformation on a single xml that will produce a line for each 2400 loop.  If you are not confortable with XSLT.  You could also loop through the Interchange model to do this.<br />\n",
+    "PostedDate": "2014-04-10T10:10:47.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1232907",
+    "ThreadId": "541893",
+    "Html": "Thanks for your reply, much appreciated.<br />\n\r<br />\nFirst time dealing with this type of file, and just found it a bit easier to wrap my head around it and produce the desired output with it broken up.  However, your points are well taken and efficiency is an important issue.  I'll adjust my approach accordingly.\r<br />\n<br />\nThanks again,\r<br />\nKen<br />\n",
+    "PostedDate": "2014-04-10T10:46:25.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

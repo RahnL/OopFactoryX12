@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm just starting to deal with EDI, so I'm a total newb and I'm trying to get a handle on it.\n\nI've written a simple app to go through the POs that we get and I'm dumping information about the interchanges, function groups, transactions and segments and so forth I got this exception in one of the EDI messages:\n\nSegment 'MTX**APPOINTMENTS REQUIRED 72HRS   IN ADVANCE. CARRIER TO UNLOAD,' in segment position 8 within transaction '0001' cannot be identified within the supplied specification for transaction set 850 in any of the expected loops: N9.  To change this to a warning, pass throwExceptionOnSyntaxErrors = false to the X12Parser constructor.\n\nThis is the beginning of the transaction up to where it fails.\n\n```\nSE*17*0001\nST*850*0002\nBEG*00*SA*6047266661**20150112\nREF*IA*00000000\nITD*05*3*****10\nDTM*002*20150119\nTD5****M\nN9*L1*SPECIAL INSTRUCTIONS\nMTX**APPOINTMENTS REQUIRED 72HRS   IN ADVANCE. CARRIER TO UNLOAD,\n\n```\n(I zeroed out one of the numbers).\n\nI don't understand the error, however. Can someone explain it?",
+    "LastUpdatedDate": "2015-01-26T16:32:11.433-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2015-01-12T11:20:01.77-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "TransactionValidationException",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 2609
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "BTW, this is a 5010 spec message.",
+      "PostedDate": "2015-01-12T11:55:39.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Did you find an answer? \nYou need to review:\nhttps://x12parser.codeplex.com/SourceControl/latest#trunk/src/OopFactory.X12/Specifications/Ansi-850-4010Specification.xml\r\n\r\nI didn't see a 5010 spec listed so i will assume it falls back to the 4010 (I haven't looked into the code in a while).\r\n\r\nYou will see what the parser is expecting by looking at these specs and modifying them for yourself to match some special rules from the big companies that always break them.\r\n\r\nYou will see that this 850 allows an MTX segment but only in the ADV loop\n<Loop LoopId=\"ADV\">\n    <Name>Advertising Demographic Information</Name>\n    <StartingSegment SegmentId=\"ADV\" />\n    <Segment SegmentId=\"DTM\" />\n    <Segment SegmentId=\"MTX\" />\n  </Loop>\r\n\r\nIf you need it somewhere and can't understand xml structure you can more or less copy and paste that line to where you need it.\n",
+      "PostedDate": "2015-01-26T16:32:11.433-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

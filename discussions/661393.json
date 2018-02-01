@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1492770",
+    "ThreadId": "661393",
+    "Html": "I can't seem to get the Creation Date to print on the UB04 form using ClaimFormTransformationService.\r<br />\n<br />\nI have everything else printing correctly, but it isn't printing the creation date nor the &quot;0001&quot; in the total 42 field.<br />\n",
+    "PostedDate": "2017-02-16T05:26:59.82-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

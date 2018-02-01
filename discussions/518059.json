@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1188353",
+    "ThreadId": "518059",
+    "Html": "I'm looking to transform an 852 to a flat CSV file.  I've been trying to work through the example of <a href=\"https://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform\" rel=\"nofollow\">Creating a flat file or Excel file from the X12 xml using XSLT</a> but I'm getting lost on how to format the XSLT for the 852.  Is there a prebuilt XSLT for the 852?<br />\n",
+    "PostedDate": "2014-01-21T12:05:26.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1193185",
+    "ThreadId": "518059",
+    "Html": "Can you give an example of where you are at right now and some particular points where you are having trouble?<br />\n",
+    "PostedDate": "2014-01-23T06:40:37.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

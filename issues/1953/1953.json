@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "While working to leverage the Hipaa Claim objects to create 837P document, we found that the OtherSubscriberInformation.OtherPayer object is missing the Address property when the document is displayed with the Hipaa project classes. The data is present in the X12 XML.  To be specific, it is loop 2330A - Other Subscriber Address, and loop 2330A - Other Subscriber City/State/Zip.  I created a new OtherSubscriberInformation class that has a PostalAddress property to enable the addition of the address to this loop when we create the 837P.  We want verify that a) this loop is indeed missing, and b) that this is the correct way to extend the objects.\n\nWe also found that loop 2330B - Other Payer Address and 2330B - Other Payer City/State/Zip are not represented in the Hipaa project objects. I wrote a new class that inherits the EntityName class and adds a PostalAddress property.  Again, we want to verify that this hole does indeed exist in the Hipaa objects and that we extended the objects properly.\n\nLastly, we also found that loop 2330B - Date: Claim Check or Remit Date is not represented.  I created a new class that inherits from QualifiedDate, and exposes the DateTimeQualifier property for this loop element.\n\nIf needed, an example of the full edi can be uploaded.",
+    "LastUpdatedDate": "2014-04-14T05:51:47.147-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-04-14T05:51:47.147-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "837P Hipaa OtherSubscriberInformation.OtherPayer Missing Address",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1953
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

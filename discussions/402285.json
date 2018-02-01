@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "938022",
+    "ThreadId": "402285",
+    "Html": "\r\n<p>Forgive me if this has been covered else where and I missed it.&nbsp;</p>\r\n<p>What I am trying to do is take an 835 x12 file, unbundle it into individual x12 files per loop, and then generate an xml file for each one of those unbundled files. Am I able in some way to do that? When I try running the x12parser with a wildcard it crashes\r\n on me.</p>\r\n",
+    "PostedDate": "2012-11-07T08:54:54.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "938052",
+    "ThreadId": "402285",
+    "Html": "<p>Are you using the UnbundleX12.exe?&nbsp; Right now it expects exactly one filename, but I can change it in the next release to accept file patterns.</p>",
+    "PostedDate": "2012-11-07T09:34:23.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "938057",
+    "ThreadId": "402285",
+    "Html": "<p>yup, i run the unbudlex12.exe on the x12 file we get and it outputs a single file for each loop just fine. so now i have 3000+ .txt files that i would like to convert to xml files. i'm just wondering if there is a way i could easily script that. it's been a few years since i even opened visual studio, so i was hoping i could pass an&nbsp;argument&nbsp;to the x12parser like \"x12parser.exe \"c:\\outputfiles\\*.*\" \"c\\convertedxmlfiles\\\" using a * &nbsp;to pick up all the files that were created during the unbundlex12 process.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-11-07T09:43:17.227-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "938088",
+    "ThreadId": "402285",
+    "Html": "<p>disregard. i wrote a batch script to do it.</p>\r\n<p>for /f %%a IN ('dir c:\\835\\output /b *.txt') do call c:\\x12parser\\x12parser.exe c:\\835\\output\\%%a</p>",
+    "PostedDate": "2012-11-07T10:39:34.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

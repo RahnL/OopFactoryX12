@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "OopFactory.X12",
+      "DisplayName": "OopFactory.X12"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": "More on creating X12 documents",
+    "Description": "Are you guys trying to do the same thing? Austin looks like he wants to output an existing X12 file into a flat format/excel. EdiGuy, it looks like you are trying to populate the X12 data model to output a new file from scratch. \n\nAnyway, Austin, per the instructions here: [Creating a flat file or Excel file from the X12 xml using XSLT and XslCompiledTransform](https://x12parser.codeplex.com/wikipage?title=Creating%20a%20flat%20file%20from%20the%20X12%20xml%20using%20XSLT%20and%20XslCompiledTransform) state that you can use xslt to transform the parsed xml file into any format you want. This page has a download link to the sample project that loads and applys the xslt. I have an interest in flattening an 834 myself, so if I ever get around to it I'll let you know.",
+    "LastUpdatedDate": "2017-11-27T18:21:13.363-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-01-23T07:02:33.203-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "834 Transformation File",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 1876
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

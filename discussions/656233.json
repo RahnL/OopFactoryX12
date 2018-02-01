@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1478482",
+    "ThreadId": "656233",
+    "Html": "I'm implementing the EligibilityBenefitResponse object as is stated here: <a href=\"http://stackoverflow.com/questions/731591/anyone-translate-a-x12-271-healthcare-response\" rel=\"nofollow\">http://stackoverflow.com/questions/731591/anyone-translate-a-x12-271-healthcare-response</a>\r<br />\n<br />\nIt works great... mostly. \r<br />\n<br />\nThe envelope object is correctly parsing out the provider and subscriber information, but the benefit information is null/zero/empty. \r<br />\n<br />\nI've been crawling through the code. The benefits information is making it through the reader successfully. Somehow, it's not making it through the parser, and I'm not sure how the parser is supposed to be working.\r<br />\n<br />\nHas anyone else seen this issue?<br />\n",
+    "PostedDate": "2016-07-08T14:17:40.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

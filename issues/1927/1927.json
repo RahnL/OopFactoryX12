@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Greetings,\n\nI have some 837 files > 15MB size; while trying to parse is I am noticing the parser is unable to parse/ serialize more than 2.5 MB file size. Generating SystemOutOf Memory error. Also noticed the error below.\n\nPlease advice how to work with big files.\n\n\nSegment 'SVD*07202*227.36*HC:A0427:SH:GM**1' in segment position 3252 within transaction '000000012' cannot be identified within the supplied specification for transaction set 837 in any of the expected loops: 2000A[85],2000B[96],2300.  \n\n\nTo change this to a warning, pass throwExceptionOnSyntaxErrors = false to the X12Parser constructor. Parameter name: 837",
+    "LastUpdatedDate": "2014-03-21T07:59:24.36-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-03-19T11:30:50.983-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "837 Parsing Error for file > 2.5 MB",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1927
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "There is a batch size setting in the app.config allows it to switch to streaming instead of loading the whole file at once, the output if sent to xml files will be multiple files.\r\n\r\nThe other error is unrelated and has to do with a segment that doesn't exist in the embedded spec.\nSVD doesn't appear to be recognized in the 2300 loop.  SVD is expected as child of a service line which is a LX segment.  In your case it is appearing the claim level so the file has a syntax error.  See here for allowed loops https://www.disa.org/apps/workbook/X12_October_2012/ts/837.htm.",
+      "PostedDate": "2014-03-20T07:47:39.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "dstrubhar, \r\n\r\nThank you for your reply; I am not sure how to change that. I am using OopFactory.X12 dll in a test automation tool HP UFT. ",
+      "PostedDate": "2014-03-21T07:59:24.36-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

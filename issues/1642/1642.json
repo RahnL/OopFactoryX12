@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I create a 270 eligibility request it looks like the control number in the GS segment is not being set in the GE segment.  My GS/GE segment is as follows:\nGS*HS*<SENDER ID>*<RECEIVER ID>*20130715*1714*5*x*005010X279A1~\n\nGE*1*1~\n\nI created the message by creating an interchange and adding the necessary segments.  I ge thte string when calling the SerializeToX12() method.  I tried this with both the prior release and the most recent release.  As I understand the X12 spec. the GE should be GE*1*5 in the above message, correct?\n\nThanks.",
+    "LastUpdatedDate": "2013-07-24T18:32:33.747-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-07-15T14:22:50.363-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error when creating 270 eligibility request",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1642
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you post your code here ??? So, will try to look into the issue.",
+      "PostedDate": "2013-07-17T03:54:59.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's a class with a static method that creates the a 270 request:\r\n\r\nusing OopFactory.X12.Parsing;\nusing OopFactory.X12.Parsing.Model;\r\n\r\n    public class Generate270\n    {\n        const string _MsgVersion = \"005010X279A1\";\n\t\t\n        //Parse the X12 string to XML for processing\n        X12Parser parser = new X12Parser();\n        Interchange ichg270Msg;\n        FunctionGroup ichgFuncGrp;\n        Transaction _270trans;\r\n\r\n        public static void GenerateTestMsg()\n        {\n            DateTime curDateTime = DateTime.Now;\n\t\t\tstring _senderID = \"TestSender\";\n\t\t\tstring _receiverID = \"TestReceiver\";\n            int controlNo = 789;\r\n\r\n            //Parse the X12 string to XML for processing\n            X12Parser parser = new X12Parser();\n            Interchange ichg270Msg;\n            FunctionGroup ichgFuncGrp;\n            Transaction _270trans;\r\n\r\n\n            //Set the ISA Segment\n            ichg270Msg = new Interchange(curDateTime, controlNo, false);\n            ichg270Msg.InterchangeSenderIdQualifier = \"ZZ\";\n            ichg270Msg.InterchangeSenderId = _senderID;\n            ichg270Msg.InterchangeReceiverIdQualifier = \"ZZ\";\n            ichg270Msg.InterchangeReceiverId = _receiverID;\n            ichg270Msg.SetElement(12, \"00501\");                         //EDI Version\n            ichg270Msg.SetElement(15, \"T\");\n            ichg270Msg.SetElement(16, \":\");\r\n\r\n            ichgFuncGrp = ichg270Msg.AddFunctionGroup(\"HS\", curDateTime, 1, _MsgVersion);\n            ichgFuncGrp.ApplicationSendersCode = _senderID;\n            ichgFuncGrp.ApplicationReceiversCode = _receiverID;\n            ichgFuncGrp.ControlNumber = controlNo;\r\n\r\n            //Create new function group for this message\n            _270trans = ichgFuncGrp.AddTransaction(\"270\", controlNo.ToString().Length < 4 ? controlNo.ToString().PadLeft(4, '0') : controlNo.ToString());\r\n\r\n            //Add BHT Segment\n            Segment segBHT = _270trans.AddSegment(\"BHT\");\n            segBHT.SetElement(1, \"0022\");\n            segBHT.SetElement(2, \"13\");                                     //13 = request identification\n            segBHT.SetElement(3, controlNo.ToString());\n            segBHT.SetElement(4, curDateTime.ToString(\"yyyyMMdd\"));\n            segBHT.SetElement(5, curDateTime.ToString(\"HHmm\"));\r\n\r\n            //Add Hierarchical Loop 2000A - payer source\n            HierarchicalLoop hl2000A = _270trans.AddHLoop(\"1\", \"20\", true);\r\n\r\n            //Identifier eligibility or benefit information source\n            Loop payer2100A = hl2000A.AddLoop(\"NM1*PR*2\");                  //PR = Payer, 2 = Non-Person\n            payer2100A.SetElement(3, \"PayerName\");\n            payer2100A.SetElement(8, \"PI\");                                 //Indicates next field is payoer ID\n            payer2100A.SetElement(9, _receiverID);\r\n\r\n            //Add Hierarchical Loop 2000B - Provider\n            HierarchicalLoop hl2000B = hl2000A.AddHLoop(\"2\", \"21\", true);\n            Loop receiverSource = hl2000B.AddLoop(\"NM1*1P*1\");      //1P = Provider, 1 = Person\n            receiverSource.SetElement(3, \"BillingGroup\");\n            receiverSource.SetElement(8, \"FI\");\n            receiverSource.SetElement(9, \"NPI\");\r\n\r\n            //Add Hierarchical Loop 2000C - subscriber information\n            HierarchicalLoop hl2000C = hl2000B.AddHLoop(\"3\", \"22\", true);\n            //Add trace number?\n            Loop subscriber = hl2000C.AddLoop(\"NM1*IL*1\");          //1P = Provider, 1 = Person\n            subscriber.SetElement(3, \"PatientLN\");\n            subscriber.SetElement(4, \"PatientFN\");\n            subscriber.SetElement(8, \"34\");\n            subscriber.SetElement(9, \"000-00-0000\");\n            subscriber.AddSegment(\"N3*\" + \"No Where Street\");        //could add line 2 here as well\n            subscriber.AddSegment(string.Format(\"N4*{0}*{1}*{2}\", \"AnyTown\", \"MA\", \"00000\"));\n            subscriber.AddSegment(\"DMG*D8*\" + \"19620505\");\n            subscriber.AddSegment(\"DTP*291*D8*\" + \"20130701\"); //Might need to make sure this has value!\n            subscriber.AddLoop(\"EQ*\" + \"30\");                            //Information Request\r\n\r\n            string results = ichg270Msg.SerializeToX12(true);\n            System.Diagnostics.Debug.WriteLine(results);\n        }\n}\r\n\r\n",
+      "PostedDate": "2013-07-17T13:16:04.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I created a test case with this code. I got the following:\r\n\r\nGS^HS^TestSender^TestReceiver^20130718^1555^789^X^005010X279A1~\r\n\r\nOopFactory.X12 version I have is: 2.3.2.0\r\n\r\nSomething must have changed since then. Hope this helps.\r\n\r\nI am pasting the complete output here:\r\n\r\nISA^00^          ^00^          ^ZZ^TestSender     ^ZZ^TestReceiver   ^130718^1555^U^00501^000000789^1^T^:~\n  GS^HS^TestSender^TestReceiver^20130718^1555^789^X^005010X279A1~\n    ST^270^0789~\n      BHT^0022^13^789^20130718^1555~\n      HL^1^^20^1~\n        NM1^PR^2^PayerName^^^^^PI^TestReceiver~\n        HL^2^1^21^1~\n          NM1^1P^1^BillingGroup^^^^^FI^NPI~\n          HL^3^2^22^1~\n            NM1^IL^1^PatientLN^PatientFN^^^^34^000-00-0000~\n              N3^No Where Street~\n              N4^AnyTown^MA^00000~\n              DMG^D8^19620505~\n              DTP^291^D8^20130701~\n              EQ^30~\n    SE^14^0789~\n  GE^1^1~\nIEA^1^000000789~",
+      "PostedDate": "2013-07-18T14:05:11.507-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So your output looks like what I saw...GE should have 789 in it.  I found a work around is to set the value specifically in code.\r\n\r\nYou'll also notice that in the transaction your not setting ST03 to the message version - 005010X279A1.  I believe the 270 spec indicates that this is required.",
+      "PostedDate": "2013-07-24T18:32:33.747-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

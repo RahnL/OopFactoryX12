@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-07-29T09:43:01.75-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Interchange ctors create 4010 envelopes",
+    "LastUpdatedDate": "2013-05-16T04:34:02.02-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-02-26T18:10:07.21-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Can't create 5010 Interchange",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1111
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "That is the default behavior.  See http://x12parser.codeplex.com/discussions/265463 for code samples of creating a 5010.",
+      "PostedDate": "2012-02-27T09:11:24.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, but would it not make more sense to define the desired version in the ctor?\r\n\r\nAlso, when transforming a 5010 envelope to XML, the repetition separator ^ seems to get replaced by { - is this a bug or a feature? As far as I can see, ^ is not reserved in XML",
+      "PostedDate": "2012-02-27T17:37:43.687-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am not noticing the problem you describe with ^.  Do you have a sample de-identified test file?",
+      "PostedDate": "2012-03-14T18:33:22.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It happens with all files as far as I can see - look at the ISA11 segment value:\r\n\r\n<Interchange segment-terminator=\"~\" element-separator=\"*\" sub-element-separator=\"^\">\r\n  <ISA>\r\n    <!--Author Information Qualifier-->\r\n    <ISA01>00<!--No Authorization Information Present--></ISA01>\r\n    <!--Author Information-->\r\n    <ISA02></ISA02>\r\n    <!--Security Information Qualifer-->\r\n    <ISA03>00<!--No Security Information Present--></ISA03>\r\n    <!--Security Information-->\r\n    <ISA04></ISA04>\r\n    <!--Interchange ID Qualifier-->\r\n    <ISA05>ZZ<!--Mutually Defined--></ISA05>\r\n    <!--Interchange Sender ID-->\r\n    <ISA06>        </ISA06>\r\n    <!--Interchange ID Qualifier-->\r\n    <ISA07>ZZ<!--Mutually Defined--></ISA07>\r\n    <!--Interchange Receiver ID-->\r\n    <ISA08>       </ISA08>\r\n    <!--Interchange Date-->\r\n    <ISA09>120315</ISA09>\r\n    <!--Interchange Time-->\r\n    <ISA10>1827</ISA10>\r\n    <!--Inter Control Standards Identifier-->\r\n    <ISA11>{</ISA11>\r\n    <!--Inter Control Version Number-->\r\n    <ISA12>00501</ISA12>\r\n    <!--Inter Control Number-->\r\n    <ISA13>765206626</ISA13>\r\n    <!--Acknowlegment Requested-->\r\n    <ISA14>0<!--No Acknowledgment Requested--></ISA14>\r\n    <!--Usage Indicator-->\r\n    <ISA15>P<!--Production Data--></ISA15>\r\n    <!--Component Element Separator-->\r\n    <ISA16>\r\n      <ISA1601 />\r\n      <ISA1602 />\r\n    </ISA16>\r\n  </ISA>",
+      "PostedDate": "2012-03-15T11:29:12.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please post the original ISA segment and I will troubleshoot.  Thanks.",
+      "PostedDate": "2012-03-15T12:23:51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ISA*03*00000000  *01*00000000  *ZZ*00000000       *ZZ*000000         *120227*0830*^*00501*000000008*0*P*:~\r\nGS*HS*00000000*000000*20120227*2030*1*X*005010X279A1~\r\nST*270*000000001*005010X279A1~\r\nBHT*0022*13*6CD10A57-8F4A-41C1-AAAF-C9A1480B8931*20120227*0830~\r\nHL*1**20*1~\r\nNM1*PR*2*TEST*****PI*00000~\r\nHL*2*1*21*1~\r\nNM1*1P*1*TEST*****XX*0000000000~\r\nHL*3*2*22*0~\r\nNM1*IL*1*FOO*BARO****MI*000000000000~\r\nDMG*D8*20010101*M~\r\nDTP*291*D8*20120227~\r\nEQ*30~\r\nSE*12*000000001~\r\nGE*1*1~\r\nIEA*1*000000008~",
+      "PostedDate": "2012-03-15T14:01:17.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I attempted to recreate by putting a ^ in the ISA11 position, and instead I get:\r\n    <ISA11>\r\n      <ISA1101 />\r\n      <ISA1102 />\r\n    </ISA11>\r\nIt should pick up whatever is designated as the 83 character of the ISA segment.  The sub-element-separator won't show up in ISA16 as you might expect because it is getting used as a sub-element separator that is why I added them as attributes to Interchange.\r\nLet me know if this affects your ability to parse the file.  There is a transformation for getting from the XML back to x12 which you can use the TransformToX12 command line to execute.",
+      "PostedDate": "2012-03-15T14:15:06.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "How did you get the \r\n\r\n<ISA11>\r\n<ISA1101 />\r\n<ISA1102 />\r\n</ISA11>\r\n\r\noutput? ISA11 in 5010 is the repetition separator and it's usually ^\r\nNot sure I get it.\r\n\r\nThe problem is that ^ is getting replaced by } inside other segments also\r\nSo \r\n\r\nSEG*A^B^C~\r\n\r\nGets transformed to \r\n\r\n<SEG>\r\n <SEG01>A}B}C</SEG01>\r\n</SEG>",
+      "PostedDate": "2012-03-15T15:38:39.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not seeing the same output that you are.  The x12 you posted produced this for me:\r\n\r\n<?xml version=\"1.0\"?>\r\n<Interchange segment-terminator=\"~\" element-separator=\"*\" sub-element-separator=\":\">\r\n  <ISA>\r\n    <!--Author Information Qualifier-->\r\n    <ISA01>03<!--Additional Data Identification--></ISA01>\r\n    <!--Author Information-->\r\n    <ISA02>00000000  </ISA02>\r\n    <!--Security Information Qualifer-->\r\n    <ISA03>01<!--Password--></ISA03>\r\n    <!--Security Information-->\r\n    <ISA04>00000000  </ISA04>\r\n    <!--Interchange ID Qualifier-->\r\n    <ISA05>ZZ<!--Mutually Defined--></ISA05>\r\n    <!--Interchange Sender ID-->\r\n    <ISA06>00000000       </ISA06>\r\n    <!--Interchange ID Qualifier-->\r\n    <ISA07>ZZ<!--Mutually Defined--></ISA07>\r\n    <!--Interchange Receiver ID-->\r\n    <ISA08>000000         </ISA08>\r\n    <!--Interchange Date-->\r\n    <ISA09>120227</ISA09>\r\n    <!--Interchange Time-->\r\n    <ISA10>0830</ISA10>\r\n    <!--Inter Control Standards Identifier-->\r\n    <ISA11>^</ISA11>\r\n    <!--Inter Control Version Number-->\r\n    <ISA12>00501</ISA12>\r\n    <!--Inter Control Number-->\r\n    <ISA13>000000008</ISA13>\r\n    <!--Acknowlegment Requested-->\r\n    <ISA14>0<!--No Acknowledgment Requested--></ISA14>\r\n    <!--Usage Indicator-->\r\n    <ISA15>P<!--Production Data--></ISA15>\r\n    <!--Component Element Separator-->\r\n    <ISA16>\r\n      <ISA1601 />\r\n      <ISA1602 />\r\n    </ISA16>\r\n  </ISA>\r\n\r\n\r\nThe pre-processor Identified \":\" as the sub-element-separator and when it sees it in ISA16 it doesn't treat it as content, it treats it as a separator for 2 empty fields.\r\nIf your Repetition Separator is different than your component element separator which is a requirement than this should never happen in ISA11.  I did notice in your first example that your sub-element-separator was already \"^\" so it would not be valid if your repetition separator were also \"^\".\r\n",
+      "PostedDate": "2012-03-15T16:26:47.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hm... it shouldn't make a difference but that XML was actually generated by this response, not the request that I posed (my bad)\r\n\r\nISA*00*          *00*          *ZZ*000000         *ZZ*00000000       *120223*1039*^*00501*000041439*0*T*:~\r\nGS*HB*0000000*0000000*20120223*1039290*41439*X*005010X279A1~\r\nST*271*41439*005010X279A1~\r\nBHT*0022*11*6A9402DB-1857-43D3-8396-1DF01A7E3440*20120223*1039276~\r\nHL*1**20*1~\r\nNM1*PR*2*BBBBB*****PI*00000~\r\nHL*2*1*21*1~\r\nNM1*1P*1*BBBBB*****XX*000000000~\r\nHL*3*2*22*0~\r\nNM1*IL*1*BB*BB****MI*BBBBB~\r\nAAA*Y**42*R~\r\nDMG*D8*20011003*M~\r\nEB*P~\r\nSE*15*41439~\r\nGE*1*41439~\r\nIEA*1*000041439~\r\n\r\nMaybe you fixed it at a latest changeset? I'm running on v2.2.2.0",
+      "PostedDate": "2012-03-15T17:07:04.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tried your latest x12 message and that works fine too.  The problem may have been fixed by release 2.2.3.  Hope that helps.",
+      "PostedDate": "2012-03-15T18:10:07.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hrmpf.... I figured it out. \r\nThe response comes back with { as rep sep!!!\r\nSo ISA11 is actually right but the sub-element-separator attr is wrong (still ^)\r\n\r\nTest case:\r\n\r\nconst string x12 =\r\n                \"ISA*00*          *00*          *ZZ*FFFFFF         *ZZ*FFFFFFFF       *120316*0157*{*00501*766615369*0*P*^~GS*HB*FFFFF*FFFFF*20120316*0157294*766615369*X*005010X279A1~ST*271*000617384*005010X279A1~BHT*0022*11*B1A0E4C2-C058-40FE-B7A8-87D499F3C3FC*20120316*0857260~HL*1**20*1~NM1*PR*2*FFFFF*****PI*260~HL*2*1*21*1~NM1*1P*2*FFF*****XX*FFFF~HL*3*2*22*0~NM1*IL*1*FF*FF*L***MI*FFFFFF~DMG*D8*20010101*M~DTP*382*RD8*20010101-99991231~EB*P~SE*28*000617384~GE*1*766615369~IEA*1*766615369~\";\r\n            X12Parser parser = new X12Parser();\r\n            Console.WriteLine(parser.Parse(x12).Serialize(false));",
+      "PostedDate": "2012-03-15T19:04:46.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-07-29T09:43:01.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:00.243-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:02.02-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

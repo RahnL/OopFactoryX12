@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-09-13T18:42:40.687-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was wondering if there was any chance in the future of the 940/945 transaction sets of being added to the X12 parser?\nI have done some searches and found a site which has info on these transaction sets:\nhttp://www.freightdocs.com/EDI_4010/ts940.htm\nhttp://www.freightdocs.com/EDI_4010/ts945.htm\nAlso I have attached a couple PDFs on the transaction sets that I found.",
+    "LastUpdatedDate": "2013-09-13T18:42:40.687-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-01-01T15:09:55.703-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Request for Transaction Set 940/945",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1456
+  },
+  "FileAttachments": [
+    {
+      "FileId": 641,
+      "FileName": "940Nov0712_ADC_1020.pdf",
+      "DownloadUrl": ".\\641"
+    },
+    {
+      "FileId": 642,
+      "FileName": "945_Nov0812_ADC_1020.pdf",
+      "DownloadUrl": ".\\642"
+    },
+    {
+      "FileId": 643,
+      "FileName": "EDI_Codes.zip",
+      "DownloadUrl": ".\\643"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Here is the 945 PDF",
+      "PostedDate": "2013-01-01T15:10:51.76-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-01-01T15:13:25.813-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And Here are all the EDI Codes in htm format Zipped up",
+      "PostedDate": "2013-01-01T15:13:26.377-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 23158.",
+      "PostedDate": "2013-02-18T05:38:40.247-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This has been added with one sample test for each.\nLet me know if you have any more test data that I can add to the unit test before this goes into a release.",
+      "PostedDate": "2013-02-18T05:40:11.227-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:55.023-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-09-13T18:42:40.687-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

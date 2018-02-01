@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "You&#39;re welcome.",
+    "ClosedDate": "2012-08-29T14:06:30.393-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The 5010 standard introduced having multiple Service Type codes within a single EB loop.  This seems to (quietly) break the Transform271ToBenefitResponse method of the EligibilityTransformationService and no ServiceType elements are created.\n \nDigging into the XSLT and intermediate XML format shows that the ^ separated service type codes are not mapped and thus have no comment which breaks the XSLT.  \n \nDigging into the object model shows that the ServiceTypeCodes list is empty.\n \nA sample segment is:\n \n~EB*1**1^33^47^86^88^98^AL^MH^UC\n \nThe expected behavior is that the produced BenefitInfo section has either 9 ServiceType elements showing the code and mapped value, or 9 BenefitInfo sections are created.\n \nThanks for a great library!",
+    "LastUpdatedDate": "2013-05-16T04:33:59.323-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2012-08-29T09:16:28.163-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "HIPAA 5010 271 Multi ServiceType",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1305
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi,\r\n\r\nPlease close this defect.  The issue was with our upstream clearinghouse which was marking the subElementSeparator as \":\" and then using \"^\".\r\n\r\nThanks again!",
+      "PostedDate": "2012-08-29T10:03:19.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-08-29T14:06:30.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:46:56.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:33:59.323-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

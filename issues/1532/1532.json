@@ -1,0 +1,56 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-03-19T16:58:01.53-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Parser produces an error when Loop2330G is included.  V 005010X222A1.",
+    "LastUpdatedDate": "2013-05-16T04:33:58.403-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-03-19T11:27:02.47-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "837P Loop 2330G — OTHER PAYER BILLING PROVIDER",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1532
+  },
+  "FileAttachments": [
+    {
+      "FileId": 655,
+      "FileName": "ST1309_XX.txt",
+      "DownloadUrl": ".\\655"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 24118.",
+      "PostedDate": "2013-03-19T16:58:01.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:33:58.403-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

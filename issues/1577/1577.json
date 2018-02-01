@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When we return a re-priced 837 to our clients, we include HCP segments to denote recommended payments.  Upon inspection of the ClaimDocument object after running the following 3 lines of code, the HCP information is not included.  There are HCP(s) at the Claim(2300) and ServiceLine levels.\n\n```\nStream stream = File.Open(@\"C:\\Temp\\HFN\\OOPAnalysis\\226609\\226609-EDIOut.x12\", FileMode.Open);\nvar service = new ProfessionalClaimToHcfa1500FormTransformation(string.Empty);\nvar document = service.Transform837ToClaimDocument(stream);\n```\n\nA partial document below...\nCLM~0034513~3864~~~83:A:1~~C~N~Y~~EM:::IL\nDTP~434~RD8~20130319-20130319\nDTP~050~D8~20130403\nCL1~9~9~01\nAMT~AAE~2055.65\nREF~9A~226609\nREF~F8~13C08C478311\nREF~D9~09413091513090294\nREF~EA~0034513\nHI~BK:7220\nHI~PR:7220\nHI~BH:04:D8:20130118\n__HCP~10~1644.52__\nNM1~71~1~BOGUS ENTRY HERE\nLX~1\nSV2~0490~HC:62310~2664~UN~1\nDTP~472~D8~20130319\nREF~6R~1\nAMT~AAE~1417.25\nNTE~TPO~NEG\n__HCP~10~1133.8__\nLX~2\nSV2~0400~HC:77003:TC~1200~UN~1\nDTP~472~D8~20130319\nREF~6R~2\nAMT~AAE~638.4\nNTE~TPO~NEG\n__HCP~10~510.72__\nSE~47~000000002",
+    "LastUpdatedDate": "2015-05-21T12:09:38.793-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-05-09T09:02:27.963-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "837 i and p - HCP Segments",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 1577
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Did you ever find a resolution to this?  We are working with 837's and are running into this exact issue.  We need the repriced information from the HCP segment, but it is not accessible.\r\n\r\nIs there a way to access this information?",
+      "PostedDate": "2015-05-21T12:08:05.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-05-21T12:09:38.793-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

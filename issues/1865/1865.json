@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-01-19T17:52:07.143-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In these two files, the TransactionSetIdentifierCode value is incorrect.  Should be 271 instead of 270.\n\nAnsi-271-4010Specification.xml\nAnsi-271-5010Specification.xml",
+    "LastUpdatedDate": "2017-11-27T18:21:13-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2014-01-09T14:56:44.64-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "TransactionSetIdentifierCode needs correction in 271 specifications.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1865
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 34030: Modified 271 definitions per bug report in WorkItem#1865 - 270->271 in TransactionSetIdentifierCode",
+      "PostedDate": "2014-01-19T17:52:07.143-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-01-19T18:22:58.643-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:21:13-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

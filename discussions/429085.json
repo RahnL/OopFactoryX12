@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "984690",
+    "ThreadId": "429085",
+    "Html": "\r\n<p>For example, when I opened Exampl1.txt, I got the following errors:</p>\r\n<p>(Example2.txt, Example3.txt etc. also seems to have similar issues)</p>\r\n<p>At envelope 01/201495124-&gt;01/207663412, Ctrl=000000001<br>\r\n&nbsp;<br>\r\nAt group 207663412-&gt;201495124, Ctrl=1<br>\r\n&nbsp;&nbsp;<br>\r\nAt message 856:123456 Ctrl=0001<br>\r\n&nbsp;&nbsp;<br>\r\nHL - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nREF - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nN1 - doesn't belong in this set<br>\r\n&nbsp;&nbsp;<br>\r\nN3 - doesn't belong in this set<br>\r\n&nbsp;&nbsp;<br>\r\nN4 - doesn't belong in this set<br>\r\n&nbsp;&nbsp;<br>\r\nN1 - doesn't belong in this set<br>\r\n&nbsp;&nbsp;<br>\r\nN3 - doesn't belong in this set<br>\r\n&nbsp;&nbsp;<br>\r\nN4 - doesn't belong in this set<br>\r\n&nbsp;&nbsp;<br>\r\nHL - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nPRF - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nHL - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nLIN - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nSN1 - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nHL - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nLIN - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nSN1 - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nHL - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nLIN - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nSN1 - is out of order<br>\r\n&nbsp;&nbsp;<br>\r\nSE - is out of order</p>\r\n",
+    "PostedDate": "2013-01-09T13:49:51.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985988",
+    "ThreadId": "429085",
+    "Html": "\r\n<p>Found a sample to work with</p>\r\n<p>ISA*01*0000000000*01*ABCCO&nbsp;&nbsp;&nbsp;&nbsp; *12*4405197800&nbsp;&nbsp;&nbsp;&nbsp; *01*999999999&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *111206*1719*-*00406*000000049*0*P*&gt;<br>\r\nGS*SH*4405197800*999999999*20111206*1045*49*X*004060<br>\r\nST*856*0008<br>\r\nBSN*14*829716*20111206*142428*0002<br>\r\nHL*1**S<br>\r\nTD1*PCS*2****A3*60.310*LB<br>\r\nTD5**2*XXXX**XXXX<br>\r\nREF*BM*999999-001<br>\r\nREF*CN*5787970539<br>\r\nDTM*011*20111206<br>\r\nN1*SH*1 EDI SOURCE<br>\r\nN3*31875 SOLON RD<br>\r\nN4*SOLON*OH*44139<br>\r\nN1*OB*XYZ RETAIL<br>\r\nN3*P O BOX 9999999<br>\r\nN4*ATLANTA*GA*31139-0020**SN*9999<br>\r\nN1*SF*1 EDI SOURCE<br>\r\nN3*31875 SOLON ROAD<br>\r\nN4*SOLON*OH*44139<br>\r\nHL*2*1*O<br>\r\nPRF*99999817***20111205<br>\r\nHL*3*2*I<br>\r\nLIN*1*VP*87787D*UP*999999310145<br>\r\nSN1*1*24*EA<br>\r\nPO4*1*24*EA<br>\r\nPID*F****BLUE WIDGET<br>\r\nHL*4*2*I<br>\r\nLIN*2*VP*99887D*UP*999999311746<br>\r\nSN1*2*6*EA<br>\r\nPO4*1*6*EA<br>\r\nPID*F****RED WIDGET<br>\r\nCTT*4*30<br>\r\nSE*31*0008<br>\r\nGE*1*49<br>\r\nIEA*1*000000049<br>\r\n&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-12T14:58:31.68-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985997",
+    "ThreadId": "429085",
+    "Html": "\r\n<p>WHen I&nbsp;try to parse this, I am getting the following error:</p>\r\n<p>Segment 'N1*SH*1 EDI SOURCE' in segment position 9 within transaction '0008' cannot be identified within the supplied specification for transaction set 856.<br>\r\nParameter name: 856</p>\r\n",
+    "PostedDate": "2013-01-12T15:10:27.957-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002465",
+    "ThreadId": "429085",
+    "Html": "This has been fixed with this changeset:  <a href=\"http://x12parser.codeplex.com/SourceControl/changeset/23146\" rel=\"nofollow\">http://x12parser.codeplex.com/SourceControl/changeset/23146</a>.\r<br />\n<br />\nIf you know of a specification with the &quot;SH&quot; entity code, please post a link so that I can make sure there are no other missing entity codes.<br />\n",
+    "PostedDate": "2013-02-17T11:33:08.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002924",
+    "ThreadId": "429085",
+    "Html": "Thanks a lot for all your latest changes. I will get the latest code and test them asap.\r<br />\n<br />\nRegards\r<br />\nShanthu<br />\n",
+    "PostedDate": "2013-02-18T10:22:38.79-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

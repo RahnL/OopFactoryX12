@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1201056",
+    "ThreadId": "528456",
+    "Html": "I am attempting to parse EDI ACH files to gather sender and receiver info. Am I correct that this software doesn't strip the X12 info out of the file, only works with previously stripped data?<br />\n",
+    "PostedDate": "2014-01-30T11:12:35.907-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

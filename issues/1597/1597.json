@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Answered in discussion thread.",
+    "ClosedDate": "2013-07-14T14:33:14.813-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "https://x12parser.codeplex.com/discussions/444906\n\nAny thoughts?",
+    "LastUpdatedDate": "2013-07-14T14:33:14.813-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-05-31T17:59:35.96-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot process EDI documents",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1597
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

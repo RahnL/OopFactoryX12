@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1479991",
+    "ThreadId": "656742",
+    "Html": "I have 837 data and am generating PDFs.  The parser is inserting my two occurrence code and date sets in field 31 a and then field 31 b.  I expected it to put them in field 31 and 32, using the a line first.  What is the reason for putting the second one in 31 b instead of 32 a?\r<br />\n<br />\nThanks for any help. <br />\n",
+    "PostedDate": "2016-07-27T16:16:32.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

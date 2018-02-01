@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "967505",
+    "ThreadId": "415242",
+    "Html": "\r\n<p>I am very impressed by your design approach and understanding of X12.</p>\r\n<p>X12 is one of those old artifacts of computer history that OO developers are frustrated by.</p>\r\n<p>All those codes and loops and for what?</p>\r\n<p>I get the history of the compression&nbsp;algorithm. &nbsp;And I get the desire to convert the data to XML.</p>\r\n<p>The flat file folks (which I sorta am) like simple file structures with defined schema's.</p>\r\n<p>I am currently working on ways to create functional transactions from HIPAA 834 files.</p>\r\n<p>Our development team is thinking of deploying a rules engine on top of an X12 parser.</p>\r\n<p>Its my belief that &quot;the points of variability&quot; come from the trading partners not from the file</p>\r\n<p>itself.</p>\r\n<p>Lastly - I am sick of one of&nbsp;commercial&nbsp;products that try to &quot;handle&quot; HIPAA transactions.</p>\r\n<p>Just my thoughts before Christmas. &nbsp;And Kudo's for a really clear design pattern.</p>\r\n<p>JP</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-12-22T18:42:34.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002462",
+    "ThreadId": "415242",
+    "Html": "Yes, you are correct about the variables due to trading partners.\r<br />\nThe transactions that are part of HIPAA are somewhat more stable because of their requirement to work with the government (mostly CMS).\r<br />\n<br />\nThe other transactions have very general specifications, but then trading partners publish their own companion guides with exactly what they expect.  Since I didn't have spare cash to buy all the x12 specifications, they are mostly done with what I could gather off the internet.  Hopefully it will meet most developers expectations and is easily adaptable so that you can meet your trading partner's companion guides.\r<br />\n<br />\nThanks for the compliment.<br />\n",
+    "PostedDate": "2013-02-17T11:09:05.863-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

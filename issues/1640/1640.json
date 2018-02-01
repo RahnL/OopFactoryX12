@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-09-13T18:03:24.823-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When using the X12Parser.exe, if the Qualifier Set has a -- in the description, then the XML comment will become invalid.  I've changed the code in OopFactory.X12\\Parsing\\Model\\Segment.cs.  Or would it be better to change the specification?\n\nFrom:\n\n```\nwriter.WriteComment(allowedValue.Description);\n```\n\nTo:\n\n```\nwriter.WriteComment(allowedValue.Description.Replace(\"-\",\"\"));\n```\n\n```\nif (!string.IsNullOrEmpty(SegmentId))\n            {\n                writer.WriteStartElement(SegmentId);\n                for (int i = 0; i < _dataElements.Count; i++)\n                {\n                    string elementName = String.Format(\"{0}{1:00}\", SegmentId, i + 1);\n\n                    List<AllowedIdentifier> identifiers = new List<AllowedIdentifier>();\n\n                    if (SegmentSpec != null && SegmentSpec.Elements.Count > i && !string.IsNullOrEmpty(_dataElements[i]))\n                    {\n                        writer.WriteComment(SegmentSpec.Elements[i].Name);\n                        identifiers = SegmentSpec.Elements[i].AllowedIdentifiers;\n                    }\n                    if (_dataElements[i].IndexOf(_delimiters.SubElementSeparator) < 0 || SegmentId == \"BIN\" || SegmentId == \"BDS\")\n                    {\n                        writer.WriteStartElement(elementName);\n                        writer.WriteValue(_dataElements[i]);\n                        if (SegmentSpec != null && SegmentSpec.Elements.Count > i && SegmentSpec.Elements[i].Type == Specification.ElementDataTypeEnum.Identifier)\n                        {\n                            var allowedValue = identifiers.FirstOrDefault(ai => ai.ID == _dataElements[i]);\n                            if (allowedValue != null)\n                                writer.WriteComment(allowedValue.Description.Replace(\"-\",\"\"));\n                        }\n                        writer.WriteEndElement();\n                        \n                     }\n                    else\n                    {\n                        writer.WriteStartElement(elementName);\n                        var subElements = _dataElements[i].Split(_delimiters.SubElementSeparator);\n                        for (int j = 0; j < subElements.Length; j++)\n                        {\n                            var subElementName = String.Format(\"{0}{1:00}\", elementName, j + 1);\n                            writer.WriteStartElement(subElementName);\n                            writer.WriteValue(subElements[j]);\n                            if (SegmentSpec != null && SegmentSpec.Elements.Count > i && SegmentSpec.Elements[i].Type == Specification.ElementDataTypeEnum.Identifier)\n                            {\n                                var allowedValue = identifiers.FirstOrDefault(ai => ai.ID == subElements[j]);\n                                if (allowedValue != null)\n                                    writer.WriteComment(allowedValue.Description);\n                            }\n                            writer.WriteEndElement();\n                        }\n                        writer.WriteEndElement();\n                    }\n                }\n\n                writer.WriteEndElement();\n            }\n```",
+    "LastUpdatedDate": "2013-09-13T18:03:24.823-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2013-07-11T08:59:06.237-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Qualifier Set has -- will malform the XML",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1640
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I would not recommend replacing a single hyphen when only a double hyphen will cause the XML parsers to terminate the comment earlier than \"expected\".\r\n\r\nDocumentation: http://www.w3.org/TR/xml11/  \nDouble hyphen issue is described in section 2.5 \r\n\r\nEither of your proposed solutions should work. If you were going to go the route of the specification restriction it would probably be best to modify the x12parserspecification.xsd and use a regex restriction on the types that are being used to generate xml comments.\n",
+      "PostedDate": "2013-07-11T09:19:00.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 30896.",
+      "PostedDate": "2013-09-13T18:03:24.823-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

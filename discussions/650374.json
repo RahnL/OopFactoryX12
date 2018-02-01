@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1460265",
+    "ThreadId": "650374",
+    "Html": "I'm looking to a PER segment to the NM1 loop with cell phone and work phone, but I don't see those options inside of the CommunicationNumberQualifier class... Is there an easy way to get around this? <br />\n<br />\nHere's what I've got: <br />\n<pre><code>\nvar per = nm1.AddSegment(new TypedSegmentPER());\nper.PER01_ContactFunctionCode = null;\nper.PER02_Name = null;\nper.PER03_CommunicationNumberQualifier = CommunicationNumberQualifer.Telephone;\nper.PER04_CommunicationNumber = null;\nper.PER05_CommunicationNumberQualifier = CommunicationNumberQualifer.ElectronicMail;\nper.PER06_CommunicationNumber = null;\nper.PER05_CommunicationNumberQualifier = CommunicationNumberQualifer.Facsimile;\nper.PER08_CommunicationNumber = null;\nper.PER09_ContactInquiryReference = null;</code></pre>\n\nInstead of Telephone, I'm looking to switch it to be CellPhone. <br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2016-01-22T12:21:13.16-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

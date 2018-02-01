@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1028449",
+    "ThreadId": "439791",
+    "Html": "A general question on how other processors of EDI 837 handle either attachments or supporting documentation (EOB's) in the EDI format. When a paper claim comes through there can be all types of supporting documentation attached. How are the paper images(pdf?) sent along with the actual EDI claim?  Or aren't they? If the electronic image of the paper documents aren't included, and they are possibly accessed through a portal(?), what and how is the paper indexed to the EDI claim? We are currently &quot;converting&quot; from a manual input of claim information to the EDI. How did/do other claim processors handle the paper attachments?\r<br />\n<br />\nThanx\r<br />\nJim H<br />\n",
+    "PostedDate": "2013-04-10T07:14:28.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030783",
+    "ThreadId": "439791",
+    "Html": "See the PWK segment that is the claim loop 2300.\r<br />\nIT allows you to specify how the attachment was sent and a control number for that attachment.\r<br />\nOTher than that, you would work it out with your clearinghouse on actually packaging the attachments so that your receiver could get them.<br />\n",
+    "PostedDate": "2013-04-15T12:07:13.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1409454",
+    "ThreadId": "626250",
+    "Html": "I am attempting to use the X12 parser to convert 834,820 and 999 documents to JSON so I can store them in a PostgreSQL database.  This library meets all my needs until I begin to encounter very large files.  I am able to convert a large file to JSON (while it is slow) but unfortunately the resulting file size is just over 256MB which is the size limit for a PostgreSQL JSONB column.  I then tried to unbundle the 834 file by loop id which caused my application to hang indefinitely.  I believe I let it run for 10 minutes.  Based on our requirements, I think unbundling is the only viable solution.\r<br />\n<br />\nDoes anyone have any tips/suggestions on how to handle large files?  I should note that these files come to us daily and they are perpetually increasing in size.<br />\n",
+    "PostedDate": "2015-04-13T06:26:26.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1409939",
+    "ThreadId": "626250",
+    "Html": "Try to unbundle by the transaction set (ST) instead of the loop ID.  This won't create quite as many unbundled files.<br />\n",
+    "PostedDate": "2015-04-13T09:52:56.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

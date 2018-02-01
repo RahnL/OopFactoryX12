@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-08-09T19:15:51.067-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've run across at least one \"trading partner\" who can't handle the white space that's put in by default when running the UnbundleX12 executable.  I'm wondering, then, if it would be better to have the default build of the unbundle executable use \"SerializeToX12(false)\" instead of \"SerializeToX12(true)\" to maintain better compatibility with other EDI systems.",
+    "LastUpdatedDate": "2013-05-16T04:34:05.497-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-08-09T11:03:01.467-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "UnbundleX12 tweak",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 809
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 9440.",
+      "PostedDate": "2011-08-09T19:15:51.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This will be in release 2.2 that will get released this Sunday.",
+      "PostedDate": "2011-08-09T19:16:54.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:04.273-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:34:05.497-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

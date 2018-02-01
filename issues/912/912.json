@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n \nI have downloaded and extracted the latest source and tried to open using C# 2010. But showing errors like\n--> Cannot load tests, \n-->  Cannot Load  Libraries,\n-->  Cannot Load Solution items.\n \nKindly clarify",
+    "LastUpdatedDate": "2017-11-27T18:20:56.59-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "x12parser",
+    "ReportedDate": "2011-11-10T03:26:34.853-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unable to open",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 912
+  },
+  "FileAttachments": [
+    {
+      "FileId": 448,
+      "FileName": "err.jpg",
+      "DownloadUrl": ".\\448"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "You are using Visual Studio Express, which does not support certain Visual Studio features used by the solution (such as solution folders.)\r\n\r\nI was able to get the parser to build in Visual Studio Express by directly adding the following projects to the solution:\r\n\r\n  src\\OopFactory.X12\\OopFactory.X12.csproj\r\n  src\\OopFactory.X12.Hipaa\\OopFactory.X12.Hipaa.csproj\r\n\r\nI did not attempt to build the test projects in Visual Studio Express.\r\n",
+      "PostedDate": "2011-11-25T16:06:28.3-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I will look into porting all the tests over to a project that uses the NUnit framework instead the Microsoft Test Project.  This should allow you to open the test projects using Visual Studio Express.",
+      "PostedDate": "2011-11-28T07:12:37.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:47:02.433-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T18:20:56.59-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

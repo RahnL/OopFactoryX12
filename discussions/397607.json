@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "920223",
+    "ThreadId": "397607",
+    "Html": "\r\n<p>I am trying to identify a solution that will take data elements (i.e. database) and create a 5010 837P X12 file. As I do my research, I keep coming back to OopFactory X12 Parser. Based on the reading it seems to be able to accomplish what I need to do however\r\n I am trying to find an example of this. I would appreciate any help how I can use X12 parser to create 837P file (if it can). I am relatively new to the EDI standard so it is like sipping from a firehose!</p>\r\n<p>Thank you</p>\r\n<p>Ray</p>\r\n",
+    "PostedDate": "2012-10-01T14:33:07.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "920289",
+    "ThreadId": "397607",
+    "Html": "<p>See the ProfessionalClaimCreationTester here:&nbsp; <a href=\"http://x12parser.codeplex.com/SourceControl/changeset/view/20228#151876\">http://x12parser.codeplex.com/SourceControl/changeset/view/20228#151876</a>.</p>\r\n<p>It is the unit test for creating the 837P by populating an Interchange object and serializing it.</p>\r\n<p>It does some handy things for you such as adding the transaction trailers with the correct counts.</p>\r\n<p>Most of the segments will also be strongly typed so that you can be sure you are setting the correct element.</p>",
+    "PostedDate": "2012-10-01T17:26:39.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "920292",
+    "ThreadId": "397607",
+    "Html": "<p>Thank you for the example which helps considerable. I have been looking at some of the other discussion posts which have given me some insight but your example really nails it for me. I really appreciate the work that you and the community have been doing on this project.</p>\r\n<p>Thanks - Ray</p>",
+    "PostedDate": "2012-10-01T17:31:52.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934543",
+    "ThreadId": "397607",
+    "Html": "<p>I am testing x12 parser library to create a 5010 &nbsp;837I X12 file. Can anyone point me to right direction on how to do this? Any help/clue would be highly appreciated.</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2012-10-30T22:07:04.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
